@@ -1,33 +1,52 @@
-name: Deploy Jupyter Book to GitHub Pages
+name: deploy-book
+
 on:
+  # Trigger the workflow on push to main branch
   push:
     branches:
-      - main  # Set the branch to watch
+      - main
+
+env:
+  BASE_URL: /${{ github.event.repository.name }}
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  deploy:
+  deploy-book:
     runs-on: ubuntu-latest
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      pages: write
+      id-token: write
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      # Install dependencies
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.7'
+          python-version: 3.11
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install jupyter-book ghp-import
 
-      - name: Build Jupyter Book
+      # Build the book
+      - name: Build the book
         run: |
-          jupyter-book build .
+          jupyter-book build Multivariate Statistics with Python
 
+      # Upload the book's HTML as an artifact
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: "_build/html"
+
+      # Deploy the book's HTML to GitHub Pages
       - name: Deploy to GitHub Pages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          ghp-import -n -p -f _build/html
+        id: deployment
+        uses: actions/deploy-pages@v2
