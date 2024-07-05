@@ -5,7 +5,6 @@ format: jb-book
 root: book/overview
 chapters:
 - file: book/W1 - Setting things up
+- file: book/W1 - Exercises
 - file: book/W2 - Introduction to Python
-- file: book/markdown
-- file: book/notebooks
-
+- file: book/W2 - Exercises
