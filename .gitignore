@@ -1,0 +1,5 @@
+# Ignore file types
+*.pyc
+
+# Ignore folders
+_build

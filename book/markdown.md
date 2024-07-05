@@ -1,4 +1,19 @@
-# Markdown Files
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+# Notebooks with MyST Markdown
+
 
 Whether you write your book's content in Jupyter Notebooks (`.ipynb`) or
 in regular markdown files (`.md`), you'll write in the same flavor of markdown
@@ -15,13 +30,6 @@ in the Sphinx ecosystem.
 For more about MyST, see [the MyST Markdown Overview](https://jupyterbook.org/content/myst.html).
 
 ## Sample Roles and Directives
-
-Roles and directives are two of the most powerful tools in Jupyter Book. They
-are like functions, but written in a markup language. They both
-serve a similar purpose, but **roles are written in one line**, whereas
-**directives span many lines**. They both accept different kinds of inputs,
-and what they do with those inputs depends on the specific role or directive
-that is being called.
 
 Here is a "note" directive:
 
@@ -49,7 +57,16 @@ then the bibliography is inserted with:
 ```{bibliography}
 ```
 
-## Learn more
+Jupyter Book also lets you write text-based notebooks using MyST Markdown.
+See [the Notebooks with MyST Markdown documentation](https://jupyterbook.org/file-types/myst-notebooks.html) for more detailed instructions.
+This page shows off a notebook written in MyST Markdown.
 
-This is just a simple starter to get you started.
-You can learn a lot more at [jupyterbook.org](https://jupyterbook.org).
+We can use these for introductory content that requires example code
+
+## An example cell
+
+With MyST Markdown, you can define code cells with a directive like so:
+
+```{code-cell}
+print(2 + 2)
+```
