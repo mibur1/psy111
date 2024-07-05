@@ -29,8 +29,8 @@ We will use a minimal version of conda called **miniconda**. This is a lightweig
 
 In addition to Python, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/).
 
-```{important} Summary
-:class: admonition-summary
+```{admonition} Summary
+:class: tip
 
 By using conda/miniconda you can:
 
