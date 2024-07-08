@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
   
@@ -443,7 +443,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="w2-introduction-to-python">
 <h1>W2 - Introduction to Python<a class="headerlink" href="#w2-introduction-to-python" title="Link to this heading">#</a></h1>
-<p>The Python programming language is a <em>general purpose</em> language, which means it is widely used in many fields, including statistics and neuroimaging. Python is a <em>high-level, interpreted</em> language, which means it offers a high level of abstraction and you do not need to worry about <em>low-level</em> things like memory management. Its syntax is also relatively simple and aims to be readable.</p>
+<p>The Python programming language is a <em>general purpose</em> language, which means it is widely used in many fields, including statistics and neuroimaging. Python is a <em>high-level, interpreted</em> language, which means it offers a high level of abstraction and you do not need to worry about <em>low-level</em> things like memory management. The following introduction is losely based on the book “Data Science for Neuroimaging: An Introduction” by Ariel Rokem and Tal Yarkoni <span id="id1">[<a class="reference internal" href="references.html#id2" title="Ariel Rokem and Tal Yarkoni. Data Science for Neuroimaging: An Introduction. Princeton University Press, 2023. ISBN 9780691222745.">RY23</a>]</span>.</p>
 <section id="variables-and-data-types">
 <h2>1.1 Variables and data types<a class="headerlink" href="#variables-and-data-types" title="Link to this heading">#</a></h2>
 <p>As in other programming languages, variables are used to store data of different values or types (hence the name <em>variable</em>). In Python, you declare a variable by writing its name and then assigning its value with the equal (=) sign:</p>
@@ -479,7 +479,62 @@ document.write(`
 </section>
 <section id="built-in-types">
 <h2>1.2 Built-in types<a class="headerlink" href="#built-in-types" title="Link to this heading">#</a></h2>
-<p>All general-purpose languages provide the programmer with different <em>types</em> of variables as the basic building blocks programs are made up.</p>
+<p>All general-purpose languages provide the programmer with different <em>types</em> of variables as the basic building blocks of programs.</p>
+<p><strong>Integers</strong></p>
+<p>Integers are the numbers zero (0), positive natural numbers (1, 2, 3, …), or the negation of positive natural numbers (-1, -2, -3, …)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subjects_group_1</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">subjects_group_2</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">scans_total</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can perform mathematical operations like addition</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">subjects_total</span> <span class="o">=</span> <span class="n">subjects_group_1</span> <span class="o">+</span> <span class="n">subjects_group_2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">subjects_total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
+</div>
+<p>or division</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scans_per_subject</span> <span class="o">=</span> <span class="n">scans_total</span> <span class="o">/</span> <span class="n">subjects_total</span>
+<span class="n">scans_per_subject</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that while the addition of two integers returns another integer, while the division returns a float (short for <em>floating point</em> number), which is a way computers represent real numbers. <em>Note</em>: As already mentioned above, if we execute Python code in interactive notebooks, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement can be omitted if the variable to be printed is in the last line of the code block.</p>
+<p>All of the standard arithmetic operations that work on integers further also work on floats or any combination of them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">roughly_pi</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Circumference of the cicle:&quot;</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">roughly_pi</span> <span class="o">*</span> <span class="n">radius</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Circumference of the cicle: 12.56
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
