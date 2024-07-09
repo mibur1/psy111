@@ -14,7 +14,7 @@ kernelspec:
 
 # Micellaneous templates for MyST syntax
 
-Inline directive to refer to a document: {doc}`W2 - Exercise`.
+Inline directive to refer to a document: {doc}`overview`.
 
 Citing: {cite}`Rokem2023`.
 
