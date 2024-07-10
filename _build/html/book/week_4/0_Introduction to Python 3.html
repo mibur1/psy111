@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=9bb3bf16" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
@@ -58,8 +59,11 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'book/week_4/0_Introduction to Python 3';</script>
+    <link rel="canonical" href="https://mibur1.github.io/psy111-book/book/week_4/0_Introduction to Python 3.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hello World" href="../statistics/statistics.html" />
+    <link rel="prev" title="3.6 Exercises" href="../week_3/6_Exercises.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -122,8 +126,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -171,21 +173,17 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../overview.html">
-                    psy111 - Overview
-                </a>
-            </li>
-        </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../week_1/0_Setting%20things%20up.html">W1 - Setting things up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Setting things up</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_1/0_Setting_things_up.html">W1 - Setting things up</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_1/1_Installation.html">1.1 Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_1/2_Usage.html">1.2 Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_1/3_Exercises.html">1.3 Exercises</a></li>
 </ul>
 </details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Python</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../week_2/0_Introduction%20to%20Python%201.html">W2 - Introduction to Python I</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../week_2/1_Variables%20and%20data%20types.html">2.1 Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_2/2_Built-in%20types.html">2.2 Built-in types</a></li>
@@ -197,11 +195,20 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_3/1_Everything%20is%20an%20object.html">3.1 Everything is an Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_3/2_Control%20flow.html">3.2 Control flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_3/3_Namespaces%20and%20imports.html">3.3 Namespaces and imports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/4_Functions.html">3.4 Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../week_3/5_Classes.html">3.5 Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../week_3/6_Exercises.html">3.4 Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/6_Exercises.html">3.6 Exercises</a></li>
 
 </ul>
 </details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">W4 - Introduction to Python III</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Multivariate Statistics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../statistics/statistics.html">Hello World</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
 </ul>
 
@@ -483,6 +490,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../week_3/6_Exercises.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3.6 Exercises</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../statistics/statistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hello World</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

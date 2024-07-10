@@ -22,8 +22,12 @@ repository:
 
 # Add GitHub buttons to your book
 html:
+  home_page_in_navbar: false
   use_issues_button: true
   use_repository_button: true
+  baseurl: https://mibur1.github.io/psy111-book/
+  extra_css:
+    - _static/custom.css
 
 # Google colab launch button
 launch_buttons:

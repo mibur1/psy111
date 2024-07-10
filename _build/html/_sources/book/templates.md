@@ -36,4 +36,7 @@ Boxes. Possible classes are:
 Hello world
 ```
 
+**The schedule for the semester will be:**
 
+```{tableofcontents}
+```

@@ -1,0 +1,16 @@
+/* Light mode */
+:root {
+    --header-font-color: #000000;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-font-color: #000000;
+    }
+}
+
+/* Apply the color to the header */
+.text-center.bg-light {
+    color: var(--header-font-color) !important;
+}
