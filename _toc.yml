@@ -18,5 +18,9 @@ chapters:
 - file: book/week_3/0_Introduction to Python 2
   sections:
     - file: book/week_3/1_Everything is an object
-    - file: book/week_3/2_Flow control
+    - file: book/week_3/2_Control flow
+    - file: book/week_3/3_Namespaces and imports
+    - file: book/week_3/4_Functions
+    - file: book/week_3/5_Classes
+    - file: book/week_3/6_Exercises
 - file: book/references

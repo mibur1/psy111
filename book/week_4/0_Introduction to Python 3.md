@@ -12,4 +12,6 @@ kernelspec:
   name: python3
 ---
 
-# 3.2 Flow Control
+# W4 - Introduction to Python III
+
+In the previous week, ...

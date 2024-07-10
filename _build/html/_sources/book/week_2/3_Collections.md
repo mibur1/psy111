@@ -123,9 +123,6 @@ example_dict["age"] = 27
 ```
 
 
-
-
-
 ```{admonition} Summary
 :class: tip
 
