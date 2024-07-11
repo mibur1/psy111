@@ -29,6 +29,10 @@ html:
   extra_css:
     - _static/custom.css
 
+sphinx:
+  html_context:
+    default_mode: light
+
 # Google colab launch button
 launch_buttons:
   colab_url: "https://colab.research.google.com"

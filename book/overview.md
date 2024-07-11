@@ -12,10 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# psy111 - Overview
+# Welcome to the psy111 Python seminar!
 
-
-This book contains the course content of the Multivariate Statistics (psy111) Python seminar. The half of the semester will provide you with an introduction into Python and its surrounding infrastructure, while the second half of the semester will cover a practical understanding of the statistical concepts from the lecture.
+This book contains the course content of the Multivariate Statistics (psy111) seminar. The half of the semester will provide you with an introduction into Python and its surrounding infrastructure, while the second half of the semester will cover a practical aspects of the statistical concepts from the lecture.
 
 ::::{grid} 1 1 2 3
 :class-container: text-center
@@ -40,7 +39,7 @@ Explore the chapter {fas}`arrow-right`
 :class-header: bg-light text-center
 :link: week_1/0_Setting_things_up
 :link-type: doc
-Introduction to Python 🚀
+Introduction to Python 🐍
 ^^^
 ```{image} https://i.pinimg.com/originals/82/a2/18/82a2188c985ce75402ae44fc43fe7e5e.png
 :height: 100
@@ -54,7 +53,7 @@ Explore the chapter {fas}`arrow-right`
 :class-header: bg-light text-center
 :link: week_1/0_Setting_things_up
 :link-type: doc
-Multivariate Statistics 🚀
+Multivariate Statistics 📊
 ^^^
 ```{image} https://thumbs.dreamstime.com/b/statistics-linear-icon-modern-outline-logo-concept-o-white-background-business-analytics-collection-suitable-use-133515482.jpg
 :height: 100

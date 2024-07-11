@@ -1,16 +1,16 @@
-/* Light mode */
+/* Define the CSS variables for light mode */
 :root {
-    --header-font-color: #000000;
+    --header-font-color: #ffffff;
+    --header-bg-color: #3b3b3b;
+
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --header-font-color: #000000;
-    }
-}
-
-/* Apply the color to the header */
 .text-center.bg-light {
     color: var(--header-font-color) !important;
+    background-color: var(--header-bg-color) !important;
+}
+
+.text-center.bg-dark {
+    color: var(--header-font-color) !important;
+    background-color: var(--header-bg-color) !important;
 }
