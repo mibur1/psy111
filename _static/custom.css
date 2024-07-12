@@ -1,15 +1,10 @@
-/* Define the CSS variables for light mode */
+/* Custom CSS */
 :root {
     --header-font-color: #ffffff;
     --header-bg-color: #3b3b3b;
-
 }
 
-.text-center.bg-light {
-    color: var(--header-font-color) !important;
-    background-color: var(--header-bg-color) !important;
-}
-
+.text-center.bg-light,
 .text-center.bg-dark {
     color: var(--header-font-color) !important;
     background-color: var(--header-bg-color) !important;

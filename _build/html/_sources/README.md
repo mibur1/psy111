@@ -11,8 +11,10 @@ Course materials for the psy111 seminar of the Neurocognitive Psychology Master'
 Running the book locally is possible by building the book from source
 
 ```python
+git clone https://github.com/mibur1/psy111-book.git
+cd <path/to/book/>
 pip install -r requirements.txt
-jupyter-book build <path/to/book/>
+jupyter-book build .
 ```
 
-and opening the resulting `_build/html/index.html` file in a browser. The *.ipynb* notebooks can be used locally or through google colab.
+and by opening the resulting `_build/html/index.html` file in a browser. The *.ipynb* notebooks for the exercises can either be used locally or through google colab.

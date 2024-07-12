@@ -2,24 +2,24 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: book/overview
+root: book/misc/overview
 parts:
 - caption: Setting things up
   chapters:
-  - file: book/week_1/0_Setting_things_up
+  - file: book/week_1/0_Introduction
     sections:
       - file: book/week_1/1_Installation
       - file: book/week_1/2_Usage
       - file: book/week_1/3_Exercises
 - caption: Introduction to Python
   chapters:
-  - file: book/week_2/0_Introduction to Python 1
+  - file: book/week_2/0_Introduction
     sections:
       - file: book/week_2/1_Variables and data types
       - file: book/week_2/2_Built-in types
       - file: book/week_2/3_Collections
       - file: book/week_2/4_Exercises
-  - file: book/week_3/0_Introduction to Python 2
+  - file: book/week_3/0_Introduction
     sections:
       - file: book/week_3/1_Everything is an object
       - file: book/week_3/2_Control flow
@@ -27,11 +27,12 @@ parts:
       - file: book/week_3/4_Functions
       - file: book/week_3/5_Classes
       - file: book/week_3/6_Exercises
-  - file: book/week_4/0_Introduction to Python 3
+  - file: book/week_4/0_Introduction
 - caption: Multivariate Statistics
   chapters:
   - file: book/statistics/statistics
 - caption: Additional Materials
   chapters:
-  - file: book/references
+  - file: book/misc/reading
+  - file: book/misc/references
 
