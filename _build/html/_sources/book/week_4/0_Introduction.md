@@ -12,6 +12,6 @@ kernelspec:
   name: python3
 ---
 
-# W4 - Introduction to Python III
+# W4 - Scientific computing
 
-In the previous week, ...
+In the previous week you learned about core concepts of Python, including control flow, functions, and classes. Today, we will finally explore some more practical applications and introduce some of the most important libraries and their functions which you will need for any kind of scientific computing.

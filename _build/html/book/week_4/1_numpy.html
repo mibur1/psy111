@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>3.1 Everything is an Object &#8212; Multivariate Statistics with Python (psy111)</title>
+    <title>Numpy &#8212; Multivariate Statistics with Python (psy111)</title>
   
   
   
@@ -58,12 +58,12 @@
     <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'book/week_3/1_Everything is an object';</script>
-    <link rel="canonical" href="https://mibur1.github.io/psy111-book/book/week_3/1_Everything is an object.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'book/week_4/1_numpy';</script>
+    <link rel="canonical" href="https://mibur1.github.io/psy111-book/book/week_4/1_numpy.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3.2 Control flow" href="2_Control%20flow.html" />
-    <link rel="prev" title="W3 - Introduction to Python II" href="0_Introduction.html" />
+    <link rel="next" title="Hello World" href="../statistics/statistics.html" />
+    <link rel="prev" title="W4 - Scientific computing" href="0_Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -191,17 +191,19 @@
 <li class="toctree-l2"><a class="reference internal" href="../week_2/4_Exercises.html">2.4 Exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Introduction.html">W3 - Introduction to Python II</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">3.1 Everything is an Object</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2_Control%20flow.html">3.2 Control flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3_Namespaces%20and%20imports.html">3.3 Namespaces and imports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4_Functions.html">3.4 Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_Classes.html">3.5 Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6_Exercises.html">3.6 Exercises</a></li>
-
+<li class="toctree-l1 has-children"><a class="reference internal" href="../week_3/0_Introduction.html">W3 - Introduction to Python II</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/1_Everything_is_an_object.html">3.1 Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/2_Control%20flow.html">3.2 Control flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/3_Namespaces%20and%20imports.html">3.3 Namespaces and imports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/4_Functions.html">3.4 Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/5_Classes.html">3.5 Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../week_3/6_Exercises.html">3.6 Exercises</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../week_4/0_Introduction.html">W4 - Introduction to Python III</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Introduction.html">W4 - Scientific computing</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Numpy</a></li>
+</ul>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Multivariate Statistics</span></p>
 <ul class="nav bd-sidenav">
@@ -265,7 +267,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/mibur1/psy111-book/blob/main/book/week_3/1_Everything is an object.md" target="_blank"
+      <li><a href="https://colab.research.google.com/github/mibur1/psy111-book/blob/main/book/week_4/1_numpy.md" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -313,7 +315,7 @@
       
       
       
-      <li><a href="https://github.com/mibur1/psy111-book/issues/new?title=Issue%20on%20page%20%2Fbook/week_3/1_Everything is an object.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/mibur1/psy111-book/issues/new?title=Issue%20on%20page%20%2Fbook/week_4/1_numpy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -343,7 +345,7 @@
       
       
       
-      <li><a href="../../_sources/book/week_3/1_Everything is an object.ipynb" target="_blank"
+      <li><a href="../../_sources/book/week_4/1_numpy.ipynb" target="_blank"
    class="btn btn-sm btn-download-notebook-button dropdown-item"
    title="Download notebook file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -360,7 +362,7 @@
       
       
       
-      <li><a href="../../_sources/book/week_3/1_Everything is an object.md" target="_blank"
+      <li><a href="../../_sources/book/week_4/1_numpy.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -431,9 +433,7 @@ document.write(`
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</button>
+
 </div></div>
       
     </div>
@@ -444,22 +444,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>3.1 Everything is an Object</h1>
+    <h1>Numpy</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dot-notation">The dot notation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-objects">Inspecting objects</a></li>
-</ul>
-</li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -469,130 +458,9 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="everything-is-an-object">
-<h1>3.1 Everything is an Object<a class="headerlink" href="#everything-is-an-object" title="Link to this heading">#</a></h1>
-<p>So far, and analogous to many other programming languages, you mught think of data types like strings or integers as <em>primitive</em> data types, which means that they are built into the core of the language to behave in special ways and to not be changed or modified in any way. And this is true in many
-other programming languages like C++. where you will have to explicitly tell the program what type of variable you want to create.</p>
-<p>In Python this is a bit different and there aren’t <em>really</em> any primitive datata types, as it is a deeply <em>object-oriented</em> programming language. In Python, <em>everything is an object</em>. Strings are objects, integers are objects, lists are objects, dictionairies are objects, and so fourth. We will come back to that concept in detail later today, but for now let us just focus on some practical implications this will bring.</p>
-<section id="the-dot-notation">
-<h2>The dot notation<a class="headerlink" href="#the-dot-notation" title="Link to this heading">#</a></h2>
-<p>Let’s start with the dot (.) notation. As you probably already noticed, we previously worked with our variables in two different ways. First, there is a functional syntax, where we pass an object (e.g. a list) as an argument to a function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
-</pre></div>
-</div>
-</div>
-</div>
-<p>A function is a specific, reusable piece of code, that performs a specific action. In this case, the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function calculates the length of the list given to it as an argument. It then returns some kind of result, which we can print or save as a new variable. Second, there is the object-oriented syntax which you previously saw when working with strings:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Hello World&quot;</span>
-<span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello world&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>If you have previously only worked with data-centric languages like MATLAB you might find this a bit confusing. But don’t worry, it essentially means that we simply call a function attached to the object (in this case the string). Such object specfic functions are called <em>methods</em>, so if you use <code class="docutils literal notranslate"><span class="pre">text.lower()</span></code> it will simply call the <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> method of the string object. The dot operator expresses a relationship of belonging, so you can intuitively read <code class="docutils literal notranslate"><span class="pre">text.lower()</span></code> as “on the text variable, use the .lower() method which belongs to it”.</p>
-<section id="inspecting-objects">
-<h3>Inspecting objects<a class="headerlink" href="#inspecting-objects" title="Link to this heading">#</a></h3>
-<p>One implication of everything being an object in Python is that we might need to find out what kind of data an object contains and which methods it implements, as this might not always be obvious from just looking at the variable itself. We will not go into too much detail, but briefly introduce some simple ways for you to interrogate objects.</p>
-<p>First, you can always see the type of an object by using the built-in <code class="docutils literal notranslate"><span class="pre">type()</span></code> function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
-</pre></div>
-</div>
-</div>
-</div>
-<p>Second, the <code class="docutils literal notranslate"><span class="pre">dir()</span></code> function will show you all methods implemented by an object as well as their <em>static attributes</em>, which are variables stored whithin the object (they often start and end with two underscores).</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;__add__&#39;,
- &#39;__class__&#39;,
- &#39;__class_getitem__&#39;,
- &#39;__contains__&#39;,
- &#39;__delattr__&#39;,
- &#39;__delitem__&#39;,
- &#39;__dir__&#39;,
- &#39;__doc__&#39;,
- &#39;__eq__&#39;,
- &#39;__format__&#39;,
- &#39;__ge__&#39;,
- &#39;__getattribute__&#39;,
- &#39;__getitem__&#39;,
- &#39;__getstate__&#39;,
- &#39;__gt__&#39;,
- &#39;__hash__&#39;,
- &#39;__iadd__&#39;,
- &#39;__imul__&#39;,
- &#39;__init__&#39;,
- &#39;__init_subclass__&#39;,
- &#39;__iter__&#39;,
- &#39;__le__&#39;,
- &#39;__len__&#39;,
- &#39;__lt__&#39;,
- &#39;__mul__&#39;,
- &#39;__ne__&#39;,
- &#39;__new__&#39;,
- &#39;__reduce__&#39;,
- &#39;__reduce_ex__&#39;,
- &#39;__repr__&#39;,
- &#39;__reversed__&#39;,
- &#39;__rmul__&#39;,
- &#39;__setattr__&#39;,
- &#39;__setitem__&#39;,
- &#39;__sizeof__&#39;,
- &#39;__str__&#39;,
- &#39;__subclasshook__&#39;,
- &#39;append&#39;,
- &#39;clear&#39;,
- &#39;copy&#39;,
- &#39;count&#39;,
- &#39;extend&#39;,
- &#39;index&#39;,
- &#39;insert&#39;,
- &#39;pop&#39;,
- &#39;remove&#39;,
- &#39;reverse&#39;,
- &#39;sort&#39;]
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here you can see, that the list object implements 11 different methods starting with <code class="docutils literal notranslate"><span class="pre">append</span></code>. All of these <em>attributes</em> are available to you to access or call (if they are a function) through the dot notation: <code class="docutils literal notranslate"><span class="pre">my_list.__class__</span></code> or <code class="docutils literal notranslate"><span class="pre">my_list.append()</span></code>.</p>
-<div class="tip admonition">
-<p class="admonition-title">Summary</p>
-<p>Everything in Python is an object!</p>
-<ul class="simple">
-<li><p>Functions like <code class="docutils literal notranslate"><span class="pre">len()</span></code> are standalone blocks of code that can be called independently of objects.</p></li>
-<li><p>Methods like <code class="docutils literal notranslate"><span class="pre">.lower()</span></code> are functions that belong to objects.</p></li>
-<li><p>You can inspect the type and content of objects with the <code class="docutils literal notranslate"><span class="pre">type()</span></code> and <code class="docutils literal notranslate"><span class="pre">dir()</span></code> functions.</p></li>
-</ul>
-</div>
-</section>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="numpy">
+<h1>Numpy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h1>
+<p>The <a class="reference external" href="https://numpy.org/">numpy package</a> is the fundamental package for scientific computing with Python. It implements a wide range of functionalities for creating N-dimensional arrays and mathematical functions to deal with these data.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -608,7 +476,7 @@ other programming languages like C++. where you will have to explicitly tell the
         },
         kernelOptions: {
             name: "python3",
-            path: "./book/week_3"
+            path: "./book/week_4"
         },
         predefinedOutput: true
     }
@@ -631,15 +499,15 @@ other programming languages like C++. where you will have to explicitly tell the
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">W3 - Introduction to Python II</p>
+        <p class="prev-next-title">W4 - Scientific computing</p>
       </div>
     </a>
     <a class="right-next"
-       href="2_Control%20flow.html"
+       href="../statistics/statistics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">3.2 Control flow</p>
+        <p class="prev-next-title">Hello World</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -649,24 +517,6 @@ other programming languages like C++. where you will have to explicitly tell the
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-dot-notation">The dot notation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-objects">Inspecting objects</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>
