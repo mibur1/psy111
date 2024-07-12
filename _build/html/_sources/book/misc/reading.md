@@ -21,4 +21,4 @@ Good starting points for further reading are for example:
 - Harvard's CS50 course:  https://cs50.harvard.edu/python/2022/
 - Future coder platform:  https://futurecoder.io/
 - The Python coding book: https://thepythoncodingbook.com/
-- Automate boring stuff:  https://automatetheboringstuff.com/
+- Automate the boring stuff:  https://automatetheboringstuff.com/

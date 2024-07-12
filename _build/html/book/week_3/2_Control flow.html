@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=89081bd1" />
@@ -198,7 +198,6 @@
 <li class="toctree-l2"><a class="reference internal" href="4_Functions.html">3.4 Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="5_Classes.html">3.5 Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6_Exercises.html">3.6 Exercises</a></li>
-
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_4/0_Introduction.html">W4 - Introduction to Python III</a></li>
@@ -431,7 +430,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -447,6 +448,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">Conditionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-statements">Nested statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace-is-syntactically-required">Whitespace is syntactically required</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -458,6 +470,152 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="control-flow">
 <h1>3.2 Control flow<a class="headerlink" href="#control-flow" title="Link to this heading">#</a></h1>
+<p>In this chapter, we will explore the fundamentals of control flow in Python. Control flow allows you to dictate the order in which statements are executed, enabling your programs to make decisions and perform repetitive actions.</p>
+<section id="conditionals">
+<h2>Conditionals<a class="headerlink" href="#conditionals" title="Link to this heading">#</a></h2>
+<p>Conditional statements (if-else statements) are essential for writing programs that can make decisions based on varying inputs and conditions. They help in implementing logic that responds differently depending on the circumstances.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">if</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number is smaller than 5.&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">number</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number is equal to 5.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number is larger than 5.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number is equal to 5.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Depending on the value of <code class="docutils literal notranslate"><span class="pre">number</span></code>, only the <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement that matches the condition will be evaluated. The <code class="docutils literal notranslate"><span class="pre">else</span></code> statement acts as a <em>fallback</em> option, which means it will run only if none of the previous conditions are met. Both <em>elif</em> and <em>else</em> statements are optional; you could simply use <em>if</em> statements to handle every possible scenario. However, this can lead to worse code readability, especially if many decisions are possible.</p>
+</section>
+<section id="loops">
+<h2>Loops<a class="headerlink" href="#loops" title="Link to this heading">#</a></h2>
+<p>Loops allow us to <em>iterate</em> (or loop) over elements of a collection. Let’s for example consider a list of numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">list_of_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">list_of_numbers</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+4
+6
+8
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, we loop over each item/element of the list starting from the first. In each iteration of the loop, we assign the value to a variable called <code class="docutils literal notranslate"><span class="pre">number</span></code> which is then printed. <code class="docutils literal notranslate"><span class="pre">number</span></code> is a temporary variable, which means it will only exist whithin the scope of the loop and not anymore after.</p>
+<p><strong>Looping over a range</strong></p>
+<p>A very common use case of loops is to perform a specific action <em>n</em> times. For example, if you have 30 participants in your study, you want to iterate over all of them to perform some action. For this, you can use the built-in <code class="docutils literal notranslate"><span class="pre">range()</span></code> function to provide a range of numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Range 1:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Range 2:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Range 1:
+0
+1
+2
+3
+Range 2:
+1
+3
+5
+7
+9
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that, as with the <code class="docutils literal notranslate"><span class="pre">len()</span></code> function, the end point of the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function is exclusive, meaning it will create a sequence of numbers from 1 to 3. You can further also provide only a single number (like the length of a list) and use the numbers created by range as <em>indices</em> to index another variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">list_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">list_length</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple
+banana
+3
+4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nested-statements">
+<h2>Nested statements<a class="headerlink" href="#nested-statements" title="Link to this heading">#</a></h2>
+<p>In more complex analyses, you often need to nest multiple statements inside one another. If you for example want to iterate over an entire list and perform an action only for specific items of the list you could to this as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;apple&quot;</span><span class="p">,</span> <span class="s2">&quot;banana&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;banana&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Banana!&quot;</span><span class="p">)</span>
+  <span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not a banana.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not a banana.
+Banana!
+Not a banana.
+Not a banana.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="whitespace-is-syntactically-required">
+<h2>Whitespace is syntactically required<a class="headerlink" href="#whitespace-is-syntactically-required" title="Link to this heading">#</a></h2>
+<p>One important thing which we have not yet covered explicitly is how the code whithin if-statements or for-loops is indented (shifted to the right). You might think this is just a way of making the code easier to read, and that would be true for almost all other programming languages. However, Python is a bit different in that regard by <strong>requiring</strong> you to use whitespace with certain rules.</p>
+<p>Simply put, whenever you use a <em>compound statement</em> (which includes for-loops, conditionals, and also classes and functions which we will cover later), you need to increase the indentation of your code. Once you exit the compound statement, you decrease the indentation level by the same amount. The amound of this indentation is technically up to you, however the Python style guide recommends you to use four spaces. As an example, if we want to continue with the script after the for-loop, we would reset the indentation to the same level as the first for:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">my_list</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="s2">&quot;banana&quot;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Banana!&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Continue after the for-loop...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Banana!
+Continue after the for-loop...
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -514,6 +672,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditionals">Conditionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loops">Loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-statements">Nested statements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whitespace-is-syntactically-required">Whitespace is syntactically required</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
