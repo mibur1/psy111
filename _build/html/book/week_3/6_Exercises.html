@@ -192,7 +192,7 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Introduction.html">W3 - Introduction to Python II</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1_Everything%20is%20an%20object.html">3.1 Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_Everything_is_an_object.html">3.1 Everything is an Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2_Control%20flow.html">3.2 Control flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3_Namespaces%20and%20imports.html">3.3 Namespaces and imports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4_Functions.html">3.4 Functions</a></li>
@@ -436,10 +436,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voluntary-exercise-1">Voluntary exercise 1:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-objects">Exercise 1: Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-conditionals">Exercise 2: Conditionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-namespaces">Exercise 3: Namespaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-classes">Exercise 4: Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voluntary-exercise-1-list-comprehensions">Voluntary Exercise 1: List comprehensions</a></li>
 </ul>
             </nav>
         </div>
@@ -453,8 +454,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercises">
 <h1>3.6 Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
-<section id="exercise-1">
-<h2>Exercise 1<a class="headerlink" href="#exercise-1" title="Link to this heading">#</a></h2>
+<section id="exercise-1-objects">
+<h2>Exercise 1: Objects<a class="headerlink" href="#exercise-1-objects" title="Link to this heading">#</a></h2>
 <p>Find the methods associated with “int” objects. Are they different from the methods associated with “float” objects?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -464,8 +465,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-2">
-<h2>Exercise 2<a class="headerlink" href="#exercise-2" title="Link to this heading">#</a></h2>
+<section id="exercise-2-conditionals">
+<h2>Exercise 2: Conditionals<a class="headerlink" href="#exercise-2-conditionals" title="Link to this heading">#</a></h2>
 <p>You previously learned about if-else statements. Can you rewrite the code below by only using one <em>if</em>, <em>elif</em>, and <em>else</em> statement to improve readability?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -492,8 +493,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="exercise-3">
-<h2>Exercise 3<a class="headerlink" href="#exercise-3" title="Link to this heading">#</a></h2>
+<section id="exercise-3-namespaces">
+<h2>Exercise 3: Namespaces<a class="headerlink" href="#exercise-3-namespaces" title="Link to this heading">#</a></h2>
 <p>In this exercise, you will practice managing namespaces and importing modules and functions in Python. Please implement the following questions:</p>
 <ol class="arabic simple">
 <li><p>Importing Entire Modules:</p>
@@ -525,8 +526,29 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="voluntary-exercise-1">
-<h2>Voluntary exercise 1:<a class="headerlink" href="#voluntary-exercise-1" title="Link to this heading">#</a></h2>
+<section id="exercise-4-classes">
+<h2>Exercise 4: Classes<a class="headerlink" href="#exercise-4-classes" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Add to the implementation of Circle another method that calculates the circumference of the circle. Print the circumference.</p></li>
+<li><p>Implement a class called <code class="docutils literal notranslate"><span class="pre">Square</span></code> that has a single attribute <code class="docutils literal notranslate"><span class="pre">.side</span></code>, and two methods for area and circumference. Calculate both.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+  <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="voluntary-exercise-1-list-comprehensions">
+<h2>Voluntary Exercise 1: List comprehensions<a class="headerlink" href="#voluntary-exercise-1-list-comprehensions" title="Link to this heading">#</a></h2>
 <p>You previously learned about nested statements. Please carefully read the following code. What is its purpose?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -650,10 +672,11 @@ hello
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">Exercise 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2">Exercise 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3">Exercise 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voluntary-exercise-1">Voluntary exercise 1:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-objects">Exercise 1: Objects</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-conditionals">Exercise 2: Conditionals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-namespaces">Exercise 3: Namespaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-4-classes">Exercise 4: Classes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voluntary-exercise-1-list-comprehensions">Voluntary Exercise 1: List comprehensions</a></li>
 </ul>
   </nav></div>
 

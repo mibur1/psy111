@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=89081bd1" />
@@ -192,13 +192,12 @@
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="0_Introduction.html">W3 - Introduction to Python II</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1_Everything%20is%20an%20object.html">3.1 Everything is an Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_Everything_is_an_object.html">3.1 Everything is an Object</a></li>
 <li class="toctree-l2"><a class="reference internal" href="2_Control%20flow.html">3.2 Control flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="3_Namespaces%20and%20imports.html">3.3 Namespaces and imports</a></li>
 <li class="toctree-l2"><a class="reference internal" href="4_Functions.html">3.4 Functions</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">3.5 Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="6_Exercises.html">3.6 Exercises</a></li>
-
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../week_4/0_Introduction.html">W4 - Introduction to Python III</a></li>
@@ -431,7 +430,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -447,6 +448,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-is-a-class">So what is a class?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-instances">Creating instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-it-do-things">Making it do things</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-methods">Magic methods</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -458,6 +470,137 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="classes">
 <h1>3.5 Classes<a class="headerlink" href="#classes" title="Link to this heading">#</a></h1>
+<p>So far, we have already covered the most essential concepts in Python. And if you are really eager to start with actually using Python for real applications you will already be able to go a pretty long way. However, understanding classes is a central part of understanding how Python really works under the hood, and is essential for mastering the language and for implementing larger projects.</p>
+<p>As previously mentioned, <a class="reference internal" href="1_Everything_is_an_object.html"><span class="doc std std-doc">everything in Python is an object</span></a>. The key cocept behind this is the object-oriented programming (OOP) paradigm central to many programming languages. I will try to briefly these concepts in this chapter, however, do not worry if you feel like these concepts do not immediately make sense to you. Learning a programming language is like learning a real language and takes time. I am however convinced that once the semester goes on many of these newly introduced concepts will already start to click as you work your way through the exercises.</p>
+<section id="so-what-is-a-class">
+<h2>So what is a class?<a class="headerlink" href="#so-what-is-a-class" title="Link to this heading">#</a></h2>
+<p>A class is, in a sense, a kind of template for an object. You can think of it as a set of rules and instructions what an object of a given kind can do. Let us start with the simplest example of a class and built on top of that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+  <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>These two lines of code already define a perfectly valid class called <code class="docutils literal notranslate"><span class="pre">Circle</span></code> (note that it starts with a capital C, which is a naming convention for classes). The <code class="docutils literal notranslate"><span class="pre">pass</span></code> statement is used as a placeholder to tell the Python interpreter that it should not expect any more code to follow for the class.</p>
+</section>
+<section id="creating-instances">
+<h2>Creating instances<a class="headerlink" href="#creating-instances" title="Link to this heading">#</a></h2>
+<p>So what can we do with the Circle class? It doesn’t particularly look useful, does it? However, we can already do the most important thing we can do with a class, we can create a new <em>instance</em> of said class, which is to say we create objects whose behavior is defined by the <code class="docutils literal notranslate"><span class="pre">Circle</span></code> class. You can kind of imagine this as drawing different circles on a piece of paper. All of them are circles, but none of them would be the actual definition of a circle.</p>
+<p>The syntax for creating an instance in Python is simple:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">my_circle</span></code> variable contains an object, which is a specific instance of the <code class="docutils literal notranslate"><span class="pre">Circle</span></code> class. As of now, this object does neither contain any important information nor can it do anything.</p>
+</section>
+<section id="making-it-do-things">
+<h2>Making it do things<a class="headerlink" href="#making-it-do-things" title="Link to this heading">#</a></h2>
+<p>Let’s start by providing some features to the <code class="docutils literal notranslate"><span class="pre">Circle</span></code> class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+
+<span class="k">class</span> <span class="nc">Circle</span><span class="p">:</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">radius</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="n">radius</span>
+
+  <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now defined two <em>methods</em> (functions whithin a class). First, there is the <code class="docutils literal notranslate"><span class="pre">__init()__</span></code> method, which might look fairly strange to you. This is a so called <em>magic method</em>, which is the basic initialization that is used every time we create an instance of our class. The <code class="docutils literal notranslate"><span class="pre">__init()__</span></code> method has two arguments. The first parameter is called <code class="docutils literal notranslate"><span class="pre">self</span></code>. It is a mandatory argument for any method whithin a class to take a reference to the current instance (<em>itself</em> so to say). The second argument <code class="docutils literal notranslate"><span class="pre">radius</span></code> then the first actual argument which has to be provided if a circle object is created. Whithin the <code class="docutils literal notranslate"><span class="pre">__init()__</span></code> method, this argument is assigned to a variable called <code class="docutils literal notranslate"><span class="pre">self.radius</span></code> which makes it an <em>attribute</em> of the class instance.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">area()</span></code> method simply defines a way of calculating the area of the circle. As a method of the class it has access to all class attributes (variables starting with <code class="docutils literal notranslate"><span class="pre">self.</span></code>) and thus does not need any additional parameters other than the mandatory <code class="docutils literal notranslate"><span class="pre">self</span></code>.</p>
+<p>We can then use this newly updated Circle class as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">my_circle</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50.26548245743669
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first line creates an object of the Circle class with radius 4. We can then use the <code class="docutils literal notranslate"><span class="pre">.area()</span></code> method of that object to calculate its area. Pretty cool, huh? If we change the radius of the given circle, then the area will change as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_circle</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">my_circle</span><span class="o">.</span><span class="n">area</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>254.46900494077323
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="magic-methods">
+<h2>Magic methods<a class="headerlink" href="#magic-methods" title="Link to this heading">#</a></h2>
+<p>We came across the concept of magic methods like the <code class="docutils literal notranslate"><span class="pre">__init()__</span></code> method that runs every time we create an instance of an object. There are many other methods like this, and the key concept already is that they are usually called implicitly when a certain operation is applied to an object, even though it does not look like the operation and the magic method hav anything to do with each other. That’s what makes them magic!🪄</p>
+<p>You are probably already tired of me saying “everything in Python is an object”. However, you will now see one of the deeper implications this has. <em>All operators in Python are just cleverly disguised method calls</em>. That means even if we write something seemingly basic like <code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">*</span> <span class="pre">3</span></code>, Python will implicitly call a magic method on the first operant (the number 4 as an object of the integer class), with the second operand being passed as an argument. This might sound a bit confusing, but</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">4</span> <span class="o">*</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<p>under the hood is essentially just</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="fm">__mul__</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+</pre></div>
+</div>
+</div>
+</div>
+<p>with the parentheses being necessary so the <code class="docutils literal notranslate"><span class="pre">.</span></code> is not confused to be a decimal point. This also works for strings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;hello&quot;</span> <span class="o">+</span> <span class="s2">&quot; world&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello world&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;hello&quot;</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="s2">&quot; world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;hello world&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -514,6 +657,24 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-is-a-class">So what is a class?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-instances">Creating instances</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-it-do-things">Making it do things</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#magic-methods">Magic methods</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

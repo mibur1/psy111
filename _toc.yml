@@ -21,7 +21,7 @@ parts:
       - file: book/week_2/4_Exercises
   - file: book/week_3/0_Introduction
     sections:
-      - file: book/week_3/1_Everything is an object
+      - file: book/week_3/1_Everything_is_an_object
       - file: book/week_3/2_Control flow
       - file: book/week_3/3_Namespaces and imports
       - file: book/week_3/4_Functions
