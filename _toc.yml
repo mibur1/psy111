@@ -36,6 +36,7 @@ parts:
 - caption: Additional Materials
   chapters:
   - file: book/misc/solutions
+  - file: book/misc/glossary
   - file: book/misc/reading
   - file: book/misc/references
 
