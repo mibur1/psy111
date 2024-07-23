@@ -13,6 +13,4 @@ kernelspec:
 ---
 
 # Numpy
-
-The [numpy package](https://numpy.org/) is the fundamental package for scientific computing with Python. It implements a wide range of functionalities for creating N-dimensional arrays and mathematical functions to deal with these data.
-
+hello world
