@@ -13,8 +13,7 @@ kernelspec:
 ---
 
 # 3.5 Classes
-
-So far, we have already covered the most essential concepts in Python. And if you are really eager to start with actually using Python for real applications you will already be able to go a pretty long way. However, understanding classes is a central part of understanding how Python really works under the hood, and is essential for mastering the language and for implementing larger projects.
+test
 
 As previously mentioned, [everything in Python is an object](1_Everything_is_an_object). The key cocept behind this is the object-oriented programming (OOP) paradigm central to many programming languages. I will try to briefly these concepts in this chapter, however, do not worry if you feel like these concepts do not immediately make sense to you. Learning a programming language is like learning a real language and takes time. I am however convinced that once the semester goes on many of these newly introduced concepts will already start to click as you work your way through the exercises.
 
