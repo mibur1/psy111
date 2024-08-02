@@ -40,3 +40,8 @@ Hello world
 
 ```{tableofcontents}
 ```
+
+**Admonitions in .ipynb files**
+
+:::{admonition} Always Filter First
+Filtering should always be one of the first preprocessing steps you apply to your data. :::

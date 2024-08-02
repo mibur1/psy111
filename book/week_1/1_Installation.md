@@ -6,8 +6,7 @@ The key advantage of using conda is its ability to manage multiple versions of P
 
 We will use a minimal version of conda called **miniconda**. This is a lightweight version of conda that, unlike its bigger sibling, comes without e.g. a graphical user interface. You can download and install it from [here](https://docs.anaconda.com/miniconda/).
 
-
-In addition to Python, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/).
+In addition to Python, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). You can use the recommended settings for both installlations.
 
 ```{admonition} Summary
 :class: tip
