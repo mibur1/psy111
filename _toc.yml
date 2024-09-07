@@ -33,6 +33,8 @@ parts:
 - caption: Multivariate Statistics
   chapters:
   - file: book/statistics/statistics
+  - file: book/week_X_EFA/0_introduction
+  - file: book/week_X_EFA/1_EFA_in_Python
 - caption: Additional Materials
   chapters:
   - file: book/misc/reading

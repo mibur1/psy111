@@ -32,16 +32,12 @@ In Exploratory Factor Analysis (EFA), the objective is to find the optimal numbe
 
 2. **Factor Loading:** The factor loading is a matrix which shows the relationship of each variable to the underlying factor. In case of orthogonal factors, it shows depicts correlation between the observed variable and the factor. Larger factors loadings correspond to more explained variance.
 
-3. **Eigenvalues:** Each factor has an *Eigenvalue*. It describes how much variance the factor explains over *all observed variables*. 
+3. **Eigenvalues:** Each factor has an *Eigenvalue*. It describes how much variance one factor explains over *all observed variables*. 
 
-4. **Communalities:** Each observed variable has a communality. Communalities range from 0 to 1 and describe how much variance of one oberserved variable is described by *all factors combined*. For orthogonal factors, commonalities are the sum of the squared loadings for each variable. It represents the common variance. 
-
-What is Factor Rotation?
-
-Rotation is a tool for better interpretation of factor analysis. Rotation can be orthogonal or oblique. It re-distributed the commonalities with a clear pattern of loadings.
+4. **Communalities:** Each observed variable has a communality. Communalities range from 0 to 1 and describe how much variance of one oberserved variable is explained by *all factors combined*. For orthogonal factors, commonalities are the sum of the squared loadings for each variable. It represents the common variance. 
 
 ## References
 
-1. https://www.datacamp.com/tutorial/introduction-factor-analysis
-2. Denis, D. J. (2021). Applied univariate, bivariate, and multivariate statistics using Python: A beginner's guide to advanced data analysis. Wiley. https://onlinelibrary.wiley.com/doi/book/10.1002/9781119578208 https://doi.org/10.1002/9781119578208
+1. Denis, D. J. (2021). Applied univariate, bivariate, and multivariate statistics using Python: A beginner's guide to advanced data analysis. Wiley. https://onlinelibrary.wiley.com/doi/book/10.1002/9781119578208 https://doi.org/10.1002/9781119578208
+
 
