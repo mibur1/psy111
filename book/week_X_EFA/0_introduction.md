@@ -39,5 +39,6 @@ In Exploratory Factor Analysis (EFA), the objective is to find the optimal numbe
 ## References
 
 1. Denis, D. J. (2021). Applied univariate, bivariate, and multivariate statistics using Python: A beginner's guide to advanced data analysis. Wiley. https://onlinelibrary.wiley.com/doi/book/10.1002/9781119578208 https://doi.org/10.1002/9781119578208
+2. https://www.datacamp.com/tutorial/introduction-factor-analysis
 
 
