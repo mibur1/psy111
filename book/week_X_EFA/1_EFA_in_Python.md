@@ -136,10 +136,6 @@ c
 fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_smc=True, is_corr_matrix=False, bounds=(0.005, 1), impute='median', svd_method='randomized', rotation_kwargs=None)
 ```
 
-
-
-
-
 ## Other packages
 
 Please note that there are also other packages which can be used to apply EFA in Python. However, the `factor_analyzer` package stands out as the most comprehensive and reliable Python package for conducting EFA (Persson & Khojasteh, 2021). Also, its EFA results align with those from the `psych` package in R. 
