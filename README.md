@@ -1,5 +1,5 @@
 <div style="padding-top:1em; padding-bottom: 0.5em;">
-<img src="logo.png" width =200 align="right" />
+<img src="logo.png" width =200 align="left" />
 </div>
 
 # Multivariate Statistics with Python
