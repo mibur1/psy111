@@ -32,8 +32,8 @@ To demonstrate EFA, the following code chunk creates a simulated dataset. 9 vari
 
 ```{code-cell}
 # Install and load packages
-pip install pandas
-pip install numpy
+## pip install pandas
+## pip install numpy
 import numpy as np
 import pandas as pd
 
@@ -44,9 +44,9 @@ np.random.seed(42)
 n = 300
 
 # Create the items
-D = np.random.normal(5, 1, n) + np.random.normal(0, 0.5, (n, 3))
-A = np.random.normal(4, 1, n) + np.random.normal(0, 0.5, (n, 3))
-LS = np.random.normal(6, 1, n) + np.random.normal(0, 0.5, (n, 3))
+D = np.random.normal(5, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
+A = np.random.normal(4, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
+LS = np.random.normal(6, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
 
 # Create the dataframe
 data = np.hstack([D, A, LS])
@@ -65,7 +65,7 @@ df.head()
 The following code chunk installs and loads the needed package.
 
 ```{code-cell}
-pip install factor_analyzer
+## pip install factor_analyzer
 from factor_analyzer import FactorAnalyzer
 ```
 
