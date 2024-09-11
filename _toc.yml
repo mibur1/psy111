@@ -30,6 +30,11 @@ parts:
   - file: book/week_4/0_Introduction
     sections:
       - file: book/week_4/1_numpy
+- caption: GLM
+  chapters:
+  - file: book/week_5/0_Indroduction
+  sectons:
+    -file: 
 - caption: Multivariate Statistics
   chapters:
   - file: book/statistics/statistics
