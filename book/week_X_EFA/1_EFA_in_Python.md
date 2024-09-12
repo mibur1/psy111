@@ -91,8 +91,9 @@ For this initial model, the Maximum Likelihood fitting method is used and no rot
 The following code chunks depicts the Eigenvalues of all 9 factors.
 
 ```{code-cell}
-ev = fa.get_eigenvalues()
-ev
+ev, cfev = fa.get_eigenvalues() 
+#v gives us the common factor eigenvalues , which we don't need #at the moment. 
+print(ev)
 ```
 
 Since 3 factors have Eigenvalues above 1, a **3-factor solution** is chosen for the final model.
@@ -110,7 +111,7 @@ To interpret the model the factors loadings can be depicted using the followiung
 
 ```{code-cell}
 l = fa2.loadings_
-l
+print(l)
 ```
 
 Items 1-3 load high on factor 1, item 4-6 load high on factor 2 and items 7-9 load high on factor 3. For the intepretation one has to have domain knowledge and think of a construct which might be represented best by the respective items. Factor 1 (and theredore items 1-3) might represet 'Depression' and factor 2 might represent 'Anxiety'. 
@@ -125,7 +126,7 @@ To evaluate how good the model is one might request the communalities. They stat
 
 ```{code-cell}
 c = fa2.get_communalities()
-c
+print(c)
 ```
 
 ## `factor_analyzer` sum'ed up
