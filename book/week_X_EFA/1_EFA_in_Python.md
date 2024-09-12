@@ -104,7 +104,7 @@ Before fitting the final model, one has to choose whether to use independent (or
 
 ```{code-cell}
 fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method="ml")
->>> fa2.fit(df_features)
+>>> fa2.fit(df)
 ```
 
 To interpret the model the factors loadings can be depicted using the followiung command.
