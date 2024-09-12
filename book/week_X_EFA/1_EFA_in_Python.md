@@ -83,7 +83,7 @@ The maximum number of factors is equal to the number of observed variables. What
 # Create factor analysis object
 fa = FactorAnalyzer(rotation=None, method = 'ml', n_factors=9)
 # Fit the model 
-fa.fit(df)
+fa.fit(df);
 ```
 
 For this initial model, the Maximum Likelihood fitting method is used and no rotation is requested. One might also use the MINRES approach by requesting `method = 'minres'`. After chosing the number of factors, a suitable rotation method is applied to increase interpretability. 
@@ -104,7 +104,7 @@ Before fitting the final model, one has to choose whether to use independent (or
 
 ```{code-cell}
 fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method="ml")
->>> fa2.fit(df)
+>>> fa2.fit(df);
 ```
 
 To interpret the model the factors loadings can be depicted using the followiung command.
