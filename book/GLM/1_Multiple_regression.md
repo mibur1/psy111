@@ -111,7 +111,7 @@ To plot the data, we can use either the `seaborn` package, which offers more adv
 sns.pairplot(df)
 plt.show()
 ```
-![](image.png)
+![alt text](image-1.png)
 
 After the initial visual inspection, you might notice a clear linear relationship between *Volume* and *Girth*, and a slightly weaker one between *Volume* and *Height*. However, *Height* and *Girth* don't seem to have an obvious relationship.
 

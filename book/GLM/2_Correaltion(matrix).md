@@ -121,4 +121,4 @@ sns.heatmap(corr_matrix_rounded, annot=True, cmap='coolwarm', center=0, vmin=-1,
 plt.title('Correlation Matrix Heatmap')
 plt.show()
 ```
-![alt text](image-1.png)
+![alt text](image.png)
