@@ -11,7 +11,7 @@ kernelspec:
   language: python
   name: python3
 ---
-# Partial Correlation
+# 5.3  Partial Correlation
 For partial correlation analysis, you can use the `pingouin` package. This package simplifies statistical testing and provides a user-friendly interface for performing various statistical analyses, including partial correlation. While similar analyses can be conducted using `Statsmodels`, `pingouin` offers a more straightforward approach.
 ```{admonition} Partial Correlation
 :class: tip

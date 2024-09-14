@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Correaltion
+# 5.2 Correaltion
   For correlation analysis, you have several packages to choose from, such as `NumPy`, `SciPy`, and `pandas`. In this course, we'll focus on the `pandas` package, as it is particularly convenient when working with `pandas` dataframes.
 ```{admonition} Pearson´s correlation
 :class: tip

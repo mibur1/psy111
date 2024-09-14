@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Multiple Regression
+# 5.1 Multiple Regression
 Multiple regression is an extension of linear regression that involves more than one independent variable.
 ```{admonition} Independet and dependent
 :class: tip

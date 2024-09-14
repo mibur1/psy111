@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# W4 - Generale (Multivariate) Linear Model (GLM)
+# W5 - Generale Linear Model
 
 
 In the previous statistics lecture you learnt about the Generale Linear Model. The approach for your first statistical model differs from testing your null hypothesis. Instead of just rejecting or accepting the null hypothesis after defining the aproppiate significance level and statistical test, it´s more of an interactive analysis with GLMs. As you may know from the lecture the formula for simple linear regression is
