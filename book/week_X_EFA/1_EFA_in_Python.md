@@ -92,7 +92,7 @@ The following code chunks depicts the Eigenvalues of all 9 factors.
 
 ```{code-cell}
 ev, cfev = fa.get_eigenvalues() 
-#v gives us the common factor eigenvalues , which we don't need #at the moment. 
+# cfev gives us the common factor eigenvalues , which we don't need at the moment. 
 print(ev)
 ```
 
@@ -103,7 +103,7 @@ Since 3 factors have Eigenvalues above 1, a **3-factor solution** is chosen for 
 Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In Psychology, most often is has to be assumed that the constructs we measure are somewhat correlated. Therefore, oblique rotation is applied here. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin). 
 
 ```{code-cell}
-fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method="ml")
+fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method='ml')
 >>> fa2.fit(df);
 ```
 
@@ -129,17 +129,7 @@ c = fa2.get_communalities()
 print(c)
 ```
 
-## `factor_analyzer` sum'ed up
 
-### Create a factor analysis object
-
-```{code-cell}
-fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_smc=True, is_corr_matrix=False, bounds=(0.005, 1), impute='median', svd_method='randomized', rotation_kwargs=None)
-```
-
-## Other packages
-
-Please note that there are also other packages which can be used to apply EFA in Python. However, the `factor_analyzer` package stands out as the most comprehensive and reliable Python package for conducting EFA (Persson & Khojasteh, 2021). Also, its EFA results align with those from the `psych` package in R. 
 
 ## References
 

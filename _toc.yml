@@ -35,6 +35,7 @@ parts:
   - file: book/week_X_EFA/0_introduction
     sections:
      - file: book/week_X_EFA/1_EFA_in_Python
+     - file: book/week_X_EFA/2_factor_analyzer
 - caption: Additional Materials
   chapters:
   - file: book/misc/reading
