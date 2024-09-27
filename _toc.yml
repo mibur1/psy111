@@ -35,9 +35,9 @@ parts:
     - file: book/statistics/statistics
     - file: book/GLM/0_Introduction  # Moved GLM section under Multivariate Statistics
       sections:
-        - file: book/GLM/1_Multiple_regression
-        - file: book/GLM/2_Correlation(matrix)
-        - file: book/GLM/3_Partial_Correlation
+        - file: book/GLM/1_Multiple linear regression
+        - file: book/GLM/2_Correlations
+        - file: book/GLM/3_Partial Correlation
         - file: book/GLM/4_Exercises
 - caption: Additional Materials
   chapters:

@@ -12,14 +12,14 @@ kernelspec:
   name: python3
 ---
 
-# W5 - General Linear Model
+# W5 - General Linear Model (GLM)
 
+In the previous statistics lecture, you were introduced to the General Linear Model (GLM), a flexible approach for modeling relationships between variables. Unlike traditional hypothesis testing, where you simply reject or accept the null hypothesis based on a predefined significance level, GLMs allow for a more interactive and nuanced analysis of data.
 
-In the previous statistics lecture you learnt about the General Linear Model (GLM). The approach for your first statistical model differs from testing your null hypothesis. Instead of just rejecting or accepting the null hypothesis after defining the aproppiate significance level and statistical test, it´s more of an interactive analysis with GLMs. 
-In todays Seminar we will have a look at the following content 
+In today’s seminar, we will recap and explore the following key concepts:
 
-1. Multiple linear Regression
-2. Correlation
-3. Partial Correlation
+1. **Multiple Linear Regression:** Extending simple linear regression to model the relationship between one dependent variable and multiple independent variables.
+2. **Correlation:** Measuring the strength and direction of the relationship between two continuous variables.
+3. **Partial Correlation:** Understanding the relationship between two variables while controlling for the influence of other variables.
 
-After that you can try out your new skills on a dataset about diabetes and its risk factors.
+After covering these concepts, you’ll have the opportunity to apply your new skills to a dataset related to diabetes and its risk factors.
