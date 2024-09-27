@@ -1,3 +1,5 @@
+# Ignore file types
 *.pyc
-README.md
+
+# Ignore folders
 _build/
