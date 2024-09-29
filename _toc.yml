@@ -32,9 +32,9 @@ parts:
       - file: book/week_4/1_numpy
 - caption: Multivariate Statistics
   chapters:
-  - file: book/week_X_EFA/0_introduction
+  - file: book/week_X_EFA/0_Introduction
     sections:
-     - file: book/week_X_EFA/1_EFA_in_Python
+     - file: book/week_X_EFA/1_EFA
      - file: book/week_X_EFA/2_factor_analyzer
 - caption: Additional Materials
   chapters:

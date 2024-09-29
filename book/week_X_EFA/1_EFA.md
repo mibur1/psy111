@@ -32,10 +32,11 @@ To demonstrate EFA, the following code chunk creates a simulated dataset. 9 vari
 
 ```{code-cell}
 # Install and load packages
-## pip install pandas
-## pip install numpy
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import sklearn
+import seaborn as sns
 
 # Set seed for reproducable results 
 np.random.seed(42)
@@ -69,6 +70,31 @@ The following code chunk installs and loads the needed package.
 from factor_analyzer import FactorAnalyzer
 ```
 
+### Inspect the data
+
+Before conducting a factor analysis it is worthwhile to print the correlation matrix of the data of interest.
+
+```{code-cell}
+plt.figure(figsize=(8, 8))
+sns.heatmap(
+    df.corr(), 
+    annot=True,  # Show the values of the correlations
+    cmap="vlag",  # Colormap
+    vmin=-1,  # Min value for colormap
+    vmax=1,  # Max value for colormap
+    square=True,  # Square cells
+    fmt='.2f',  # Format float to 2 decimal points
+    annot_kws={'size': 12},  # Font size of annotations
+    xticklabels=correlation_matrix.columns,  # x-axis labels
+    yticklabels=correlation_matrix.columns  # y-axis labels
+)
+plt.title('Correlation Matrix Heatmap')
+plt.tight_layout()
+plt.show()
+```
+
+Here we can already see that the items 1-3, items 4-5 and items 6-9 correlate high with each other, respectively. 
+
 ### Determine number of factors
 
 Several approaches are possible to determine the number of factors. Here we apply the Kaiser criterion and select as many factors as there are factors with eigenvalues > 1. Therefore, we begin be fitting a solution with the number of factors being as high as possible.
@@ -97,6 +123,17 @@ print(ev)
 ```
 
 Since 3 factors have Eigenvalues above 1, a **3-factor solution** is chosen for the final model.
+
+Alternatively we could print a scree plot. 
+
+```{code-cell}
+plt.plot(ev)
+plt.xlabel("factor")
+plt.ylabel("eigenvalue")
+```
+
+Using a scree plot we look for the 'bend' in the plot and choose the number of factors before the bend, here also 3 (don't get confused as the plot starts at 0 not 1).
+
 
 ### Fit and interpret the final model
 
@@ -128,8 +165,6 @@ To evaluate how good the model is one might request the communalities. They stat
 c = fa2.get_communalities()
 print(c)
 ```
-
-
 
 ## References
 
