@@ -63,10 +63,9 @@ df.head()
 
 ### Setup
 
-The following code chunk installs and loads the needed package.
+The following code chunk installs and loads the needed package for EFA.
 
 ```{code-cell}
-## pip install factor_analyzer
 from factor_analyzer import FactorAnalyzer
 ```
 
@@ -75,21 +74,7 @@ from factor_analyzer import FactorAnalyzer
 Before conducting a factor analysis it is worthwhile to print the correlation matrix of the data of interest.
 
 ```{code-cell}
-plt.figure(figsize=(8, 8))
-sns.heatmap(
-    df.corr(), 
-    annot=True,  # Show the values of the correlations
-    cmap="vlag",  # Colormap
-    vmin=-1,  # Min value for colormap
-    vmax=1,  # Max value for colormap
-    square=True,  # Square cells
-    fmt='.2f',  # Format float to 2 decimal points
-    annot_kws={'size': 12},  # Font size of annotations
-    xticklabels=correlation_matrix.columns,  # x-axis labels
-    yticklabels=correlation_matrix.columns  # y-axis labels
-)
-plt.title('Correlation Matrix Heatmap')
-plt.tight_layout()
+plt.matshow(df.corr())
 plt.show()
 ```
 
