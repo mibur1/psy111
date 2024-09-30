@@ -12,5 +12,4 @@ kernelspec:
   name: python3
 ---
 
-# Numpy
-hello world
+# Multivariate Statistics
