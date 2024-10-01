@@ -32,6 +32,7 @@ parts:
         - file: book/introduction/week_4/1_numpy
         - file: book/introduction/week_4/2_pandas
         - file: book/introduction/week_4/3_matplotlib
+        - file: book/introduction/week_4/4_Exercises
 - caption: Multivariate Statistics
   chapters:
     - file: book/statistics/introduction

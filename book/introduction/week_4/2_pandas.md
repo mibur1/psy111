@@ -12,12 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# 4.1 Pandas
+# 4.2 Pandas
 
 Many kinds of real-world data are stored in a tabular format. This means two-dimensional tables structured into rows and columns, with each observation typically taking up a row and each column representing a single variable.
 
-
-The Pandas library is a popular Python library for dealing with tabular data. When importing any library you can chose an abbreviation for it. In principle, this can be anything you want (or none at all), however it usually makes sense to stick to the conventions:
+The Pandas library is a popular Python library for dealing with tabular data. In comparison to numpy, pandas specifically limits us to two-dimensional tables, but we gain the flexibility of e.g. having variables of different types.
 
 ```{code-cell}
 import pandas as pd
@@ -46,7 +45,7 @@ yeatman_data = pd.read_csv("https://yeatmanlab.github.io/AFQBrowser-demo/data/su
 print(yeatman_data.head())
 ```
 
-The variable `yeatman_data` now is a Pandas DataFrame which contains our data and we can use the `.head()` method to look at the first few rows of the data. The leftmost column `subjectID` is the index column, while the other columns contain the data for different variables such as age, gender, or IQ. You can also see that the DataFrame is *heterogeneously typed* meaning it can contain variables of different types (e.g. strings or floats). You can also already see some missing values. For example, `subject003` and `subject_004` are missing values for IQ related columns.
+The variable `yeatman_data` now is a Pandas DataFrame which contains our data and we can use the `.head()` method to look at the first few rows of the data. The leftmost column `subjectID` is the index column, while the other columns contain the data for different variables such as age, gender, or IQ. You can also see that the DataFrame is, in contrary to the previously introduced numpy arrays, *heterogeneously typed*. This means it can contain variables of different types (e.g. strings or floats). You can also already see some missing values. For example, `subject003` and `subject_004` are missing values for IQ related columns.
 
 ### Summarizing DataFrames
 
@@ -103,19 +102,21 @@ However, while `.loc` and `.iloc` are powerful attibutes, we can also simply add
 print(yeatman_data["Age"])
 ```
 
-If we assign this column to a new variable, it will result in a Pandas `Series`, which is a one dimensional series of values. Series are pretty similar to DataFrames (essentially DataFrames are just a collection of Series). However, as they contain only one variable, we do not need `.loc` or `.iloc` (though they still work ), but we can directly index by the subject ID or the row:
+If we assign this column to a new variable, it will result in a Pandas `Series`, which is a one dimensional series of values. Series are pretty similar to DataFrames (essentially DataFrames are just a collection of Series):
 
 ```{code-cell}
 age = yeatman_data["Age"]
 print(age['subject_072'])
-print(age[72])
+print(age.iloc[72])
 ```
 
-Series are useful as we can for example create a new *subset* of a DataFrame. A new DataFrame containing only the variables `Age` and `IQ` can be created by indexing it with a list of columns:
+Series are useful as we can, for example, create a new *subset* of a DataFrame containing only the variables `Age` and `IQ` can be created by indexing it with a list of columns:
 
 ```{code-cell}
 yeatman_subset = yeatman_data[["Age", "IQ"]]
-print(yeatman_subset)
+print(yeatman_subset.head())
 ```
 
+### Computing with DataFrames
 
+Like NumPy arrays, Pandas DataFrames also have many methods that allow for computations. However, as we only deal with tabular data, the dimensions are always the same, with the columns being the variables and the rows being the observations.
