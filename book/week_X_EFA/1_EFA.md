@@ -151,10 +151,3 @@ c = fa2.get_communalities()
 print(c)
 ```
 
-## References
-
-1. Biggs, J., & Madnani, N. (2019). Factor_analyzer documentation. Release 0.3.1. Jeremy Biggs. Retrieved September 09, 2024, from http://factor-analyzer.readthedocs.io/en/latest/index.html
-2. Denis, D. J. (2021). Applied univariate, bivariate, and multivariate statistics using Python: A beginner's guide to advanced data analysis. Wiley. https://onlinelibrary.wiley.com/doi/book/10.1002/9781119578208 https://doi.org/10.1002/9781119578208
-3. Persson, I., & Khojasteh, J. (2021). Python Packages for Exploratory Factor Analysis. Structural Equation Modeling: A Multidisciplinary Journal, 28(6), 983–988. https://doi.org/10.1080/10705511.2021.1910037
-4. https://www.geo.fu-berlin.de/en/v/soga-py/Advanced-statistics/Multivariate-Approaches/Factor-Analysis/A-Simple-Example-of-Factor-Analysis-in-Python/index.html
-5. https://www.datacamp.com/tutorial/introduction-factor-analysis

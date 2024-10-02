@@ -56,4 +56,4 @@ print(c)
 
 ## Other packages
 
-Please note that there are also other packages which can be used to apply EFA in Python. However, the `factor_analyzer` package stands out as the most comprehensive and reliable Python package for conducting EFA (Persson & Khojasteh, 2021). Also, its EFA results align with those from the `psych` package in R. 
+Please note that there are also other packages which can be used to apply EFA in Python. However, the `factor_analyzer` package stands out as the most comprehensive and reliable Python package for conducting EFA {cite}`Persson.2021`. Also, its EFA results align with those from the `psych` package in R. 
