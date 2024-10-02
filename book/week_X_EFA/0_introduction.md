@@ -22,7 +22,7 @@ In Exploratory Factor Analysis (EFA), the objective is to find the optimal numbe
 
 1. **Determine the number of factors:** This involves adding factors one at a time until the most appropriate solution is found. Essentially, you’re looking for the smallest number of factors that can still explain most of the variance in your data.
 
-2. **Interpret the initial factor loadings:** Once the initial factor solution has been obtained, the factor loadings are examined. At this stage, the factors are assumed to be uncorrelated and there are no restrictions on the loadings.
+2. **Interpret the initial factor loadings:** Once the initial factor solution has been obtained, the factor loadings are examined. At this stage, the factors are assumed to be uncorrelated and there are no restrictions on the loadings. (We skip this part today).
 
 3. **Rotate factors for better interpretation:** The next step is to transform the initial loadings and factors by rotating them. This is done to obtain a solution that is easier to interpret. Rotations can be either orthogonal, where the factors remain uncorrelated, or oblique, where the factors are allowed to correlate.”
 

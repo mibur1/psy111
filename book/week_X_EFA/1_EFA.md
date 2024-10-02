@@ -31,7 +31,7 @@ To demonstrate EFA, the following code chunk creates a simulated dataset. 9 vari
 - Q9: In general, how happy are you with your current situation in life?
 
 ```{code-cell}
-# Install and load packages
+# Load packages
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -122,7 +122,7 @@ Using a scree plot we look for the 'bend' in the plot and choose the number of f
 
 ### Fit and interpret the final model
 
-Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In Psychology, most often is has to be assumed that the constructs we measure are somewhat correlated. Therefore, oblique rotation is applied here. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin). 
+Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In psychology, most often is has to be assumed that the constructs we measure are somewhat correlated. Therefore, oblique rotation is applied here. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin). 
 
 ```{code-cell}
 fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method='ml')
