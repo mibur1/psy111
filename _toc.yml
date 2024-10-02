@@ -36,7 +36,6 @@ parts:
     sections:
      - file: book/week_X_EFA/1_EFA
      - file: book/week_X_EFA/2_factor_analyzer
-     - file: book/week_X_EFA/3_Exercises
 - caption: Additional Materials
   chapters:
   - file: book/misc/reading
