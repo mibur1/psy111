@@ -25,7 +25,7 @@ Many of the contents covered here are inspired by the the amazing book *"Data Sc
 :::{grid-item-card}
 :class-body: text-center
 :class-header: bg-light text-center
-:link: ../week_1/0_Introduction
+:link: ../introduction/week_1/0_Introduction
 :link-type: doc
 Setting things up 🚀
 ^^^
@@ -39,7 +39,7 @@ Explore the chapter {fas}`arrow-right`
 :::{grid-item-card}
 :class-body: text-center
 :class-header: bg-light text-center
-:link: ../week_2/0_Introduction
+:link: ../introduction/week_2/0_Introduction
 :link-type: doc
 Introduction to Python 🐍
 ^^^
@@ -53,7 +53,7 @@ Explore the chapter {fas}`arrow-right`
 :::{grid-item-card}
 :class-body: text-center
 :class-header: bg-light text-center
-:link: ../statistics/statistics
+:link: ../statistics/introduction
 :link-type: doc
 Multivariate Statistics 📊
 ^^^
