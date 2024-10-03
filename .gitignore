@@ -1,5 +1,7 @@
-# Ignore file types
+# Files
+*README.md
 *.pyc
 
-# Ignore folders
+# Folders
 _build/
+
