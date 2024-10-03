@@ -12,14 +12,14 @@ kernelspec:
   name: python3
 ---
 
-# W5 - General Linear Model
+# W5 - General Linear Model (GLM)
 
 
-In the previous statistics lecture you learnt about the General Linear Model (GLM). The approach for your first statistical model differs from testing your null hypothesis. Instead of just rejecting or accepting the null hypothesis after defining the aproppiate significance level and statistical test, it´s more of an interactive analysis with GLMs. 
-In todays Seminar we will have a look at the following content 
+In the previous statistics lecture, you were introduced to the General Linear Model (GLM). The approach for creating your first statistical model is different from simply testing a null hypothesis. Instead of just accepting or rejecting the null hypothesis based on a predefined significance level and statistical test, working with GLMs involves a more interactive analysis.
 
-1. Multiple linear Regression
+In today's seminar, we will cover the following topics:
+1. Multiple Linear Regression
 2. Correlation
 3. Partial Correlation
 
-After that you can try out your new skills on a dataset about diabetes and its risk factors.
+After that, you will have the opportunity to apply your new skills to analyze a dataset related to diabetes and its risk factors.

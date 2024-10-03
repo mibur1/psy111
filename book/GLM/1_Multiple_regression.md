@@ -113,6 +113,6 @@ The output displays the mean predicted volumes for different 'Girths' and 'Heigh
 :class: tip
 
 - sns.pairplot() from `seaborn` for scatterplot matrices
-- ols() from `Statsmodels` for multiple linaer regression
+- ols() from `Statsmodels` for multiple linear regression
 
 ```
