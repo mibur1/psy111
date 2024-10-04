@@ -1,4 +1,8 @@
-# Multivariate Statistics with Python (psy111)
+<div style="padding-top:1em; padding-bottom: 0.5em;">
+<img src="logo.png" width =200 align="right" />
+</div>
+
+# Multivariate Statistics with Python
 
 **NOTE: WORK IN PROGRESS**
 

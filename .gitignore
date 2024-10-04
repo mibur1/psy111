@@ -1,3 +1,7 @@
+# Files
+*README.md
 *.pyc
-README.md
+
+# Folders
 _build/
+
