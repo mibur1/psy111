@@ -42,7 +42,18 @@ parts:
         - file: book/statistics/1_GLM/2_Correlations
         - file: book/statistics/1_GLM/3_Partial Correlation
         - file: book/statistics/1_GLM/4_Exercises
-- caption: Additional Materials
+    - file: book/week_X_EFA/0_Introduction
+      sections:
+        - file: book/statistics/week_X_EFA/1_EFA
+        - file: book/statistics/week_X_EFA/2_factor_analyzer
+        - file: book/statistics/week_X_EFA/3_Exercises
+        - file: book/statistics/week_X2_CFA_SEM/0_introduction
+      sections:
+        - file: book/statistics/week_X2_CFA_SEM/1_CFA
+        - file: book/statistics/week_X2_CFA_SEM/2_SEM
+        - file: book/statistics/week_X2_CFA_SEM/3_factor_analyzer
+        - file: book/statistics/week_X2_CFA_SEM/4_Exercises
+    - caption: Additional Materials
   chapters:
     - file: book/misc/reading
     - file: book/misc/solutions
