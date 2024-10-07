@@ -27,7 +27,7 @@ parts:
         - file: book/introduction/week_3/4_Functions
         - file: book/introduction/week_3/5_Classes
         - file: book/introduction/week_3/6_Exercises
-    - file: book/introduction/week_4/0_introduction
+    - file: book/introduction/week_4/0_Introduction
       sections:
         - file: book/introduction/week_4/1_numpy
         - file: book/introduction/week_4/2_pandas
@@ -48,18 +48,18 @@ parts:
         - file: book/statistics/2_Categorical Regression/2_Effects Coding
         - file: book/statistics/2_Categorical Regression/3_Contrast Coding
         - file: book/statistics/2_Categorical Regression/4_Exercises
-    - file: book/week_X_EFA/0_Introduction
+    - file: book/statistics/week_X_EFA/0_Introduction
       sections:
         - file: book/statistics/week_X_EFA/1_EFA
         - file: book/statistics/week_X_EFA/2_factor_analyzer
         - file: book/statistics/week_X_EFA/3_Exercises
-        - file: book/statistics/week_X2_CFA_SEM/0_introduction
+    - file: book/statistics/week_X2_CFA_SEM/0_Introduction
       sections:
         - file: book/statistics/week_X2_CFA_SEM/1_CFA
         - file: book/statistics/week_X2_CFA_SEM/2_SEM
         - file: book/statistics/week_X2_CFA_SEM/3_factor_analyzer
         - file: book/statistics/week_X2_CFA_SEM/4_Exercises
-    - caption: Additional Materials
+- caption: Additional Materials
   chapters:
     - file: book/misc/reading
     - file: book/misc/solutions
