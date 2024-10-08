@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# WX2 - Confirmatory Factor Analysis (CFA) & Structural Equation Modeling (SEM)
+# WX2 - Confirmatory Factor Analysis & Structural Equation Modeling
 
-CFA is used when to goal is determine a limited number of latent variables from a larger number of measured variables. In comparison to EFA, where we had no underlying assumptions about the factor structure (i.e., we had no hypothesis about (1) how many factors we need and (2) no hypothesis about which variables load onto which factor). In CFA/SEM we have to specify how many factors we want and also which variables load onto which factor(s). Furthermore, we can also specfiy associations between factors. 
+Confirmatory Factor Analysis (CFA) is used when to goal is determine a limited number of latent variables from a larger number of measured variables. In comparison to EFA, where we had no underlying assumptions about the factor structure (i.e., we had no hypothesis about (1) how many factors we need and (2) no hypothesis about which variables load onto which factor). In CFA/SEM we have to specify how many factors we want and also which variables load onto which factor(s). Furthermore, we can also specfiy associations between factors.
 
 ## Steps of CFA/SEM
 
@@ -25,4 +25,4 @@ CFA is used when to goal is determine a limited number of latent variables from 
 
 ## Difference between CFA/SEM
 
-The difference between CFA and SEM might be confusing. One can say that CFA is a special case of SEM which is defined by not having unidirectional paths present at one level (see lecture and tutorial for further details). 
+The difference between CFA and SEM might be confusing. One can say that CFA is a special case of SEM which is defined by not having unidirectional paths present at one level (see lecture and tutorial for further details).

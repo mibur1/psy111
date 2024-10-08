@@ -14,7 +14,7 @@ kernelspec:
 
 # X2.1 CFA in Python
 
-To compute an CFA in Python we will again use the `factor_analyzer` package.
+To compute a CFA in Python we will again use the `factor_analyzer` package.
 
 ### Example dataset
 

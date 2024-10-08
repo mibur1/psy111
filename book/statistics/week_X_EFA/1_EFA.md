@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# X.1 EFA in Python 
+# X.1 EFA in Python
 
-To compute an EFA in Python we will use the `factor_analyzer` package. This package offers not only EFA functionality but also enables the use of confirmatory factor analysis (CFA). 
+To compute an EFA in Python we will use the `factor_analyzer` package. This package offers not only EFA functionality but also enables the use of confirmatory factor analysis (CFA).
 
 ### Example dataset
 
@@ -38,7 +38,7 @@ import matplotlib.pyplot as plt
 import sklearn
 import seaborn as sns
 
-# Set seed for reproducable results 
+# Set seed for reproducable results
 np.random.seed(42)
 
 # Set number of rows (artficial participants)
@@ -51,19 +51,19 @@ LS = np.random.normal(6, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
 
 # Create the dataframe
 data = np.hstack([D, A, LS])
-columns = ['Q1', 'Q2', 'Q3', 
-           'Q4', 'Q5', 'Q6', 
+columns = ['Q1', 'Q2', 'Q3',
+           'Q4', 'Q5', 'Q6',
            'Q7', 'Q8', 'Q9']
 
 df = pd.DataFrame(data, columns=columns)
 
 # Inspect the dateframe
-df.head()
+print(df.head())
 ```
 
 ### Setup
 
-The following code chunk installs and loads the needed package for EFA.
+The following code chunk imports the necessary class:
 
 ```{code-cell}
 from factor_analyzer import FactorAnalyzer
@@ -71,14 +71,14 @@ from factor_analyzer import FactorAnalyzer
 
 ### Inspect the data
 
-Before conducting a factor analysis it is worthwhile to print the correlation matrix of the data of interest.
+Before conducting a factor analysis it is worthwhile to look at the correlation matrix of the data of interest.
 
 ```{code-cell}
 plt.matshow(df.corr())
 plt.show()
 ```
 
-Here we can already see that the items 1-3, items 4-5 and items 6-9 correlate high with each other, respectively. 
+Here we can already see that the items 1-3, items 4-5 and items 6-9 correlate high with each other, respectively.
 
 ### Determine number of factors
 
@@ -93,23 +93,23 @@ The maximum number of factors is equal to the number of observed variables. What
 ```{code-cell}
 # Create factor analysis object
 fa = FactorAnalyzer(rotation=None, method = 'ml', n_factors=9)
-# Fit the model 
+# Fit the model
 fa.fit(df);
 ```
 
-For this initial model, the Maximum Likelihood fitting method is used and no rotation is requested. One might also use the MINRES approach by requesting `method = 'minres'`. After chosing the number of factors, a suitable rotation method is applied to increase interpretability. 
+For this initial model, the Maximum Likelihood fitting method is used and no rotation is requested. One might also use the MINRES approach by requesting `method = 'minres'`. After chosing the number of factors, a suitable rotation method is applied to increase interpretability.
 
 The following code chunks depicts the Eigenvalues of all 9 factors.
 
 ```{code-cell}
-ev, cfev = fa.get_eigenvalues() 
-# cfev gives us the common factor eigenvalues , which we don't need at the moment. 
+ev, cfev = fa.get_eigenvalues()
+# cfev gives us the common factor eigenvalues , which we don't need at the moment.
 print(ev)
 ```
 
 Since 3 factors have Eigenvalues above 1, a **3-factor solution** is chosen for the final model.
 
-Alternatively we could print a scree plot. 
+Alternatively we could print a scree plot.
 
 ```{code-cell}
 plt.plot(ev)
@@ -122,11 +122,11 @@ Using a scree plot we look for the 'bend' in the plot and choose the number of f
 
 ### Fit and interpret the final model
 
-Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In psychology, most often is has to be assumed that the constructs we measure are somewhat correlated. Therefore, oblique rotation is applied here. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin). 
+Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In psychology, most often is has to be assumed that the constructs we measure are somewhat correlated. Therefore, oblique rotation is applied here. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin).
 
 ```{code-cell}
 fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method='ml')
->>> fa2.fit(df);
+fa2.fit(df);
 ```
 
 To interpret the model the factors loadings can be depicted using the followiung command.
@@ -136,7 +136,7 @@ l = fa2.loadings_
 print(l)
 ```
 
-Items 1-3 load high on factor 1, item 4-6 load high on factor 2 and items 7-9 load high on factor 3. For the intepretation one has to have domain knowledge and think of a construct which might be represented best by the respective items. Factor 1 (and theredore items 1-3) might represet 'Depression' and factor 2 might represent 'Anxiety'. 
+Items 1-3 load high on factor 1, item 4-6 load high on factor 2 and items 7-9 load high on factor 3. For the intepretation one has to have domain knowledge and think of a construct which might be represented best by the respective items. Factor 1 (and theredore items 1-3) might represet 'Depression' and factor 2 might represent 'Anxiety'.
 
 ```{admonition} Use your own brain!
 :class: note
@@ -144,7 +144,7 @@ Items 1-3 load high on factor 1, item 4-6 load high on factor 2 and items 7-9 lo
 What might factor 3 represent?
 ```
 
-To evaluate how good the model is one might request the communalities. They state how much variance the factor structure explains in each item. 
+To evaluate how good the model is one might request the communalities. They state how much variance the factor structure explains in each item.
 
 ```{code-cell}
 c = fa2.get_communalities()
