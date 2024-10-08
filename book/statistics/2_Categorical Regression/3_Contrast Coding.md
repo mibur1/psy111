@@ -11,16 +11,19 @@ kernelspec:
   language: python
   name: python3
 ---
+
 # 6.3 Contrast Coding
 For contrast coding, several approaches can be employed to address your research question. Due to its flexibility, we can define custom contrasts of interest. In this session, we will specify five different contrasts and test them on the data.
+
 ## Contrast Matrix
+
 ```{code-cell}
 # Import necessary libraries
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
-data = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_2_categorical_regression\data.txt', delimiter='\t')
+data = pd.read_csv("data/data.txt", delimiter='\t')
 
 # Define the contrasts of interest (here we try 5 different contrasts)
 contrast_of_interest1 = np.array([-0.5, -0.5, 0, 0, 0.5, 0.5])
@@ -31,7 +34,7 @@ contrast_of_interest5 = np.array([0.5, 0, 0, 0, 0, -0.5])
 
 # Create the contrast matrix
 contrast_matrix = np.column_stack((
-    contrast_of_interest1, 
+    contrast_of_interest1,
     contrast_of_interest2,
     contrast_of_interest3,
     contrast_of_interest4,
@@ -43,10 +46,10 @@ genotypes = ['e2/e2', 'e2/e3', 'e2/e4', 'e3/e3', 'e3/e4', 'e4/e4']
 
 # Create a DataFrame for the contrast matrix with genotypes as index
 contrast_df = pd.DataFrame(contrast_matrix, index=genotypes, columns=[
-    'contrast_of_interest1', 
-    'contrast_of_interest2', 
-    'contrast_of_interest3', 
-    'contrast_of_interest4', 
+    'contrast_of_interest1',
+    'contrast_of_interest2',
+    'contrast_of_interest3',
+    'contrast_of_interest4',
     'contrast_of_interest5'
 ])
 
@@ -55,7 +58,7 @@ print(contrast_df)
 We will obtain five different matrices, with the order of the genotypes determining the index of each matrix. Can you identify which genotype is being compared to which?
  `contrast_of_interest1` is comparing the combined effect of `e2/e2` and `e2/e3` (group 1) versus `e3/e4` and `e4/e4` (group 2). The genotypes `e2/e4` and `e3/e3` are not part of this contrast (they do not influence the comparison).
 
-## Linaer Regression 
+## Linaer Regression
 
 ```{code-cell}
 # Ensure 'genotype' column is correctly handled and matches the contrast matrix genotypes

@@ -13,20 +13,21 @@ kernelspec:
 ---
 # 6.2 Unweighted Effects Coding
 For dummy coding, we designate the e4/e4 genotype as the reference category. The only distinction with unweighted effects coding is that the reference category is coded as -1 across all coding variables. We will also utilize `patsy()` from `Statsmodels` for this process.
-```{admonition} 
+```{admonition}
 :class: warning
 As you might want to look up Unweighted effects coding, you will encounter different names for it such as Sum(Deviation) Coding.
 ```
 We proceed almost like dummy coding but use `sum()` for the contrast.
 
 ```{code-cell}
+import numpy as np
 import pandas as pd
 from patsy import dmatrix
 from patsy.contrasts import Sum
 import statsmodels.formula.api as smf
 
 # Load the dataset
-df = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_2_categorical_regression\data.txt', delimiter='\t')
+df = pd.read_csv("data/data.txt", delimiter='\t')
 
 # Ensure 'genotype' is treated as categorical
 df['genotype'] = df['genotype'].astype('category')
@@ -60,21 +61,13 @@ Therefore, we will execute the following steps manually:
 3.  Implement the weighted effects coding manually.
 
 ```{code-cell}
-# import the necessary libraries
-import numpy as np
-import pandas as pd
-import statsmodels.api as sm
-
-# Sample dataset 
-data = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_2_categorical_regression\data.txt', delimiter='\t')
+data = df # TODO: refactor
 
 #Check for NaN values in the 'genotype' column
 print("NaN values in genotype column:", data['genotype'].isna().sum())
 
 # Drop rows with NaN values
 data = data.dropna(subset=['genotype'])
-
-
 
 # Calculate sample sizes for each genotype
 genotype_counts = data['genotype'].value_counts()
@@ -109,8 +102,9 @@ contrast_matrix = {
 }
 print(contrast_matrix)
 ```
+
 ```{code-cell}
-# Create the design matrix (X) 
+# Create the design matrix (X)
 X = np.array([contrast_matrix[genotype] for genotype in data['genotype']])
 
 # Add a constant (intercept) to the design matrix

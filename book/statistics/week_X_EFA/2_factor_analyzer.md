@@ -17,7 +17,7 @@ kernelspec:
 ## Create a factor analysis object
 
 ```{code-cell}
-from factor_analyzer import FactorAnalyzer
+:eval: false
 fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_smc=True, is_corr_matrix=False, bounds=(0.005, 1), impute='median', svd_method='randomized', rotation_kwargs=None)
 ```
 
@@ -34,12 +34,15 @@ fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_
 ## Fit a model
 
 ```{code-cell}
+:eval: false
 fa_object.fit(data)
 ```
 
 ## Extract model values
 
 ```{code-cell}
+:eval: false
+
 # Eigenvalues
 ev, cfev = fa.get_eigenvalues()
 # cfev gives us the common factor eigenvalues, which we don't need at the moment.
