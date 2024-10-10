@@ -18,6 +18,7 @@ kernelspec:
 
 ```{code-cell}
 :eval: false
+
 fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_smc=True, is_corr_matrix=False, bounds=(0.005, 1), impute='median', svd_method='randomized', rotation_kwargs=None)
 ```
 
@@ -34,7 +35,8 @@ fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_
 ## Fit a model
 
 ```{code-cell}
-:eval: false
+:tags: [no-execute]
+
 fa_object.fit(data)
 ```
 

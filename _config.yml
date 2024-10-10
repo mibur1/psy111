@@ -4,7 +4,9 @@ logo: logo.png
 
 # Force re-execution of notebooks on each build.
 execute:
-  execute_notebooks: force
+  execute_notebooks: auto
+  exclude_tags:
+    - no-execute
 
 # Define the name of the latex output file for PDF builds
 latex:

@@ -4,14 +4,14 @@
 format: jb-book
 root: book/misc/overview
 parts:
-- caption: Setting things up
+- caption: 1. Setting things up
   chapters:
     - file: book/introduction/week_1/0_Introduction
       sections:
         - file: book/introduction/week_1/1_Installation
         - file: book/introduction/week_1/2_Usage
         - file: book/introduction/week_1/3_Exercises
-- caption: Introduction to Python
+- caption: 2. Introduction to Python
   chapters:
     - file: book/introduction/week_2/0_Introduction
       sections:
@@ -33,7 +33,7 @@ parts:
         - file: book/introduction/week_4/2_pandas
         - file: book/introduction/week_4/3_matplotlib
         - file: book/introduction/week_4/4_Exercises
-- caption: Multivariate Statistics
+- caption: 3. Multivariate Statistics
   chapters:
     - file: book/statistics/introduction
     - file: book/statistics/1_GLM/0_Introduction

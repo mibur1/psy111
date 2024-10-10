@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# W1 - Setting things up
+# Installing Python
 
 This book aims to be a standalone resource for the entire semester. Each session will start with a brief recap of the core concepts from the lecture and an introduction into the relevant Python tools. The second part will then let you apply the methods through hands-on exercises. These exercises can be done directly within the browser through [Google Colab](https://colab.research.google.com/), however the individual Jupyter Notebook files (`.ipynb`) can also be opened and run on your local computer.
 
