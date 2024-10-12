@@ -78,7 +78,7 @@ If you then again type `pip list`, you will see that the list of installed packa
 
 We have previously used the Python interpreter to run simple Python code. However, you will ususally require a more organized way of running your code. For this, let's open Visual Studio Code.
 
-```{figure} ../../../_static/figures/VSCode.png
+```{figure} ../../../_static/figures/vscode.png
 ---
 width: 100%
 name: vscode
@@ -100,6 +100,14 @@ and then run the Python script by pressing the run button at the top right. If y
 ## Jupyter notebooks
 
 Python scripts (like the one you created in the previous section) are single files that run from top to bottom. Sometimes, for example if you have small projects that you would like to share with other, you might want to only have smaller blocks of code with text or images between them. In such cases, you can use Jupyter notebooks. These files contain cells for Python code as well as for text, so you can neatly format and share your code with others. We will also use these noteboks for the exercises in this seminar.
+
+```{figure} ../../../_static/figures/notebooks.png
+---
+width: 100%
+name: notebooks
+---
+Jupyter Notebooks.
+```
 
 To be able to use Jupyter notebooks, you need to install the **Juypter** extension (just like the previously installed Python extension). You can then create and use `.ipynb` files, which is short for "interactive python notebook". Once you created such a notebook, you can add code cells with the `+ Code` and text cells with the `+ Markdown` buttons. The Python interpreter can again be selected from the `psy111` environment by pressing the "Select Kernel" button at the top right of the script.
 
@@ -145,7 +153,5 @@ jb build .
 
 to build the entire book on your computer. Alternatively, you can also create a new Python file in VS Code and run the empty file. This will open a Conda Promt at the bottom of the screen in which you can also build the book or install packages (just make sure you selected the correct Conda environment). Once the build is finished, a link will show up in the terminal, which you paste into your browser to open the book (or you can just open the `_build/html/index.html` file manually). You can then modify the book in any way you like and rebuild it to show the changes.
 
-### Exercises
-
-If you want to run the exercise locally, you can simply use VS Code to open the `.ipynb` files from the relevant folders whithin the `book/` folder. However, you can can also open them in Google Colab by opening them from whithin the book and clicking on the rocket symbol.
+You can also use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder in VS Code. However, you can can also open them in Google Colab by opening them from whithin the book and clicking on the rocket symbol.
 
