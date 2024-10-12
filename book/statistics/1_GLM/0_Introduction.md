@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# W5 - General Linear Model (GLM)
+# General Linear Model
 
-In the previous statistics lecture, you were introduced to the General Linear Model (GLM), a flexible approach for modeling relationships between variables. Unlike traditional hypothesis testing, where you simply reject or accept the null hypothesis based on a predefined significance level, GLMs allow for a more interactive and nuanced analysis of data.
+In the first statistics lecture, you were introduced to the General Linear Model (GLM), a flexible approach for modeling relationships between variables. Unlike traditional hypothesis testing, where you simply reject or accept the null hypothesis based on a predefined significance level, GLMs allow for a more interactive and nuanced analysis of data.
 
 In today’s seminar, we will recap and explore the following key concepts:
 
