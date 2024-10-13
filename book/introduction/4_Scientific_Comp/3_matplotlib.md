@@ -104,14 +104,46 @@ ax.set(xlabel='Trials', ylabel='Percent correct', title='Harlow learning experim
 plt.show()
 ```
 
+So what if you want so show more than one plot? Even though the previous plot is not too complicated, for the sake of simplicity let us assume that we want to split each set of trials into a different subplot. We can do so by simply specifying the number of plots arguments to the `plt.subplots` function and then indexing the `ax` object:
+
+
+```{code-cell}
+fig, ax = plt.subplots(1, 3, figsize=(10,4))
+
+blocks = [first_block, middle_block, last_block]
+labels = ["First block", "Middle block", "Last block"]
+markers = ['o', 'v', '^']
+
+for i in range(len(blocks)):
+    ax[i].plot(trial, blocks[i], marker=markers[i], linestyle='--', label=labels[i])
+    ax[i].set(xlabel='Trials', ylabel='Percent correct', title=f'{labels[i]}')
+
+plt.tight_layout()
+plt.show()
+```
 
 ## Scatter plots
 
+A scatter plot displays data points where each marker's position on the x-axis represents a value from one variable, and its position on the y-axis represents a value from another variable. This type of plot allows us to directly compare these two variables and observe overall patterns or trends. For example
+
+```{code-cell}
+import numpy as np
+
+# Draw 1000 random values from a standard normal distribution
+x = np.random.randn(1000)
+y = np.random.randn(1000)
+
+fig, ax = plt.subplots()
+plt.scatter(x,y)
+plt.show()
+```
+
+As previously mentioned, the matplotlib library also offers many other ways of visualizing data. If you [explore the examples](https://matplotlib.org/stable/gallery/index.html), you will most likely find a plot similar to the one you need.
 
 
 ## Statistical visualizations
 
-Remember the date from the pandas section, which we loaded as a pandas data frame:
+Statistical visualizations help us draw inferences from data or make comparisons between datasets. For this, we’ll use the Seaborn library, which combines the power of Pandas with the flexibility of Matplotlib. To demonstrate statistical visualizations, let's look at the table of subject properties from the Pandas chapter:
 
 ```{code-cell}
 import pandas as pd
@@ -124,7 +156,42 @@ yeatman_data = pd.read_csv("https://yeatmanlab.github.io/AFQBrowser-demo/data/su
 print(yeatman_data.head())
 ```
 
+First, let's compare IQ across different handedness and gender using a bar chart. In this chart, the height of each bar represents the average value of a variable (in this case, IQ) for a group of observations. The position of the bars on the x-axis will differentiate right-handed from left-handed individuals, while the bar color (or hue) will distinguish between male-identified and female-identified individuals:
+
 ```{code-cell}
 sns.barplot(data=yeatman_data, x="Handedness", y="IQ", hue="Gender")
 plt.show()
 ```
+
+That’s it! Just one line of code. Seaborn automatically uses the Pandas DataFrame to determine how to split the data, label the axes, and create the legend. It also adds error bars to represent the 95% confidence interval using a method called bootstrapping, which resamples the data to estimate variability. In this case, there are no left-handed males, so their bar is absent.
+
+While bar charts are useful—especially when error bars are included to show data variability—they can be misleading if not used carefully. For instance, Anscombe’s quartet demonstrates that different datasets with identical means and variances can produce identical bar charts, even though the underlying data tell very different stories.
+
+Seaborn offers more informative alternatives. For example, you can display each observation within a group using a swarmplot, or visualize the full distribution with a violin plot, which smooths the data into a silhouette shape. These alternatives provide a clearer picture of the data’s underlying patterns:
+
+```{code-cell}
+fig, ax = plt.subplots(1, 2)
+sns.swarmplot(data=yeatman_data, x="Handedness", y="IQ", ax=ax[0])
+sns.violinplot(data=yeatman_data, x="Handedness", y="IQ", ax=ax[1])
+plt.show()
+```
+
+Choosing the right visualization depends on the data. For instance, a swarmplot clearly shows the difference in sample sizes, with more data points for right-handed individuals compared to left-handed ones. However, if the dataset is large, a swarmplot may become overcrowded and hard to interpret, making a violin plot a better choice as it provides a smoother summary of the data distribution. Personal preference also plays a role in selecting visualizations.
+
+Another common option is the boxplot. It displays the median as a vertical line, the quartiles (25th and 75th percentiles) as the bottom and top of a box, and the range as whiskers extending from the box. Outliers—data points far from the quartiles—are shown beyond the whiskers. For example, in the IQ data, a right-handed subject is flagged as an outlier because their score differs from the 25th percentile by more than 1.5 times the interquartile range:
+
+```{code-cell}
+sns.boxplot(data=yeatman_data, x="Handedness", y="IQ")
+plt.show()
+```
+
+One advantage of the boxplot is that it conveys a lot of information in a simple format, especially to readers familiar with its conventions. However, like the violin plot, it doesn’t show certain details, such as differences in sample size between groups.
+
+Statistical visualizations can also accompany more advanced analyses. For instance, Seaborn’s `lmplot` function fits a linear model to the data. It displays a scatter plot (e.g., scores from two IQ subtests) along with a linear regression line and a shaded area representing the 95% confidence interval. Additionally, this function can split data by another variable, such as gender, for more detailed insights:
+
+```{code-cell}
+sns.lmplot(data=yeatman_data, x="IQ_Matrix", y="IQ_Vocab", hue="Gender")
+plt.show()
+```
+
+As you can see, one of Seaborn’s strengths is its ability to create visuals that are both aesthetically pleasing and highly informative. For most datasets, Seaborn can generate publication-quality figures that are well-suited for reports or scientific papers. While Seaborn excels at creating polished visuals with minimal effort, Matplotlib’s strength lies in its high level of customizability. For more complex or specialized visualizations, the flexibility of Matplotlib allows for detailed adjustments that Seaborn’s default settings may not easily accommodate. Having both tools at your disposal means you can choose between simplicity and full control, depending on the needs of your analysis.
