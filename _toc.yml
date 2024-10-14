@@ -69,6 +69,8 @@ parts:
 - caption: Additional Materials
   chapters:
     - file: book/misc/reading
-    - file: book/misc/solutions
+    - file: book/solutions/solutions
+      sections:
+        - file: book/solutions/1_Intro_1
     - file: book/misc/glossary
     - file: book/misc/references
