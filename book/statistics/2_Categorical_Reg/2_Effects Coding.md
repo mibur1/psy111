@@ -11,6 +11,7 @@ kernelspec:
   language: python
   name: python3
 ---
+
 # 6.2 Unweighted Effects Coding
 For dummy coding, we designate the e4/e4 genotype as the reference category. The only distinction with unweighted effects coding is that the reference category is coded as -1 across all coding variables. We will also utilize `patsy()` from `Statsmodels` for this process.
 ```{admonition}

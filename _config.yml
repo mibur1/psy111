@@ -2,11 +2,12 @@ title: Multivariate Statistics with Python
 author: Micha Burkhardt
 logo: logo.png
 
-# Force re-execution of notebooks on each build.
+# Reference: https://jupyterbook.org/en/stable/customize/config.html
+
+# Do not execute notebooks
 execute:
-  execute_notebooks: auto
-  exclude_tags:
-    - no-execute
+  execute_notebooks: "auto"
+  exclude_patterns: ["*.ipynb"]
 
 # Define the name of the latex output file for PDF builds
 latex:
