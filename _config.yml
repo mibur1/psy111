@@ -34,7 +34,7 @@ html:
 
 sphinx:
   html_context:
-    default_mode: light
+    default_mode: dark
 
 # Google colab launch button
 launch_buttons:
