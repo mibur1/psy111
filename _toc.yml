@@ -72,5 +72,6 @@ parts:
     - file: book/solutions/solutions
       sections:
         - file: book/solutions/1_Intro_1
+        - file: book/solutions/2_Intro_2
     - file: book/misc/glossary
     - file: book/misc/references
