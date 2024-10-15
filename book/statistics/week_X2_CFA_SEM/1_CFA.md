@@ -14,28 +14,40 @@ kernelspec:
 
 # X2.1 CFA in Python 
 
-To compute an CFA in Python we will again use the `factor_analyzer` package. 
+To compute an CFA in Python we will use the `semopy` package. 
 
 ### Example dataset
 
-For todays example, a dataset form the `sklearn` package is used. This dataset contains different parameters that describe breast tumors. For a detailed description, see [sklearn documentation](https://scikit-learn.org/stable/datasets/toy_dataset.html#breast-cancer-dataset). 
+Today, we use the `HolzingerSwineford1939` dataset. The dataset contains mental ability test scores of seventh and eighth grade children from two different schools. Apart from demographic information, nine of the original 26 tests are included in the data set.
+
+- x1, x2 and x3 are indicators for visual ability
+- x4, x5 and x6 are indicators for text processing related skills
+- x7, x8 and x9 are indicators for speed ability
 
 ```{code-cell}
 # Load and inspect the dataset 
-from sklearn.datasets import load_wine, load_breast_cancer
-import pandas as pd
-
-data_cancer = load_breast_cancer()
-df_cancer = pd.DataFrame(data_cancer.data, columns=data_cancer.feature_names)
-print(df_cancer.head())
+data = holzinger39.get_data()
+print(data)
 ```
 
 ### Specify the model
 
-We assume there to be 2 factors. One factor that represents size-related attributes of the tumor, one factor that represents the texture of the tumor.
+Let us use the `semopy` syntax to define three latent variables - visual, text and speed.
 
 ```{code-cell}
-# 
+# Specify the model
+desc = '''visual =~ x1 + x2 + x3
+text =~ x4 + x5 + x6
+speed =~ x7 + x8 + x9'''
+
+# Fit the model
+mod = Model(desc)
+res_opt = mod.fit(data)
+estimates = mod.inspect()
+
+
+
+
 ```
 
 ### Specify an alternative model
