@@ -65,6 +65,8 @@ def add_noise(x, mu=0, sd=1):
   return x + noise
 ```
 
+*Note:* So far you mostly saw comments whithin the code by using the # sign. Another way of commenting your code is to use three double parentheses `"""comment"""` as shown in the previous code snippet. This is useful if you need to provide larger portions of text like when documenting your functions. You can see one example of that in the `add_noise()` function, which clearly describes the input and output parameters of the function, making it easier to understand how to use the function.
+
 If we now call this function by just providing a value for `x`it will still work as expected by using a mean of 0 and a standard deviation of 1 to calculate and add the noise.
 
 ```{code-cell}
@@ -90,8 +92,6 @@ add_noise(5, 5)
 ```
 
 However, the last example will produce a different result than the other ones! This is because if no keywords are provided, Python will only be able to rely on the order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=5` and `sd=1` as per default.
-
-*Additional note:* So far you mostly saw comments whithin the code by using the # sign. Another way of commenting your code is to use three double parentheses `"""comment"""` as shown in the previous code snippet. This is useful if you need to provide larger portions of text like when documenting your functions. You can see one example of that in the `add_noise()` function, which clearly describes the input and output parameters of the function, making it easier to understand how to use the function.
 
 ### Argument unpacking
 

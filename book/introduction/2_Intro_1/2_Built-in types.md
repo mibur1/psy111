@@ -40,11 +40,11 @@ scans_per_subject = scans_total / subjects_total
 scans_per_subject
 ```
 
+*Note:* As already mentioned above, if we execute Python code in interactive notebooks (*.ipynb* files), the `print()` statement can be omitted if the variable to be printed is in the last line of the code block. We will use both options from time to time, as the automatic printing will perform some automatic formatting and sometimes one or the other will look nicer. However, please note that you will need to write the print statement explicitly if you work in normal Python (*.py*) scripts.
+
 ## Floating point numbers
 
 Notice that while the previous addition of two integers results in another integer, the division results in a number with a decimal point. This is what we call a float (short for *floating point* number), which is a way computers represent real numbers.
-
-*Note:* As already mentioned above, if we execute Python code in interactive notebooks (*.ipynb* files), the `print()` statement can be omitted if the variable to be printed is in the last line of the code block. From now on, we will use this convention, however please note that you will need to write the print statement explicitly if you work in normal Python (*.py*) scripts.
 
 All of the standard arithmetic operations that work on integers further also work on floats or for any combination of them:
 

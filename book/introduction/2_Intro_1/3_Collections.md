@@ -18,7 +18,7 @@ Variables containing only single values like an integer or a string will only ge
 
 ## Lists
 
-Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also multiple types if this is required. Lists are initalized through square brackets `[]` and its elements are separated through commas:
+Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also contain multiple types if this is required. Lists are initalized through square brackets `[]` and its elements are separated through commas:
 
 ```{code-cell}
 empty_list = []

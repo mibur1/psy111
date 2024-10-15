@@ -19,9 +19,9 @@ At this point you should have previously installed Python (through miniconda) an
 
 ## The Python interpeter
 
-In your programs, search for the `Anaconda Powershell Prompt (miniconda3)` and open it. If you are on macOS or Linux, open the normal terminal. In both cases, you should see a `(base)` indicating that we have succesfully isntalled Miniconda and are in our base environment.
+In your programs, search for the `Anaconda Powershell Prompt (miniconda3)` and open it. If you are on macOS or Linux, open the normal terminal. In all cases, you should see a `(base)` indicating that we have succesfully installed Miniconda and are in our base environment.
 
-First, we will open the Python interpreter of our current base environment by typing `python` and then presssing enter. Rhe Python interpeter will start and show you the current Python version, for example:
+First, we will open the Python interpreter of our current base environment by typing `python` and then presssing enter. The Python interpeter will start and show you the current Python version, for example:
 
 ```
 Python 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0] on win32
@@ -29,7 +29,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-Inside the interpreter we can write any kind of Python code, like printing a message:
+Simply put, the Python interpreter is the program that executes your Python code. It translates the written code into a form that the computer can understand and then runs it. Inside the interpreter we can write any kind of Python code, like printing a message:
 
 ```
 >>> print("Welcome to psy111!")
@@ -138,7 +138,7 @@ It is strongly recommend that you create and maintain an organized folder struct
 
 Once you have saved and unpacked the psy111 folder, you can open it in VS Code. You can do so by right clicking in the folder and selecting "Open with Code" if you have previously checked the corresponding box in the installation process, or by clicking "File" -> "Open Folder" inside VS Code.
 
-In the file overview on the left you should see a `requirements.txt` file. If you open it, you can see the necessary Python libraries that are needed for the book. You can install them by either manually typing them into the Miniconda Promt, or by using the Promt to navigate in the folder of the book with the `cd` (change directory) command and then installing from the requirements file itself:
+In the file overview on the left you should see a `requirements.txt` file. If you open it, you can see the necessary Python libraries that are needed for the book. You can install them by either manually typing them into the **Miniconda Promt**, or by using the Promt to navigate in the folder of the book with the `cd` (change directory) command and then installing from the requirements file itself:
 
 ```
 cd path/to/your/book
@@ -151,7 +151,7 @@ You can then simply type
 jb build .
 ```
 
-to build the entire book on your computer. Alternatively, you can also create a new Python file in VS Code and run the empty file. This will open a Conda Promt at the bottom of the screen in which you can also build the book or install packages (just make sure you selected the correct Conda environment). Once the build is finished, a link will show up in the terminal, which you paste into your browser to open the book (or you can just open the `_build/html/index.html` file manually). You can then modify the book in any way you like and rebuild it to show the changes.
+to build the entire book on your computer. Once the build is finished, a link will show up in the terminal, which you paste into your browser to open the book (or you can just open the `_build/html/index.html` file manually). You can then modify the book in any way you like and rebuild it to show the changes.
 
 You can also use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder in VS Code. However, you can can also open them in Google Colab by opening them from whithin the book and clicking on the rocket symbol.
 
