@@ -45,10 +45,27 @@ mod = Model(desc)
 res_opt = mod.fit(data)
 estimates = mod.inspect()
 
+# Print model estimates
+print(estimates)
 
-
+# Show fit statistics
+stats = semopy.calc_stats(mod)
+print(stats.T)
 
 ```
+
+### Plot the model
+
+For visualization, we can plot our model specified model using the following code.
+
+```{code-cell}
+# Plot the model
+from semopy import semplot
+mod_plot = semplot(mod, filename='mod_plot.pdf')
+mod_plot
+```
+
+
 
 ### Specify an alternative model
 
