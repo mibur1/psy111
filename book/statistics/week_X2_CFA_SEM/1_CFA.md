@@ -61,7 +61,7 @@ For visualization, we can plot our model specified model using the following cod
 ```{code-cell}
 # Plot the model
 from semopy import semplot
-mod_plot = semplot(mod, filename='mod_plot.pdf')
+mod_plot = semplot(mod, filename='mod_plot.png')
 mod_plot
 ```
 
@@ -69,10 +69,30 @@ mod_plot
 
 ### Specify an alternative model
 
-Next to evaluating our main model using model fit measures, we can also compare it to another model. For example, we can evaluate if the more complex 2-factor approach provides a significantly better fit than a less complex 1-factor model. One should always opt to go with the easiest model possible, therefore, if you have a complex model, also verify that is provides a significantly better fit than a less complex one.
+Next to evaluating our main model using model fit measures, we can also compare it to another model. In the initial model, the latent factors are assumend to covary. However, a model, in which the latent factors are set to be independent might provide a better fit. To specify such a model we need to set the correlations between the factors to be zero.
 
 ```{code-cell}
-# 
+
+# Specify the model
+desc2 = '''visual =~ x1 + x2 + x3
+text =~ x4 + x5 + x6
+speed =~ x7 + x8 + x9
+# Set correlations to zero
+speed ~~ 0 * visual
+speed ~~ 0 * text
+text ~~ 0 * visual'''
+
+# Fit the model
+mod2 = Model(desc2)
+res_opt2 = mod.fit(data)
+estimates2 = mod2.inspect()
+
+# Print model estimates
+print(estimates2)
+
+# Show fit statistics
+stats2 = semopy.calc_stats(mod2)
+print(stats2.T)
 ```
 
 ### Compare models
