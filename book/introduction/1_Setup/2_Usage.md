@@ -155,3 +155,17 @@ to build the entire book on your computer. Once the build is finished, a link wi
 
 You can also use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder in VS Code. However, you can can also open them in Google Colab by opening them from whithin the book and clicking on the rocket symbol.
 
+```{admonition} Summary
+:class: tip
+
+You can use Python in different ways:
+
+- Through standard Python scripts (`.py` files)
+- Through interactive Jupyter Notebooks (`.ipynb` files)
+
+You can use Conda to manage your Python environments. You can:
+
+- Create environments with `conda create -n <env_name>`
+- Switch environments with `conda activate <env_name>`
+- Install packages using `pip install` inside the environment
+```

@@ -21,7 +21,7 @@ The key advantage of using Conda is its ability to manage multiple versions of P
 ```{figure} ../../../_static/figures/conda.png
 ---
 width: 70%
-name: arrays
+name: conda
 ---
 Version management with Conda.
 ```
