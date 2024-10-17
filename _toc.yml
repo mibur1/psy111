@@ -16,11 +16,11 @@ parts:
         - file: book/introduction/2_Intro_1/1_Variables and data types
         - file: book/introduction/2_Intro_1/2_Built-in types
         - file: book/introduction/2_Intro_1/3_Collections
-        - file: book/introduction/2_Intro_1/4_Exercises
+        - file: book/introduction/2_Intro_1/4_Control flow
+        - file: book/introduction/2_Intro_1/5_Exercises
     - file: book/introduction/3_Intro_2/0_Introduction
       sections:
         - file: book/introduction/3_Intro_2/1_Everything_is_an_object
-        - file: book/introduction/3_Intro_2/2_Control flow
         - file: book/introduction/3_Intro_2/3_Namespaces and imports
         - file: book/introduction/3_Intro_2/4_Functions
         - file: book/introduction/3_Intro_2/5_Classes
