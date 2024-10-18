@@ -58,7 +58,7 @@ parts:
       sections:
         - file: book/statistics/7_CFA_SEM/1_CFA
         - file: book/statistics/7_CFA_SEM/2_SEM
-        - file: book/statistics/7_CFA_SEM/3_factor_analyzer
+        - file: book/statistics/7_CFA_SEM/3_semopy
         - file: book/statistics/7_CFA_SEM/4_Exercises
     - file: book/statistics/8_Polynomial_Reg/0_Introduction
     - file: book/statistics/9_Spline_Reg/0_Introduction

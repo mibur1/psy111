@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# X2.1 CFA in Python
+# 7.1 CFA in Python
 
 To compute an CFA in Python we will use the `semopy` package. 
 
@@ -25,13 +25,14 @@ Today, we use the `HolzingerSwineford1939` dataset. The dataset contains mental 
 - x7, x8 and x9 are indicators for speed ability
 
 ```{code-cell}
+# Load the package
+import semopy
 # Load and inspect the dataset 
-from semopy.examples import holzinger39
-data = holzinger39.get_data()
+data = semopy.examples.holzinger39.get_data()
 print(data)
 ```
 
-### Specify and fit the model
+## Specify and fit the model
 
 Let us use the `semopy` syntax to define three latent variables - visual, text and speed.
 
@@ -42,7 +43,7 @@ text =~ x4 + x5 + x6
 speed =~ x7 + x8 + x9'''
 
 # Fit the model
-mod = Model(desc)
+mod = semopy.Model(desc)
 res_opt = mod.fit(data)
 estimates = mod.inspect()
 
@@ -56,7 +57,7 @@ print(stats.T)
 
 The first output shows the model estimates, while the second one shows fit measures for the fitted model.
 
-#### Model estimates 
+### Model estimates 
 
 - Loadings: The `Estimate` collumn for the first 9 lines represents the loadings of the 9 measured variables on the 3 factors. You may notice that one loading per factor is set to 1. This is done to identify the factor (see lecture for details). The `Std. Err` collumn shows the uncertainty associated with the estimate. The `z-value` represents how many standard deviation the estimate is away from zero. The last column `p-value` contains the p-value (probability) for testing the null hypothesis that the parameter equals zero in the population.
 
@@ -72,7 +73,7 @@ The first output shows the model estimates, while the second one shows fit measu
 How can you calculate the z-value yourself?
 ```
 
-#### Fit measures
+### Fit measures
 
 To assess model fit, `semopy` provides us with a wide range of fit measures. Let's interpret the ones we know from the lecture.
 
@@ -98,14 +99,13 @@ For visualization, we can plot our model specified model using the following cod
 
 ```{code-cell}
 # Plot the model
-from semopy import semplot
-mod_plot = semplot(mod, filename='mod_plot.png')
-mod_plot
+##mod_plot = semopy.semplot(mod, filename='mod_plot.pdf')
+##mod_plot
 ```
 
 
 
-### Specify and fit an alternative model
+## Specify and fit an alternative model
 
 Next to evaluating our main model using model fit measures, we can also compare it to another model. In the initial model, the latent factors are assumend to covary. However, a model, in which the latent factors are set to be independent might provide a better fit. To specify such a model we need to set the covariances between the factors to be zero.
 
@@ -114,13 +114,13 @@ Next to evaluating our main model using model fit measures, we can also compare 
 desc2 = '''visual =~ x1 + x2 + x3
 text =~ x4 + x5 + x6
 speed =~ x7 + x8 + x9
-# Set covariances to zero
+# Set correlations to zero
 speed ~~ 0 * visual
 speed ~~ 0 * text
 text ~~ 0 * visual'''
 
 # Fit the model
-mod2 = Model(desc2)
+mod2 = semopy.Model(desc2)
 res_opt2 = mod2.fit(data)
 estimates2 = mod2.inspect()
 
@@ -134,18 +134,18 @@ print(stats2.T)
 
 As you can see, the covariances between the latent factors (e.g. speed  ~~  visual)are forced to be zero. Please refer to the first model for the model interpretation.
 
-### Compare models
+## Compare models
 
 To see which of our models provides a better fit, we can compare them. For that, lets print the model fit measures for both models again.
 
 ```{code-cell}
-# Model 1 (non-independent latent factors)
+# Model 1 (correlated latent factors)
 print(stats.T)
 
 # Model 2 (independent latent factors)
 print(stats2.T)
 ```
 
-Let's begin by comparying AIC and BIC. As stated above a **lower value** indicates a **better** fit (for AIC and BIC). Here, AIC and BIC both favor the simpler model that assumes indepence between the latent variables. 
+Let's compare model fits by looking at AIC and BIC. As stated above a **lower value** indicates a **better** fit (for AIC and BIC). Here, AIC and BIC both favor the simpler model that assumes indepence between the latent variables. 
 
-To further compare the models, we can compare them using a test. 
+
