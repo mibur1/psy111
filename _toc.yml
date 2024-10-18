@@ -66,6 +66,7 @@ parts:
 - caption: Multivariate Statistics Lecture
   chapters:
     - file: book/lecture/0_Introduction
+    - file: book/lecture/session01
 - caption: Additional Materials
   chapters:
     - file: book/misc/reading
