@@ -14,19 +14,9 @@ kernelspec:
 
 # Lecture 1
 
-Welcome to Multivariate Statistical Modelling!
+This first lecture is mainly a review of the concepts covered in Basic Statistics (taught in Bachelor programmes). Disclosure: I use advanced large language models to help me convert my slides into continuous text for the following chapters more quickly. Please note that the generated text has been thoroughly revised by me, and that the text has been generated solely on the basis of keywords entered from my lecture slides. Let's start!
 
-In our technology-driven world, we are surrounded by vast amounts of data. In psychology and cognitive neuroscience, our measurement techniques are becoming increasingly powerful, providing us with highly valuable but complex data. With this comes the need to understand and make sense of this data. For example, to understand patterns of gene expression and their relationship to brain function and complex human cognition, emotion and behaviour, and even the vast networks of social interactions, we cannot simply eyeball the data provided by our technology-driven measurement tools. Even simple questionnaire data cannot be understood just by looking at it. All of this data contains many variables that correlate and interact with each other. This is where multivariate statistics comes in. Without multivariate statistical modelling, we cannot make sense of these important sources of data that have the potential to improve human brain and mental health and, ultimately, well-being.
-
-This course will provide you with powerful tools and techniques for understanding linear and non-linear associations in multivariate data. We will discuss methods that allow us to analyse multiple variables of different types simultaneously, revealing patterns of relationships and insights that would otherwise remain hidden. More specifically, we begin the lecture by ensuring that all students have a firm grounding in the General Multivariate Linear Model, a powerful framework that extends the familiar concepts of simple linear regression to include multiple quantitative predictors of a quantitative outcome. From there, in the second lecture we will explore how to deal with situations where our independent variable is not continuous. Categorical regression provides the means to analyse relationships between a categorical predictor and a quantitative outcome variable.  We will then change the type of outcome variable to categorical and learn about logistic regression and its applications in predicting binary events. We will uncover more nuanced relationships between variables in the fourth lecture session: Moderated regression will allow us to understand how the relationship between two variables can change depending on a third, moderator variable, providing insights into interaction effects. We then move on to understanding simultaneous equations with path modelling, a technique that uses visual diagrams and parameter estimation across multiple regression equations to represent and test hypothesised (causal) relationships between multiple variables - even multiple outcomes. In addition, these models allow the study of so-called mediation effects. Multivariate analysis would not be complete without techniques helping to uncover hidden structures within the data. Exploratory factor analysis (EFA) allows the identification of underlying latent factors that explain the relationships between observed variables, such as personality traits, cognitive abilities, etc. Taking this further and combining factor analysis and path modelling, Structural Equation Modelling (SEM) is introduced as a powerful and highly flexible tool for testing complex relationships involving both observed and latent variables. Our exploration will also extend beyond linear relationships. Polynomial regression will enable us to model curvilinear patterns of association, allowing to capture phenomena where relationships are not simply linear. We will also explore more advanced methods such as spline and local regression, which offer even greater flexibility in modelling non-linear relationships. Recognizing that data often exhibits hierarchical structures, we will finally delve into multilevel regression, a technique designed to analyze nested data, such as students within classrooms within schools or measurement occasions within individuals. Finally, we will summarize procedures of multivariate statistical inference, ensuring that we can understand parameter estimation and hypotheses tests to draw meaningful conclusions from our multivariate data analyses.
-
-I hope the above motivates you to get started. Please note that some topics in high school mathematics and basic statistics are necessary to follow this course. If you do not feel equipped, please make sure you update your knowledge with the material provided in the bridging module "Introduction to Statistics" held during the orientation week. A great reference to look at is [Heumann & Schomaker Shalabh (2023)](https://link.springer.com/book/10.1007/978-3-031-11833-3) {cite}`Heumann2023`.
-
-This first lecture is mainly a review of the concepts covered in Basic Statistics (taught in Bachelor programmes). Let's start.
-
-Disclosure: I use advanced large language models to help me convert my slides into continuous text for the following chapters more quickly. Please note that the generated text has been thoroughly revised by me, and that the text has been generated solely on the basis of keywords entered from my lecture slides.
-
-# 1.1 On the basic objective of uni-, bi- and multi-variate statistics
+## 1.1 On the basic objective of uni-, bi- and multi-variate statistics
 
 Univariate methods are used when our data contains only a single variable. Unlike their multivariate counterparts, univariate methods do not address relationships or causes between variables. Instead, they focus on describing the characteristics and patterns within that single variable. We can think of it as taking a magnifying glass to a particular aspect of our data. Examples of univariate methods include the one-sample $z$-test, which is used to compare a sample mean with a known population mean when the population variance is known, or the one-way table $\chi^2$‐test, which helps us understand the distribution of a categorical variable.
 
@@ -46,7 +36,7 @@ The modelling process generally follows a number of key steps. *First*, we selec
 
 In conclusion, we can think of the modelling process as a lens through which we interpret the data, and as of a reasonable approximation of the stochastic process on which confirmatory inference "about the world" is based.
 
-# 1.2 What is a model?
+## 1.2 What is a model?
 
 *But what exactly is a model?*
 
@@ -81,7 +71,7 @@ $error_{i} = data_{i} - \widehat{data}_{i}$
 
 ```
 
-# 1.3 Two modeling cultures
+## 1.3 Two modeling cultures
 
 It is helpful to understand that there are two main approaches to modelling multivariate data: Although the boundaries between them are blurred, we can speak of **traditional statistical modelling** (our module psy111) and **statistical learning** (our module psy112).
 
@@ -91,7 +81,7 @@ It is helpful to understand that there are two main approaches to modelling mult
 
 Importantly: While these two approaches have traditionally been distinct, the boundaries between them are becoming increasingly blurred.  For our purposes, this distinction serves primarily as a helpful way of understanding the broader landscape of data modelling.
 
-# 1.4 The linear function
+## 1.4 The linear function
 
 Remember two key terms!
 

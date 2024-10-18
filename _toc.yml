@@ -21,10 +21,10 @@ parts:
     - file: book/introduction/3_Intro_2/0_Introduction
       sections:
         - file: book/introduction/3_Intro_2/1_Everything_is_an_object
-        - file: book/introduction/3_Intro_2/3_Namespaces and imports
-        - file: book/introduction/3_Intro_2/4_Functions
-        - file: book/introduction/3_Intro_2/5_Classes
-        - file: book/introduction/3_Intro_2/6_Exercises
+        - file: book/introduction/3_Intro_2/2_Namespaces and imports
+        - file: book/introduction/3_Intro_2/3_Functions
+        - file: book/introduction/3_Intro_2/4_Classes
+        - file: book/introduction/3_Intro_2/5_Exercises
     - file: book/introduction/4_Scientific_Comp/0_Introduction
       sections:
         - file: book/introduction/4_Scientific_Comp/1_numpy
@@ -65,8 +65,8 @@ parts:
     - file: book/statistics/10_Multilevel_Models/0_Introduction
 - caption: Multivariate Statistics Lecture
   chapters:
-    - file: book/lecture/0_Introduction
-    - file: book/lecture/session01
+    - file: book/lecture/introduction
+    - file: book/lecture/session_01
 - caption: Additional Materials
   chapters:
     - file: book/misc/reading

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.2 Control flow
+# 2.4 Control flow
 
 In this chapter, we will explore the fundamentals of control flow in Python. Control flow allows you to dictate the order in which statements are executed, enabling your programs to make decisions and perform repetitive actions.
 

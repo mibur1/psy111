@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.4 Functions
+# 3.3 Functions
 
 Functions are essential in programming as they allow you to encapsulate and reuse code efficiently. By breaking down complex problems into smaller, manageable parts, functions enhance code organization and readability. As we already saw you can use built-in functions or import them from specialized modules. Quite often it is also useful for you to *define* your own functions. In Python, this can be done by using the `def` keyword followed by a function name:
 
