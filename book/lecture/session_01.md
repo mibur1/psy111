@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Lecture 1
+# 1: Introduction
 
 This first lecture is mainly a review of the concepts covered in Basic Statistics (taught in Bachelor programmes). Disclosure: I use advanced large language models to help me convert my slides into continuous text for the following chapters more quickly. Please note that the generated text has been thoroughly revised by me, and that the text has been generated solely on the basis of keywords entered from my lecture slides. Let's start!
 
@@ -68,7 +68,6 @@ And once we have the prediction, we can compute the error for each observation:
 :class: note
 
 $error_{i} = data_{i} - \widehat{data}_{i}$
-
 ```
 
 ## 1.3 Two modeling cultures
@@ -89,19 +88,17 @@ Remember two key terms!
 :class: tip
 
 This is the outcome variable that our model aims to explain (usually referred to as $Y$, previously referred to as data).
-
 ```
 
 ```{admonition} Independent variable
 :class: tip
 
 This is a variable that we wish to use in order to explain the dependent variable (usually referred to as $X$, the predictor or predictors). Note that in multivariate models, there are multiple independent variables ($X_1, X_2, ..., X_j$).
-
 ```
 
 Remember a bivariate distribution of data!
 
-```{figure} ../../_static/figures/regression_data.png
+```{figure} figures/regression_data.png
 ---
 width: 60%
 name: regression_data
@@ -121,17 +118,15 @@ When we work with a statistical model - for example, using a linear function as 
 :class: note
 
 $y = a + b \cdot x $
-
 ```
 
 ```{admonition} Independent variable
 :class: tip
 
 Note that the value of **$b$** indicates the **slope** of the straight line and **$a$ **(**intercept**) indicates the value of $y$ for $x = 0$.
-
 ```
 
-```{figure} ../../_static/figures/linear_function.png
+```{figure} figures/linear_function.png
 ---
 width: 60%
 name: linear_function
@@ -143,19 +138,17 @@ The linear function
 :class: tip
 
 The intercept indicates the expected value of $y$ given $x$ is zero.
-
 ```
 
 ```{admonition} Interpretation of the **slope**
 :class: tip
 
 The slope indicates the expected change of $y$ given $x$ changed in one unit.
-
 ```
 
 Let's take an empirical example. Suppose we measured the **Conscientiousness** ($x$) and **Job Success** ($y$) of three individuals. The following table and scatterplot show the observed scores in a two-dimensional space. Note that the index $m$ indicates the cases. We also say observation units (here individuals).
 
-```{figure} ../../_static/figures/example_S01.png
+```{figure} figures/example_S01.png
 ---
 width: 60%
 name: example_S01
