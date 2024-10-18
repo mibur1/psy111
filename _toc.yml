@@ -67,6 +67,8 @@ parts:
   chapters:
     - file: book/lecture/0_overview
     - file: book/lecture/session_01
+    - file: book/lecture/session_02
+    - file: book/lecture/session_03
 - caption: Additional Materials
   chapters:
     - file: book/misc/reading
