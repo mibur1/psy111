@@ -25,4 +25,9 @@ Confirmatory Factor Analysis (CFA) is used when to goal is determine a limited n
 
 ## Difference between CFA/SEM
 
-The difference between CFA and SEM might be confusing. One can say that CFA is a special case of SEM which is defined by not having unidirectional paths present at one level (see lecture and tutorial for further details).
+The difference between CFA and SEM might be confusing. One can say that CFA is a special case of SEM which is defined by not having unidirectional paths present at one level (see lecture and tutorial for further details). In other words, in CFA, there are no unidirectional connections between latent variables **on one level**. There can however be *higher order factors*, i.e. latent variables loading on higher order latent variables. 
+
+**Think of the following example.**
+
+We measured *working memory (WM)* with 5 items and *general processing speed (GPS)* with 3 items. We propose that the 5 *WM* items load on a *WM* factor and the 3 *GPS* items load on a *GPS* factor. Thus, we end up with 2 latent variables. One might argue that these latent variables belong to a construct called *intelligence (I)*. Therefore, we let both latent factors load on a **higher order latent factor** which we call *I*. This would all still be consindered as **CFA**. 
+However, let's think of it in another way. It could also be that *WM* **predicts** *GPS*. If we specify the model in a way such that *WM* is used as a regressor for *GPS*, this would be considered as **SEM**.

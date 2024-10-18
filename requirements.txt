@@ -10,3 +10,4 @@ statsmodels
 pingouin
 factor_analyzer
 ucimlrepo
+semopy
