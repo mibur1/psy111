@@ -12,11 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# Welcome to the psy111 Python seminar!
+# Welcome to psy111!
 
-This book contains the course content of the Multivariate Statistics (psy111) seminar. The first half of the semester will provide you with an introduction into Python and associated tools. The second half of the semester will focus on the practical application of statistical concepts discussed in the lecture.
+This book contains the course content for the Multivariate Statistics (psy111) lecture and seminar. For the lecture, you will find supplementary information to complement the lecture slides. For the seminar, the first half of the semester will introduce Python and its associated tools, while the second half will focus on the practical application of statistical concepts discussed in the lecture.
 
-Many of the contents covered here are inspired by the the amazing book *"Data Science for Neuroimaging: An Introduction"* by Ariel Rokem and Tal Yarkoni {cite}`Rokem2023`, which is [freely available online](https://neuroimaging-data-science.org). Further, you will also find a plethora of tutorials, questions, and answers related to Python on the internet. Some suggestions are listed in the [additional reading](../misc/reading) section.
+Many of the contents covered in the first part of the seminar were inspired by the the book *"Data Science for Neuroimaging: An Introduction"* by Ariel Rokem and Tal Yarkoni {cite}`Rokem2023`, which is [freely available online](https://neuroimaging-data-science.org). Further, you will also find a plethora of tutorials, questions, and answers related to Python on the internet. Some suggestions are listed in the [additional reading](../misc/reading) section.
 
 ::::{grid} 1 1 2 3
 :class-container: text-center
@@ -25,7 +25,7 @@ Many of the contents covered here are inspired by the the amazing book *"Data Sc
 :::{grid-item-card}
 :class-body: text-center
 :class-header: bg-light text-center
-:link: ../introduction/week_1/0_Introduction
+:link: ../introduction/1_Setup/0_Introduction
 :link-type: doc
 Setting things up 🚀
 ^^^
@@ -39,7 +39,7 @@ Explore the chapter {fas}`arrow-right`
 :::{grid-item-card}
 :class-body: text-center
 :class-header: bg-light text-center
-:link: ../introduction/week_2/0_Introduction
+:link: ../introduction/2_Intro_1/0_Introduction
 :link-type: doc
 Introduction to Python 🐍
 ^^^

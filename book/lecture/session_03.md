@@ -12,6 +12,4 @@ kernelspec:
   name: python3
 ---
 
-# Seminar Overview
-
-For the rest of the semester we will now focus on a practical implementation of the lecture contents.
+# 3: Logistic Regression

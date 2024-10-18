@@ -1,7 +1,12 @@
+# General dependencies
 jupyter-book
 numpy
 pandas
 matplotlib
 seaborn
+
+# For the statistics sessions
 statsmodels
 pingouin
+factor_analyzer
+ucimlrepo
