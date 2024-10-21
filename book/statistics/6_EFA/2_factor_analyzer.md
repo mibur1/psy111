@@ -12,14 +12,17 @@ kernelspec:
   name: python3
 ---
 
-# X.2 Factor analyzer summary
+# 6.2 Factor analyzer summary
 
 ## Create a factor analysis object
 
 ```{code-cell}
 :eval: false
 
-fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_smc=True, is_corr_matrix=False, bounds=(0.005, 1), impute='median', svd_method='randomized', rotation_kwargs=None)
+fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres',
+                           use_smc=True, is_corr_matrix=False, 
+                           bounds=(0.005, 1), impute='median',
+                           svd_method='randomized', rotation_kwargs=None)
 ```
 
 - `n_factors` determines the number of factors. For determining the number of needed factors, begin by fitting a model where the number of factros is equal to the number of observed variables (see above).
@@ -40,7 +43,7 @@ fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres', use_
 fa_object.fit(data)
 ```
 
-## Extract model values
+## Extract model estimates
 
 ```{code-cell}
 :eval: false

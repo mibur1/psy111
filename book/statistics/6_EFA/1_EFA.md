@@ -12,11 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# X.1 EFA in Python
+# 6.1 EFA in Python
 
-To compute an EFA in Python we will use the `factor_analyzer` package. This package offers not only EFA functionality but also enables the use of confirmatory factor analysis (CFA).
+To compute an EFA in Python we will use the `factor_analyzer` package. 
 
-### Example dataset
+## Example dataset
 
 To demonstrate EFA, the following code chunk creates a simulated dataset. 9 variables (items) are created. The items are the following:
 
@@ -61,7 +61,7 @@ df = pd.DataFrame(data, columns=columns)
 print(df.head())
 ```
 
-### Setup
+## Setup
 
 The following code chunk imports the necessary class:
 
@@ -69,7 +69,7 @@ The following code chunk imports the necessary class:
 from factor_analyzer import FactorAnalyzer
 ```
 
-### Inspect the data
+## Inspect the data
 
 Before conducting a factor analysis it is worthwhile to look at the correlation matrix of the data of interest.
 
@@ -80,7 +80,7 @@ plt.show()
 
 Here we can already see that the items 1-3, items 4-5 and items 6-9 correlate high with each other, respectively.
 
-### Determine number of factors
+## Determine number of factors
 
 Several approaches are possible to determine the number of factors. Here we apply the Kaiser criterion and select as many factors as there are factors with eigenvalues > 1. Therefore, we begin be fitting a solution with the number of factors being as high as possible.
 
@@ -120,7 +120,7 @@ plt.ylabel("eigenvalue")
 Using a scree plot we look for the 'bend' in the plot and choose the number of factors before the bend, here also 3 (don't get confused as the plot starts at 0 not 1).
 
 
-### Fit and interpret the final model
+## Fit and interpret the final model
 
 Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In psychology, most often is has to be assumed that the constructs we measure are somewhat correlated. Therefore, oblique rotation is applied here. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin).
 
