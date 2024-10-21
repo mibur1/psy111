@@ -31,7 +31,7 @@ else:
   print("Number is larger than 5.")
 ```
 
-Depending on the value of `number`, only the `print()` statement that matches the condition will be evaluated. The `else` statement acts as a *fallback* option, which means it will run only if none of the previous conditions are met. Both *elif* and *else* statements are optional; you could simply use *if* statements to handle every possible scenario. However, this can lead to worse code readability, especially if many decisions are possible.
+Depending on the value of `number`, only the `print()` statement that matches the condition will be evaluated. The `else` statement acts as a *fallback* option, which means it will run only if none of the previous conditions are met. Both *elif* (which is short for *else if*) and *else* statements are optional; you could simply use *if* statements to handle every possible scenario. However, this can lead to worse code readability, especially if many decisions are possible.
 
 ## Loops
 
@@ -46,7 +46,7 @@ for number in list_of_numbers:
 
 Here, we loop over each item/element of the list starting from the first. In each iteration of the loop, we assign the value to a variable called `number` which is then printed. `number` is a temporary variable, which means it will only exist whithin the scope of the loop and not anymore after.
 
-**Looping over a range**
+### Looping over a range
 
 A very common use case of loops is to perform a specific action *n* times. For example, if you have 30 participants in your study, you want to iterate over all of them to perform some action. For this, you can use the built-in `range()` function to provide a range of numbers:
 
@@ -70,6 +70,32 @@ list_length = len(my_list)
 for i in range(list_length):
   print(my_list[i])
 ```
+
+### Using enumerate()
+
+You have previously seen two ways of looping over a list. Either by indexing the items directly, or through indexing by usinge the `range(len())` expression. Python also provides a nice way of combining these two through the `enumerate()` function:
+
+```{code-cell}
+for index, value in enumerate(my_list):
+    print(f"Index {index} contains: {value}")
+```
+
+In cases where you need to keep track of the index, this approach is often preferred because it avoids manual indexing, making the code cleaner and less prone to errors.
+
+### While loops
+
+In addition to `for` loops, you can also use `while` loops, which continue to run as long as a specified condition is `True`:
+
+```{code-cell}
+counter = 0
+while counter < 5:
+    print(f"Counter is {counter}")
+    counter += 1
+```
+
+Be careful with `while` loops because if the condition never becomes `False`, the loop will run indefinitely, leading to an infinite loop.
+
+The preious code cell also introduces a counter variable, which is a useful thing to keep in mind when you need to keep track of something within a loop and access this result later on in your script.
 
 ## Nested statements
 
@@ -98,3 +124,27 @@ for item in my_list:
 
 print("Continue after the for-loop...")
 ```
+
+If you use incorrect indentation, you will receive an `IndentationError`:
+
+```{code-cell}
+for item in my_list:
+  if item == "banana":
+  print("Banana!")
+```
+
+```{admonition} Summary
+:class: tip
+
+Python offers standard ssential control flow concepts:
+
+- Conditional statements (`if`, `elif`, `else`) allow programs to make decisions.
+- Loops (`for` and `while`) enable repetitive tasks.
+- Proper indentation is required in Python, otherwise you will get an error.
+
+It is helpful to follow good coding practices:
+
+- Avoid deep nesting. If you find your code nesting too deeply, consider refactoring parts of it into functions (which we will learn about next week).
+- Use meaningful variable names. This helps others (and yourself) understand what the code is doing.
+```
+

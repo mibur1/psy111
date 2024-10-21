@@ -20,6 +20,12 @@ As in other programming languages, variables are used to store data of different
 my_variable = 4
 ```
 
+When naming variables, there are a few rules to keep in mind:
+- Variable names must start with a letter or an underscore (_), but not a number.
+- They can only contain letters, numbers, and underscores.
+- Names are case-sensitive (`my_Variable` and `my_variable` are different).
+- It's a good practice to use descriptive names and follow the snake_case convention (e.g., my_variable).
+
 Notice that when we initialize a variable, we do not need to specify its *type* (e.g. it being an integer or a string), as Python is *dynamically typed*, which means it figures out your desired variable type by itself once you run the program. This means, you can also simply overwrite your previously created variable with for example a character string:
 
 ```{code-cell}
@@ -40,5 +46,6 @@ print(my_variable)
 Variables in Python work like in most other programming languages:
 
 - You assign values to them by using the equal (=) operator
+- Python is dynamically typed; it figures out the variable type for you
 - You can print their content with the `print()` function
 ```
