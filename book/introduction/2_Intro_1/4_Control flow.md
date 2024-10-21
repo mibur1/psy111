@@ -125,18 +125,10 @@ for item in my_list:
 print("Continue after the for-loop...")
 ```
 
-If you use incorrect indentation, you will receive an `IndentationError`:
-
-```{code-cell}
-for item in my_list:
-  if item == "banana":
-  print("Banana!")
-```
-
 ```{admonition} Summary
 :class: tip
 
-Python offers standard ssential control flow concepts:
+Python includes standard control flow concepts:
 
 - Conditional statements (`if`, `elif`, `else`) allow programs to make decisions.
 - Loops (`for` and `while`) enable repetitive tasks.
