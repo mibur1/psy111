@@ -126,7 +126,7 @@ In logical operations, *and* requires ALL statements to be true, wich is the cas
 ```{code-cell}
 ("burg" in "oldenburg") and (5 > 3) or (4 * 2 == 10)
 ```
-This expression still returns `True` even though the last comparison is false due to it being joined with the previous expression through *or*. This brif example hopefully already illustrate nicely how the Python syntax is more readable than most other programming languages.
+This expression still returns `True` even though the last comparison is false due to it being joined with the previous expression through *or*. This brief example hopefully illustrate nicely how the Python syntax is more readable than most other programming languages.
 
 *Note: The round brackets are not strictly necessary here, as Python will evaluate this expression left to right, following the logical and comparison operator precedence rules. It is simply a design choice that subjectively enhances readability.*
 

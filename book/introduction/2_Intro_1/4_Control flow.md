@@ -95,7 +95,7 @@ while counter < 5:
 
 Be careful with `while` loops because if the condition never becomes `False`, the loop will run indefinitely, leading to an infinite loop.
 
-The preious code cell also introduces a counter variable, which is a useful thing to keep in mind when you need to keep track of something within a loop and access this result later on in your script.
+The previous code cell also introduces a counter variable, which is a useful thing to keep in mind when you need to keep track of something within a loop and access this result later on in your script.
 
 ## Nested statements
 
