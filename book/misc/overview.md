@@ -16,7 +16,6 @@ kernelspec:
 
 This book contains the course content for the Multivariate Statistics (psy111) lecture and seminar. For the lecture, you will find supplementary information to complement the lecture slides. For the seminar, the first half of the semester will introduce Python and its associated tools, while the second half will focus on the practical application of statistical concepts discussed in the lecture.
 
-Some of the contents covered in the first part of the seminar were inspired by the the book *"Data Science for Neuroimaging: An Introduction"* by Ariel Rokem and Tal Yarkoni {cite}`Rokem2023`, which is [freely available online](https://neuroimaging-data-science.org). Further, you will also find a plethora of tutorials, questions, and answers related to Python on the internet. Some suggestions are listed in the [additional reading](../misc/reading) section.
 
 ::::{grid} 1 1 2 3
 :class-container: text-center
