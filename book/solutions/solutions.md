@@ -14,4 +14,7 @@ kernelspec:
 
 # Exercise solutions
 
-In this section you can find the solutions to the exercises. Please be advised to only check them once you spend time trying to solve them by yourself, as the only way of learning how to program is learning by doing.
+In this section, you'll find the solutions to the exercises. Remember, the best way to learn programming is by doing. Resist the temptation to check the answers too soon and spend time working through the problems yourself. The struggle is where the real learning happens!
+
+> 'I hear and I forget. I see and I remember. I do and I understand.' - Confucius
+
