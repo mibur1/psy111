@@ -151,3 +151,4 @@ c = fa2.get_communalities()
 print(c)
 ```
 
+As the communalities are quite high for all variables, one can conclude that the model fits the data well.

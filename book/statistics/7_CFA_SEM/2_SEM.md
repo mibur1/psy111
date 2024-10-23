@@ -31,7 +31,7 @@ data = semopy.examples.holzinger39.get_data()
 
 As you know, CFA is a special case of SEM which is defined by not having unidirectional paths present at one level, i.e. no latent variable is used to predict another latent variable (only correlations, i.e. bidirectional paths are used). But what if we suspect that one latent factor is actually predicting another one. Such models would be considered SEM.
 
-Note that SEM models contain a **measurement model** and a **structural model**. The **measurement model** describes relationships between measured variables and latent factors. The **structural model** describes relationships between variables.
+Note that SEM models contain a **measurement model** and a **structural model**. The **measurement model** describes relationships between measured variables and latent factors. The **structural model** describes relationships between latent variables.
 
 Let's specify and fit a SEM model that predicts `speed ability` with `visual speed` and ignores `text processing related abilities`.
 

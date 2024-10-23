@@ -25,8 +25,6 @@ Today, we use the `HolzingerSwineford1939` dataset. The dataset contains mental 
 - x7, x8 and x9 are indicators for speed ability
 
 ```{code-cell}
-# Load the package
-import semopy
 # Load and inspect the dataset 
 data = semopy.examples.holzinger39.get_data()
 print(data)
@@ -37,6 +35,8 @@ print(data)
 Let us use the `semopy` syntax to define three latent variables - visual, text and speed.
 
 ```{code-cell}
+# Load the package
+import semopy
 # Specify the model
 desc = '''visual =~ x1 + x2 + x3
 text =~ x4 + x5 + x6
