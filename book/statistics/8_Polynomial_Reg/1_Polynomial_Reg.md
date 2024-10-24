@@ -66,10 +66,11 @@ One can already see that there is a non-linear component present. Lets still fit
 To begin with, lets fit a simple linear model. Note that we are already using the function which we will later use to fit higher-order polynomials. Here we set the order to 1. Note that a polynomial with the order 1 is actually a linear model. 
 
 ```{code-cell}
-linear_model = sm.OLS(grade, learn).fit()
-# Predict values
-linear_fit = linear_model.predict(learn) 
-# Get residuals
+polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)  
+learn_p1 = polynomial_features_p1.fit_transform(learn.reshape(-1, 1)) 
+
+linear_model = sm.OLS(grade, learn_p1).fit()
+linear_fit = linear_model.predict(learn_p1)
 linear_residuals = linear_model.resid
 ```
 
@@ -171,4 +172,4 @@ With the quadratic predictor added, the model can explain 97.1% of the variance 
 print(linear_model.summary())
 ```
 
-The quadratic model only explains 72.5% of the variance (see `R-squared`). Also the AIC and BIC are much higher, also suggesting worse fit (compared to the quadratic model).
+The quadratic model only explains 82.1% of the variance (see `R-squared`). Also the AIC and BIC are much higher, also suggesting worse fit (compared to the quadratic model).
