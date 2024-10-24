@@ -23,7 +23,7 @@ Integers are the numbers zero (0), positive natural numbers (1, 2, 3, ...), or t
 ```{code-cell}
 subjects_group_1 = 10
 subjects_group_2 = 20
-scans_total = 60
+measurements_total = 60
 ```
 
 You can perform mathematical operations like addition
@@ -36,35 +36,36 @@ print(subjects_total)
 or division
 
 ```{code-cell}
-scans_per_subject = scans_total / subjects_total
-scans_per_subject
+measurements_per_subject = measurements_total / subjects_total
+measurements_per_subject
 ```
 
-*Note:* As already mentioned above, if we execute Python code in interactive notebooks (*.ipynb* files), the `print()` statement can be omitted if the variable to be printed is in the last line of the code block. We will use both options from time to time, as the automatic printing will perform some automatic formatting and sometimes one or the other will look nicer. However, please note that you will need to write the print statement explicitly if you work in normal Python (*.py*) scripts.
+*Note:* As already mentioned above, if we execute Python code in interactive notebooks (*.ipynb* files), the `print()` statement can be omitted if the variable to be printed is in the last line of the code block. We will use both options from time to time, as the automatic printing will perform some automatic formatting and sometimes one or the other will look nicer. However, please note that you will need to write the print statement explicitly if you work with normal Python (*.py*) scripts.
 
 ## Floating point numbers
 
-Notice that while the previous addition of two integers results in another integer, the division results in a number with a decimal point. This is what we call a float (short for *floating point* number), which is a way computers represent real numbers.
+Notice that while the previous addition of two integers resulted in another integer, the division resulted in a number with a decimal point. The latter is what we call a float (short for *floating point* number), which is a way computers represent real numbers.
 
-All of the standard arithmetic operations that work on integers further also work on floats or for any combination of them:
+All of the standard arithmetic operations that work on integers also work on floats (or on any combination of them):
 
 ```{code-cell}
 roughly_pi = 3.14
 radius = 2
+circumference = 2 * roughly_pi * radius
 
-print("The circumference of the cicle:", 2 * roughly_pi * radius)
+print("The circumference of the cicle is", circumference)
 ```
 
 ## Strings
 
-Strings are sequences of characters. In Python, we can define strings by encloding zero or more characters in a pair of quotes. It does not matter whether you use single or double quotes and both work equally well as long as the opening and closing quotes match.
+Strings are sequences of characters. In Python, we can define strings by enclosing zero or more characters in a pair of quotes. It does not matter whether you use single or double quotes and both work equally well as long as the opening and closing quotes match.
 
 ```{code-cell}
 module = "psy111"
 university = 'Oldenburg'
 ```
 
-There are many prebuilt functions you can use on strings, like figuring out their length:
+There are many inbuilt functions you can use on strings, like figuring out their length:
 
 ```{code-cell}
 len(module)
@@ -95,14 +96,14 @@ You can also do many more things like formatting the number of decimal points sh
 
 ## Booleans
 
-Handling boolean values in Python is pretty much the same as in other programming languages. However, they can only take the value `True` (corresponding to 1) or `False` (corresonding to 0) and not other versions like `true` or `"False"`:
+Handling Boolean values in Python is pretty much the same as in other programming languages. Boolean values can only take the value `True` (corresponding to 1) or `False` (corresonding to 0) and not other versions like `true` or `"False"`:
 
 ```{code-cell}
 i_like_psy111 = True
 i_like_psy111
 ```
 
-One of the ways boolean values are typically generated in Python is through logical or comparison operations. For example, the statement "5 is larger than 3" can be answered in a binary way (it is either true or false):
+One of the ways Boolean values are typically generated in Python is through logical or comparison operations. For example, the statement "5 is larger than 3" can be answered in a binary way (it is either true or false):
 
 ```{code-cell}
 5 > 3
@@ -125,11 +126,13 @@ In logical operations, *and* requires ALL statements to be true, wich is the cas
 ```{code-cell}
 ("burg" in "oldenburg") and (5 > 3) or (4 * 2 == 10)
 ```
-This expression still returns `True` even though the last comparison is false due to it being joined with the previous expression through *or*. This brif example hopefully already illustrate nicely how the Python syntax is more readable than most other programming languages.
+This expression still returns `True` even though the last comparison is false due to it being joined with the previous expression through *or*. This brief example hopefully illustrate nicely how the Python syntax is more readable than most other programming languages.
+
+*Note: The round brackets are not strictly necessary here, as Python will evaluate this expression left to right, following the logical and comparison operator precedence rules. It is simply a design choice that subjectively enhances readability.*
 
 ## None
 
-So what if you want to create a variable but not assign a specific value to it? This is where *None* comes in handy. *None* works similar as for example the *NaN* (not a number) value from MATLAB. Please note that *None* and *False* however are not the same thing!
+So what if you want to create a variable but not assign a specific value to it? This is where `None` comes in handy. *None* works similar as for example the *NaN* (not a number) value from MATLAB. However, please note that *None* and *False* are not the same thing!
 
 ```{code-cell}
 None == False

@@ -94,12 +94,12 @@ else:
 
 # Define the full contrast matrix (weighted effect coding)
 contrast_matrix = {
-    1: e2e2_we,
-    2: e2e3_we,
-    3: e2e4_we,
-    4: e3e3_we,
-    5: e3e4_we,
-    6: e4e4_weights  # Reference category with the caculated weights
+    'e2/e2': e2e2_we,
+    'e2/e3': e2e3_we,
+    'e2/e4': e2e4_we,
+    'e3/e3': e3e3_we,
+    'e3/e4': e3e4_we,
+    'e4/e4': e4e4_weights  # Reference category
 }
 print(contrast_matrix)
 ```

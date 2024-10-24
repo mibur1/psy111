@@ -14,11 +14,11 @@ kernelspec:
 
 # 2.3 Collections
 
-Variables containing only single values like an integer or a string will only get you so far. Many real-world applications for example require you to store a whole collection of values in a single data structure. Here, the most important and widely used solutions from the Python standard library are *lists*, *tuples*, and *dicts* (dictionaries).
+Variables containing single values like an integer or a string will only get you so far. Many real-world applications for example require you to store a whole collection of values in a single data structure. Here, the most important and widely used solutions from the Python standard library are *lists*, *tuples*, and *dicts* (dictionaries).
 
 ## Lists
 
-Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also contain multiple types if this is required. Lists are initalized through square brackets `[]` and its elements are separated through commas:
+Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also contain multiple types if this is required. Lists are initalized with square brackets `[]` and their elements are separated through commas:
 
 ```{code-cell}
 empty_list = []
@@ -27,9 +27,16 @@ random_stuff = ["apple", 3.14, True, 4]
 
 ### Indexing
 
-Lists are ordered collections, which means that the order of items is important and will not change unless we specifically change it. This allows us to access individual elements of the list by specifying their position, which is also called *index*. The process of acessing individual or multiple values from a data structure is analogously called *indexing*.
+Lists are ordered collections, which means that the order of items is important and will not change (unless we specifically change it). This allows us to access individual elements of the list by specifying their position, which is also called an *index*. The process of acessing individual or multiple values from a data structure is analogously called *indexing*.
 
 To access the *i*th element in a list, we enclose the desired index *i* in square brackets. Note that Python, unlike for example MATLAB, uses zero-based indexing. This means the first element of a collection is at index 0, while index 1 returns the second element (and so forth).
+
+
+```{admonition} Zero-based indexing
+:class: attention
+
+Python uses zero-based indexing. You can intuitively understand this as index 0 being the start of a collection, and other positions being offsets from that start.
+```
 
 ```{code-cell}
 random_stuff[0]
@@ -41,13 +48,13 @@ random_stuff[1]
 
 ### Slicing
 
-What if you do not just want to retrieve more than a single element from a list? For this we can use *slicing*, which uses the colon (:) operator:
+What if you want to retrieve more than a single element from a list? For this we can use *slicing* operations, which use the colon (:) operator:
 
 ```{code-cell}
 random_stuff[1:3]
 ```
 
-The colon is used to seperate a starting and a stopping index. Intuitively you can read this notation as "from random_stuff get items 1 to 3". Note that the starting position is *inclusive* (meaning it includes the item at position 1, which in this case is *3.14*) while the stopping index is *exclusive* (meaning that the item at posititon 3, which here would be *4*, is not included).
+The colon is used to seperate a starting and a stopping index. Intuitively you can read this notation as "from random_stuff get items 1 to 3". Note that the starting position is *inclusive* (meaning it includes the item at position 1, which in this case is *3.14*) while the stopping index is *exclusive* (meaning that the item at posititon 3, which here would be *4*, is not included). If you are interested in some arguments for that logic, you can [refer to this 1982 "article" from Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD831.PDF).
 
 ### Modifying lists
 
@@ -65,6 +72,8 @@ Another common use case is to add new values to a list (for example once new res
 random_stuff.append("goodbye")
 random_stuff
 ```
+
+There are many more things you can do to lists, like removing items or sorting the list. You can read up on these methods e.g. [here](https://docs.python.org/3/tutorial/datastructures.html).
 
 ## Tuples
 
@@ -87,14 +96,14 @@ print(f"The number 2 appears {count_of_twos} times in the tuple.")
 In case you still need a mutable version of the tuple, you can convert any tuple to a list by using the `list()` function:
 
 ```{code-cell}
-converted_from_tuple = list(my_tuple)
+my_list = list(my_tuple)
 ```
 
 ## Dictionaries
 
-Dictionaries (*dicts*) are another popular data structure. In short, dicts are mappings from keys to values. You can think of them as key/value pairs, where keys within a single dictionary need to be unique, while the values do not. Most programming languages have similar structures, for example [in MATLAB](https://de.mathworks.com/help/matlab/ref/containers.map.html) they are called *maps*.
+Dictionaries (*dicts*) are another popular data structure in Python. In short, dicts are mappings from keys to values. You can think of them as key-value pairs, where keys within a single dictionary need to be unique, while the values do not. Most programming languages have similar structures, for example *maps* [in MATLAB](https://de.mathworks.com/help/matlab/ref/containers.map.html).
 
-Dictionaries are created by using curly brackets, and can either be initialized as empty of with key/value pairs separated by commas.
+Dictionaries are created by using curly brackets, and can either be initialized as empty or with key-value pairs separated by commas:
 
 ```{code-cell}
 empty_dict = {}
@@ -120,8 +129,8 @@ Dictionaries can be updated or, if the key does not exist yet, extended through 
 
 ```{code-cell}
 example_dict["age"] = 27
+example_dict
 ```
-
 
 ```{admonition} Summary
 :class: tip
@@ -131,4 +140,6 @@ The three main collection types in Python are:
 - Lists `my_list = ["a","b","c"]`
 - Tuples `my_tuple = (1,2,3)`
 - Dictionaries `my_dict = {"course": "psy111"}`
+
+There are many resources available for working with data structures, such as the [Python documentation](https://docs.python.org/3/tutorial/datastructures.html#dictionaries).
 ```
