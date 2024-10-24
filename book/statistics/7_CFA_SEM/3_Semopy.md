@@ -25,16 +25,16 @@ latent_factor2 =~ x7 + x8 + x9
 latent_factor3 =~ x4 + x5 + x6
 # Add a higher order factor, i.e. latent factors loading onto a higher order latent factor
 latent_factor1 =~ latent_factor2
-latent_factor1 =~ latent_factor3 
+latent_factor1 =~ latent_factor3
 
 # Structural model
 latent_factor1 ~ latent_factor2
 
 # Additional covariances
 # Adding a covariance between latent_factor2 and latent_factor3
-latent_factor2 ~~ latent_factor3 
+latent_factor2 ~~ latent_factor3
 # Setting the covariance from to latent factors to zero
-latent_factor1 ~~ 0*latent_factor3 
+latent_factor1 ~~ 0*latent_factor3
 
 # Setting a factor variance to 1
 latent_factor1 ~~ 1 * latent_factor1 # Also an option to identify factors
@@ -43,7 +43,7 @@ latent_factor1 ~~ 1 * latent_factor1 # Also an option to identify factors
 
 - Use the `=~` operator to associate measured variables with latent factors and associate latent factors with higher order latent factors.
 - Use the `~` operator to assign regression
-- Use the `~~` operator to assign covariances 
+- Use the `~~` operator to assign covariances
 
 ## Fit a model
 

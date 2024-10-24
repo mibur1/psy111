@@ -7,7 +7,7 @@ logo: logo.png
 # Do not execute notebooks
 execute:
   execute_notebooks: "auto"
-  exclude_patterns: ["*.ipynb", "book/statistics/6_EFA/2_factor_analyzer.md", "book/statistics/7_CFA_SEM/3_semopy.md"]
+  exclude_patterns: ["*.ipynb", "book/statistics/6_EFA/2_factor_analyzer.md", "book/statistics/7_CFA_SEM/3_Semopy.md", "book/statistics/8_Polynomial_Reg/3_Statsmodels"]
 
 # Define the name of the latex output file for PDF builds
 latex:

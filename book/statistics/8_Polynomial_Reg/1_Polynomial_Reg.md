@@ -14,7 +14,7 @@ kernelspec:
 
 # 8.1 Polynomial Regression in Python
 
-To compute an Polynomial Regression in Python we will use the `statsmodels` package and the `sklearn` package. 
+To compute an Polynomial Regression in Python we will use the `statsmodels` package and the `sklearn` package.
 
 ## Example dataset
 
@@ -27,13 +27,15 @@ To demostrate polynomial regression, lets simulate a dataset that contain data f
 # Load packages
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
+import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import PolynomialFeatures
 
 # Simulate dataset
 np.random.seed(69)  # For reproducibility
-learn = np.linspace(0, 13, 500)  
-grade = -5 * (learn - 6.5)**2 + 100 + np.random.normal(0, 10, learn.shape) 
+learn = np.linspace(0, 13, 500)
+grade = -5 * (learn - 6.5)**2 + 100 + np.random.normal(0, 10, learn.shape)
 data = pd.DataFrame({'learn': learn, 'grade': grade})
 data = data[data['learn'] <= 8]
 learn = np.array(data['learn'])
@@ -53,21 +55,21 @@ sns.scatterplot(data=data, x='learn', y='grade', alpha=0.6)
 plt.title('Scatter Plot: Learn vs. Grade')
 plt.xlabel('Learn [h]')
 plt.ylabel('Grade [%]')
-plt.ylim(0, 110)  
-plt.xlim(0, 10)  
+plt.ylim(0, 110)
+plt.xlim(0, 10)
 plt.grid(True)
 ```
 One can already see that there is a non-linear component present. Lets still fit a linear function and inspect the residuals.
 
 ## Detecting curvilinear relations
 
-### Fit a linear model 
+### Fit a linear model
 
-To begin with, lets fit a simple linear model. Note that we are already using the function which we will later use to fit higher-order polynomials. Here we set the order to 1. Note that a polynomial with the order 1 is actually a linear model. 
+To begin with, lets fit a simple linear model. Note that we are already using the function which we will later use to fit higher-order polynomials. Here we set the order to 1. Note that a polynomial with the order 1 is actually a linear model.
 
 ```{code-cell}
-polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)  
-learn_p1 = polynomial_features_p1.fit_transform(learn.reshape(-1, 1)) 
+polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)
+learn_p1 = polynomial_features_p1.fit_transform(learn.reshape(-1, 1))
 
 linear_model = sm.OLS(grade, learn_p1).fit()
 linear_fit = linear_model.predict(learn_p1)
@@ -111,8 +113,8 @@ From the upper plot one can already see that whilst there being a linear trend p
 To improve model fit, lets inlcude higher order polynomials. To begin with, lets include a quadratic coefficient, making the polynomial a second order one. First, we use the `sklearn` package to generate the polynomial features.
 
 ```{code-cell}
-polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)  
-learn_p2 = polynomial_features_p2.fit_transform(learn.reshape(-1, 1)) 
+polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
+learn_p2 = polynomial_features_p2.fit_transform(learn.reshape(-1, 1))
 ```
 
 Next, fit the new model and extract its residuals.
@@ -162,7 +164,7 @@ print(quadratic_model.summary())
 ```
 ### Estimates
 
-We get three coefficients: The intercept, a linear and a quadratic coefficient. The linear regression coefficient ($\beta = 66.43$) is positive and significant. The quadratic regression coefficient is also significant but negative ($\beta = -5.17$). This means that the `Grade` (Y) first increases to a certain value of `Learn` (X) and then decreases. 
+We get three coefficients: The intercept, a linear and a quadratic coefficient. The linear regression coefficient ($\beta = 66.43$) is positive and significant. The quadratic regression coefficient is also significant but negative ($\beta = -5.17$). This means that the `Grade` (Y) first increases to a certain value of `Learn` (X) and then decreases.
 
 ### Model fit
 
