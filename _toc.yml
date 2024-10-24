@@ -62,7 +62,6 @@ parts:
         - file: book/statistics/7_CFA_SEM/4_Exercises
     - file: book/statistics/8_Polynomial_Reg/0_Introduction
       sections:
-        - file: book/statistics/8_Polynomial_Reg/0_Introduction
         - file: book/statistics/8_Polynomial_Reg/1_Polynomial_Reg
         - file: book/statistics/8_Polynomial_Reg/2_Centered_Predictors
         - file: book/statistics/8_Polynomial_Reg/3_Statsmodels
