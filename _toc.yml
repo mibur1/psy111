@@ -1,3 +1,4 @@
+
 # Table of contents
 # Learn more at https://jupyterbook.org/customize/toc.html
 
@@ -47,6 +48,11 @@ parts:
         - file: book/statistics/2_Categorical_Reg/3_Contrast Coding
         - file: book/statistics/2_Categorical_Reg/4_Exercises
     - file: book/statistics/3_Logistic_Reg/0_Introduction
+      sections:
+        - file: book/statistics/3_Logistic_Reg/1_example_data
+        - file: book/statistics/3_Logistic_Reg/2_Logistic_regression
+        - file: book/statistics/3_Logistic_Reg/3_Logit_Transform
+        - file: book/statistics/3_Logistic_Reg/4_Exercises
     - file: book/statistics/4_Moderated_Reg/0_Introduction
     - file: book/statistics/5_Path_Modelling/0_Introduction
     - file: book/statistics/6_EFA/0_Introduction
