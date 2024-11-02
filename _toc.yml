@@ -54,6 +54,11 @@ parts:
         - file: book/statistics/3_Logistic_Reg/3_Logit_Transform
         - file: book/statistics/3_Logistic_Reg/4_Exercises
     - file: book/statistics/4_Moderated_Reg/0_Introduction
+      sections:
+        - file: book/statistics/4_Moderated_Reg/1_dataset
+        - file: book/statistics/4_Moderated_Reg/2_Centering
+        - file: book/statistics/4_Moderated_Reg/3_Moderated_regression
+        - file: book/statistics/4_Moderated_Reg/4_Exercises
     - file: book/statistics/5_Path_Modelling/0_Introduction
     - file: book/statistics/6_EFA/0_Introduction
       sections:
