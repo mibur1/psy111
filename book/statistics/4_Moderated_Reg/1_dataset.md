@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# dataset
+# 4.2 Dataset
 The data we'll be working with today may look familiar, as we've already used it in previous sessions. However, our focus will now shift to a new research question that is specifically suited for moderated regression analysis.
 
 **Research Question**: Investigate whether the association between fluid intelligence (`gff`) and figural working memory (`WMf`) is moderated by age (`age`).
@@ -25,7 +25,7 @@ Here, we’ll try a new approach by first subsetting the variables into a smalle
 import pandas as pd
 
 # Load the dataset and subset into smaller dataframe
-df = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_4_moderated_regression\Data_seminar.txt', delimiter='\t')
+df = pd.read_csv("data/data.txt", delimiter='\t')
 
 dataframe=df[['age', 'subject', 'WMf', 'gff']]
 

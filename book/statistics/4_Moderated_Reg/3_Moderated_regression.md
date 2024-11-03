@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Moderated Regression
+# 4.4 Moderated Regression
 
 Moderated regression is given by the equation:
 
@@ -47,8 +47,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the dataset and subset into smaller dataframe
-df = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_4_moderated_regression\Data_seminar.txt', delimiter='\t')
-
+df = pd.read_csv("data/data.txt", delimiter='\t')
 dataframe=df[['age', 'subject', 'WMf', 'gff']]
 
 #centering the variables like before
@@ -64,7 +63,7 @@ model_interaction = smf.ols(formula='gff ~ WMf_c + age_c + interac_age_WMf', dat
 
 print(model_interaction.summary())
 ```
-**What does the output Tell Me?**
+**What does the output tell me?**
 1. The variables `WMf`, `age`, and their interaction term jointly explain 24.3% of the variance in `gff`.
 2. Since the model without the interaction term explained 24% of the variance, we conclude that adding the interaction term results in a relatively small increase in explained variance: $24.3\% - 24\% = 0.3\%$ in `gff`.
 

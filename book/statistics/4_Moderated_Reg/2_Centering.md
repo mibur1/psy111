@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Centering predictors
+# 4.3 Centering predictors
 Sure! Here it is with the LaTeX syntax included:
 
 As discussed in the lecture, it is common practice to center predictors in multiple regression around their mean to obtain a meaningful intercept $b_0$. We can manually do this by subtracting the mean of each variable from their raw values.
@@ -23,7 +23,7 @@ We will create a copy of the existing DataFrame and add our new centered variabl
 import pandas as pd
 
 # Load the dataset and subset into a smaller dataframe
-df = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_4_moderated_regression\Data_seminar.txt', delimiter='\t')
+df = pd.read_csv("data/data.txt", delimiter='\t')
 
 dataframe=df[['age', 'subject', 'WMf', 'gff']]
 
