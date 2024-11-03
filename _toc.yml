@@ -19,6 +19,8 @@ parts:
         - file: book/introduction/2_Intro_1/3_Collections
         - file: book/introduction/2_Intro_1/4_Control flow
         - file: book/introduction/2_Intro_1/5_Exercises
+        - file: book/introduction/2_Intro_1/6_More_control_flow
+        - file: book/introduction/2_Intro_1/7_Exercises_2
     - file: book/introduction/3_Intro_2/0_Introduction
       sections:
         - file: book/introduction/3_Intro_2/1_Everything_is_an_object
