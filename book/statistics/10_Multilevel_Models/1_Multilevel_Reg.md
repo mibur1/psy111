@@ -137,7 +137,15 @@ model2_fit = model2.fit(method="lbfgs")
 print(model2_fit.summary())
 ```
 
-From the above result, we conclude the average relationship between `Days` and `Reaction` to be X.XXXX, indicating the fixed slope across individuals. More specifically, this coefficient can be interpreted as the expected increase in  `Reaction` across all individuals (`Subject`) provided a 1-unit increase in `Days`. The variance of the random intercept is X.XXXX and the Level-1 residual variance is X.XXXX. 
+Lets look at this output row for row:
+
+- `Intercept`: The intercept (251.405) represents the estimated average reaction time at Day 0, across all subjects. This is the baseline level of Reaction when `Days = 0`. 
+The z-value, which calculated by dividing the coefficient by the standard error, indicates that the intercept is significantly different from zero (p = 0.000).
+- `Days`: The average relationship (slope) between `Days` and `Reaction` is 10.467. The coefficient for Days (10.467) indicates that, on average, for each additional day, 
+the reaction time increases by approximately 10.47ms. This suggests a positive relationship between `Days` and `Reaction`, meaning reaction times tend to increase as the days progress.
+The high z-value (13.015) and low p-value (0.000) confirm that this effect is statistically significant.
+- `Group Var`: The variance of the random intercept is 1378.232. This value indicates how much individual subjects vary in their average reaction times at `Days = 0`. 
+A higher variance suggests greater variability among subjects’ intercepts, meaning individual differences play a significant role in determining reaction times.
 
 ### Model 3 - The random intercept and random slope model
 
@@ -153,4 +161,27 @@ model3_fit = model3.fit(method="lbfgs")
 print(model3_fit.summary())
 ```
 
-The variance of the random slope across indiviuals is X.XXXX, indicated by `Days Var` in the summary of results.  
+In addition to the coefficients we got from the second model, we get `Group x Days Cov` and `Days Var`. For the interpretation of the other coefficients, please refer to explanation 
+below the output of the second model. 
+
+- `Days Var`: The coefficient (35.072) represents the variance of the random slopes for the `Days` variable across `Subject`.
+This means that the effect of Days on Reaction (i.e., how much reaction time increases with each additional day) varies between individuals. 
+A higher variance indicates more variability among individuals in how their reaction times change over days.
+For example, some subjects may have a steeper increase in reaction time over days, while others may have a slower or negligible increase. 
+This variance tells us that the effect of Days is not uniform across all subjects.
+- `Group x Days Cov`: The coefficient (9.605) describes the covariance between the random intercept and the random slope for `Days`.
+A positive covariance here indicates that subjects with higher baseline reaction times (intercepts) 
+also tend to have larger increases in reaction time over days (steeper slopes). 
+Conversely, if this value were negative, it would imply that subjects with higher baseline reaction times 
+might have a smaller increase in reaction time over days.
+This covariance is an important part of modeling individual differences because it shows how the initial reaction time (intercept) 
+relates to the rate of change (slope) for each subject.
+
+```{admonition} Intercept-Slope Correlations - Watch Out!
+:class: attention
+
+neg slope + pos cor = less steep slope with increased int
+
+pos slope + pos cor = steeper slope with increased int
+```
+
