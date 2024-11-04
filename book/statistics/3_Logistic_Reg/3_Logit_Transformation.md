@@ -34,7 +34,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 
 # Load the data
-data = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_3_logistic_regression\FieldDisplayRules.dat', delimiter='\t')
+data = pd.read_csv("data/data.dat", delimiter='\t')
 
 # Define X and y (age and target variable 'display')
 X = data[['age']]

@@ -12,4 +12,13 @@ kernelspec:
   name: python3
 ---
 
-# Moderated Regression
+# 4.1 Moderated Regression
+
+In previous lessons, we covered categorical regression, including methods for incorporating categorical variables, such as gender (male/female) or genotype types. Last week, we examined logistic regression for dichotomous dependent variables (e.g., whether a tumor is malignant or not). In this session, we’ll shift our focus back to quantitative variables as we introduce moderated regression. Note that while moderated regression can also apply to qualitative dependent variables, today’s session will concentrate solely on quantitative outcomes.
+
+The outline:
+
+- dataset
+- Centering predictors
+- Moderated regression
+- Exercises

@@ -26,7 +26,7 @@ import pandas as pd
 
 #importing the dataset
 #\t because columns would be interpreted wrong
-data=pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_3_logistic_regression\FieldDisplayRules.dat', delimiter='\t')
+data = pd.read_csv("data/data.dat", delimiter='\t')
 
 #reshape the data
 X = data['age'].values.reshape(-1, 1)
