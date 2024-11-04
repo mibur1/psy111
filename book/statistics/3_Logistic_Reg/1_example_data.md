@@ -31,7 +31,7 @@ First, we will import the necessary libraries and then attempt to plot the data 
 ```{code-cell}
 import pandas as pd
 #\t because columns would be interpreted wrong
-data=pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_3_logistic_regression\FieldDisplayRules.dat', delimiter='\t')
+data = pd.read_csv("data/data.dat", delimiter='\t')
 print(data)
 
 ```

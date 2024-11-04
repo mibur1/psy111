@@ -1,0 +1,22 @@
+[{
+    "question": " Which combination of variables shows the largest moderation effect on the outcome variable?",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "code": "anxiety and social_support at level 1",
+            "correct": false
+        },
+        {
+            "code": "anxiety and social_support at level 2",
+            "correct": false
+        },
+        {
+            "code": "anxiety and social_support at level 3",
+            "correct": true
+        },
+        {
+            "code": "No levels of social_support show a moderation effect with anxiety",
+            "correct": false
+        }
+    ]
+}]
