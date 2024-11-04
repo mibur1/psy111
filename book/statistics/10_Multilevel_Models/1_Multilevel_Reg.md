@@ -100,15 +100,18 @@ There is no predictor in the unconditional model. Here, we only estimate the int
 
 ```{code-cell}
 model1 = smf.mixedlm("Reaction ~ 1", data, groups=data["Subject"])
-model1_fit = model1.fit(method="lbfgs")
+model1_fit = model1.fit(method="bfgs")
 print(model1_fit.summary())
 ```
 
-The results indicate:
+In the model summary we get two coefficients:
 
-- Fixed Effects: The average intercept of `Reaction` is X.XXXX, indicated by the `Intercept` value displayed in the output summary. p = .XXXX indicates that this mean is significantly different from 0.
+- `Intercept`: The intercept (298.508) represents the estimated average reaction time at Day 0, across all subjects. This is the baseline level of Reaction when `Days = 0`. 
+As indicated by the p-value, the intercept is significantly different from zero (p = 0.000). This is the **fixed effect**.
+- `Group Var`: The variance of the random intercept is 1278.324. This value indicates how much individual subjects vary in their average reaction times at `Days = 0`. This is the **random effect.
 
-- Random Effects: 
+
+
 
 #### Optional
 
@@ -121,9 +124,11 @@ def get_icc(results):
     
     return icc.values[0, 0]
 
-icc = get_icc(results)
+icc = get_icc(model1_fit)
 print(icc)
 ```
+
+The ICC of 0.3949 indicates that 39.49% of the variance in `Reaction` is due to inter-individual differences.
 
 ### Model 2 - The random intercept model
 
@@ -133,19 +138,19 @@ In the second model, we add the variable `Days` as predictor for `Reaction`. By 
 
 ```{code-cell}
 model2 = smf.mixedlm("Reaction ~ Days", data, groups=data["Subject"])
-model2_fit = model2.fit(method="lbfgs")
+model2_fit = model2.fit(method="bfgs")
 print(model2_fit.summary())
 ```
 
 Lets look at this output row for row:
 
 - `Intercept`: The intercept (251.405) represents the estimated average reaction time at Day 0, across all subjects. This is the baseline level of Reaction when `Days = 0`. 
-The z-value, which calculated by dividing the coefficient by the standard error, indicates that the intercept is significantly different from zero (p = 0.000).
+The z-value, which calculated by dividing the coefficient by the standard error, indicates that the intercept is significantly different from zero (p = 0.000). This interpretation is similar to the one from the null model.
 - `Days`: The average relationship (slope) between `Days` and `Reaction` is 10.467. The coefficient for Days (10.467) indicates that, on average, for each additional day, 
 the reaction time increases by approximately 10.47ms. This suggests a positive relationship between `Days` and `Reaction`, meaning reaction times tend to increase as the days progress.
 The high z-value (13.015) and low p-value (0.000) confirm that this effect is statistically significant.
 - `Group Var`: The variance of the random intercept is 1378.232. This value indicates how much individual subjects vary in their average reaction times at `Days = 0`. 
-A higher variance suggests greater variability among subjects’ intercepts, meaning individual differences play a significant role in determining reaction times.
+A higher variance suggests greater variability among subjects’ intercepts, meaning individual differences play a significant role in determining reaction times. Again, this interpretation is equivalent to the one from the null model.
 
 ### Model 3 - The random intercept and random slope model
 
@@ -157,7 +162,7 @@ Model 3 includes the `Days` predictor at Level-1, a random intercept and a rando
 
 ```{code-cell}
 model3 = smf.mixedlm("Reaction ~ Days", data, groups=data["Subject"], re_formula="~Days")
-model3_fit = model3.fit(method="lbfgs")
+model3_fit = model3.fit(method="bfgs")
 print(model3_fit.summary())
 ```
 
@@ -180,8 +185,13 @@ relates to the rate of change (slope) for each subject.
 ```{admonition} Intercept-Slope Correlations - Watch Out!
 :class: attention
 
-neg slope + pos cor = less steep slope with increased int
+In our example we interpreted the correlation between intercept and slope with saying that individuals with larger intercepts also have steeper slopes.
+However, it would be more accurate to say that individuals with **more positive** intercepts have **more positive** slopes. 
+Think of the following cases:
 
-pos slope + pos cor = steeper slope with increased int
+(1) A **negative** slope and positive correlation between slope and intercept = More positve intecept associated with more positive (i.e. **less** steep) slopes
+
+(2) A **positive** slope and positive correlation between slope and intercept = More positve intecept associated with more positive (i.e. **steeper**) slopes
+
 ```
 
