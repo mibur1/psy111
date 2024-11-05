@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 8.2 Centered Predictors
+# 12.2 Centered Predictors
 
 ## Polynomial Regression and Meaningful Zero
 1. Polynomial Regression: In polynomial regression, you’re not just fitting a linear term (like x) but also higher-order terms like $x^2, x^3$, etc.
@@ -49,8 +49,8 @@ from sklearn.preprocessing import PolynomialFeatures
 
 # Simulate dataset (again)
 np.random.seed(69)  # For reproducibility
-learn = np.linspace(0, 13, 500)  
-grade = -5 * (learn - 6.5)**2 + 100 + np.random.normal(0, 10, learn.shape) 
+learn = np.linspace(0, 13, 500)
+grade = -5 * (learn - 6.5)**2 + 100 + np.random.normal(0, 10, learn.shape)
 data = pd.DataFrame({'learn': learn, 'grade': grade})
 data = data[data['learn'] <= 8]
 
@@ -62,11 +62,11 @@ learn = np.array(data['learn_centered'])
 grade = np.array(data['grade'])
 ```
 
-Lets refit and plot our quadratic model. 
+Lets refit and plot our quadratic model.
 
 ```{code-cell}
-polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)  
-learn_p2 = polynomial_features_p2.fit_transform(learn.reshape(-1, 1)) 
+polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
+learn_p2 = polynomial_features_p2.fit_transform(learn.reshape(-1, 1))
 
 quadratic_model = sm.OLS(grade, learn_p2).fit()
 quadratic_fit = quadratic_model.predict(learn_p2)

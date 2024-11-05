@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 1: Introduction
+# Introduction
 
 This first lecture is mainly a review of the concepts covered in Basic Statistics (taught in Bachelor programmes). Disclosure: I use advanced large language models to help me convert my slides into continuous text for the following chapters more quickly. Please note that the generated text has been thoroughly revised by me, and that the text has been generated solely on the basis of keywords entered from my lecture slides. Let's start!
 

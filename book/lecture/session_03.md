@@ -12,4 +12,4 @@ kernelspec:
   name: python3
 ---
 
-# 3: Logistic Regression
+# Logistic Regression

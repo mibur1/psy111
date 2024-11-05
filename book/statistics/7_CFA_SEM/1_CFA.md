@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# 7.1 CFA in Python
+# 11.1 CFA in Python
 
-To compute an CFA in Python we will use the `semopy` package. 
+To compute an CFA in Python we will use the `semopy` package.
 
 ## Example dataset
 
@@ -25,7 +25,7 @@ Today, we use the `HolzingerSwineford1939` dataset. The dataset contains mental 
 - x7, x8 and x9 are indicators for speed ability
 
 ```{code-cell}
-# Load and inspect the dataset 
+# Load and inspect the dataset
 data = semopy.examples.holzinger39.get_data()
 print(data)
 ```
@@ -57,13 +57,13 @@ print(stats.T)
 
 The first output shows the model estimates, while the second one shows fit measures for the fitted model.
 
-### Model estimates 
+### Model estimates
 
 - Loadings: The `Estimate` collumn for the first 9 lines represents the loadings of the 9 measured variables on the 3 factors. You may notice that one loading per factor is set to 1. This is done to identify the factor (see lecture for details). The `Std. Err` collumn shows the uncertainty associated with the estimate. The `z-value` represents how many standard deviation the estimate is away from zero. The last column `p-value` contains the p-value (probability) for testing the null hypothesis that the parameter equals zero in the population.
 
 - Variances: Lines 9 (speed  ~~   speed), 12 and 13 show the variances of the respective latent factors.
 
-- Covariances: The lines 10 (speed  ~~    text), 11, 14 show the covariances, e.g. the associations between the latent variables. Since all estimates are positive and significantly different from zero (see `p-value`), we can infer that the latent factors are positively associated with each other. 
+- Covariances: The lines 10 (speed  ~~    text), 11, 14 show the covariances, e.g. the associations between the latent variables. Since all estimates are positive and significantly different from zero (see `p-value`), we can infer that the latent factors are positively associated with each other.
 
 - Residual Variances: The last 9 lines show the residual variances of the measured variables. Remember, in CFA/SEM we aim at finding latent variables that explain variance in measured variables. However, most of the times, the latent variables can't account for 100% of the variance in a measured variable. In fact, as all residual variances are significantly different from zero (see `p-value`), we can infer that there's is still a significant amount of variance in each measured variable that is not explained by the respective latent factor.
 
@@ -83,11 +83,11 @@ To assess model fit, `semopy` provides us with a wide range of fit measures. Let
 
 - `TLI`: Similar to CFI, TLI also compares your model to the baseline model, penalizing for model complexity. A value close to 1 indicates that your user model has a better fit than the baseline model. TLI of 0.896 is reasonably good, though slightly below the preferred threshold of 0.95.
 
-- `RMSEA`: The RMSEA can be seen as a rescalled version of the $\chi^2$-Test which is not dependent on sample size (as the $\chi^2$-Test is). RMSEA value of <0.08 indicate good fit. Here, RMSEA =  0.092 indicates a mediocre fit. 
+- `RMSEA`: The RMSEA can be seen as a rescalled version of the $\chi^2$-Test which is not dependent on sample size (as the $\chi^2$-Test is). RMSEA value of <0.08 indicate good fit. Here, RMSEA =  0.092 indicates a mediocre fit.
 
 - `LogLik`: These are used to compute information criteria. They represent the likelihood of the model given the data.
 
-- `AIC`: A measure of the relative quality of the statistical model for a given set of data. Lower AIC values indicate a better model. This statistic can be only used for comparison but not as an absolute criterion. 
+- `AIC`: A measure of the relative quality of the statistical model for a given set of data. Lower AIC values indicate a better model. This statistic can be only used for comparison but not as an absolute criterion.
 
 - `BIC`:  Similar to AIC, but includes a penalty for the number of parameters in the model. Lower BIC values indicate a better model. The sample-size adjusted BIC is more appropriate for smaller sample sizes. Also similar to the AIC, the BIC is only used for model comparison.
 
@@ -146,6 +146,6 @@ print(stats.T)
 print(stats2.T)
 ```
 
-Let's compare model fits by looking at AIC and BIC. As stated above a **lower value** indicates a **better** fit (for AIC and BIC). Here, AIC and BIC both favor the simpler model that assumes indepence between the latent variables. 
+Let's compare model fits by looking at AIC and BIC. As stated above a **lower value** indicates a **better** fit (for AIC and BIC). Here, AIC and BIC both favor the simpler model that assumes indepence between the latent variables.
 
 

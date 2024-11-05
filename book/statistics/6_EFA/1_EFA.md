@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# 6.1 EFA in Python
+# 10.1 EFA in Python
 
-To compute an EFA in Python we will use the `factor_analyzer` package. 
+To compute an EFA in Python we will use the `factor_analyzer` package.
 
 ## Example dataset
 

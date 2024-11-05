@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.4 Logit Transfrom
+# 7.3 Logit Transfrom
 To convert the probabilities from the previous output into a log scale, we apply the formula:
 
 $$
