@@ -73,7 +73,7 @@ else:
 
 Now, both `weather == "sunny"` and `time == "enough"` must be true to go for a run. If either one is false, the code will suggest staying home.
 
-There are times when you want to act if either of two conditions is true. For instance, if you’ll go out if it’s either sunny or warm, you can use or in the conditional:
+There are times when you want to act if either of two conditions is true. For instance, if you’ll go out if it’s either sunny or warm, you can use `or` in the conditional:
 
 ```{code-cell}
 weather = "cloudy"
@@ -141,7 +141,7 @@ This loop goes page by page without us having to write each page number manually
 
 ### Counting loops: Doing something a fixed number of times
 
-Sometimes, we just want to do something a set number of times. In Python, we can use range() to count for us, so we don’t have to write each number ourselves. It’s like setting a timer for an exercise, where you know you’ll do an activity for 10 seconds or repeat it 5 times.
+Sometimes, we just want to do something a set number of times. In Python, we can use `range()` to count for us, so we don’t have to write each number ourselves. It’s like setting a timer for an exercise, where you know you’ll do an activity for 10 seconds or repeat it 5 times.
 
 ```{code-cell}
 for i in range(5):

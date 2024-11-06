@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 4.3 Centering predictors
+# 8.2 Centering predictors
 Sure! Here it is with the LaTeX syntax included:
 
 As discussed in the lecture, it is common practice to center predictors in multiple regression around their mean to obtain a meaningful intercept $b_0$. We can manually do this by subtracting the mean of each variable from their raw values.
@@ -28,7 +28,7 @@ df = pd.read_csv("data/data.txt", delimiter='\t')
 dataframe=df[['age', 'subject', 'WMf', 'gff']]
 
 # copy of the data frame
-dat_cen= dataframe.copy() #by using.copy() you ensure, that you are working with a copy and avoid any warnings 
+dat_cen= dataframe.copy() #by using.copy() you ensure, that you are working with a copy and avoid any warnings
 
 # centering predictors by substracting their mean
 dat_cen['age_c'] = dataframe['age'] - df['age'].mean()
@@ -57,7 +57,7 @@ import statsmodels.formula.api as smf
 model_noncentered = smf.ols(formula='gff ~ WMf + age', data=dat_cen).fit()
 print(model_noncentered.summary())
 ```
-**Centered Predictors** 
+**Centered Predictors**
 
 After that, we will use our centered variables for the same regression analysis. This will allow us to compare the results with those obtained from the non-centered predictors.
 

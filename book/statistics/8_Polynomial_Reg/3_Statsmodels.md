@@ -13,13 +13,13 @@ kernelspec:
 ---
 
 
-# 8.3 `statsmodels` sum'ed up
+# 12.3 `statsmodels` sum'ed up
 
 ## Create features
 
 ```{code-cell}
-polynomial_features = PolynomialFeatures(degree=order, include_bias=True) 
-x_p = polynomial_features.fit_transform(x.reshape(-1, 1)) 
+polynomial_features = PolynomialFeatures(degree=order, include_bias=True)
+x_p = polynomial_features.fit_transform(x.reshape(-1, 1))
 ```
 - `degree` specifies the order of the polynomial.
 - `include_bias = True` adds an intercept.

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 4.4 Moderated Regression
+# 8.3 Moderated Regression
 
 Moderated regression is given by the equation:
 

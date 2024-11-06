@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# 7.2 SEM in Python
+# 11.2 SEM in Python
 
-To compute an SEM in Python we will use the `semopy` package again. 
+To compute an SEM in Python we will use the `semopy` package again.
 
 ## Example dataset
 
@@ -23,7 +23,7 @@ Also similar to before, we will use the `HolzingerSwineford1939` dataset.
 ```{code-cell}
 # Load the package
 import semopy
-# Load and inspect the dataset 
+# Load and inspect the dataset
 data = semopy.examples.holzinger39.get_data()
 ```
 
@@ -60,7 +60,7 @@ print(stats.T)
 
 The first output shows the model estimates, while the second one shows fit measures for the fitted model.
 
-### Model estimates 
+### Model estimates
 
 For a guide on how to interpret loadings, (co)variances and residuals, please refer to the previous chapter.
 

@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 4.2 Dataset
+# 8.1 Dataset
 The data we'll be working with today may look familiar, as we've already used it in previous sessions. However, our focus will now shift to a new research question that is specifically suited for moderated regression analysis.
 
 **Research Question**: Investigate whether the association between fluid intelligence (`gff`) and figural working memory (`WMf`) is moderated by age (`age`).
@@ -20,7 +20,7 @@ The data we'll be working with today may look familiar, as we've already used it
 Before we begin the regression analysis, we'll perform basic descriptive analyses and visualize the variables.
 
 Here, we’ll try a new approach by first subsetting the variables into a smaller data frame, although this step isn’t strictly necessary for the analysis.
-   
+
 ```{code-cell}
 import pandas as pd
 

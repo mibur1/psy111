@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.3 Logistic Regression
+# 7.2 Logistic Regression
 
 Next, we will use logistic regression, which naturally keeps predicted probabilities between 0 and 1, making it more suitable for our research question.
 
@@ -53,7 +53,7 @@ We can now have a look at the plot.
 x_range = np.linspace(X.min(), X.max(), 100).reshape(-1, 1)
 
 # calculate the predictions for positives
-y_prob = model.predict_proba(x_range)[:, 1]  
+y_prob = model.predict_proba(x_range)[:, 1]
 
 # Plot the results
 plt.figure(figsize=(10, 6))
@@ -84,7 +84,7 @@ print(model.predict(X))
 print(f"Predicted accuarcy:{model.score(X, y)}")
 
 ```
-The first array shows the predicted output, with 77.1% accuracy. For a more detailed evaluation, we will use the confusion matrix. 
+The first array shows the predicted output, with 77.1% accuracy. For a more detailed evaluation, we will use the confusion matrix.
 
 **Confusion matrix**
 
