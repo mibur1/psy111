@@ -4,6 +4,7 @@ numpy
 pandas
 matplotlib
 seaborn
+nilearn
 
 # For the statistics sessions
 statsmodels

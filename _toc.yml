@@ -19,6 +19,8 @@ parts:
         - file: book/introduction/2_Intro_1/3_Collections
         - file: book/introduction/2_Intro_1/4_Control flow
         - file: book/introduction/2_Intro_1/5_Exercises
+        - file: book/introduction/2_Intro_1/6_More_control_flow
+        - file: book/introduction/2_Intro_1/7_Exercises_2
     - file: book/introduction/3_Intro_2/0_Introduction
       sections:
         - file: book/introduction/3_Intro_2/1_Everything_is_an_object
@@ -54,6 +56,11 @@ parts:
         - file: book/statistics/3_Logistic_Reg/3_Logit_Transform
         - file: book/statistics/3_Logistic_Reg/4_Exercises
     - file: book/statistics/4_Moderated_Reg/0_Introduction
+      sections:
+        - file: book/statistics/4_Moderated_Reg/1_dataset
+        - file: book/statistics/4_Moderated_Reg/2_Centering
+        - file: book/statistics/4_Moderated_Reg/3_Moderated_regression
+        - file: book/statistics/4_Moderated_Reg/4_Exercises
     - file: book/statistics/5_Path_Modelling/0_Introduction
     - file: book/statistics/6_EFA/0_Introduction
       sections:
@@ -90,6 +97,7 @@ parts:
     - file: book/solutions/solutions
       sections:
         - file: book/solutions/1_Intro_1
+        - file: book/solutions/1_Intro_1_2
         - file: book/solutions/2_Intro_2
         - file: book/solutions/3_Scientific_comp
     - file: book/misc/references

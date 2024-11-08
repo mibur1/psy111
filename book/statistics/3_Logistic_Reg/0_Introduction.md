@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.1 Logistic Regression
+# Logistic Regression
 
 Today, we will focus on logistic regression. As you may know from previous lectures, linear regression is not suitable for predicting binary categorical dependent variables (such as _symptom present/absent_ or _task correct/incorrect_) from a quantitative independent variable. To handle this, we use logistic regression.
 

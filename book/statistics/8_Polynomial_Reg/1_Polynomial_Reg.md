@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 8.1 Polynomial Regression in Python
+# 12.1 Polynomial Regression in Python
 
 To compute an Polynomial Regression in Python we will use the `statsmodels` package and the `sklearn` package.
 

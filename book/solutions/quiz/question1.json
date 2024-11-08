@@ -1,0 +1,22 @@
+[{
+    "question": "Based on the p-values, which of the following terms is NOT statistically significant?",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "code": "C(social_support)[T.1]",
+            "correct": false
+        },
+        {
+            "code": "anxiety_centered",
+            "correct": true
+        },
+        {
+            "code": "C(social_support)[T.2]",
+            "correct": false
+        },
+        {
+            "code": "anxiety_centered:C(social_support)[T.3]",
+            "correct": false
+        }
+    ]
+}]

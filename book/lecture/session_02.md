@@ -12,4 +12,4 @@ kernelspec:
   name: python3
 ---
 
-# 2: Categorical Regression
+# Categorical Regression

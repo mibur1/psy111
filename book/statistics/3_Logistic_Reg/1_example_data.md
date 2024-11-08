@@ -12,11 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# 3.2 The example dataset
+# 7.1 The example dataset
 
 For logistic regression, we will use the `LogisticRegression()` function from the `sklearn` library. Although there are several other packages and functions available for logistic regression, this one is particularly convenient and widely used.
 
-To demonstrate the advantage of logistic regression over linear regression for dichotomous dependent variables and quantitative independent variables, we will explore its application in this context. Unlike linear regression, logistic regression is specifically designed to handle binary outcomes, making it a more appropriate model for predicting probabilities of categorical events. 
+To demonstrate the advantage of logistic regression over linear regression for dichotomous dependent variables and quantitative independent variables, we will explore its application in this context. Unlike linear regression, logistic regression is specifically designed to handle binary outcomes, making it a more appropriate model for predicting probabilities of categorical events.
 **Research Aim**: Using children's age and theory of mind ability to predict whether they understand display rules or not.
 
 **Context**: In developmental cognitive psychology, theory of mind is defined as the ability to understand the intentions, beliefs, and emotions of others. Display rules refer to social or cultural norms that guide how individuals should express their emotions in different contexts.
@@ -31,7 +31,7 @@ First, we will import the necessary libraries and then attempt to plot the data 
 ```{code-cell}
 import pandas as pd
 #\t because columns would be interpreted wrong
-data=pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_3_logistic_regression\FieldDisplayRules.dat', delimiter='\t')
+data = pd.read_csv("data/data.dat", delimiter='\t')
 print(data)
 
 ```

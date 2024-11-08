@@ -195,3 +195,7 @@ plt.show()
 ```
 
 As you can see, one of Seaborn’s strengths is its ability to create visuals that are both aesthetically pleasing and highly informative. For most datasets, Seaborn can generate publication-quality figures that are well-suited for reports or scientific papers. While Seaborn excels at creating polished visuals with minimal effort, Matplotlib’s strength lies in its high level of customizability. For more complex or specialized visualizations, the flexibility of Matplotlib allows for detailed adjustments that Seaborn’s default settings may not easily accommodate. Having both tools at your disposal means you can choose between simplicity and full control, depending on the needs of your analysis.
+
+## More plots
+
+Apart from the [matplotlib documentation](https://matplotlib.org/stable/plot_types/index.html) and the [seaborn documentation](https://seaborn.pydata.org/examples/index.html), the [Python graph gallery](https://python-graph-gallery.com/) is a great resource to dive into all kinds of beautiful plots you can do with Python. Have a look around and explore!
