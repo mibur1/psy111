@@ -28,14 +28,26 @@ between will to live (Y) and symptom severity (X), meaning the
 more severe ones symptoms are the more someone ones to live (that sounds
 a bit suspicious, doesn’t it?).
 
-INSERT PICTURE1
+```{figure} figures/multilevel_reg1.jpg
+---
+width: 60%
+name: multilevel_reg1
+---
+Adapted from [Quant Psych (Youtube)](https://www.youtube.com/watch?v=5tOifM51ZOk)
+```
 
 However, if we color-code the data points to see from which
 of the three hospitals we see that within each cluster the relationship
 is (as you might expect) negative, meaning with
 increasing symptom severity the will to live decreases.
 
-INSERT PICTURE2
+```{figure} figures/multilevel_reg2.jpg
+---
+width: 60%
+name: multilevel_reg2
+---
+Adapted from [Quant Psych (Youtube)](https://www.youtube.com/watch?v=5tOifM51ZOk)
+```
 
 If we would not include the clustering variable ’hospital’ we’d be misled by
 the data because we didn’t account for the fact that the data points within

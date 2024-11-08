@@ -76,6 +76,8 @@ parts:
     - file: book/statistics/10_Multilevel_Models/0_Introduction
       sections:
         - file: book/statistics/10_Multilevel_Models/1_Multilevel_Reg
+        - file: book/statistics/10_Multilevel_Models/2_Statsmodels
+        - file: book/statistics/10_Multilevel_Models/3_Exercises
 - caption: Multivariate Statistics Lecture
   chapters:
     - file: book/lecture/0_overview

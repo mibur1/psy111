@@ -110,9 +110,6 @@ In the model summary we get two coefficients:
 As indicated by the p-value, the intercept is significantly different from zero (p = 0.000). This is the **fixed effect**.
 - `Group Var`: The variance of the random intercept is 1278.324. This value indicates how much individual subjects vary in their average reaction times at `Days = 0`. This is the **random effect.
 
-
-
-
 #### Optional
 
 Unfourtunately, there is no function to get the ICC. However, we can quickly write our own ICC function. 
