@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 
-# 11.3 `semopy` sum'ed up
+# 11.3 Summary
 
 ## Specify a model
 

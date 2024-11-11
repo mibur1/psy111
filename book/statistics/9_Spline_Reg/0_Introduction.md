@@ -50,7 +50,7 @@ $$
 
 If $x \leq c$, the upper polynomial is fitted, otherwise the lower one is fitted. Note the some parameters of the second polynomial ($b_{02}, b_{12}, b_{22}$) have to be constrained to make the function continous and smooth. Please refer to chapter X for details.
 
-```{admonition} Use your own brain!
+```{admonition} Learning break
 :class: note
 
 Stepwise regression can be refered to as regression splines (piecewise polynoimals) of the degree...?

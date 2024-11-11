@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# Confirmatory Factor Analysis (CFA) & Structural Equation Modeling (SEM)
+# CFA & SEM
 
-Confirmatory Factor Analysis (CFA) is used when to goal is determine a limited number of latent variables from a larger number of measured variables. In comparison to EFA, where we had no underlying assumptions about the factor structure (i.e., we had no hypothesis about (1) how many factors we need and (2) no hypothesis about which variables load onto which factor). In CFA/SEM we have to specify how many factors we want and also which variables load onto which factor(s). Furthermore, we can also specfiy associations between factors.
+Confirmatory Factor Analysis (CFA) and Structural Equation Modeling (SEM) are used to test hypotheses about the relationships between observed variables and a smaller number of underlying latent variables. Unlike Exploratory Factor Analysis (EFA), which is used when there are no prior assumptions about the factor structure—meaning there is no predefined hypothesis about (1) the number of factors needed or (2) which variables load onto which factors—CFA and SEM require the researcher to specify both the number of factors and the relationships between observed variables and these factors. Additionally, CFA and SEM allow for modeling associations between the latent factors themselves, providing a more structured approach to testing theoretical models.
 
 ## Steps of CFA/SEM
 
