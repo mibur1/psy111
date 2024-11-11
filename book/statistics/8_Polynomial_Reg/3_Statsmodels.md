@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 
-# 12.3 `statsmodels` sum'ed up
+# 8.3 `statsmodels` sum'ed up
 
 ## Create features
 

@@ -12,3 +12,4 @@ pingouin
 factor_analyzer
 ucimlrepo
 semopy
+ISLP
