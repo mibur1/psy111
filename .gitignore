@@ -4,4 +4,4 @@
 
 # Folders
 _build/
-
+.conda/
