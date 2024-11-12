@@ -80,6 +80,11 @@ parts:
         - file: book/statistics/8_Polynomial_Reg/3_Statsmodels
         - file: book/statistics/8_Polynomial_Reg/4_Exercises
     - file: book/statistics/9_Spline_Reg/0_Introduction
+      sections:
+        - file: book/statistics/9_Spline_Reg/1_Stepwise_Functions
+        - file: book/statistics/9_Spline_Reg/2_Regression_Splines
+        - file: book/statistics/9_Spline_Reg/3_Statsmodels_and_patsy
+        - file: book/statistics/9_Spline_Reg/4_Exercises
     - file: book/statistics/10_Multilevel_Models/0_Introduction
       sections:
         - file: book/statistics/10_Multilevel_Models/1_Multilevel_Reg
