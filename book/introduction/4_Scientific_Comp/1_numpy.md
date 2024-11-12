@@ -34,7 +34,7 @@ The most important built-in data strucutures are:
 
 ## Arrays
 
-In fields like neuroscience datasets can be large and often have more than two dimensions. For example, think of an fMRI scan composed of individual voxels (cubes) in three-dimensional space. And naturally, if you obtained more than one fMRI scan over time, you might have this as a fourth dimension. In such cases, **n-dimensional arrays** are a good way of storing and handling your data, as they do so as a single object. In any case, arrays are *contiguious*, meaning they have no "holes" and *homogenous*, meaning they only consist of a single data type.
+In fields like neuroscience, datasets can be large and often have more than two dimensions. For example, think of an fMRI scan composed of individual voxels (cubes) in three-dimensional space. And naturally, if you obtained more than one fMRI scan over time, you might have this as a fourth dimension. In such cases, **n-dimensional arrays** are a good way of storing and handling your data, as they do so as a single object. In any case, arrays are *contiguious*, meaning they have no "holes" and *homogenous*, meaning they only consist of a single data type.
 
 ```{figure} ../../../_static/figures/cubes.png
 ---
@@ -50,7 +50,7 @@ To work with arrays, we will use the [NumPy](https://numpy.org/) library, which 
 import numpy as np
 ```
 
-The core data structure of numpy are n-dimension arrays called `ndarray`. We can create such an array from an existing list as follows:
+The core data structure of numpy are n-dimensional arrays called `ndarray`. We can create such an array from an existing list as follows:
 
 
 ```{code-cell}
@@ -79,10 +79,21 @@ print(my_array)
 print(f"Shape: {my_array.shape}")
 ```
 
-You can see that we created a two-dimensional array (you could also call it a matrix) of shape `(2,3)`, meaning the array has two rows and three columns. Alternatively, we can also create a new array from scratch and fill it with a specific value. Most commonly, this would be initializing an "empty" array containing only zeros:
+You can see that we created a two-dimensional array (you could also call it a matrix) of shape `(2,3)`, meaning the array has two rows and three columns. 
+
+We can also create a new array from scratch and fill it with a specific value. Often, this is done by initializing an "empty" array containing only zeros:
 
 ```{code-cell}
 my_array = np.zeros((4,5))
+print(my_array)
+print(f"Shape: {my_array.shape}")
+```
+
+However, in cases where 0 is a potential valid input, this can lead to hard to find errors. So an alternative would be to initialize an array filled with `np.nan` ("not a number") values. Because if you then add e.g., a single value to it, it is more obvious that the other values are still missing:
+
+```{code-cell}
+my_array = np.full((4,5), np.nan)
+my_array[1,2] = 1.0
 print(my_array)
 print(f"Shape: {my_array.shape}")
 ```
