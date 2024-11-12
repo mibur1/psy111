@@ -67,7 +67,7 @@ The first output shows the model estimates, while the second one shows fit measu
 
 - Residual Variances: The last 9 lines show the residual variances of the measured variables. Remember, in CFA/SEM we aim at finding latent variables that explain variance in measured variables. However, most of the times, the latent variables can't account for 100% of the variance in a measured variable. In fact, as all residual variances are significantly different from zero (see `p-value`), we can infer that there's is still a significant amount of variance in each measured variable that is not explained by the respective latent factor.
 
-```{admonition} Use your own brain!
+```{admonition} Learning break
 :class: note
 
 How can you calculate the z-value yourself?

@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 
-# 10.2 `statsmodels` sum'ed up
+# 10.2 Summary
 
 ## Create a and fit model
 

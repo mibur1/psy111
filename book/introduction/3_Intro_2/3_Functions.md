@@ -37,7 +37,9 @@ print(result)
 
 ### Arguments
 
-Python functions can have two different kinds of arguments: *positional* arguments, and *keyword* arguments. Positional arguments on the one hand are defined by their position whithin the round brackets and *must* be provided for the function to run without giving an error. In the previous example, both `a` and `b` are positional arguments and the function would not know what to do if any of them would be missing. Keyword arguments on the other hand are assigned a *default* value. This means that the function knows what to do even if the user does not explicitly provide a value for that argument. As an example, lets create a function that adds random gaussian noise to a given input `x:
+Python functions can have two different kinds of arguments: *positional* arguments, and *keyword* arguments. Positional arguments on the one hand are defined by their position whithin the round brackets and *must* be provided for the function to run without giving an error. In the previous example, both `a` and `b` are positional arguments and the function would not know what to do if any of them would be missing. Keyword arguments on the other hand are assigned a *default* value. This means that the function knows what to do even if the user does not explicitly provide a value for that argument. 
+
+As an example, let's create a function that adds random gaussian noise to a given input `x`:
 
 ```{code-cell}
 import random
@@ -65,7 +67,7 @@ def add_noise(x, mu=0, sd=1):
   return x + noise
 ```
 
-*Note:* So far you mostly saw comments whithin the code by using the # sign. Another way of commenting your code is to use three double parentheses `"""comment"""` as shown in the previous code snippet. This is useful if you need to provide larger portions of text like when documenting your functions. You can see one example of that in the `add_noise()` function, which clearly describes the input and output parameters of the function, making it easier to understand how to use the function.
+*Note:* So far, you have mostly seen comments within the code using the `#` sign. Another way to provide comments is by using triple double quotes `"""comment"""`, as shown in the previous code snippet. This approach is useful for providing larger portions of text, such as when documenting your functions. In the `add_noise()` function, you can see an example where the input and output parameters are clearly described, making it easier to understand how to use the function. This is also the official way of documenting functions and classes in Python, so it is recommended to follow this convention.
 
 If we now call this function by just providing a value for `x`it will still work as expected by using a mean of 0 and a standard deviation of 1 to calculate and add the noise.
 
@@ -95,4 +97,4 @@ However, the last example will produce a different result than the other ones! T
 
 ### Argument unpacking
 
-Another feature of Python is providing a function with an unspecified number of arguments by using `*args` and `**kwargs`. We will not cover this here, but please feel free to explore this topic on your own (e.g. [here](https://book.pythontips.com/en/latest/args_and_kwargs.html)).
+Another feature of Python is the ability to provide a function with an unspecified number of arguments by using `*args` and `**kwargs`. While we will not cover this topic here, I want to mention it for completeness. If you are interested or encounter it in practice, feel free to explore this topic on your own (e.g., [here](https://book.pythontips.com/en/latest/args_and_kwargs.html)).

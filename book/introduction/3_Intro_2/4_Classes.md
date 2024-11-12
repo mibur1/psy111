@@ -74,7 +74,7 @@ my_circle.area()
 
 ## Magic methods
 
-We came across the concept of magic methods like the `__init()__` method that runs every time we create an instance of an object. There are many other methods like this, and the key concept already is that they are usually called implicitly when a certain operation is applied to an object, even though it does not look like the operation and the magic method hav anything to do with each other. That's what makes them magic!🪄
+We came across the concept of magic methods like the `__init()__` method that runs every time we create an instance of an object. There are many other methods like this, and the key concept already is that they are usually called implicitly when a certain operation is applied to an object, even though it does not look like the operation and the magic method have anything to do with each other. That's what makes them magic! 🪄
 
 You are probably already tired of me saying "everything in Python is an object". However, you will now see one of the deeper implications this has. *All operators in Python are just cleverly disguised method calls*. That means even if we write something seemingly basic like `4 * 3`, Python will implicitly call a magic method on the first operant (the number 4 as an object of the integer class), with the second operand being passed as an argument. This might sound a bit confusing, but
 
