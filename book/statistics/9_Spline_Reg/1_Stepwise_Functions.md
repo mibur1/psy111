@@ -72,7 +72,7 @@ Note two things:
 
 ### Fit the model
 
-To fit the model we use the `statsmodels` function `GLM`. Let's call it `zero_deg_model` refering to zero-degree polynomial.
+To fit the model we use the `statsmodels` function `GLM`. Let's call it `zero_deg_model` refering to zero-order polynomial.
 
 ```{code-cell}
 # Fit the model
@@ -82,7 +82,7 @@ zero_deg_model = sm.GLM(df['wage'], transformed_x).fit()
 print(zero_deg_model.summary())
 ```
 
-This model is a categorical regression model (as shown in {doc}`book/statistics/2_Categorical_Reg/0_Introduction.md`), as we cut the age into four discrete category bins:
+This model is a categorical regression model, as we cut the age into four discrete category bins:
 
 - The average wage in bin 1 within the age range from 17.9 to 33.5 years equals
 to 94.16 thousand dollars per year.
@@ -98,6 +98,7 @@ In summary, the model suggests that wages vary with age, but the relationship is
 ### Plot the model
 
 ```{code-cell}
+# Plot the model
 plt.figure(figsize=(10, 6))
 xp = np.linspace(df['age'].min(), df['age'].max(), 100)
 transformed_xp = dmatrix("bs(xp, knots=(33.5, 49, 64.5), degree=0, include_intercept=False)",
@@ -107,7 +108,7 @@ pred = zero_deg_model.predict(transformed_xp)
 
 sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.5, label='Data')
 plt.plot(xp, pred, label='stepwise fit', color='red')
-plt.title("Stepwise (zero-degree) Fit")
+plt.title("Stepwise (zero-order) Fit")
 plt.xlabel("Age")
 plt.ylabel("Wage")
 plt.legend().remove()

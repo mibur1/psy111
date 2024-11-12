@@ -32,7 +32,7 @@ df = load_data('Wage')
 
 Similar to fitting a stepwise function, we first need to transform our predictor variable `age`. We use the `patsy` (loaded as `dmatrix`) to create the corresponding data matrix. 
 
-This time we know two knots (40 and 60) and first degree polynomial.
+This time we know two knots (40 and 60) and first-order polynomial.
 
 ### Preparation
 
@@ -62,6 +62,7 @@ Note, spline regression coefficients are not analogous to slope coefficients in 
 ### Plot the model
 
 ```{code-cell}
+# Plot the model
 plt.figure(figsize=(10, 6))
 xp = np.linspace(df['age'].min(), df['age'].max(), 100)
 transformed_xp = dmatrix("bs(xp, knots=(40,60), degree=1, include_intercept=False)",
@@ -71,7 +72,7 @@ pred = fir_deg_model.predict(transformed_xp)
 
 sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.5, label='Data')
 plt.plot(xp, pred, label='linear fit', color='red')
-plt.title("Linear (first-degree) Fit")
+plt.title("Linear (first-order) Fit")
 plt.xlabel("Age")
 plt.ylabel("Wage")
 plt.legend().remove()
