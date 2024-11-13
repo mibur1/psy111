@@ -78,22 +78,22 @@ add_noise(5)
 If you decide you need different noise with a standard deviation of 5, you can simply add this new value. As positional arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
 
 ```{code-cell}
-add_noise(5, sd=5)
+add_noise(5, sd=3)
 ```
 
-You can further use positional arguments by their name
+You can also specify all arguments (including the positional one) by name (in this case the order of `sd` and `mu` doesnt matter)
 
 ```{code-cell}
-add_noise(x=5, sd=5)
+add_noise(x=5, sd=3, mu=2)
 ```
 
-or without any name at all
+or not use any name at all
 
 ```{code-cell}
-add_noise(5, 5)
+add_noise(5, 3, 2)
 ```
 
-However, the last example will produce a different result than the other ones! This is because if no keywords are provided, Python will only be able to rely on the order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=5` and `sd=1` as per default.
+However, the last example is differnet compared to the the previous one! This is because if no keywords are provided, Python will only be able to rely on the default order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=2` and `sd=3` as defined in the function.
 
 ### Argument unpacking
 
