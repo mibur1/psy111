@@ -61,7 +61,7 @@ for r in range(1,10,2):
 
 ```
 
-Note that, as with the `len()` function, the end point of the `range()` function is exclusive, meaning it will create a sequence of numbers from 1 to 3. You can further also provide only a single number (like the length of a list) and use the numbers created by range as *indices* to index another variable:
+Note that, as with the `len()` function, the end point of the `range()` function is exclusive, meaning it will create a sequence of numbers from 0 to 3. You can further also provide only a single number (like the length of a list) and use the numbers created by range as *indices* to index another variable:
 
 ```{code-cell}
 my_list = ["apple", "banana", 3, 4]

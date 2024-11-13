@@ -58,8 +58,12 @@ dir(my_list)
 Here you can see, that the list object implements 11 different methods starting with `append`. All of these attributes and methods are available to you to access through the dot notation (e.g. `my_list.__class__` or `my_list.append()`).
 
 ```{code-cell}
-print(my_list.__class__)
-print(my_list.append(4))
+my_list.__class__
+```
+
+```{code-cell}
+my_list.append(4)
+my_list
 ```
 
 ```{admonition} Summary
