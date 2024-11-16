@@ -1,0 +1,22 @@
+[{
+    "question": "Choose all significant relationships",
+    "type": "multiple_choice",
+    "answers": [
+        {
+            "code": "thalach ~ age",
+            "correct": true
+        },
+        {
+            "code": "thalach + chol",
+            "correct": false
+        },
+        {
+            "code": "target ~ trestbps",
+            "correct": true
+        },
+        {
+            "code": "target ~ exang",
+            "correct": true
+        }
+    ]
+}]
