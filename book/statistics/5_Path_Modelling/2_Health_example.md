@@ -21,6 +21,11 @@ We’ve formulated the following hypotheses for our investigation:
 2. Physical health directly affects subjective health.
 
 Based on these hypotheses, we structure the relationships into the following diagram.
+```{figure} figures/figure_1.png
+---
+width: 60%
+---
+```
 
 **Variables**
 - Physical Health ($X$): The number of illnesses experienced in the last 12 months.
@@ -37,7 +42,7 @@ import graphviz
 from semopy import calc_stats
 
 #import the dataset
-df = pd.read_csv(r'C:\Users\laptop\Documents\HiWi\R_alte_Materialien\psy111\Seminar\2_5_path_modelling\2Health.txt', delim_whitespace=True)
+df = pd.read_csv("data/data.txt", delim_whitespace=True)
 #ATTENTION: maybe you would like to chnage the delim_whitespace=True to something else as this might get deleted as valid syntax soon
 print(df.head())
 
