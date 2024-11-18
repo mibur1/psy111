@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Introduction to Python I
+# Data types and strucutures
 
 The Python programming language is a *general purpose* language, which means it is widely used in many fields, including statistics and neuroimaging. Python is a *high-level, interpreted* language, which means it offers a high level of abstraction and you do not need to worry about *low-level* things like memory management.
 

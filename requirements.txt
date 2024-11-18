@@ -10,6 +10,7 @@ nilearn
 statsmodels
 pingouin
 factor_analyzer
-ucimlrepo
 semopy
+ucimlrepo
+jupyterquiz
 ISLP

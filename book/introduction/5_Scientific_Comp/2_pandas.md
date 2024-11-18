@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 4.2 Pandas
+# 5.2 Pandas
 
 Many kinds of real-world data are stored in a tabular format. This means two-dimensional tables structured into rows and columns, with each observation typically taking up a row and each column representing a single variable.
 

@@ -38,7 +38,7 @@ Explore the chapter {fas}`arrow-right`
 :::{grid-item-card}
 :class-body: text-center
 :class-header: bg-light text-center
-:link: ../introduction/2_Intro_1/0_Introduction
+:link: ../introduction/2_Data_structures/0_Introduction
 :link-type: doc
 Introduction to Python 🐍
 ^^^

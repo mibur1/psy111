@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 4.1 Numpy
+# 5.1 Numpy
 
 Before we begin, let's pause for a second and try to think about which kind of data types and data structures structures we have learned about so far. Which ones can you remember? Do you think this is already enough for any kind of task you might want to achieve?
 

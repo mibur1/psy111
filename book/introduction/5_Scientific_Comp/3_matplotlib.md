@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 4.3 Matplotlib
+# 5.3 Matplotlib
 
 A picture is worth a thousand words, and this holds especially true when working with complex data. Data, on its own, cannot tell its story, but through visualization, we can bring clarity to its patterns and insights. Effective data visualization is a critical part of the research process, allowing researchers to communicate findings clearly. Being a good researcher, therefore, also means being able to create compelling visual representations that make complex information accessible and understandable.
 

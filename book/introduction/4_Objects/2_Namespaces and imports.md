@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.2 Namespaces and imports
+# 4.2 Namespaces and imports
 
 Python is a high-level, dynamic programming language often associated with flexibility (for example, you do  not need to explicitly declare the type of your variables), but there are other cases in which Python is very strict (for example when it comes to the whitespace). Another strict thing about Python is that it takes *namespaces* very seriously.
 

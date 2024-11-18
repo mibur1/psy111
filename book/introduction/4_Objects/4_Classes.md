@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.4 Classes
+# 4.4 Classes
 
 As previously mentioned, [everything in Python is an object](1_Everything_is_an_object). The key cocept behind this is the object-oriented programming (OOP) paradigm central to many programming languages. You will get a brief introduction into these concepts in this chapter, however, do not worry if you feel like these concepts do not immediately make sense to you. Learning a programming language is like learning a real language and takes time. I am however convinced that once the semester goes on many of these newly introduced concepts will already start to click as you work your way through the exercises.
 

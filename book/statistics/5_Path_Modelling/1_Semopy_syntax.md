@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 5.2 `Semopy` and Its syntax
+# 9.1 The semopy package
 
 `semopy`(**S**tructural **E**quation **M**odels **O**ptimization in **Py**thon)is an excellent tool for Structural Equation Modeling (SEM) and offers a wide range of intuitive modeling options. With Semopy, you can easily define and estimate complex relationships between observed and latent variables, making it ideal for SEM tasks.
 

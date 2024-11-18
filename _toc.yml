@@ -12,26 +12,30 @@ parts:
         - file: book/introduction/1_Setup/1_Installation
         - file: book/introduction/1_Setup/2_Usage
         - file: book/introduction/1_Setup/3_Exercises
-    - file: book/introduction/2_Intro_1/0_Introduction
+    - file: book/introduction/2_Data_structures/0_Introduction
       sections:
-        - file: book/introduction/2_Intro_1/1_Variables and data types
-        - file: book/introduction/2_Intro_1/2_Built-in types
-        - file: book/introduction/2_Intro_1/3_Collections
-        - file: book/introduction/2_Intro_1/4_Control flow
-        - file: book/introduction/2_Intro_1/5_Exercises
-    - file: book/introduction/3_Intro_2/0_Introduction
+        - file: book/introduction/2_Data_structures/1_Variables and data types
+        - file: book/introduction/2_Data_structures/2_Built-in types
+        - file: book/introduction/2_Data_structures/3_Collections
+        - file: book/introduction/2_Data_structures/4_Exercises
+    - file: book/introduction/3_Control_flow/0_Introduction
       sections:
-        - file: book/introduction/3_Intro_2/1_Everything_is_an_object
-        - file: book/introduction/3_Intro_2/2_Namespaces and imports
-        - file: book/introduction/3_Intro_2/3_Functions
-        - file: book/introduction/3_Intro_2/4_Classes
-        - file: book/introduction/3_Intro_2/5_Exercises
-    - file: book/introduction/4_Scientific_Comp/0_Introduction
+        - file: book/introduction/3_Control_flow/1_Conditionals
+        - file: book/introduction/3_Control_flow/2_Loops
+        - file: book/introduction/3_Control_flow/3_Exercises
+    - file: book/introduction/4_Objects/0_Introduction
       sections:
-        - file: book/introduction/4_Scientific_Comp/1_numpy
-        - file: book/introduction/4_Scientific_Comp/2_pandas
-        - file: book/introduction/4_Scientific_Comp/3_matplotlib
-        - file: book/introduction/4_Scientific_Comp/4_Exercises
+        - file: book/introduction/4_Objects/1_Everything_is_an_object
+        - file: book/introduction/4_Objects/2_Namespaces and imports
+        - file: book/introduction/4_Objects/3_Functions
+        - file: book/introduction/4_Objects/4_Classes
+        - file: book/introduction/4_Objects/5_Exercises    
+    - file: book/introduction/5_Scientific_Comp/0_Introduction
+      sections:
+        - file: book/introduction/5_Scientific_Comp/1_numpy
+        - file: book/introduction/5_Scientific_Comp/2_pandas
+        - file: book/introduction/5_Scientific_Comp/3_matplotlib
+        - file: book/introduction/5_Scientific_Comp/4_Exercises
 - caption: Multivariate Statistics Seminar
   chapters:
     - file: book/statistics/introduction
@@ -51,7 +55,7 @@ parts:
       sections:
         - file: book/statistics/3_Logistic_Reg/1_example_data
         - file: book/statistics/3_Logistic_Reg/2_Logistic_regression
-        - file: book/statistics/3_Logistic_Reg/3_Logit_Transform
+        - file: book/statistics/3_Logistic_Reg/3_Logit_Transformation
         - file: book/statistics/3_Logistic_Reg/4_Exercises
     - file: book/statistics/4_Moderated_Reg/0_Introduction
       sections:

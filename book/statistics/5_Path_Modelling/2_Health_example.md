@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 5.3 Health example
+# 9.2 Health example
 Now, let’s apply path modeling to a real-world example to better understand the meaning of the output. In this example, we will investigate the relationships between Physical Health ($X$), Functional Health ($Y_1$), and Subjective Health ($Y_2$), as proposed by Whitelaw and Liang (1991).
 
 We’ve formulated the following hypotheses for our investigation:

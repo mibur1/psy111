@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 3.1 Everything is an Object
+# 4.1 Everything is an Object
 
 So far, and analogous to many other programming languages, you might think of data types like strings or integers as *primitive* data types, which means that they are built into the core of the language to behave in special ways and to not be changed or modified in any way. And this is true in many
 other programming languages like C++. where you will have to explicitly tell the program what type of variable you want to create.
