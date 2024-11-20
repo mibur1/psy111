@@ -24,7 +24,7 @@ import pandas as pd
 
 ## DataFrames
 
-DataFrames are the core data structure in the Pandas library. They are ideal for working with tabular data, making it easy to manipulate, filter, and analyze datasets. We can create and print a simple example as follows:
+A `DataFrame` is the core data structure in the Pandas library. It is ideal for working with tabular data, making it easy to manipulate, filter, and analyse data sets. We can create and print a simple example as follows:
 
 ```{code-cell}
 my_df = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],
@@ -172,7 +172,7 @@ You can now see that we have two indices. This means we can apply the `.loc` met
 
 ```{code-cell}
 male_below_18 = multi_index.loc["Male", True]
-print(male_below_18.describe)
+print(male_below_18.describe())
 ```
 
 This might already seem useful, but it can become quite cumbersome if you want to repeat this for many kind of combinations. And because grouping data into different subgroups is such a common pattern in data analysis, Pandas offers a built-in way of doing so, which we will explore in the following subsection.
@@ -192,20 +192,20 @@ The newly `gender_grous` variable is a `DataFrameGroupBy` object, which is prett
 For example, we can calculate the mean for each group:
 
 ```{code-cell}
-print(gender_groups.mean())
+print(gender_groups.mean(numeric_only=True))
 ```
 
 The output of this operation is a DataFrame that contains the summary with th original DataFrame's `Gender` variable as the index. This means we can apply standard indexing operations on it as well to get e.g. the mean age of female subjects:
 
 ```{code-cell}
-print(gender_groups.mean().loc["Female", "Age"])
+print(gender_groups.mean(numeric_only=True).loc["Female", "Age"])
 ```
 
 We can further group by multiple indices:
 
 ```{code-cell}
-gender_age_groups = yeatman_data.groupby(["Gender, "Age_below_18"])
-print(gender_age_groups.mean())
+gender_age_groups = yeatman_data.groupby(["Gender", "Age_below_18"])
+print(gender_age_groups.mean(numeric_only=True))
 ```
 
 ### Joining Tables

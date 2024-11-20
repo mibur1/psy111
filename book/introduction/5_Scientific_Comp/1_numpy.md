@@ -44,7 +44,7 @@ name: arrays
 N-dimensional arrays
 ```
 
-To work with arrays, we will use the [NumPy](https://numpy.org/) library, which is the most important library for numerical and scientific computing in Python. Recall that by default, the Python namespace only includes a small number of built in functions. So if we want to use functions that belong to numpy, we need to import it at the top of the script. In principle, you can chose any abbreviation you want (or none at all), however it usually makes sense to stick to the conventions and import numpy as `np`.
+To work with arrays, we will use the [NumPy](https://numpy.org/) library, which is the most important library for numerical and scientific computing in Python. Recall that by default, the Python namespace only includes a small number of built-in functions. So if we want to use functions that belong to numpy, we need to import it at the top of the script. In principle, you can chose any abbreviation you want (or none at all). However, it usually makes sense to stick to the conventions and import numpy as `np`.
 
 ```{code-cell}
 import numpy as np
@@ -106,13 +106,13 @@ Let's look at some real data to get a better sense of why arrays are a useful th
 from nilearn import datasets
 import nibabel as nib
 
-haxby_dataset = datasets.fetch_adhd(n_subjects=1) # Download the Haxby dataset
+haxby_dataset = datasets.fetch_adhd(n_subjects=1); # Download the Haxby dataset
 fmri_img = nib.load(haxby_dataset.func[0]) # Load the fMRI data using nibabel
 fmri_data = fmri_img.get_fdata() # Convert to a 4D numpy array
 print(f"Shape of the fMRI data: {fmri_data.shape}")
 ```
 
-You can see that the data has shape `(61, 73, 61, 176)`, meaning that it has four dimensions. fMRI data is similar to a picture which is composed of individual pixels, with the addition that the brain is a three-dimensional object and is thus separated in little cubes called *voxels*. As such three-dimensional scans are aquired in slices, the first two dimensions are the in-plane dimensions of the scan ($61 * 73$ voxels), the third dimension are the $61 slices$, and the third dimension is the time, telling us that $176$ scans of the brain were obtained over time.
+You can see that the data has shape `(61, 73, 61, 176)`, meaning that it has four dimensions. fMRI data is similar to a picture which is composed of individual pixels, with the addition that the brain is a three-dimensional object and is thus separated in little cubes called *voxels*. As such three-dimensional scans are aquired in slices, the first two dimensions are the in-plane dimensions of the scan ($61 * 73$ voxels), the third dimension are the $61$ slices, and the third dimension is the time, telling us that $176$ scans of the brain were obtained over time.
 
 ### Indexing arrays
 
@@ -150,7 +150,7 @@ Here, `my_array[0,0]` gives us the first item in the array, `my_array[1,2]` give
 ```{admonition} Important
 :class: important
 
-When indexing two-dimensional arrays, the first dimension is always the rows, and the second dimension are the columns!
+When indexing two-dimensional arrays, the first dimension always corresponds to the rows, and the second dimension corresponds to the columns!
 
 So `my_array[1,2]` will give you the item in row 1, colum 2.
 ```
