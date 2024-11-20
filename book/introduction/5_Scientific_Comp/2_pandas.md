@@ -66,13 +66,13 @@ print(yeatman_data.describe())
 
 ### Indexing
 
-In previous sessions we already leearned about indexing and slicing as a way of accessing individual elements of e.g. lists. Pandas DataFrames also support a variety of different indexing and slicing operations. For example, we can select rows through the `.loc` attribute and by indexing in square brackets:
+In previous sessions we already leearned about indexing and slicing as a way of accessing individual elements of e.g. lists. Pandas DataFrames also support a variety of different indexing and slicing operations. For example, we can use label-based indexing to select rows through the `.loc` attribute and by indexing in square brackets:
 
 ```{code-cell}
 print(yeatman_data.loc["subject_000"])
 ```
 
-In the case that we do not know the exact name of the subject but just its index (e.g. we cant to access the first subject), we can use the `iloc` attribute for that purpose:
+In the case that we do not know the exact label of the subject but just its index (e.g. we want to access the first subject), we can use the `iloc` attribute for that purpose:
 
 ```{code-cell}
 print(yeatman_data.iloc[0])
@@ -110,7 +110,7 @@ print(age['subject_072'])
 print(age.iloc[72])
 ```
 
-Series are useful as we can, for example, create a new *subset* of a DataFrame containing only the variables `Age` and `IQ` can be created by indexing it with a list of columns:
+Series are useful as we can, for example, create a new *subset* of a DataFrame containing only the variables `Age` and `IQ`. This can be done by indexing with a list of columns and assigning the resulting subset to a new variable:
 
 ```{code-cell}
 yeatman_subset = yeatman_data[["Age", "IQ"]]
@@ -141,10 +141,10 @@ age_std = yeatman_data["Age"].std()
 print((yeatman_data["Age"] - age_mean ) / age_std)
 ```
 
-A useful thing is to then save the result as a new variable in our DataFrame. For example, we can create a new column called `Age_std` and assign our results to it:
+A useful thing is to then save the result as a new variable in our DataFrame. For example, we can create a new column called `Age_zscore` and assign our results to it:
 
 ```{code-cell}
-yeatman_data["Age_std"] = (yeatman_data["Age"] - age_mean ) / age_std
+yeatman_data["Age_zscore"] = (yeatman_data["Age"] - age_mean ) / age_std
 print(yeatman_data.head())
 ```
 
@@ -157,7 +157,7 @@ yeatman_data["Age_below_18"] = yeatman_data["Age"] < 18
 print(yeatman_data.head())
 ```
 
-As you can see, we have now extended our original DataFrame by another column which tells us if the correspoding subjects are
+As you can see, we have now extended our original DataFrame by another column which tells us if the correspoding subjects are younger than 18.
 
 ### MultiIndex
 
@@ -172,7 +172,7 @@ You can now see that we have two indices. This means we can apply the `.loc` met
 
 ```{code-cell}
 male_below_18 = multi_index.loc["Male", True]
-print(male_below_10.describe)
+print(male_below_18.describe)
 ```
 
 This might already seem useful, but it can become quite cumbersome if you want to repeat this for many kind of combinations. And because grouping data into different subgroups is such a common pattern in data analysis, Pandas offers a built-in way of doing so, which we will explore in the following subsection.
@@ -184,7 +184,7 @@ A usual problem we are faced with in data analysis is the following: We (1) want
 For example, let's start with splitting the data by the `Gender` column:
 
 ```{code-cell}
-gender_groups = yeatman_data.groupby("Gender)
+gender_groups = yeatman_data.groupby("Gender")
 ```
 
 The newly `gender_grous` variable is a `DataFrameGroupBy` object, which is pretty similar to a normal DataFrame, with the additional feature of having distinct groups whithin. This means we can perform many operations just as if we would be working with a normal DataFrame, with the only difference being the operation being applied independently to each subset.
@@ -257,7 +257,7 @@ There are also other, more complicated, scenarios which we will not talk about h
 
 Before closing this section, I would like to emphazize on a few patterns of errors that are unique to Pandas and which you most likely will encounter at some point in your own projects.
 
-One common pattern of errors comes from a confusion between Series and DataFame objects. And while we previously learned that they are indeed pretty similar, they still have some differences. For example, Series objects have a useful `.value_counts()` method that creates a table with the number of observations in the Series for every unique value. DataFrames however do not implement this method and will rause a Python `AttributeError`instead.
+One common pattern of errors comes from a confusion between Series and DataFame objects. And while we previously learned that they are indeed pretty similar, they still have some differences. For example, Series objects have a useful `.value_counts()` method that creates a table with the number of observations in the Series for every unique value. DataFrames however do not implement this method and will cause a Python `AttributeError`instead.
 
 Another common error comes from the fact that many operations create a new DataFrame as an output insted of changing the current one in place. For example you might expect that:
 
