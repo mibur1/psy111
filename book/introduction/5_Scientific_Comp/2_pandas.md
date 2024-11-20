@@ -263,12 +263,14 @@ Another common error comes from the fact that many operations create a new DataF
 
 ```{code-cell}
 yeatman_data.dropna()
+print(yeatman_data.head())
 ```
 
 will remove the `NaN` values from the DataFrame. However, it will not do so on the `yeatman_data` DataFrame itself but you need to assign it to a new variable if you want to keep this result:
 
 ```{code-cell}
 yeatman_without_nan = yeatman_data.dropna()
+print(yeatman_without_nan.head())
 ```
 
 or alternatively, **explicitly** specify that the existing `yeatman` DataFrame should be modified:
