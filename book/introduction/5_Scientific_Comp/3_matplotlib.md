@@ -122,6 +122,8 @@ plt.tight_layout()
 plt.show()
 ```
 
+*Hint: `plt.tight_layout` tries to automatically adjusts subplot parameters to minimize overlap and ensure that all elements, like labels and titles, fit within the figure boundaries.*
+
 ## Scatter plots
 
 A scatter plot displays data points where each marker's position on the x-axis represents a value from one variable, and its position on the y-axis represents a value from another variable. This type of plot allows us to directly compare these two variables and observe overall patterns or trends. For example
@@ -137,6 +139,26 @@ fig, ax = plt.subplots()
 plt.scatter(x,y)
 plt.show()
 ```
+
+## Bar plots
+
+A scatter plot displays data points where each marker's position on the x-axis represents a value from one variable, and its position on the y-axis represents a value from another variable. This type of plot allows us to directly compare these two variables and observe overall patterns or trends. For example
+
+```{code-cell}
+fig, ax = plt.subplots()
+
+fruits = ['apple', 'blueberry', 'cherry', 'orange']
+counts = [40, 100, 30, 55]
+bar_labels = ['red', 'blue', '_red', 'orange'] # _red makes this a hidden label (so red only appears once)
+bar_colors = ['red', 'blue', 'red', 'orange']
+
+ax.bar(fruits, counts, label=bar_labels, color=bar_colors)
+ax.legend(title='Fruit color')
+ax.set(ylabel='fruit supply', title='Fruit supply by kind and color')
+
+plt.show()
+```
+
 
 As previously mentioned, the matplotlib library also offers many other ways of visualizing data. If you [explore the examples](https://matplotlib.org/stable/gallery/index.html), you will most likely find a plot similar to the one you need.
 
@@ -173,6 +195,8 @@ Seaborn offers more informative alternatives. For example, you can display each 
 fig, ax = plt.subplots(1, 2)
 sns.swarmplot(data=yeatman_data, x="Handedness", y="IQ", ax=ax[0])
 sns.violinplot(data=yeatman_data, x="Handedness", y="IQ", ax=ax[1])
+
+plt.tight_layout()
 plt.show()
 ```
 
