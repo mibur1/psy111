@@ -159,6 +159,20 @@ ax.set(ylabel='fruit supply', title='Fruit supply by kind and color')
 plt.show()
 ```
 
+## Additional information:
+
+If you look for plots on the internet, you will sometimes also see figures created with `plt.figure()`:
+
+```{code-cell}
+plt.figure()
+plt.bar(fruits, counts, label=bar_labels, color=bar_colors)
+plt.legend(title='Fruit color')
+plt.ylabel('fruit supply')
+plt.title('Fruit supply by kind and color')
+plt.show()
+```
+
+This is mostly used when you only require a quick and single plot. As it generally offers less flexibility, I would recommend you to use the standard `plt.subplots()` syntax as introduced in this section.
 
 As previously mentioned, the matplotlib library also offers many other ways of visualizing data. If you [explore the examples](https://matplotlib.org/stable/gallery/index.html), you will most likely find a plot similar to the one you need.
 

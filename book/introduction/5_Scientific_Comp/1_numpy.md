@@ -152,7 +152,12 @@ Here, `my_array[0,0]` gives us the first item in the array, `my_array[1,2]` give
 
 When indexing two-dimensional arrays, the first dimension always corresponds to the rows, and the second dimension corresponds to the columns!
 
-So `my_array[1,2]` will give you the item in row 1, colum 2.
+So e.g. `my_array[1,2]` would give you the item in row 1, column 2. As a visualization, here are the individual indices for a a 2x3 array:
+
+| my_array   | Column 0      | Column 1      | Column 2      |
+|------------|---------------|---------------|---------------|
+| **Row 0**  | my_array[0,0] | my_array[0,1] | my_array[0,2] |
+| **Row 1**  | my_array[1,0] | my_array[1,1] | my_array[1,2] |
 ```
 
 ### Indexing whith conditionals
