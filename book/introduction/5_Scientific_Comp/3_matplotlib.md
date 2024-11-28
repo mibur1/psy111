@@ -136,7 +136,7 @@ x = np.random.randn(1000)
 y = np.random.randn(1000)
 
 fig, ax = plt.subplots()
-plt.scatter(x,y)
+ax.scatter(x,y)
 plt.show()
 ```
 
