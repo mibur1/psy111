@@ -14,12 +14,12 @@ kernelspec:
 
 # General Linear Model
 
-In the first statistics lecture, you were introduced to the General Linear Model (GLM), a flexible approach for modeling relationships between variables. Unlike traditional hypothesis testing, where you simply reject or accept the null hypothesis based on a predefined significance level, GLMs allow for a more interactive and nuanced analysis of data.
+In the first statistics lecture, you were introduced to the General Linear Model (GLM), a powerful framework for understanding relationships between variables. Unlike traditional hypothesis testing, where the goal is simply to reject or accept a null hypothesis, GLMs offer a more flexible and nuanced approach. For example, how can we assess the impact of physical activity on diabetes risk while accounting for confounding factors like age or genetics? GLMs help us answer such complex questions.
 
-In today’s seminar, we will recap and explore the following key concepts:
+In today’s seminar, we will build on this foundation by exploring the following key concepts:
 
-1. **Multiple Linear Regression:** Extending simple linear regression to model the relationship between one dependent variable and multiple independent variables.
-2. **Correlation:** Measuring the strength and direction of the relationship between two continuous variables.
-3. **Partial Correlation:** Understanding the relationship between two variables while controlling for the influence of other variables.
+1. **Multiple Linear Regression**: Modeling the relationship between one dependent variable and multiple predictors.
+2. **Correlation**: Quantifying the strength and direction of relationships between continuous variables.
+3. **Partial Correlation**: Isolating the relationship between two variables while controlling for others.
 
-After covering these concepts, you’ll have the opportunity to apply your new skills to a dataset related to diabetes and its risk factors.
+You will then apply these concepts to a dataset on diabetes and its risk factors. By the end of this seminar, you’ll have the tools to model and interpret complex relationships in real-world data.
