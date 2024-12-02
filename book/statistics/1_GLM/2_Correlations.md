@@ -14,34 +14,36 @@ kernelspec:
 
 # 5.2 Correlations
 
-In correlation analysis, several Python packages can be used, such as `NumPy`, `SciPy`, and `pandas`. For this tutorial, we will focus on the `pandas` package since it is particularly convenient when working with `DataFrames`.
+Many Python packages, such as `numpy`, `scipy`, and `pandas` offer functionalities for correlation analysis. As we often work with data in the form of Pandas DataFrames, we will use the `pandas` package for now.
 
 ```{admonition} Pearson´s correlation
 :class: note
-Pearson’s correlation coefficient is calculated as the ratio of the covariance of two variables `X` and `Y` to the product of their standard deviations.
+Pearson’s correlation coefficient is calculated as the ratio of the covariance of two variables `X` and `Y` to the product of their standard deviations:
 
 $$r = \frac{\text{Cov}(X, Y)}{s_X s_Y}$$
 ```
 
-After importing the package, we'll create our own `pandas` data frame to work with.
+Let's start by creating a simple DataFrame containing an x and y variable:
 
 ```{code-cell}
 import pandas as pd
 
-x = pd.Series(range(10, 20))
-print(x)
+data = {
+    'X': range(10, 20),
+    'Y': [2, 1, 4, 5, 8, 12, 18, 25, 96, 48]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
 ```
+
+We can then calculate the correlation between these two variables by using the `.corr()` method. By default, this method calculates Pearson’s correlation coefficient:
 
 ```{code-cell}
-y = pd.Series([2, 1, 4, 5, 8, 12, 18, 25, 96, 48])
-print(y)
+correlation_coef = df['X'].corr(df['Y'])
+print("Pearson's correlation:", correlation_coef)
 ```
-
-To calculate the correlation between these two series, you can use the `.corr()` method. By default, this method calculates Pearson’s correlation coefficient:
-
- ```{code-cell}
- print(x.corr(y))
- ```
 
 The `.corr()` method also allows you to specify other correlation methods:
 
@@ -52,7 +54,7 @@ The `.corr()` method also allows you to specify other correlation methods:
 Here’s an example using Spearman’s rank correlation:
 
 ```{code-cell}
-print(x.corr(y, method='spearman'))
+print(f"Spearman correlation:", df['X'].corr(df['Y'], method='spearman'))
 ```
 
 ## Correlation Matrices
@@ -86,17 +88,13 @@ Now, you have your own correlation matrix. To make the results more visually app
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Create the heatmap
-sns.heatmap(corr_matrix_rounded, annot=True, cmap='coolwarm', center=0, vmin=-1, vmax=1, fmt=".2f")
-
-# Set the title and show the plot
-plt.title('Correlation Matrix Heatmap')
+sns.heatmap(corr_matrix_rounded, annot=True, vmin=-1, vmax=1, center=0, square=True, cmap="coolwarm",  linewidths=1)
 plt.show()
 ```
-Key Parameters for the Heatmap:
+
+Some parameters we use for the heatmap are:
 
 - `annot=True`: Display correlation values inside the heatmap cells.
+- `vmin` and `vmax`: Define the limits of the color scale, which range from -1 to 1 for correlation coefficients.
 - `cmap='coolwarm'`: Set the color map. You can change this to any other color palette you prefer.
 - `center=0`: Center the color map at 0 to emphasize neutral correlations.
-- `vmin` and `vmax`: Define the limits of the color scale, which range from -1 to 1 for correlation coefficients.
-- `fmt=".2f"`: Format the annotation text to display values with two decimal places.

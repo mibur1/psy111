@@ -14,15 +14,15 @@ kernelspec:
 
 # 5.1 Multiple Linear Regression
 
-Multiple linear regression involves performing linear regression with more than one independent variable. As you may know, multiple regression with kk predictors can be expressed as:
+Multiple linear regression involves performing linear regression with more than one independent variable. As you may know, multiple regression with n predictors can be expressed as:
 
-$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_k x_{ik} + \epsilon_i$$
+$$y_i = \beta_0 + \beta_1 x_{i1} + \beta_2 x_{i2} + \dots + \beta_k x_{in} + \epsilon_i$$
 
 In this equation:
 
 - $\beta_0$​ is the intercept, representing the expected value of $y$ when all $x$-values (predictors) are 0.
 - $\beta_1$​ represents the change in $y$ for a one-unit increase in $x_{i1}$​, while all other predictors are held constant.
-- The same interpretation applies to the other predictors, $\beta_2, \beta_3, ..., \beta_k$
+- The same interpretation applies to the other predictors, $\beta_2, \beta_3, ..., \beta_n$
 - $\epsilon_i$ represents the residual variance that is not explained by the model.
 
 

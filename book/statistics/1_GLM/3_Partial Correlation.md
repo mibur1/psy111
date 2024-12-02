@@ -18,7 +18,7 @@ For partial correlation analysis, we will use the `pingouin` package. This packa
 
 ```{admonition} Partial Correlation
 :class: note
-Partial correlation measures the relationship between two variables while controlling for the effect of a third variable. It calculates the correlation between two variables of interest after accounting for the influence of the third variable.
+Partial correlation measures the relationship between two variables while controlling for the effect of a third variable.
 ```
 
 ## Example: Partial Correlation with the Iris Dataset
