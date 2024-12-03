@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 5.2 Correlations
+# 6.2 Correlations
 
 Many Python packages, such as `numpy`, `scipy`, and `pandas` offer functionalities for correlation analysis. As we often work with data in the form of Pandas DataFrames, we will use the `pandas` package for now.
 
@@ -45,30 +45,25 @@ correlation_coef = df['X'].corr(df['Y'])
 print("Pearson's correlation:", correlation_coef)
 ```
 
-The `.corr()` method also allows you to specify other correlation methods:
-
-- Pearson (default)
-- Spearman
-- Kendall
-
-Here’s an example using Spearman’s rank correlation:
+The `.corr()` method also allows you to use rank correlations (Spearman, Kendall) thrugh the method parameter. For example, you can calculate Spearman’s rank correlation as follows:
 
 ```{code-cell}
-print(f"Spearman correlation:", df['X'].corr(df['Y'], method='spearman'))
+print("Spearman correlation:",
+      df['X'].corr(df['Y'],
+      method='spearman'))
 ```
 
 ## Correlation Matrices
 
-When you want to compute correlations for multiple variables, handling individual correlations can become cumbersome. In such cases, you can use correlation matrices to visualize all correlations at once.
-
-Let’s create a new DataFrame with three variables and compute the correlation matrix, rounding the results to two decimal places:
+If we want to compute correlations for multiple variables, handling individual correlations will not be feasible. In such cases, we can calculate and use correlation matrices, which contain all pairwise correlations. Let’s start by creating a new DataFrame with three variables and then compute the correlation matrix, rounding the results to two decimal places:
 
 ```{code-cell}
 # Define the data
 data = {
     'A': [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     'B': [2, 1, 4, 5, 8, 12, 18, 25, 96, 48],
-    'C': [9, 7, 8, 6, 5, 4, 3, 2, 1, 0]
+    'C': [9, 7, 8, 6, 5, 4, 3, 2, 1, 0],
+    'D': [1, 3, 3, 5, 8, 3, 6, 12, 5, 34]
 }
 
 # Create a pandas DataFrame
@@ -82,19 +77,24 @@ corr_matrix_rounded = corr_matrix.round(2)
 print(corr_matrix_rounded)
 ```
 
-Now, you have your own correlation matrix. To make the results more visually appealing and easier to interpret, you can convert the correlation matrix into a heatmap using the seaborn library. Here’s how:
+To make the results more visually appealing, we can plot the correlation matrix as a heatmap using the `seaborn` library:
 
 ```{code-cell}
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-sns.heatmap(corr_matrix_rounded, annot=True, vmin=-1, vmax=1, center=0, square=True, cmap="coolwarm",  linewidths=1)
+sns.heatmap(corr_matrix_rounded, 
+            annot=True,      # Display correlation values inside the heatmap cells.
+            vmin=-1, vmax=1, # Define the limits of the color scale
+            square=True,     # Make sure cells stay squar
+            cmap="coolwarm", # Set the color map
+            linewidths=1     # Lines between the cells
+            )
 plt.show()
 ```
 
-Some parameters we use for the heatmap are:
-
-- `annot=True`: Display correlation values inside the heatmap cells.
-- `vmin` and `vmax`: Define the limits of the color scale, which range from -1 to 1 for correlation coefficients.
-- `cmap='coolwarm'`: Set the color map. You can change this to any other color palette you prefer.
-- `center=0`: Center the color map at 0 to emphasize neutral correlations.
+```{admonition} Summary
+:class: tip
+- You can calculate correlations with various packages. In Pandas, you can use the `.corr()` method.
+- A nice and intuitive way of visualizing multiple correlation values are correlation matrices (heatmaps).
+```

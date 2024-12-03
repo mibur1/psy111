@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 5.1 Multiple Linear Regression
+# 6.1 Multiple Linear Regression
 
 Multiple linear regression involves performing linear regression with more than one independent variable. As you may know, multiple regression with n predictors can be expressed as:
 
