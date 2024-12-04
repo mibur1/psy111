@@ -156,7 +156,7 @@ X_predict = pd.DataFrame({'Girth': [0.3, 0.4, 0.5],
 prediction = results.get_prediction(X_predict)
 
 for i in range(len(X_predict)):
-    print(f"Predicted volume for a girth of {X_predict['Girth'].iloc[i]} and a height of {X_predict['Height'].iloc[i]} is: {prediction.predicted_mean[i]} m²")
+    print(f"Predicted volume for a girth of {X_predict['Girth'].iloc[i]} and a height of {X_predict['Height'].iloc[i]} is: {prediction.predicted_mean[i]} m³")
 ```
 
 ```{admonition} Summary
