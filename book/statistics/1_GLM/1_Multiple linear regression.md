@@ -139,12 +139,12 @@ Each coefficient includes:
 
 R-squared and Adjusted R-squared
 
-- R-squared: Indicates the proportion of variance in the dependent variable explained by the model. It increases with more predictors, even if they don't improve the model.
-- Adjusted R-squared: Adjusts for the number of predictors, penalizing for adding unnecessary predictors, and is more reliable for evaluating model performance.
+- **R-squared**: Indicates the proportion of variance in the dependent variable explained by the model. It increases with more predictors, even if they don't improve the model.
+- **Adjusted R-squared**: Adjusts for the number of predictors, penalizing for adding unnecessary predictors, and is more reliable for evaluating model performance.
 
 F-statistic
 
-- The F-statistic compares the fit of the model to a model with no predictors. A large F-statistic and a low p-value indicate that the independent variables have real predictive power.
+- The **F-statistic** compares the fit of the model to a model with no predictors. A large F-statistic and a low p-value indicate that the independent variables have real predictive power.
 
 ## Step 6: Making Predictions
 

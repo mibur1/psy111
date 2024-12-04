@@ -55,7 +55,7 @@ print("Spearman correlation:",
 
 ## Correlation Matrices
 
-If we want to compute correlations for multiple variables, handling individual correlations will not be feasible. In such cases, we can calculate and use correlation matrices, which contain all pairwise correlations. Let’s start by creating a new DataFrame with three variables and then compute the correlation matrix, rounding the results to two decimal places:
+If we want to compute correlations for multiple variables, handling individual correlations will not be feasible. In such cases, we can calculate and use correlation matrices, which contain all pairwise correlations. Let’s start by creating a new DataFrame with four variables and then compute the correlation matrix, rounding the results to two decimal places:
 
 ```{code-cell}
 # Define the data
@@ -86,7 +86,7 @@ import matplotlib.pyplot as plt
 sns.heatmap(corr_matrix_rounded, 
             annot=True,      # Display correlation values inside the heatmap cells.
             vmin=-1, vmax=1, # Define the limits of the color scale
-            square=True,     # Make sure cells stay squar
+            square=True,     # Make sure cells stay square
             cmap="coolwarm", # Set the color map
             linewidths=1     # Lines between the cells
             )
