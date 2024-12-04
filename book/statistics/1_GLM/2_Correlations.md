@@ -86,7 +86,7 @@ import matplotlib.pyplot as plt
 sns.heatmap(corr_matrix_rounded, 
             annot=True,      # Display correlation values inside the heatmap cells.
             vmin=-1, vmax=1, # Define the limits of the color scale
-            square=True,     # Make sure cells stay squar
+            square=True,     # Make sure cells stay square
             cmap="coolwarm", # Set the color map
             linewidths=1     # Lines between the cells
             )
