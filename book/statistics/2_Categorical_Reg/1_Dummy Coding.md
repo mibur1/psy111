@@ -14,7 +14,9 @@ kernelspec:
 
 # 6.1 Dummy Coding
 
-Dummy coding enables the comparison of each category of a categorical variable to a reference category, which serves as the baseline for measuring the effects of the other categories. In this coding scheme, the reference category is assigned a value of 0 (corresponding to the intercept), while the remaining dummy variables for the other categories are assigned values of either 1 or 0. As always, there are numerous packages available for implementing dummy coding. For this session, we will focus on `patsy()` from `Statsmodels`, as it provides the most straightforward and customizable options, particularly for defining the reference category.
+Dummy coding enables the comparison of each category of a categorical variable to a reference category, which serves as the baseline for measuring the effects of the other categories. In this coding scheme, the reference category is assigned a value of 0 (corresponding to the intercept), while the dummy variables for the remaining categories are assigned values of either 1 or 0. 
+
+As always, there are numerous packages available for implementing dummy coding. For this session, we will focus on `patsy()` from `Statsmodels`, as it provides the most straightforward and customizable options, particularly for defining the reference category.
 
 First, we will import the essential libraries needed to visualize the data.
 
@@ -38,7 +40,7 @@ Ensure that `genotype` is treated as a categorical variable.
 df['genotype'] = df['genotype'].astype('category')
 ```
 
-Plot the `genotypes` with `seaborn` as individual boxplots against `WMf`
+Plot the `genotypes` as individual boxplots against `WMf` using `seaborn`.
 
 ```{code-cell}
 sns.boxplot(x='genotype', y='WMf', data=df)
@@ -64,7 +66,7 @@ print(contrast.matrix)
 The final step of computing the dummy code matrix can be skipped if you are not interested in the matrix itself. You can simply execute the following line of code, as `Statsmodels` directly manages categorical encoding. There is no need to manually create dummy variables or use `dmatrix` unless you require custom contrasts beyond what the `Treatment` option offers.
 
 ```{code-cell}
-#Use ols() for linear regression from the previous seminar
+# Use ols() for linear regression from the previous seminar
 model = smf.ols('WMf ~ C(genotype, Treatment(reference="e4/e4"))', data=df).fit()
 
 # Print the summary
@@ -72,8 +74,7 @@ print(model.summary())
 ```
 The output explained:
 
-- Coef: Contains the coefficients for each `genotype` of the dummy regression (Intercept and slope)
-The following regression equation was fitted
+- coef: includes the coefficients for each genotype from the dummy regression (intercept and slope). The following regression equation was fitted:
 
 $$\hat{Y} = 0.82 - 0.03 \cdot C_1 - 0.02 \cdot C_2 + 0.06 \cdot C_3 + 0.02 \cdot C_4 - 0.03 \cdot C_5$$
 
