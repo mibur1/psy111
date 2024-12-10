@@ -12,116 +12,150 @@ kernelspec:
   name: python3
 ---
 
-# 6.2.1 Unweighted Effects Coding
-For dummy coding, we designate the e4/e4 genotype as the reference category. The only distinction with unweighted effects coding is that the reference category is coded as -1 across all coding variables. We will also utilize `patsy()` from `Statsmodels` for this process.
-```{admonition}
-:class: warning
-As you might want to look up Unweighted effects coding, you will encounter different names for it such as Sum(Deviation) Coding.
-```
-We proceed almost like dummy coding but use `sum()` for the contrast.
+# 6.2 Effects Coding
+
+## Unweighted Effects Coding
+
+For dummy coding, we used the `e4/e4` genotype as the reference category. The intercept represented the mean of the reference category, and the coefficients for other groups represented the difference in means between each group and the reference.
+
+The difference in unweighted effects coding now is that the reference is the overall mean of all groups rather than a specific group. The intercept then represents the grand mean (overall mean of the dependent variable, WMf), while the coefficients for each group represent the deviation of that group's mean from the overall mean.
+
+We can implement unweighted effects coding similarly to dummy coding but, but we will use `Sum` instead of `Treatment` for the contrast.
 
 ```{code-cell}
 import numpy as np
 import pandas as pd
-from patsy import dmatrix
 from patsy.contrasts import Sum
 import statsmodels.formula.api as smf
 
 # Load the dataset
-df = pd.read_csv("data/data.txt", delimiter='\t')
+df = pd.read_csv("data/alzheimers_data.txt", delimiter='\t').dropna()
 
-# Ensure 'genotype' is treated as categorical
+# Convert genotype into a categorical variable
 df['genotype'] = df['genotype'].astype('category')
 
-# Define the levels of 'genotype'
+# Create and fit the model
+model = smf.ols('WMf ~ C(genotype, Sum)', data=df)
+results = model.fit()
+
+print(results.summary())
+```
+
+You can see, that the result are fairly similar to dummy coding, as the grand mean is close to the `e4/e4` mean.
+
+When it comes to the design matrix, it looks pretty similar, with the only distinction being last row coded as -1 to enforce the constraint that the sum of the coefficients is zero.There is no explicit reference category - the grand mean serves as the reference.
+
+```{code-cell}
+# Get all genotype levels and save them as a list
 levels = df['genotype'].cat.categories.tolist()
 
-# Create a Sum deviation contrast matrix
-from patsy.contrasts import Sum
-
+# Create the contrast matrix
 contrast = Sum().code_without_intercept(levels)
 
-print(contrast.matrix)
+print("Levels:", levels)
+print("Contrast Matrix:\n", contrast.matrix)
 ```
-```{code-cell}
-model = smf.ols('WMf ~ C(genotype, Treatment(reference="e4/e4"))', data=df).fit()
 
-# Print the summary
-print(model.summary())
+In the matrix, each row corresponds to a level of the categorical variable. The coding scheme uses -1 for all variables in the last row to enforce the constraint that the sum of the coefficients is zero. This is the key difference from dummy coding. The columns of the matrix correspond to the levels of the categorical variable, excluding the last one (because the last level is redundant due to the zero-sum constraint).
+
+
+## Weighted Effects Coding
+
+While unweighted effects coding uses the grand mean (unweighted average of all groups) as the reference, weighted effects coding modifies this approach to use the weighted mean of the dependent variable as the reference. The weighted mean accounts for the group sizes, giving more weight to groups with larger sample sizes.
+
+This approach is particularly useful when group sizes differ significantly, as it ensures the comparison is more representative of the overall data distribution.
+
+The intercept in weighted effects coding represents the weighted mean of the dependent variable (`WMf`), while the coefficients for each group represent the deviation of that group’s mean from the weighted mean.
+
+As this functionality is not directly offered, we will create the design matrix manually by performing the following steps:
+
+1.  Computing the sample proportions for each category in the categorical variable
+
+1. Calculate the sample sizes and proportion for each category:
+
+```{code-cell}
+genotype_counts = df['genotype'].value_counts(sort=False)
+counts = genotype_counts.values
+print(levels)
+print(counts)
+
 ```
-The model summary shows similiar results as for dummy coding.
 
-# 6.2.2 Weighted Effects Coding
-
-In weighted effects coding, the reference group is assigned a sample weight for all coding variables instead of -1.
-
-Therefore, we will execute the following steps manually:
-
-1.  Compute the sample proportions for each category in the categorical variable.
-2.  Use these proportions to create custom weights for the reference category.
-3.  Implement the weighted effects coding manually.
+2.  Use these counts to create custom weights for the reference category
 
 ```{code-cell}
-data = df 
-
-# Drop rows with NaN values
-data = data.dropna(subset=['genotype'])
-
-# Calculate sample sizes for each genotype
-genotype_counts = data['genotype'].value_counts()
-Nt1 = genotype_counts.get("e2/e2", 0)
-Nt2 = genotype_counts.get("e2/e3", 0)
-Nt3 = genotype_counts.get("e2/e4", 0)
-Nt4 = genotype_counts.get("e3/e3", 0)
-Nt5 = genotype_counts.get("e3/e4", 0)
-Nt6 = genotype_counts.get("e4/e4", 0)  # Reference category
-
-# Manually calculate weights for weighted effect coding
-e2e2_weights = np.array([1, 0, 0, 0, 0])
-e2e3_weights = np.array([0, 1, 0, 0, 0])
-e2e4_weights = np.array([0, 0, 1, 0, 0])
-e3e3_weights = np.array([0, 0, 0, 1, 0])
-e3e4_weights = np.array([0, 0, 0, 0, 1])
-
-# ...and for the reference category ##ATTENTION:maybe you #want to delete the loop(?)  --> find den loop an sich gut, #aber ich glaup er machts unnötig kompliziert, oder? Wenn #sample size Nt6=0 wäre, dann würde sowieso n Fehler kommen, #weil mans nicht durch 0 teilen kann oder?
-if Nt6 > 0:
-    e4e4_weights = np.array([-Nt1/Nt6, -Nt2/Nt6, -Nt3/Nt6, -Nt4/Nt6, -Nt5/Nt6])
-else:
-    raise ValueError("Sample size for reference category 'e4/e4' cannot be zero.")
-
-# einfach so vlt?:
- e4e4_weights = np.array([-Nt1/Nt6, -Nt2/Nt6, -Nt3/Nt6, -Nt4/Nt6, -Nt5/Nt6])
-
-# Define the full contrast matrix (weighted effect coding)
 contrast_matrix = {
-    'e2/e2': e2e2_weights,
-    'e2/e3': e2e3_weights,
-    'e2/e4': e2e4_weights,
-    'e3/e3': e3e3_weights,
-    'e3/e4': e3e4_weights,
-    'e4/e4': e4e4_weights  # Reference category
+    "e2/e2": np.array([1, 0, 0, 0, 0]),
+    "e2/e3": np.array([0, 1, 0, 0, 0]),
+    "e2/e4": np.array([0, 0, 1, 0, 0]),
+    "e3/e3": np.array([0, 0, 0, 1, 0]),
+    "e3/e4": np.array([0, 0, 0, 0, 1]),
+    "e4/e4": -counts[:-1] / counts[-1]
 }
-print(contrast_matrix)
+
+for key, value in contrast_matrix.items():
+    print(f"{key}: {value}\n")
 ```
+
+3.  Create the weighted effects coding design matrix and outcome vector
 
 ```{code-cell}
-# Create the design matrix (X)
-X = np.array([contrast_matrix[genotype] for genotype in data['genotype']])
+import statsmodels.api as sm
 
-# Add a constant (intercept) to the design matrix
-X = sm.add_constant(X)
+# Build the design matrix (X)
+X = np.array([contrast_matrix[genotype] for genotype in df['genotype']])
 
-#Define the dependent variable  WMf (y)
-y = data['WMf']
+# Add intercept
+X = sm.add_constant(X)  
 
-# Fit the OLS model using the contrast matrix
-model = smf.OLS(y, X).fit()
+print(X)
+print("Design matrix shape:", X.shape)
+print("Column sums:", np.round(np.sum(X, axis=0), 2))
+print("e3/e3 column:\n", X[:,4])
 
-# Print the summary of the results
-print(model.summary())
+# Define the target vector (outcome variable)
+y = df['WMf']
 ```
+
+We added some print statements to see what is going on inside the design matrix, and if everything is correct:
+  - Shape: (245, 6)
+    - 245 rows: Matches the number of observations in your dataset (df)
+    - 6 columns: Matches the expected design matrix structure:
+      - Intercept (constant column)
+      - 5 contrast-coded columns for the categorical variable genotype
+  - Column sums: [245. -0. -0. -0. 0. 0.]
+    - The sum of the first column is 245, which corresponds to the number of observations (all intercept values are 1)
+    - The other column sums are 0, satisfying the sum-to-zero constraint of weighted effects coding
+  - Inspecting a single column
+    - The fifth column (`e3/e3`) contains a mix of 1, 0, and -14.3 values
+      - 1 indicates the observation belongs to this genotype
+      - 0 indicates the observation does not belong to this genotype
+      - 14.3 indicates the observation belongs to last group (e4/e4) and codes its contribution to the weighted mean, accounting for the imbalance in group sizes to maintain the sum-to-zero constraint
+
+4. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
+
+```{code-cell}
+model = sm.OLS(y, X)
+results = model.fit()
+print(results.summary())
+```
+
+**Interpretation of the output:**
+
+1. Intercept:
+    - In weighted effects coding, the intercept represents the weighted mean of WMf, not the grand mean.
+    - The weighted mean is calculated by giving each group a weight proportional to its size:
+        
+    $$\text{Weighted Mean} = \frac{\sum (\text{Group Size} \times \text{Group Mean})}{\sum (\text{Group Size})}$$
+
+2. Coefficients:
+    - Each coefficient represents the deviation of the group mean from the weighted mean, taking group sizes into account.
+    - Larger groups have more influence on the weighted mean, so coefficients for smaller groups may differ more significantly compared to unweighted effects coding.
+
+
 ```{admonition} Summary
 :class: tip
-- for unweighetd effects coding use: `contrast = Sum().code_without_intercept(levels)`
-- weighted effects coding must be manually implemented
+- Unweighted effects coding compares all groups to the grand mean, which is the unweighted average of the dependent variable. The intercept represents the grand mean, serving as the baseline for interpretation.
+
+- Weighted effects coding compares all groups to the weighted mean, which accounts for group sizes. The negative values in the design matrix reflect proportional adjustments needed to satisfy the sum-to-zero constraint.
 ```
