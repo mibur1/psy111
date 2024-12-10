@@ -23,7 +23,7 @@ import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
-data = pd.read_csv("data/data.txt", delimiter='\t')
+data = pd.read_csv("data/alzheimers_data.txt", delimiter='\t')
 
 # Define the contrasts of interest (here we try 5 different contrasts)
 contrast_of_interest1 = np.array([-0.5, -0.5, 0, 0, 0.5, 0.5])
