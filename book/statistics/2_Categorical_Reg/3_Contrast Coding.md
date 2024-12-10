@@ -13,32 +13,31 @@ kernelspec:
 ---
 
 # 6.3 Contrast Coding
-For contrast coding, several approaches can be employed to address your research question. Due to its flexibility, we can define custom contrasts of interest. In this session, we will specify five different contrasts and test them on the data.
+Contrast coding allows researchers to define and test costum comparisons, making it more flexible than methods like dummy coding. By specifying contrasts, we can address specific research questions, such as comparing specific groups.
+
+In this session, we will explore contrast coding by defining three distinct contrasts and applying them to a dataset, providing insight into how this approach can be used. Each contrast corresponds to a separate research question, helping to understand the advantage of the method. 
 
 ## Contrast Matrix
 
 ```{code-cell}
-# Import necessary libraries
+# Import necessary libraries and data
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
 
 data = pd.read_csv("data/alzheimers_data.txt", delimiter='\t')
 
-# Define the contrasts of interest (here we try 5 different contrasts)
+# Define the contrasts of interest (in this case 3 different contrasts)
 contrast_of_interest1 = np.array([-0.5, -0.5, 0, 0, 0.5, 0.5])
-contrast_of_interest2 = np.array([0, 0, -0.5, -0.5, 0.5, 0.5])
-contrast_of_interest3 = np.array([-0.5, 0, 0, 0.5, 0, 0])
-contrast_of_interest4 = np.array([-0.5, -0.5, -0.5, 0.5, 0.5, 0.5])
-contrast_of_interest5 = np.array([0.5, 0, 0, 0, 0, -0.5])
+contrast_of_interest2 = np.array([0, 0, -0.5, -0.5, 0, 1])
+contrast_of_interest3 = np.array([-0.33, 0.33, 0.33, 0.33, -0.33, -0.33])
+
 
 # Create the contrast matrix
 contrast_matrix = np.column_stack((
     contrast_of_interest1,
     contrast_of_interest2,
-    contrast_of_interest3,
-    contrast_of_interest4,
-    contrast_of_interest5
+    contrast_of_interest3
 ))
 
 # Specify the genotypes in the correct order. The order is important for the index of the matrix.
@@ -48,17 +47,21 @@ genotypes = ['e2/e2', 'e2/e3', 'e2/e4', 'e3/e3', 'e3/e4', 'e4/e4']
 contrast_df = pd.DataFrame(contrast_matrix, index=genotypes, columns=[
     'contrast_of_interest1',
     'contrast_of_interest2',
-    'contrast_of_interest3',
-    'contrast_of_interest4',
-    'contrast_of_interest5'
+    'contrast_of_interest3'
 ])
 
 print(contrast_df)
 ```
-We will obtain five different matrices, with the order of the genotypes determining the index of each matrix. Can you identify which genotype is being compared to which?
- `contrast_of_interest1` is comparing the combined effect of `e2/e2` and `e2/e3` (group 1) versus `e3/e4` and `e4/e4` (group 2). The genotypes `e2/e4` and `e3/e3` are not part of this contrast (they do not influence the comparison).
+We will obtain three different matrices, with the order of the genotypes determining the index of each matrix. 
 
-## Linaer Regression
+In `contrast_of_interest1`, it is seen that `e2/e2` and `e2/e3` are assigned to -0.5, grouping them together. `e3/e4` and `e4/e4` are grouped with a weight of 0.5 each. A weight of 0 is assigned to the other genotypes, meaning they are excluded from this contrast and are not of interest.
+`contrast_of_interest2` compares `e2/e4` and `e3/e3` with `e4/e4`.
+Finally, `contrast_of_interest3` contrasts the group consisting of `e2/e2`,  `e3/e4`, `e4/e4` with the group of `e2/e3`, `e2/e4` and `e3/e3`. 
+
+As shown in this example, you can group specific categories together and use contrast coding to test targeted hypotheses about the differences in group means.
+
+
+## Linear Regression
 
 ```{code-cell}
 # Ensure 'genotype' column is correctly handled and matches the contrast matrix genotypes
@@ -92,6 +95,6 @@ Coefficient= 0.06: This indicates that the effect of contrast_of_interest1 (i.e.
 
 ```{admonition} Summary
 :class: tip
-- Contrast coding is the most flexible approach
-- the entire matrix must be defined manually
+- Contrast coding allows testing specific hypothesis by defining custom comparison
+- the entire contrast matrix must be defined manually, ensuring weights sum to zero
 ```

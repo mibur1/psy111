@@ -163,3 +163,17 @@ print(results.summary())
 
 - Weighted effects coding compares all groups to the weighted mean, which accounts for group sizes. The negative values in the design matrix reflect proportional adjustments needed to satisfy the sum-to-zero constraint.
 ```
+
+
+```{admonition} Categorical Regression - Method Summary
+:class: important
+
+
+| Coding          | Code RC                |  Intercept $b_0$                         |  Slope $b_j$      | Use if        |
+|-----------------|------------------------|------------------------------------------|-------------------|---------------|
+|Dummy    	      | 0                      | mean of refernce category(RC)            |difference between the mean of RC and the other categories | When one category should be compared to all others.
+|Unweighted Effect| -1                     | unweighted mean across all categegories  | difference between the unweighted mean and the effect for each category ($b_j$)  | When interested in comparing categories assuming equal group sizes.
+|Weighted Effect  | $$\frac{n_j}{n_{RC}}$$ | weighted mean across all categories      | difference between the weighted mean and the effect for each category($b_j$)| When interested in comparing categories with unequal group sizes, accounting for the group sizes.
+
+
+```
