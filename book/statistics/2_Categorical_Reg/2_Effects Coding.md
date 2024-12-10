@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 6.2 Unweighted Effects Coding
+# 6.2.1 Unweighted Effects Coding
 For dummy coding, we designate the e4/e4 genotype as the reference category. The only distinction with unweighted effects coding is that the reference category is coded as -1 across all coding variables. We will also utilize `patsy()` from `Statsmodels` for this process.
 ```{admonition}
 :class: warning
@@ -51,7 +51,7 @@ print(model.summary())
 ```
 The model summary shows similiar results as for dummy coding.
 
-# Weighted Effects Coding
+# 6.2.2 Weighted Effects Coding
 
 In weighted effects coding, the reference group is assigned a sample weight for all coding variables instead of -1.
 
@@ -62,10 +62,7 @@ Therefore, we will execute the following steps manually:
 3.  Implement the weighted effects coding manually.
 
 ```{code-cell}
-data = df # TODO: refactor
-
-#Check for NaN values in the 'genotype' column
-print("NaN values in genotype column:", data['genotype'].isna().sum())
+data = df 
 
 # Drop rows with NaN values
 data = data.dropna(subset=['genotype'])
@@ -80,25 +77,28 @@ Nt5 = genotype_counts.get("e3/e4", 0)
 Nt6 = genotype_counts.get("e4/e4", 0)  # Reference category
 
 # Manually calculate weights for weighted effect coding
-e2e2_we = np.array([1, 0, 0, 0, 0])
-e2e3_we = np.array([0, 1, 0, 0, 0])
-e2e4_we = np.array([0, 0, 1, 0, 0])
-e3e3_we = np.array([0, 0, 0, 1, 0])
-e3e4_we = np.array([0, 0, 0, 0, 1])
+e2e2_weights = np.array([1, 0, 0, 0, 0])
+e2e3_weights = np.array([0, 1, 0, 0, 0])
+e2e4_weights = np.array([0, 0, 1, 0, 0])
+e3e3_weights = np.array([0, 0, 0, 1, 0])
+e3e4_weights = np.array([0, 0, 0, 0, 1])
 
-# ...and for the refernece category ##ATTENTION:maybe you want to delete the loop(?)
+# ...and for the reference category ##ATTENTION:maybe you #want to delete the loop(?)  --> find den loop an sich gut, #aber ich glaup er machts unnötig kompliziert, oder? Wenn #sample size Nt6=0 wäre, dann würde sowieso n Fehler kommen, #weil mans nicht durch 0 teilen kann oder?
 if Nt6 > 0:
     e4e4_weights = np.array([-Nt1/Nt6, -Nt2/Nt6, -Nt3/Nt6, -Nt4/Nt6, -Nt5/Nt6])
 else:
     raise ValueError("Sample size for reference category 'e4/e4' cannot be zero.")
 
+# einfach so vlt?:
+ e4e4_weights = np.array([-Nt1/Nt6, -Nt2/Nt6, -Nt3/Nt6, -Nt4/Nt6, -Nt5/Nt6])
+
 # Define the full contrast matrix (weighted effect coding)
 contrast_matrix = {
-    'e2/e2': e2e2_we,
-    'e2/e3': e2e3_we,
-    'e2/e4': e2e4_we,
-    'e3/e3': e3e3_we,
-    'e3/e4': e3e4_we,
+    'e2/e2': e2e2_weights,
+    'e2/e3': e2e3_weights,
+    'e2/e4': e2e4_weights,
+    'e3/e3': e3e3_weights,
+    'e3/e4': e3e4_weights,
     'e4/e4': e4e4_weights  # Reference category
 }
 print(contrast_matrix)
@@ -115,7 +115,7 @@ X = sm.add_constant(X)
 y = data['WMf']
 
 # Fit the OLS model using the contrast matrix
-model = sm.OLS(y, X).fit()
+model = smf.OLS(y, X).fit()
 
 # Print the summary of the results
 print(model.summary())
