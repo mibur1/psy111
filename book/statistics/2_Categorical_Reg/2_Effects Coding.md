@@ -20,7 +20,7 @@ For dummy coding, we used the `e4/e4` genotype as the reference category. The in
 
 The difference in unweighted effects coding now is that the reference is the overall mean of all groups rather than a specific group. The intercept then represents the grand mean (overall mean of the dependent variable, WMf), while the coefficients for each group represent the deviation of that group's mean from the overall mean.
 
-We can implement unweighted effects coding similarly to dummy coding but, but we will use `Sum` instead of `Treatment` for the contrast.
+We can implement unweighted effects coding similarly to dummy coding but we will use `Sum` instead of `Treatment` for the contrast.
 
 ```{code-cell}
 import numpy as np
@@ -43,7 +43,7 @@ print(results.summary())
 
 You can see, that the result are fairly similar to dummy coding, as the grand mean is close to the `e4/e4` mean.
 
-When it comes to the design matrix, it looks pretty similar, with the only distinction being last row coded as -1 to enforce the constraint that the sum of the coefficients is zero.There is no explicit reference category - the grand mean serves as the reference.
+When it comes to the contrast matrix, it looks pretty similar, with the only distinction being last row coded as **-1**. In effect coding, there is is no explicit reference group as seen in dummy coding - the grand mean serves as the reference. The group coded with -1 is central to this coding scheme but doesn't act as a conventional reference category for comparisons.
 
 ```{code-cell}
 # Get all genotype levels and save them as a list
@@ -67,21 +67,24 @@ This approach is particularly useful when group sizes differ significantly, as i
 
 The intercept in weighted effects coding represents the weighted mean of the dependent variable (`WMf`), while the coefficients for each group represent the deviation of that group’s mean from the weighted mean.
 
-As this functionality is not directly offered, we will create the design matrix manually by performing the following steps:
+As this functionality is not directly offered, we will manually create both the contrast matrix and the design matrix by performing the following steps:
 
 1.  Computing the sample proportions for each category in the categorical variable
 
 1. Calculate the sample sizes and proportion for each category:
 
 ```{code-cell}
+# calculating the counts of unique genotype levels in the column 'genotype'
 genotype_counts = df['genotype'].value_counts(sort=False)
+# Extracting the numerical counts(frequency) associated with each genotype level
 counts = genotype_counts.values
-print(levels)
-print(counts)
+
+print("Genotype Levels:", levels)       
+print("Counts:", counts)
 
 ```
 
-2.  Use these counts to create custom weights for the reference category
+3.  Use these counts to create custom weights for the reference category
 
 ```{code-cell}
 contrast_matrix = {
@@ -93,11 +96,12 @@ contrast_matrix = {
     "e4/e4": -counts[:-1] / counts[-1]
 }
 
+# Print each genotype's corresponding contrast vector
 for key, value in contrast_matrix.items():
     print(f"{key}: {value}\n")
 ```
 
-3.  Create the weighted effects coding design matrix and outcome vector
+4.  Create the weighted effects coding design matrix and outcome vector
 
 ```{code-cell}
 import statsmodels.api as sm
@@ -125,14 +129,14 @@ We added some print statements to see what is going on inside the design matrix,
       - 5 contrast-coded columns for the categorical variable genotype
   - Column sums: [245. -0. -0. -0. 0. 0.]
     - The sum of the first column is 245, which corresponds to the number of observations (all intercept values are 1)
-    - The other column sums are 0, satisfying the sum-to-zero constraint of weighted effects coding
+    - The sums of the other columns are 0, satisfying the sum-to-zero constraint of weighted effects coding
   - Inspecting a single column
     - The fifth column (`e3/e3`) contains a mix of 1, 0, and -14.3 values
       - 1 indicates the observation belongs to this genotype
       - 0 indicates the observation does not belong to this genotype
       - 14.3 indicates the observation belongs to last group (e4/e4) and codes its contribution to the weighted mean, accounting for the imbalance in group sizes to maintain the sum-to-zero constraint
 
-4. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
+5. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
 
 ```{code-cell}
 model = sm.OLS(y, X)

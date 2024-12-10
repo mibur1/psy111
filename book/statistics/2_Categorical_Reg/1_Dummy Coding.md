@@ -31,7 +31,7 @@ Then we load the data (in this case from a local file) and have a look at it:
 
 ```{code-cell}
 df = pd.read_csv("data/alzheimers_data.txt", delimiter='\t').dropna()
-print(df)
+print(df.head())
 ```
 
 We then make sure that the `genotype` is treated as a categorical variable. For this, we first check its type:
@@ -40,11 +40,11 @@ We then make sure that the `genotype` is treated as a categorical variable. For 
 print(df.dtypes)
 ```
 
-We see that it is of type `object`, whihch is typical for strings. However, for categorical regression, we need to change it to type `category` using `.astype('category')`:
+We see that it is of type `object`, which is typical for strings. However, for categorical regression, we need to change it to type `category` using `.astype('category')`:
 
 ```{code-cell}
 df['genotype'] = df['genotype'].astype('category')
-print(df.dtypes)
+print(df["genotype"].dtypes)
 ```
 
 Great, that worked well. We can now proceed to plot the genotypes as individual boxplots against `WMf`. For this we will use `seaborn` boxplots, as they are easy to use with data frames:
@@ -75,11 +75,11 @@ When you run the regression `WMf ~ C(genotype, Treatment(reference="e4/e4"))`, t
 
 2. Slopes for Dummy Variables (`C(genotype)[T.<level>]`):
     - Each slope represents the difference in the mean value of `WMf` between the respective `genotype` group and the reference group (`e4/e4`).
-    - For example, if C(genotype)[T.e2/e2] has a coefficient of -0.0333:
+    - For example, if `C(genotype)[T.e2/e2]` has a coefficient of -0.0333:
       - The mean `WMf` for the `e2/e2` group is 0.0333 less than the mean for the `e4/e4` group.
 
 3. Regression Equation:
-    - The regression equation summarizes the relationship between the predictors (`genotype` groups) and the outcome (`WMf`):
+    - The regression equation summarizes the relationship between the predictors (`genotype` groups) and the outcome (`WMf`) by filling in the intercept and the slope specific to each genotype, derived from the output:
 
 $$\hat{Y} = 0.82 - 0.03 * e2/e2 - 0.02 * e2/e3 + 0.06 * e2/e4 + 0.02 * e3/e3 - 0.03 * e3/e4$$
 
@@ -88,12 +88,12 @@ $$\hat{Y} = 0.82 - 0.03 * e2/e2 - 0.02 * e2/e3 + 0.06 * e2/e4 + 0.02 * e3/e3 - 0
     - For example:
       - If `p = 0.668` for `C(genotype)[T.e2/e2]`, it indicates that the mean `WMf` for the `e2/e2` group is not significantly different from the `e4/e4` group, as this p-value is above any reasonable significance threshold (e.g., 0.05).
 
-    - R-squared and Model Fit:
+5. R-squared and Model Fit:
     - The R-squared value indicates how much of the variation in `WMf` is explained by the genotype categories. A higher R-squared value suggests a strong relationship between `genotype` and `WMf`.
 
 ## The contrast/design matrix
 
-For dummy coding, there is usually no need to manually create dummy variables or to create a design matrix, as `statsmodels` handles this automatically. However, to ensure that we did everything correctly, we can manually create the contrast matrix and have a look at it:
+For dummy coding, there is usually no need to manually create dummy variables or to create a contrast matrix, as `statsmodels` handles this automatically. However, to ensure that we did everything correctly, we can manually create the contrast matrix and have a look at it:
 
 ```{code-cell}
 # Get all genotype levels and save them as a list
