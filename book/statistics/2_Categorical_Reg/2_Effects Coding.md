@@ -67,7 +67,7 @@ This approach is particularly useful when group sizes differ significantly, as i
 
 The intercept in weighted effects coding represents the weighted mean of the dependent variable (`WMf`), while the coefficients for each group represent the deviation of that group’s mean from the weighted mean.
 
-As this functionality is not directly offered, we will create the design matrix manually by performing the following steps:
+As this functionality is not directly offered, we will manually create both the contrast matrix and the design matrix by performing the following steps:
 
 1.  Computing the sample proportions for each category in the categorical variable
 

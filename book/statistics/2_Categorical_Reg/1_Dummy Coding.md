@@ -37,7 +37,7 @@ print(df.head())
 We then make sure that the `genotype` is treated as a categorical variable. For this, we first check its type:
 
 ```{code-cell}
-print(df["genotype"].dtypes)
+print(df.dtypes)
 ```
 
 We see that it is of type `object`, which is typical for strings. However, for categorical regression, we need to change it to type `category` using `.astype('category')`:
@@ -93,7 +93,7 @@ $$\hat{Y} = 0.82 - 0.03 * e2/e2 - 0.02 * e2/e3 + 0.06 * e2/e4 + 0.02 * e3/e3 - 0
 
 ## The contrast/design matrix
 
-For dummy coding, there is usually no need to manually create dummy variables or to create a design matrix, as `statsmodels` handles this automatically. However, to ensure that we did everything correctly, we can manually create the contrast matrix and have a look at it:
+For dummy coding, there is usually no need to manually create dummy variables or to create a contrast matrix, as `statsmodels` handles this automatically. However, to ensure that we did everything correctly, we can manually create the contrast matrix and have a look at it:
 
 ```{code-cell}
 # Get all genotype levels and save them as a list
