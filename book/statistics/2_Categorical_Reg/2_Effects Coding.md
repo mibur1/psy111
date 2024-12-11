@@ -92,7 +92,7 @@ contrast_matrix = {
 
 # Print each genotype's corresponding contrast vector
 for key, value in contrast_matrix.items():
-    print(f"{key}: {value}\n")
+    print(f"{key}: {value}")
 ```
 
 3.  Create the weighted effects coding design matrix and outcome vector
@@ -128,7 +128,7 @@ We added some print statements to see what is going on inside the design matrix,
     - The fifth column (`e3/e3`) contains a mix of 1, 0, and -14.3 values
       - 1 indicates the observation belongs to this genotype
       - 0 indicates the observation does not belong to this genotype
-      - 14.3 indicates the observation belongs to last group (e4/e4) and codes its contribution to the weighted mean, accounting for the imbalance in group sizes to maintain the sum-to-zero constraint
+      - -14.3 indicates the observation belongs to last group (e4/e4) and codes its contribution to the weighted mean, accounting for the imbalance in group sizes to maintain the sum-to-zero constraint
 
 4. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
 
