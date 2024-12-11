@@ -63,15 +63,9 @@ In the matrix, each row corresponds to a level of the categorical variable. The 
 
 While unweighted effects coding uses the grand mean (unweighted average of all groups) as the reference, weighted effects coding modifies this approach to use the weighted mean of the dependent variable as the reference. The weighted mean accounts for the group sizes, giving more weight to groups with larger sample sizes.
 
-This approach is particularly useful when group sizes differ significantly, as it ensures the comparison is more representative of the overall data distribution.
-
-The intercept in weighted effects coding represents the weighted mean of the dependent variable (`WMf`), while the coefficients for each group represent the deviation of that group’s mean from the weighted mean.
-
-As this functionality is not directly offered, we will manually create both the contrast matrix and the design matrix by performing the following steps:
+This approach is particularly useful when group sizes differ significantly, as it ensures the comparison is more representative of the overall data distribution. The intercept in weighted effects coding represents the weighted mean of the dependent variable (`WMf`), while the coefficients for each group represent the deviation of that group’s mean from the weighted mean. As this functionality is not directly offered, we will manually create both the contrast matrix and the design matrix by performing the following steps:
 
 1.  Computing the sample proportions for each category in the categorical variable
-
-1. Calculate the sample sizes and proportion for each category:
 
 ```{code-cell}
 # calculating the counts of unique genotype levels in the column 'genotype'
@@ -84,7 +78,7 @@ print("Counts:", counts)
 
 ```
 
-3.  Use these counts to create custom weights for the reference category
+2.  Use these counts to create custom weights for the reference category
 
 ```{code-cell}
 contrast_matrix = {
@@ -101,7 +95,7 @@ for key, value in contrast_matrix.items():
     print(f"{key}: {value}\n")
 ```
 
-4.  Create the weighted effects coding design matrix and outcome vector
+3.  Create the weighted effects coding design matrix and outcome vector
 
 ```{code-cell}
 import statsmodels.api as sm
@@ -136,7 +130,7 @@ We added some print statements to see what is going on inside the design matrix,
       - 0 indicates the observation does not belong to this genotype
       - 14.3 indicates the observation belongs to last group (e4/e4) and codes its contribution to the weighted mean, accounting for the imbalance in group sizes to maintain the sum-to-zero constraint
 
-5. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
+4. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
 
 ```{code-cell}
 model = sm.OLS(y, X)
@@ -144,7 +138,7 @@ results = model.fit()
 print(results.summary())
 ```
 
-**Interpretation of the output:**
+### Interpreting the Output
 
 1. Intercept:
     - In weighted effects coding, the intercept represents the weighted mean of WMf, not the grand mean.
@@ -160,20 +154,15 @@ print(results.summary())
 ```{admonition} Summary
 :class: tip
 - Unweighted effects coding compares all groups to the grand mean, which is the unweighted average of the dependent variable. The intercept represents the grand mean, serving as the baseline for interpretation.
-
 - Weighted effects coding compares all groups to the weighted mean, which accounts for group sizes. The negative values in the design matrix reflect proportional adjustments needed to satisfy the sum-to-zero constraint.
 ```
-
 
 ```{admonition} Categorical Regression - Method Summary
 :class: important
 
-
 | Coding          | Code RC                |  Intercept $b_0$                         |  Slope $b_j$      | Use if        |
 |-----------------|------------------------|------------------------------------------|-------------------|---------------|
-|Dummy    	      | 0                      | mean of refernce category(RC)            |difference between the mean of RC and the other categories | When one category should be compared to all others.
+|Dummy    	      | 0                      | mean of refernce category(RC)            | difference between the mean of RC and the other categories                       | When one category should be compared to all others.
 |Unweighted Effect| -1                     | unweighted mean across all categegories  | difference between the unweighted mean and the effect for each category ($b_j$)  | When interested in comparing categories assuming equal group sizes.
-|Weighted Effect  | $$\frac{n_j}{n_{RC}}$$ | weighted mean across all categories      | difference between the weighted mean and the effect for each category($b_j$)| When interested in comparing categories with unequal group sizes, accounting for the group sizes.
-
-
+|Weighted Effect  | $\frac{n_j}{n_{RC}}$   | weighted mean across all categories      | difference between the weighted mean and the effect for each category($b_j$)     | When interested in comparing categories with unequal group sizes, accounting for the group sizes.
 ```

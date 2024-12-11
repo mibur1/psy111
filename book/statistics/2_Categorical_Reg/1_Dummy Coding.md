@@ -65,7 +65,7 @@ results = model.fit()
 print(results.summary())
 ```
 
-**Outputs:**
+## Interpreting the Output
 
 When you run the regression `WMf ~ C(genotype, Treatment(reference="e4/e4"))`, the output provides the following key pieces of information:
 
@@ -91,7 +91,7 @@ $$\hat{Y} = 0.82 - 0.03 * e2/e2 - 0.02 * e2/e3 + 0.06 * e2/e4 + 0.02 * e3/e3 - 0
 5. R-squared and Model Fit:
     - The R-squared value indicates how much of the variation in `WMf` is explained by the genotype categories. A higher R-squared value suggests a strong relationship between `genotype` and `WMf`.
 
-## The contrast/design matrix
+## The Contrast Matrix
 
 For dummy coding, there is usually no need to manually create dummy variables or to create a contrast matrix, as `statsmodels` handles this automatically. However, to ensure that we did everything correctly, we can manually create the contrast matrix and have a look at it:
 
