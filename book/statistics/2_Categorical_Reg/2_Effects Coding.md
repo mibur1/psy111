@@ -18,7 +18,7 @@ kernelspec:
 
 For dummy coding, we used the `e4/e4` genotype as the reference category. The intercept represented the mean of the reference category, and the coefficients for other groups represented the difference in means between each group and the reference.
 
-The difference in unweighted effects coding now is that the reference is the overall mean of all groups rather than a specific group. The intercept then represents the grand mean (overall mean of the dependent variable, WMf), while the coefficients for each group represent the deviation of that group's mean from the overall mean.
+The difference in unweighted effects coding now is that the reference is the overall mean of all groups rather than a specific group. The intercept then represents the grand mean (overall mean of the dependent variable, `WMf`), while the coefficients for each group represent the deviation of that group's mean from the overall mean.
 
 We can implement unweighted effects coding similarly to dummy coding but we will use `Sum` instead of `Treatment` for the contrast.
 
@@ -70,6 +70,7 @@ This approach is particularly useful when group sizes differ significantly, as i
 ```{code-cell}
 # calculating the counts of unique genotype levels in the column 'genotype'
 genotype_counts = df['genotype'].value_counts(sort=False)
+
 # Extracting the numerical counts(frequency) associated with each genotype level
 counts = genotype_counts.values
 
@@ -140,13 +141,13 @@ print(results.summary())
 
 ### Interpreting the Output
 
-1. Intercept:
-    - In weighted effects coding, the intercept represents the weighted mean of WMf, not the grand mean.
+1. **Intercept**:
+    - In weighted effects coding, the intercept represents the weighted mean of `WMf`, not the grand mean.
     - The weighted mean is calculated by giving each group a weight proportional to its size:
         
     $$\text{Weighted Mean} = \frac{\sum (\text{Group Size} \times \text{Group Mean})}{\sum (\text{Group Size})}$$
 
-2. Coefficients:
+2. **Coefficients**:
     - Each coefficient represents the deviation of the group mean from the weighted mean, taking group sizes into account.
     - Larger groups have more influence on the weighted mean, so coefficients for smaller groups may differ more significantly compared to unweighted effects coding.
 
