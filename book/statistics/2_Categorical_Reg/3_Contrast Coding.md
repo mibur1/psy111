@@ -75,25 +75,25 @@ print(results.summary())
 
 ## Interpreting the Outputs
 
-- R-squared:
+- **R-squared**:
   - Only 5.2% of the variance in `WMf` is explained by the contrasts. This suggests that the model is fairly poor. The adjusted R-squared, which accounts for the number of predictors is even lower.
 
-- F-statistic:
+- **F-statistic**:
   - The overall model is statistically significant, indicating that the contrasts collectively contribute to explaining `WMf` (p=0.0257).
 
-- Intercept (const):
+- **Intercept (const)**:
   - Represents the grand mean of `WMf` across all genotypes.
   - Value: 0.8176 (highly significant, p<0.001).
 
-- Contrast 1 (x1​):
+- **Contrast 1 (x1​)**:
 
   - Compares the mean `WMf` of `e2/e2` + `e2/e3` (Group 1) to `e3/e4` + `e4/e4` (Group 2).
   - Coefficient: 0.06060, indicating that Group 1 has a slightly higher mean `WMf` than Group 2.
   - p=0.402: This difference is not statistically significant.
 
-- All other contrasts are interpreted similarly.
+- All other **contrasts** are interpreted similarly.
 
-- Discussion:
+- **Discussion**:
   - The low R-squared shows the model does not capture much variance in `WMf`.
   - Non-significant results for the contrasts imply that the hypothesized contrasts do not strongly impact `WMf`.
 
