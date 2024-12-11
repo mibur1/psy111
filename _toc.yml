@@ -112,4 +112,5 @@ parts:
         - file: book/solutions/4_Objects
         - file: book/solutions/5_Scientific_comp
         - file: book/solutions/6_GLM
+        - file: book/solutions/7_Categorical_Reg
     - file: book/misc/references
