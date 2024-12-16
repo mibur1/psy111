@@ -14,17 +14,21 @@ kernelspec:
 
 # Logistic Regression
 
-Today, we will focus on logistic regression. As you may know from previous lectures, linear regression is not suitable for predicting binary categorical dependent variables (such as _symptom present/absent_ or _task correct/incorrect_) from a quantitative independent variable. To handle this, we use logistic regression.
+In this session, we will focus on **logistic regression**, a method specifically designed to predict binary categorical outcomes (e.g., *symptom present/absent* or *task correct/incorrect*) based on quantitative independent variables. As discussed in previous lectures, linear regression is unsuitable for such tasks because it assumes a continuous dependent variable. Logistic regression addresses this limitation effectively.
 
-Logistic regression can be expressed in different forms, including:
+## Seminar Outline
+1. Logistic regression and model evaluation
+2. Understanding the logit transformation
+3. Hands-on exercises
 
-1. Conditional probability function
-2. Conditional odds (not shown here)
-3. Log-odds (logit function)
+## The Data
 
-The seminar will follow this outline:
+Logistic regression is specifically designed to handle binary outcomes, making it a more appropriate model for predicting probabilities of categorical events compared to linear regression.
 
-- The example dataset
-- Logistic regression and model evaluation
-- The logit transformation
-- Exercises
+**Research Aim**: Using children's age and theory of mind ability to predict whether they understand display rules or not.
+
+**Context**: In developmental cognitive psychology, theory of mind is defined as the ability to understand the intentions, beliefs, and emotions of others. Display rules refer to social or cultural norms that guide how individuals should express their emotions in different contexts.
+
+To address this research question, children were given a false belief task (a task commonly used to measure their ability to understand others' intentions) and a display rules understanding task, which they could either pass or fail (a dichotomous outcome). Their age in months was also recorded.
+
+In total, 70 children, aged between 24 and 83 months, participated in the study.
