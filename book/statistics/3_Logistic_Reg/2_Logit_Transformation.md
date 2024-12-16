@@ -12,57 +12,47 @@ kernelspec:
   name: python3
 ---
 
-# 7.3 Logit Transfrom
-To convert the probabilities from the previous output into a log scale, we apply the formula:
+# 7.2 The Logit Transform
 
-$$
-\ln\left(\frac{\text{P(Y=1|X)}}{1-\text{P(Y=1|X)}}\right) = b_0 + b_1 \cdot X
-$$
+$$ln(\frac{P(Y=1 \mid X)}{1 - P(Y=1 \mid X)}) = b_0 + b_1 \cdot X$$
 
-- $b_0$ as the intercept and the logit value when $X=0$
-- $b_1$ as the slope, which indicates the change of a one-unit-increase of $X$
+By default, logistic regression applies the logit transform to convert probabilities into a log scale, which linearizes the relationship between the independent variable and the probability of a binary outcome (like success/failure). 
 
-**Why would you transform the values?**
+In this formula:
+- $b_0$ is the intercept, representing the logit value when $X = 0$.
+- $b_1$ is the slope, indicating how the logit changes with a one-unit increase in $X$.
 
-The output of a logistic regression model indicates a linear relationship between the independent variables (predictors) and the log-odds of the dependent variable. Each coefficient shows how a one-unit change in the corresponding predictor affects the log-odds of the outcome, while keeping other variables constant.
+This transformation is crucial because it allows us to apply linear regression techniques to binary outcomes. The plot of the logit against the independent variable, such as age, helps visualize how the likelihood of the outcome varies with age. This aids in both interpretation and understanding of the model. For further details, refer to the lecture slides, pages 40 to 45.
+
+We can plot the logits to see, how the linear relationship looks like:
 
 ```{code-cell}
-#import the libraries
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-# Load the data
+# Get the data
 data = pd.read_csv("data/data.dat", delimiter='\t')
-
-# Define X and y (age and target variable 'display')
 X = data[['age']]
 y = data['display']
 
-# Fit the logistic regression model
-logr = LogisticRegression()
-logr.fit(X, y)
+# Fit the model
+model = LogisticRegression()
+results = model.fit(X, y)
 
-# Get intercept and coefficient
-intercept = logr.intercept_[0]
-coef = logr.coef_[0][0]
+intercept = results.intercept_[0]
+coef = results.coef_[0][0]
 
-# Logit transformation: compute the linear combination (logit = intercept + coef * age)
+# Logit transformation: compute the logit for each age
 data['logit'] = intercept + coef * data['age']
 
-# Plot the logit against age
-plt.figure(figsize=(10, 6))
-plt.plot(data['age'], data['logit'], 'r-', label='Logit Transform')  # Logit line
-plt.scatter(data['age'], data['logit'], color='blue', alpha=0.5, label='Data points')  # Scatter plot of age vs logit
+# Plot
+fig, ax = plt.subplots()
+ax.plot(data['age'], data['logit'], 'r-', label='Logit Transform')  # Logit line
+ax.scatter(data['age'], data['logit'], color='blue', alpha=0.5, label='Data points')
+ax.set(xlabel="Age", ylabel="Logit (Log-Odds)", title="Logit Transform")
 
-# Add labels and title
-plt.xlabel('Age')
-plt.ylabel('Logit (Log-Odds)')
-plt.title('Logistic Regression: Logit Transform (Age vs Log-Odds)')
 plt.legend()
-
-# Show the plot
 plt.show()
 ```
 

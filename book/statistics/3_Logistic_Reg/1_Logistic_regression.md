@@ -12,11 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# 7.2 Logistic Regression
+# 7.1 Logistic Regression
 
 Before using logistic regression to model our data, we will attempt to do so through simple linear regression. Although this is not suitable for dichotomous outcomes, visualising it helps to illustrate why logistic regression is a better fit for our research question.
 
-## Linear regression
+## Why Not Linear Regression?
 
 ```{code-cell}
 import pandas as pd
@@ -27,12 +27,12 @@ df = pd.read_csv("data/data.dat", delimiter='\t')
 sns.regplot(x="age", y="display", data=df);
 ```
 
-As you can see, the linear regression model is not particularly suitable for our research question. Around 80 months, the predicted values of Y exceed 1, which doesn't make sense in this context. Since our dependent variable is dichotomous (pass/fail), we need a model that restricts predicted values to fall between 0 and 1, such as logistic regression.
+As you can see, linear regression struggles with binary outcomes. Beyond approximately 80 months, predicted values exceed 1, which is not valid for probabilities. Since our dependent variable is dichotomous (e.g., pass/fail), we need a model that restricts predicted values to fall between 0 and 1, such as logistic regression.
 
 
 ## Logistic Regression
 
-Logistic regression naturally keeps predicted probabilities between 0 and 1, making it more suitable for our research question. As always, there are several options for us to use. Today, we will use the `LogisticRegression()` class from scikit-learn.
+Logistic regression naturally ensures that predicted probabilities stay between 0 and 1. In this tutorial, we will use the `LogisticRegression()` class from scikit-learn for modeling.
 
 ```{code-cell}
 import numpy as np
@@ -48,21 +48,24 @@ print(f"Intercept: {results.intercept_}")
 print(f"Coefficients: {results.coef_}")
 ```
 
-**Interpretation**
+### Interpreting the Model Outputs
 
-- Intercept (-2,83): This means that when age = 0, the expected logit (log-odds) of the chance of understanding display rules is -2.83 (more on that later).
-- Coef (0,066): For each one-month increase in age, the log-odds of understanding display rules increases by 0.066.
+- **Intercept (-2.83):** The expected logit (log-odds) of the outcome (understanding display rules) when age = 0.
+- **Coefficient (0.066):** For each one-month increase in age, the log-odds of understanding display rules increases by 0.066.
 
-## Logits
-TODO
+The output of a logistic regression model is linear in the log-odds (logits). Logits provide a linear relationship between predictors and the dependent variable. Each coefficient reflects how a one-unit change in the predictor impacts the log-odds of the outcome, making it easier to interpret the model.
 
-# Conditional probabilities
-TODO
 
-Let's plot the model to better understand whats going on. A simple way of doing so it to create an evenly spaced array of values for our range, and then predict the outcome for each value (this will give us the regression line):
+### From Logits to Probabilities
+
+We can simply transform the logits into probabilities (more specifically, the conditional probability of Y belongig to class 1 given X):
+
+$$P(Y=1 \mid X) = \frac{1}{1 + e^{-(b_0 + b_1 X)}}$$
+
+Let's plot the model outputs to better understand whats going on. A simple way of doing so it to create an evenly spaced array of values for our range, and then use `model.predict()` to predict the outcome for each value (this will give us the regression line):
 
 ```{code-cell}
-x_range = np.linspace(X.min(), X.max(), 100).reshape(-1, 1) # generate X values
+x_range = np.linspace(1, 100, 100).reshape(-1, 1) # generate X values
 y_prob = model.predict_proba(x_range)[:, 1] # get model predictions
 
 # Plot the results
