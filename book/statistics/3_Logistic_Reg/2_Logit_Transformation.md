@@ -16,13 +16,14 @@ kernelspec:
 
 $$ln(\frac{P(Y=1 \mid X)}{1 - P(Y=1 \mid X)}) = b_0 + b_1 \cdot X$$
 
-By default, logistic regression applies the logit transform to convert probabilities into a log scale, which linearizes the relationship between the independent variable and the probability of a binary outcome (like success/failure). 
+By default, logistic regression applies the **logit transform** to convert probabilities into a log scale, which linearizes the relationship between the independent variable and the probability of a binary outcome (like success/failure). 
 
 In this formula:
 - $b_0$ is the intercept, representing the logit value when $X = 0$.
 - $b_1$ is the slope, indicating how the logit changes with a one-unit increase in $X$.
 
-This transformation is crucial because it allows us to apply linear regression techniques to binary outcomes. The plot of the logit against the independent variable, such as age, helps visualize how the likelihood of the outcome varies with age. This aids in both interpretation and understanding of the model. For further details, refer to the lecture slides, pages 40 to 45.
+This transformation is crucial because it allows us to use linear regression techniques for binary outcomes. The logit, which is the natural log of the odds, is a continuous scale, making it suitable for linear modeling.
+Plotting the logit against the independent variabe (such as age) helps us visualize how the likelihood of the outcome change with the predictor. This aids in both interpretation and understanding of the model. For further details, refer to the lecture slides, pages 40 to 45.
 
 We can plot the logits to see, how the linear relationship looks like:
 
@@ -40,6 +41,7 @@ y = data['display']
 model = LogisticRegression()
 results = model.fit(X, y)
 
+# Extract intercept and coefficient 
 intercept = results.intercept_[0]
 coef = results.coef_[0][0]
 
@@ -55,4 +57,5 @@ ax.set(xlabel="Age", ylabel="Logit (Log-Odds)", title="Logit Transform")
 plt.legend()
 plt.show()
 ```
+As you can see, the logit transformation effectively linearizes the relationship between age and the probability of understanding display rules, making the data points follow a more linear pattern.
 
