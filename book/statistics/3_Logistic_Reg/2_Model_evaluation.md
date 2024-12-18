@@ -64,16 +64,16 @@ The output can be interpreted as follows:
 
 $$\text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}$$
 
-- *Class 0: 0.73 precision indicates that when the model predicts a "fail", 73% of the time it is correct*
-- *Class 1: 0.81 precision means that when the model predicts "pass," 81% of the time it is correct* 
+- *Class 0: When the model predicts that a sample does not understand the display rules (Class 0), 73% of the time it is correct.*
+- *Class 1: When the model predicts that a sample does understand the display rules (Class 1), 81% of the time it is correct. * 
 
 
 **Recall**: The proportion of true positives that are correctly identified by the model.
 
 $$\text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Negatives (FN)}}$$
 
-- *Class 0: 77% of the actual "fails" are correctly identified by the model.*
-- *Class 1: 77% of the actual "passes" are correctly identified by the model.* 
+- *Class 0:  77% of the actual samples that do not understand the display rules (Class 0) are correctly identified by the model.*
+- *Class 1: 77% of the actual samples that do understand the display rules (Class 1) are correctly identified by the model.* 
 
 
 **F1-Score**: harmonic mean of precision and recall, providing a balance between the two and offering a good overall measure of model performance.
