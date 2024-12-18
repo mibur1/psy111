@@ -16,9 +16,8 @@ kernelspec:
 
 In previous lessons, we covered categorical regression, including methods for incorporating categorical variables, such as gender (male/female) or genotype types. Last week, we examined logistic regression for dichotomous dependent variables (e.g., whether a tumor is malignant or not). In this session, we’ll shift our focus back to quantitative variables as we introduce moderated regression. Note that while moderated regression can also apply to qualitative dependent variables, today’s session will concentrate solely on quantitative outcomes.
 
-The outline:
+## The Dataset
 
-- dataset
-- Centering predictors
-- Moderated regression
-- Exercises
+The data we'll be working with today may look familiar, as we've already used it in the categorical regression session. However, our focus will now shift to a new research question that is specifically suited for moderated regression analysis.
+
+**Research Question**: Investigate whether the association between fluid intelligence (`gff`) and figural working memory (`WMf`) is moderated by age (`age`).

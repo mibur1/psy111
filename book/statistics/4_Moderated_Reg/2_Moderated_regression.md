@@ -12,9 +12,9 @@ kernelspec:
   name: python3
 ---
 
-# 8.3 Moderated Regression
+# 8.2 Moderated Regression
 
-Moderated regression is given by the equation:
+Moderated regression models are used to understand whether and how the relationship between two variables (a predictor $X_1$ and an outcome $Y$) changes at different levels of a third variable (the moderator $X_2$). This is accomplished by including an interaction term $(X_1*X_2)$ in the regression model:
 
 $$Y= b_0+b_1*X_1+b_2*X_2+b_3*(X_1*X_2)$$
 
@@ -25,9 +25,6 @@ $$Y= b_0+b_1*X_1+b_2*X_2+b_3*(X_1*X_2)$$
 - $b_3$ is the coefficient for the interaction term (product of $X_1$ and $X_2$).
 - $(X_1*X_2)$ is the interaction term.
 
-## Moderated Regression
-
-Moderated regression is used to understand whether and how the relationship between two variables (a predictor $X_1$ and an outcome $Y$) changes at different levels of a third variable (the moderator $X_2$). This is accomplished by including an interaction term $(X_1*X_2)$ in the regression model.
 
 ## Moderator Variable
 
@@ -40,30 +37,31 @@ Specifically, we regress fluid intelligence ($Y$: `gff`) on centered age, WMf an
 We will use `ols()` from Statsmodels (as discussed in the lecture on GLM) and define the interaction term beforehand in a variable. We will utilize our centered dataset to obtain a meaningful intercept $b_0$.
 
 ```{code-cell}
-#import libraries
 import pandas as pd
 import statsmodels.formula.api as smf
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load the dataset and subset into smaller dataframe
 df = pd.read_csv("data/data.txt", delimiter='\t')
-dataframe=df[['age', 'subject', 'WMf', 'gff']]
+df_small = df[['age', 'subject', 'WMf', 'gff']]
 
-#centering the variables like before
-dat_cen= dataframe.copy()
-dat_cen['age_c'] = dataframe['age'] - df['age'].mean()
-dat_cen['WMf_c'] = df['WMf'] - df['WMf'].mean()
+# Center the predictors
+df_small= df_small.copy()
+df_small['age_c'] = df_small['age'] - df_small['age'].mean()
+df_small['WMf_c'] = df_small['WMf'] - df_small['WMf'].mean()
 
-# %% create an interaction term
+# Create the interaction term
+df_small['interac_age_WMf']= df_small['WMf_c'] * df_small['age_c']
 
-dat_cen['interac_age_WMf']= dat_cen['WMf_c']*dat_cen['age_c']
+# Fit the model
+model = smf.ols(formula='gff ~ WMf_c + age_c + interac_age_WMf', data=df_small)
+results = model.fit()
 
-model_interaction = smf.ols(formula='gff ~ WMf_c + age_c + interac_age_WMf', data=dat_cen).fit()
-
-print(model_interaction.summary())
+print(results.summary())
 ```
-**What does the output tell me?**
+
+## Interpreting the outputs
+
 1. The variables `WMf`, `age`, and their interaction term jointly explain 24.3% of the variance in `gff`.
 2. Since the model without the interaction term explained 24% of the variance, we conclude that adding the interaction term results in a relatively small increase in explained variance: $24.3\% - 24\% = 0.3\%$ in `gff`.
 
@@ -74,28 +72,12 @@ $$\text{gff}=0.44+0.75*\text{WMf}-0.0055*\text{age}+0.018*\text{WMf}*\text{age}$
 The following plot illustrates the relationship between `WMf` and `gff` with `age` as their moderator.
 
 ```{code-cell}
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
+import matplotlib as mpl
 
-# Create the scatter plot with continuous gradient for age
-scatter = sns.scatterplot(data=dataframe, x='WMf', y='gff', hue='age', palette='viridis', legend=None)
+fig, ax = plt.subplots()
+sns.scatterplot(data=df_small, x='WMf', y='gff', hue='age', palette='viridis', ax=ax)
+sns.regplot(data=df_small, x='WMf', y='gff', scatter=False, color='black', ax=ax)
+ax.set(xlabel='Figural Working Memory (WMf)', ylabel='Fluid Intelligence (gff)', title='ggf predicted by WMf with age as a moderator')
 
-# Add a regression line for the overall trend
-sns.regplot(data=dataframe, x='WMf', y='gff', scatter=False, color='black')
-
-# Add labels and title
-plt.xlabel('Figural Working Memory (WMf)')
-plt.ylabel('Fluid Intelligence (gff)')
-plt.title('Scatter Plot of Working Memory vs. Fluid Intelligence with Age as Moderator')
-
-# Create a colorbar
-norm = plt.Normalize(dataframe['age'].min(), dataframe['age'].max())
-sm = plt.cm.ScalarMappable(cmap='viridis', norm=norm)
-cbar = plt.colorbar(sm)
-cbar.set_label('Age')
-
-# Show the plot
 plt.show()
-
 ```
