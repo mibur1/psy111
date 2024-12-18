@@ -25,7 +25,7 @@ df_small = df[['age', 'subject', 'WMf', 'gff']]
 
 ## Descriptive Analysis
 
-We'll start by examining the first few rows of our new subset using 'head()' and then apply 'describe()' to get an overview of key statistics, such as the mean and standard deviation.
+We'll start by examining the first few rows of our new subset using `head()` and then apply `describe()` to get an overview of key statistics, such as the mean and standard deviation.
 
 ```{code-cell}
 print(df_small.head())
@@ -42,7 +42,7 @@ import seaborn as sns
 sns.histplot(df_small['age'], bins=10);
 ```
 
-By using Seaborn's 'scatterplot', we can explore the relationship between 'WMf' and 'gff' and identify any trends. Additionally, we will incorporate age as the hue to visualize how this variable may influence the relationship between 'WMf' and 'gff'.
+By using Seaborn's 'scatterplot', we can explore the relationship between `WMf` and `gff` and identify any trends. Additionally, we will incorporate age as the hue to visualize how this variable may influence the relationship between `WMf` and `gff`.
 
 ```{code-cell}
 sns.scatterplot(data=df_small, x='WMf', y='gff', hue='age');
