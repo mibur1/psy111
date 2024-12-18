@@ -16,11 +16,13 @@ kernelspec:
 
 As we mentioned many times before, it is important to always look at your data! So before we begin with the analysis, lets get a better understanding of the data. For convenience, we create a smaller subset of the main DataFrame:
 
+*Additional information: When creating new DataFrames derived from others, they are by default a view or a shallow copy of the original DataFrame. This is due to Pandas optimizing memory usage and access. However, when a shallow copy is created, the data may not be completely decoupled. Only the structure (index and column information) is copied, but the data itself may still reference the original. Sometimes it can therefore be helpful to make a deep copy, which creates an entirely independent object by using the `.copy()` method.*
+
 ```{code-cell}
 import pandas as pd
 
 df = pd.read_csv("data/data.txt", delimiter='\t')
-df_small = df[['age', 'subject', 'WMf', 'gff']]
+df_small = df[['age', 'subject', 'WMf', 'gff']].copy() # Create a deep copy
 ```
 
 ## Descriptive Analysis

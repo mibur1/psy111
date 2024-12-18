@@ -43,10 +43,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 df = pd.read_csv("data/data.txt", delimiter='\t')
-df_small = df[['age', 'subject', 'WMf', 'gff']]
+df_small = df[['age', 'subject', 'WMf', 'gff']].copy() # Create a deep copy
 
 # Center the predictors
-df_small= df_small.copy()
 df_small['age_c'] = df_small['age'] - df_small['age'].mean()
 df_small['WMf_c'] = df_small['WMf'] - df_small['WMf'].mean()
 

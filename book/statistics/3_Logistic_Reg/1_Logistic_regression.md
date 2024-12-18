@@ -43,10 +43,11 @@ Logistic regression naturally ensures that predicted probabilities stay between 
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
-# convert 'age' into a NumPy array and reshape it to a 2D array (required for the model)
+# Convert 'age' into a NumPy array and reshape it to a 2D array (required for the model)
 # .reshape(-1, 1): Creates one column with as many rows as needed (-1 infers the row count)
-X = np.asarray(df['age']).reshape(-1, 1) 
-# convert 'display' to a NumPy array for the binary outcome
+X = np.asarray(df['age']).reshape(-1, 1)
+
+# Convert 'display' to a NumPy array for the binary outcome
 y = np.asarray(df['display']) # binary outcome
 
 model = LogisticRegression()
