@@ -32,9 +32,7 @@ A moderator variable is a type of independent variable that influences the stren
 
 **Research question**: We investigate whether the association between fluid intelligence (`gff`) and figural working memory (`WMf`) is moderated by age (`age`).
 
-Specifically, we regress fluid intelligence ($Y$: `gff`) on centered age, WMf and their product term (`age` $*$ `WMf`).
-
-We will use `ols()` from Statsmodels (as discussed in the lecture on GLM) and define the interaction term beforehand in a variable. We will utilize our centered dataset to obtain a meaningful intercept $b_0$.
+As previously, we can use statsmodels to do so. The regression formula for moderated regression can be specified as `y ~ A * B` or as `y ~ A + B + A:B`. `A` and `B` are the main effects, `A:B` is the interaction effect. The first formula is internally automatically expanded to the second one (so if you just want to model the second interaction term you can simply use `A:B` in a standalone fashion). We will further utilize our centered dataset to obtain a meaningful intercept $b_0$.
 
 ```{code-cell}
 import pandas as pd
@@ -49,26 +47,61 @@ df_small = df[['age', 'subject', 'WMf', 'gff']].copy() # Create a deep copy
 df_small['age_c'] = df_small['age'] - df_small['age'].mean()
 df_small['WMf_c'] = df_small['WMf'] - df_small['WMf'].mean()
 
-# Create the interaction term
-df_small['interac_age_WMf']= df_small['WMf_c'] * df_small['age_c']
-
 # Fit the model
-model = smf.ols(formula='gff ~ WMf_c + age_c + interac_age_WMf', data=df_small)
+model = smf.ols(formula='gff ~ WMf_c * age_c', data=df_small)
 results = model.fit()
-
 print(results.summary())
 ```
 
 ## Interpreting the outputs
 
-1. The variables `WMf`, `age`, and their interaction term jointly explain 24.3% of the variance in `gff`.
-2. Since the model without the interaction term explained 24% of the variance, we conclude that adding the interaction term results in a relatively small increase in explained variance: $24.3\% - 24\% = 0.3\%$ in `gff`.
+**Model overview**
+- **Dependent Variable (`gff`)**: This is the outcome variable (fluid intelligence) being modeled.
+- **Independent Variables**:
+  - `WMf_c`: Centered working memory predictor.
+  - `age_c`: Centered age predictor.
+  - `WMf_c:age_c`: Interaction term between `WMf_c` and `age_c` to test for moderation.
+- **R-squared (0.243)**: Approximately 24.3% of the variance in `gff` is explained by the predictors in this model.
+- **Adjusted R-squared (0.233)**: The model explains 23.3% of the variance in `gff` after accounting for model complexity.
 
-The equation for our research question can be written as:
+**Key Metrics**
+- **F-statistic (26.79, p < 0.001)**: The model as a whole is statistically significant, meaning the predictors collectively explain a significant amount of variance in `gff`.
+- **Log-Likelihood (118.02)**: Indicates the model’s goodness-of-fit; higher values suggest better fit.
+- **AIC/BIC (-228.0 / -213.9)**: Measures of model quality, penalizing complexity. Lower values indicate a better model.
 
-$$\text{gff}=0.44+0.75*\text{WMf}-0.0055*\text{age}+0.018*\text{WMf}*\text{age}$$
+**Coefficients**
+1. **Intercept (`0.4365`, p < 0.001)**:
+   - The expected value of `gff` when both `WMf_c` and `age_c` are at their mean (since these variables are centered).
+   - This is highly significant, as expected in most models.
 
-The following plot illustrates the relationship between `WMf` and `gff` with `age` as their moderator.
+2. **`WMf_c` (`0.7489`, p < 0.001)**:
+   - A **positive, significant effect**.
+   - For every unit increase in centered working memory (`WMf_c`), `gff` increases by approximately 0.75 units, holding `age_c` constant.
+
+3. **`age_c` (`-0.0055`, p = 0.006)**:
+   - A **negative, significant effect**.
+   - For every unit increase in centered age (`age_c`), `gff` decreases by 0.0055 units, holding `WMf_c` constant.
+
+4. **Interaction Term `WMf_c:age_c` (`0.0181`, p = 0.345)**:
+   - This term is **not significant** (p = 0.345), suggesting no evidence that the relationship between `WMf_c` and `gff` changes significantly as a function of `age_c`.
+   - In other words, age does **not moderate** the relationship between working memory and fluid intelligence in this sample.
+
+**Summary of findings**
+1. **Main Effects**:
+   - `WMf_c`: A strong, positive predictor of `gff` (fluid intelligence). Higher working memory scores are associated with higher fluid intelligence.
+   - `age_c`: A small, negative predictor of `gff`. Older age is associated with slightly lower fluid intelligence.
+
+2. **Interaction**:
+   - The interaction term (`WMf_c:age_c`) is not statistically significant, indicating that the effect of working memory on fluid intelligence does not vary significantly across different ages.
+
+3. **Model Fit**:
+   - The model explains a modest proportion of the variance in `gff` (24.3%), and the predictors collectively contribute significantly.
+
+The regression equation can be written as:
+
+$$\text{gff}=0.44+0.75*\text{WMf_c}-0.0055*\text{age_c}+0.018*\text{WMf_c}*\text{age_c}$$
+
+The following plot illustrates the relationship between `WMf`, `gff` and `age` as their moderator (please note that the regression line is only a simple linear regression!).
 
 ```{code-cell}
 import matplotlib as mpl
@@ -76,7 +109,7 @@ import matplotlib as mpl
 fig, ax = plt.subplots()
 sns.scatterplot(data=df_small, x='WMf', y='gff', hue='age', palette='viridis', ax=ax)
 sns.regplot(data=df_small, x='WMf', y='gff', scatter=False, color='black', ax=ax)
-ax.set(xlabel='Figural Working Memory (WMf)', ylabel='Fluid Intelligence (gff)', title='ggf predicted by WMf with age as a moderator')
+ax.set(xlabel='Figural Working Memory (WMf)', ylabel='Fluid Intelligence (gff)', title='Relationship between WMf, gff, and age')
 
 plt.show()
 ```
