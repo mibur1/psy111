@@ -92,7 +92,7 @@ plt.show()
 
 ### From Logits to Probabilities
 
-We can simply transform the logits back into probabilities (more specifically the conditional probability of an observation y belongig to class 1 given predictor(s) y):
+We can simply transform the logits back into probabilities (more specifically the conditional probability of an observation y belongig to class 1 given predictor(s) X):
 
 $$P(Y=1 \mid X) = \frac{1}{1 + e^{-(b_0 + b_1 X)}}$$
 
