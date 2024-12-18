@@ -36,7 +36,7 @@ We'll start by examining the first few rows of our new subset using 'head()' and
 
 ```{code-cell}
 print(dataframe.head())
-dataframe.describe()
+print(dataframe.describe())
 ```
 ## Descriptive Plots
 To further visualize the data, we can use Seaborn's histplot to examine the frequency distribution of the age variable. This will give us a clearer view of how age is distributed across our sample.
