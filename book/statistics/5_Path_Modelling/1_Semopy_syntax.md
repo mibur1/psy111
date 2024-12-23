@@ -25,6 +25,8 @@ The basic workflow looks like this:
 
 ## The semopy syntax
 
+The syntax is designed to be intuitive and aligns with common statistical modeling notations which you would also encounter in e.g. the statsmodels package or the R programming language.
+
 ### Regression
 
 Regression equations can be specified similar to how you already learned in the previous sessions in e.g. statsmodels: `Y ~ x1 + x2 + x3`:

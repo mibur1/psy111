@@ -1,0 +1,12 @@
+digraph G {
+	overlap=scale splines=true
+	edge [fontsize=12]
+	node [fillcolor="#cae6df" shape=circle style=filled]
+	node [shape=box style=""]
+	SubjHealth [label=SubjHealth]
+	FunctHealth [label=FunctHealth]
+	PhysicHealth [label=PhysicHealth]
+	PhysicHealth -> FunctHealth [label="-0.096\np-val: 0.00"]
+	PhysicHealth -> SubjHealth [label="-0.095\np-val: 0.00"]
+	FunctHealth -> SubjHealth [label="0.876\np-val: 0.00"]
+}

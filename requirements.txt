@@ -12,5 +12,6 @@ pingouin
 factor_analyzer
 semopy
 ucimlrepo
+graphviz
 jupyterquiz
 ISLP

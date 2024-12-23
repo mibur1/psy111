@@ -14,70 +14,81 @@ kernelspec:
 
 # 9.2 Application
 
-Now, let’s apply path modeling to a real-world example to better understand the meaning of the output. In this example, we will investigate the relationships between Physical Health ($X$), Functional Health ($Y_1$), and Subjective Health ($Y_2$), as proposed by Whitelaw and Liang (1991).
+Now, let’s apply path modeling to the real-world example. As explained in the introduction, we will investigate the relationships between physical health, functional health, and subjective health, as proposed by Whitelaw and Liang (1991).
 
 We’ve formulated the following hypotheses for our investigation:
 
 1. Physical health influences functional health, which, in turn, predicts subjective health.
 2. Physical health directly affects subjective health.
 
-Based on these hypotheses, we structure the relationships into the following diagram.
+Based on these hypotheses, we structure the relationships into the following diagram:
+
 ```{figure} figures/figure_1.png
 ---
-width: 60%
+width: 80%
 ---
 ```
 
-**Variables**
+## Variables
 
 - Physical Health ($X$): The number of illnesses experienced in the last 12 months.
 - Functional Health ($Y_1$): The sum score of the SF-36 questionnaire, which measures functional health.
-Subjective Health ($Y_2$): Self-reported subjective health, reflecting how individuals perceive their overall health.
+- Subjective Health ($Y_2$): Self-reported subjective health, reflecting how individuals perceive their overall health.
 
-We use the following code:
+## Loading the data
+
+The data is provided in the book. As in the previous session, we can either load it from the local files (if you downloaded the entire book), or from the GitHub link. We will again use the second version as this would also work in Google Colab:
 
 ```{code-cell}
-#libraries
 import pandas as pd
 import semopy
 import matplotlib.pyplot as plt
-import graphviz
-from semopy import calc_stats
 
-#import the dataset
-df = pd.read_csv("data/data.txt", delim_whitespace=True)
-#ATTENTION: maybe you would like to chnage the delim_whitespace=True to something else as this might get deleted as valid syntax soon
+df = pd.read_csv("https://raw.githubusercontent.com/mibur1/psy111/main/book/statistics/5_Path_Modelling/data/data.txt", sep="\t")
 print(df.head())
+```
 
-#name the columns
+We can see that the columns to not have names, so we assign them based on knowledge we have about the data:
+
+```{code-cell}
 df.columns = ["SubjHealth","SubjHealthChange", "PhysicHealth", "NrDoctorApp", "FunctHealth", "FunctHealth1", "FunctHealth2"]
 print(df.head())
-
-#define our model from our hypotheses like the following
-desc = """
-# Regression analysis
-SubjHealth ~ PhysicHealth + FunctHealth
-FunctHealth ~ PhysicHealth
-"""
-
-# Initialize and fit the model
-mod = semopy.Model(desc)
-res = mod.fit(df)
-
-# Print the fitting results
-print(res)
-
-# Inspect the results (parameter estimates, fit indices, etc.)
-estimates = mod.inspect(std_est= True)
-print(estimates)
-
-#print out the model fit statistic
-stats = calc_stats(mod)
-print(stats)
-
-#Optional: save the relaionship plot
-#model_diagram=semopy.semplot(mod, "health.png") 
 ```
+
+Great, the DataFrame now looks like it is ready for use! We can continue with defining and fitting the model:
+
+```{code-cell}
+# Define the model
+model = semopy.Model("""
+                     SubjHealth ~ PhysicHealth + FunctHealth
+                     FunctHealth ~ PhysicHealth
+                     """)
+results = model.fit(df)
+print(results)
+```
+
+We can then Inspect the results:
+
+```{code-cell}
+estimates = model.inspect(std_est= True)
+print(estimates)
+```
+
+Or the fit statistics:
+
+```{code-cell}
+stats = semopy.calc_stats(model)
+print(stats)
+```
+
+Finally, we can also visualise the model:
+
+```{code-cell}
+semopy.semplot(model, "figures/health.png") 
+```
+
+**Additional information:** If you want to visualise the model, you need to install Graphviz through pip (if you installed everything in the *requirements.txt* file you already have it). You then also need to install [Graphviz](https://graphviz.org/) as a normal program. On Windows, make sure to select the "Add Graphviz to PATH" option during the installation.
+
 
 ## Model Output
 Objective and Optimization
