@@ -1,0 +1,21 @@
+digraph G {
+	overlap=scale splines=true
+	edge [fontsize=12]
+	node [fillcolor="#cae6df" shape=circle style=filled]
+	node [shape=box style=""]
+	num [label=num]
+	age [label=age]
+	chol [label=chol]
+	exang [label=exang]
+	thalach [label=thalach]
+	trestbps [label=trestbps]
+	age -> thalach [label="-1.041\np-val: 0.00"]
+	chol -> thalach [label="0.036\np-val: 0.13"]
+	age -> exang [label="0.004\np-val: 0.18"]
+	trestbps -> exang [label="0.001\np-val: 0.48"]
+	age -> num [label="0.006\np-val: 0.41"]
+	chol -> num [label="0.001\np-val: 0.57"]
+	trestbps -> num [label="0.008\np-val: 0.03"]
+	thalach -> num [label="-0.015\np-val: 0.00"]
+	exang -> num [label="0.720\np-val: 0.00"]
+}

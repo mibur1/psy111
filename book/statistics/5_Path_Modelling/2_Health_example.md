@@ -63,8 +63,9 @@ model = semopy.Model("""
                      SubjHealth ~ PhysicHealth + FunctHealth
                      FunctHealth ~ PhysicHealth
                      """)
-results = model.fit(df)
-print(results)
+
+info = model.fit(df)
+print(info)
 ```
 
 We can then Inspect the results:
@@ -91,62 +92,76 @@ semopy.semplot(model, "figures/health.png")
 
 
 ## Model Output
-Objective and Optimization
 
-- *Objective Function*: Maximum Likelihood with Weights (MLW).
-- *Optimization Algorithm*: Sequential Least Squares Quadratic Programming (SLSQP), chosen based on model requirements and complexity.
-- *Number of Iterations*: The model converged after 14 iterations, indicating a quick and efficient optimization process.
+### Objective and Optimization
 
-**Parameter Estimates**
-The following are the key relationships identified in the model:
+- **Objective Function**: Maximum Likelihood with Weights (MLW).
+- **Optimization Algorithm**: Sequential Least Squares Quadratic Programming (SLSQP).
+- **Iterations**: The model converged after 14 iterations.
+- **Objective Value**: 0.000, indicating no detectable discrepancy between observed and predicted covariance matrices.
 
-`Functional Health ~ Physical Health`
-- Coefficient: -0.096
-- Standard Error: 0.0047
-- z-value: -20.527
-- p-value: < 0.001
-Interpretation: Physical health has a significant negative effect on functional health. As the number of illnesses increases, functional health decreases.
+### Parameter Estimates
 
-`Subjective Health ~ Physical Health`
-- Coefficient: -0.094
-- Standard Error: 0.008
-- z-value: -11.39
-- p-value: < 0.001
-Interpretation: Physical health (the number of illnesses) has a significant negative effect on subjective health. More illnesses correlate with poorer subjective health.
+1. `Functional Health ~ Physical Health`
+   - Coefficient: **-0.096**, SE: **0.0047**, z: **-20.527**, p: **< 0.001**  
+   - **Interpretation**: Physical health (the number of illnesses) has a significant negative effect on functional health. More illnesses reduce functional health.
 
-`Subjective Health ~ Functional Health`
-- Coefficient: 0.876
-- Standard Error: 0.039
-- z-value: 22.41
-- p-value: < 0.001
-Interpretation: Functional health has a significant positive effect on subjective health. Higher functional health scores lead to better subjective health.
+2. `Subjective Health ~ Physical Health`
+   - Coefficient: **-0.094**, SE: **0.008**, z: **-11.39**, p: **< 0.001**  
+   - **Interpretation**: Physical health has a significant negative effect on subjective health. More illnesses reduce subjective health.
 
-**Standardized Coefficients (Relative Importance)**
+3. `Subjective Health ~ Functional Health`
+   - Coefficient: **0.876**, SE: **0.039**, z: **22.41**, p: **< 0.001**  
+   - **Interpretation**: Functional health has a significant positive effect on subjective health. Higher functional health leads to better subjective health.
 
-Standardized coefficients (`Est.Std`) allow us to compare the relative influence of each predictor:
+### Standardized Coefficients
 
-- Physical Health → Functional Health: -0.451 (strong negative effect).
-- Physical Health → Subjective Health: -0.244 (moderate negative effect).
-- Functional Health → Subjective Health: 0.481 (substantial positive effect).
+Standardized coefficients (`Est.Std`) allow us to compare the relative influence of each predictor. They can be interpreted similarly to correlation coefficients, indicating the strength and direction of relationships on a standardized scale. However, unlike correlations, they reflect causal relationships within the model's structure and account for both direct and indirect effects.
 
-**Variance Explained**
+- **Physical Health → Functional Health**: **-0.451** (strong negative effect).  
+- **Physical Health → Subjective Health**: **-0.244** (moderate negative effect).  
+- **Functional Health → Subjective Health**: **0.481** (strong positive effect).
 
-- Functional Health: Variance = 0.172 (p < 0.001). This represents the unexplained variability in functional health.
-- Subjective Health: Variance = 0.432 (p < 0.001). This represents the unexplained variability in subjective health.
+### Variance Explained
+
+- **Functional Health**: Residual variance = **0.172** (p < 0.001). This represents the unexplained variance in functional health.  
+- **Subjective Health**: Residual variance = **0.432** (p < 0.001). This represents the unexplained variance in subjective health.
+
 
 ## Model Evaluation
-Several metrics help us evaluate the model fit, but we will focus on the following:
 
-1. *Chi-Square Value*: A low value suggests a good fit.
-In our model, the extremely low Chi-Square value and high p-value indicate that the model fits the data almost perfectly.
-2. *Objective Value*: The objective value of 0.000 suggests no detectable discrepancy between the observed and model-predicted covariance matrices.
+### Fit Metrics
+
+- **Chi-Square**: **0.0001** (p = **0.9915**), excellent fit.  
+- **CFI**: **1.0008**, **TLI**: **1.0033** (indicative of possible overfit).  
+- **RMSEA**: **0**, **GFI/AGFI**: **1.0**, perfect fit.  
+- **AIC**: **10**, useful for model comparison.
+
+### Overfitting Concerns
+
+- High fit indices and low Chi-Square suggest potential overfitting.  
+- **Recommendation**: Test on an independent dataset or simplify the model.
+
 
 ## Interpretation
-The results provide meaningful insights into the relationships between the variables:
 
-- Subjective health is strongly influenced by both physical and functional health.
-- Functional health is significantly affected by physical health.
-- Specifically, better subjective health is associated with fewer illnesses and higher functional health scores, while better functional health is tied to fewer illnesses in the past year.
+### Key Insights
+
+1. **Physical Health → Functional Health**: Negative relationship; more illnesses lead to reduced functional health.
+2. **Physical Health → Subjective Health**: Negative relationship; more illnesses lead to poorer subjective health.
+3. **Functional Health → Subjective Health**: Positive relationship; higher functional health improves subjective health.
+
+### Implications
+
+- **Mediation**: Functional health mediates the effect of physical health on subjective health.
+- **Variance Explained**: Functional health (17.2%), subjective health (43.2%). Other factors likely influence outcomes.
+
+### Limitations
+
+- **Overfitting**: Model fit metrics suggest overfitting risks.  
+- **Self-reported Measures**: Subjective health may suffer from biases (e.g., recall bias).  
+- **Unexplained Variance**: Additional predictors (e.g., social factors) could enhance the model.
+
 
 ```{admonition} Caution
 :class: warning
