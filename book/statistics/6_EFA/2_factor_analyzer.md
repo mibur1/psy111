@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 10.2 Summary
+# 10.2 Application
 
 ## Create a factor analysis object
 

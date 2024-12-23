@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 9.2 Regression Splines
+# 13.2 Regression Splines
 
 To compute Regression Splines in Python we will again use the `patsy` package and the `statsmodels` package. Also, we continue using the `Wage` dataset. 
 

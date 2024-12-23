@@ -12,7 +12,6 @@ kernelspec:
   name: python3
 ---
 
-
 # 12.3 Summary
 
 ## Create features

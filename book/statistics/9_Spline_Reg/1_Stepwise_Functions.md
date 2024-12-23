@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 9.1 Stepwise Functions
+# 13.1 Stepwise Functions
 
 To compute Stepwise Functions in Python we will use the `patsy` package and the `statsmodels` package. 
 

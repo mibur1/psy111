@@ -12,7 +12,6 @@ kernelspec:
   name: python3
 ---
 
-
 # 11.3 Summary
 
 ## Specify a model

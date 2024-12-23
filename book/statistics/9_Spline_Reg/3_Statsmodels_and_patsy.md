@@ -13,7 +13,7 @@ kernelspec:
 ---
 
 
-# 9.3 `statsmodels` & `patsy` sum'ed up
+# 13.3 Summary
 
 ## Transform predictors
 

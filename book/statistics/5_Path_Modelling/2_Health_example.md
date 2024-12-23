@@ -12,7 +12,8 @@ kernelspec:
   name: python3
 ---
 
-# 9.2 Health example
+# 9.2 Application
+
 Now, let’s apply path modeling to a real-world example to better understand the meaning of the output. In this example, we will investigate the relationships between Physical Health ($X$), Functional Health ($Y_1$), and Subjective Health ($Y_2$), as proposed by Whitelaw and Liang (1991).
 
 We’ve formulated the following hypotheses for our investigation:
@@ -28,11 +29,13 @@ width: 60%
 ```
 
 **Variables**
+
 - Physical Health ($X$): The number of illnesses experienced in the last 12 months.
 - Functional Health ($Y_1$): The sum score of the SF-36 questionnaire, which measures functional health.
 Subjective Health ($Y_2$): Self-reported subjective health, reflecting how individuals perceive their overall health.
 
 We use the following code:
+
 ```{code-cell}
 #libraries
 import pandas as pd
@@ -75,6 +78,7 @@ print(stats)
 #Optional: save the relaionship plot
 #model_diagram=semopy.semplot(mod, "health.png") 
 ```
+
 ## Model Output
 Objective and Optimization
 

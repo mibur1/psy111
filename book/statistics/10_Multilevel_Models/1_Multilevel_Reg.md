@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 10.1 Multilevel Regression in Python
+# 14.1 Multilevel Regression in Python
 
 To compute an Polynomial Regression in Python we will use the `statsmodels` package again.
 
