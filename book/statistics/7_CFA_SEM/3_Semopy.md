@@ -16,7 +16,7 @@ kernelspec:
 
 ## Specify a model
 
-```{code-cell}
+```{code-block}
 desc = '''
 # Measurement model
 latent_factor1 =~ x1 + x2 + x3
@@ -46,21 +46,21 @@ latent_factor1 ~~ 1 * latent_factor1 # Also an option to identify factors
 
 ## Fit a model
 
-```{code-cell}
+```{code-block}
 mod = semopy.Model(desc)
 res_opt = mod.fit(data)
 ```
 
 ## Extract model estimates
 
-```{code-cell}
+```{code-block}
 estimates = mod.inspect()
 print(estimates)
 ```
 
 ## Extract model fit measures
 
-```{code-cell}
+```{code-block}
 stats = semopy.calc_stats(mod)
 print(stats.T)
 ```

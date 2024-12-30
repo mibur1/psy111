@@ -17,7 +17,7 @@ kernelspec:
 
 ## Create a and fit model
 
-```{code-cell}
+```{code-block}
 model = smf.mixedlm("Y ~ X", data, groups=data["Group"], re_formula="~X")
 model_fit = model3.fit(method="bfgs")
 ```
@@ -29,7 +29,7 @@ model_fit = model3.fit(method="bfgs")
 
 ## Print model summary 
 
-```{code-cell}
+```{code-block}
 print(model_fit.summary())
 ```
 

@@ -16,7 +16,7 @@ kernelspec:
 
 ## Create a factor analysis object
 
-```{code-cell}
+```{code-block}
 :eval: false
 
 fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres',
@@ -37,17 +37,13 @@ fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres',
 
 ## Fit a model
 
-```{code-cell}
-:tags: [no-execute]
-
+```{code-block}
 fa_object.fit(data)
 ```
 
 ## Extract model estimates
 
-```{code-cell}
-:eval: false
-
+```{code-block}
 # Eigenvalues
 ev, cfev = fa.get_eigenvalues()
 # cfev gives us the common factor eigenvalues, which we don't need at the moment.

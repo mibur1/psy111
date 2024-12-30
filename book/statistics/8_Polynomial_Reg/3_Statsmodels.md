@@ -16,7 +16,7 @@ kernelspec:
 
 ## Create features
 
-```{code-cell}
+```{code-block}
 polynomial_features = PolynomialFeatures(degree=order, include_bias=True)
 x_p = polynomial_features.fit_transform(x.reshape(-1, 1))
 ```
@@ -25,7 +25,7 @@ x_p = polynomial_features.fit_transform(x.reshape(-1, 1))
 
 ## Fit a model and get residuals
 
-```{code-cell}
+```{code-block}
 model = sm.OLS(y, x_p).fit()
 fit = model.predict(x_p)
 residuals = model.resid
@@ -33,6 +33,6 @@ residuals = model.resid
 
 ## Center a predictor
 
-```{code-cell}
+```{code-block}
 data['x_c'] = data['x'] - data['x'].mean()
 ```

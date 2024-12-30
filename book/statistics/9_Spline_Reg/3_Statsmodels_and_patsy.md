@@ -17,7 +17,7 @@ kernelspec:
 
 ## Transform predictors
 
-```{code-cell}
+```{code-block}
 # Transform predictor variable
 transformed_x = dmatrix("bs(X, knots=(knot1, knot2, ...), degree=degree, include_intercept=False)",
                         {"X": df['X']}, return_type='dataframe')
@@ -29,7 +29,7 @@ transformed_x = dmatrix("bs(X, knots=(knot1, knot2, ...), degree=degree, include
 
 ## Fit a model 
 
-```{code-cell}
+```{code-block}
 # Fit the model
 model = sm.GLM(data['Y'], transformed_x).fit()
 
@@ -42,7 +42,7 @@ print(model.summary())
 
 ## Plot the model
 
-```{code-cell}
+```{code-block}
 plt.figure(figsize=(10, 6))
 xp = np.linspace(df['X'].min(), df['X'].max(), 100)
 transformed_xp = dmatrix("bs(xp, knots=(knot1, knot2, ...), degree=degree, include_intercept=False)",
