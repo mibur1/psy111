@@ -24,7 +24,7 @@ In this session, we’ll explore a new dataset to apply path modeling, building 
 
 Our focus is on understanding the relationships between these health constructs as outlined by Whitelaw and Liang (1991), using path modeling to test the proposed theoretical framework.
 
-**Research Question**
+## Research Question
 
 How do physical health, functional health, and subjective health relate to each other? Specifically, we aim to investigate the following hypotheses:
 

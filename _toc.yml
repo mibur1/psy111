@@ -63,13 +63,13 @@ parts:
         - file: book/statistics/4_Moderated_Reg/3_Exercises
     - file: book/statistics/5_Path_Modelling/0_Introduction
       sections:
-        - file: book/statistics/5_Path_Modelling/1_Semopy_syntax
-        - file: book/statistics/5_Path_Modelling/2_Health_example
+        - file: book/statistics/5_Path_Modelling/1_Semopy
+        - file: book/statistics/5_Path_Modelling/2_Example
         - file: book/statistics/5_Path_Modelling/3_Exercises
     - file: book/statistics/6_EFA/0_Introduction
       sections:
-        - file: book/statistics/6_EFA/1_EFA
-        - file: book/statistics/6_EFA/2_factor_analyzer
+        - file: book/statistics/6_EFA/1_Factor_analyzer
+        - file: book/statistics/6_EFA/2_Example
         - file: book/statistics/6_EFA/3_Exercises
     - file: book/statistics/7_CFA_SEM/0_Introduction
       sections:
