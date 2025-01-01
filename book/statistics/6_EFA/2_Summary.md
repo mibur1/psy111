@@ -14,35 +14,38 @@ kernelspec:
 
 # 10.2 Summary
 
-Summed up, the usage of the `factor_analyzer` package is similar to previously introduced workflows for statistical modeling:
+Summed up, the usage of the `factor_analyzer` package is similar to previously introduced workflows for statistical modeling. Please read through the [documentation](https://factor-analyzer.readthedocs.io/en/latest/index.html) for a detailed overview.
+
+
+
+
+https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html
 
 
 ```{code-block}
-fa_object = FactorAnalyzer(n_factors=3, rotation='promax', method='minres',
-                           use_smc=True, is_corr_matrix=False,
-                           bounds=(0.005, 1), impute='median',
-                           svd_method='randomized', rotation_kwargs=None)
+fa_object = FactorAnalyzer(n_factors=3,
+                           rotation='promax',
+                           method='minres',
+                           use_smc=True,
+                           is_corr_matrix=False,
+                           bounds=(0.005, 1),
+                           impute='median',
+                           svd_method='randomized',
+                           rotation_kwargs=None)
 ```
 
-For the `FactorAnalyzer` object, we have several options. The most important ones are
+For the `FactorAnalyzer` object, we have several options as described in the [documentation](https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html). The most important ones are:
 
-- `n_factors` determines the number of factors. For determining the number of needed factors, begin by fitting a model where the number of factros is equal to the number of observed variables (see above).
+- `n_factors`: The number of factors
+- `rotation`: The type of rotation to perform after fitting the factor analysis model
+- `method`: The fitting method to use
+- `is_corr_matrix` can be set to `Tue` if the data is already a correlation matrix
 
-- `rotation`determines the rotation algorithm used. Set `rotation = 'none'` for no rotation. See [factor_analyzer documentation](https://factor-analyzer.readthedocs.io/en/latest/index.html) for possible rotation options.
-
-- `method` determines the the method to fit the model. Set `method = 'ml'` for Maximum Likelihood and `method = 'minres'` for MINRES.
-
-- `is_corr_matrix` has to be set to `true` if the data is a correlation matrix. Defaults to `false`.
-
-We can then continue with fitting the model:
+We can then fit the model and extract its estimates such as eigenvalues, loadings, and communalities:
 
 ```{code-block}
 fa_object.fit(data)
-```
 
-and extracting model estimates such as eigenvalues, loadings, and communalities:
-
-```{code-block}
 ev, cfev = fa.get_eigenvalues()
 l = fa2.loadings_
 c = fa2.get_communalities()
