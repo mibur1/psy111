@@ -68,8 +68,8 @@ parts:
         - file: book/statistics/5_Path_Modelling/3_Exercises
     - file: book/statistics/6_EFA/0_Introduction
       sections:
-        - file: book/statistics/6_EFA/1_Factor_analyzer
-        - file: book/statistics/6_EFA/2_Example
+        - file: book/statistics/6_EFA/1_Example
+        - file: book/statistics/6_EFA/2_Summary
         - file: book/statistics/6_EFA/3_Exercises
     - file: book/statistics/7_CFA_SEM/0_Introduction
       sections:

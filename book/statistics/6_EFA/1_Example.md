@@ -12,29 +12,26 @@ kernelspec:
   name: python3
 ---
 
-# 10.1 The factor_analyzer package
+# 10.1. Application
 
-To apply EFA we will use the `factor_analyzer` package. As always, this can be installed through `pip` and you can further read through the [official documentation](https://factor-analyzer.readthedocs.io/en/latest/index.html) as linked in the README on [github](https://github.com/EducationalTestingService/factor_analyzer).
+To apply EFA we will use the `factor_analyzer` package {cite}`Persson.2021`. As always, this can be installed through `pip` and you can further read through the [official documentation](https://factor-analyzer.readthedocs.io/en/latest/index.html) as linked in the README on [github](https://github.com/EducationalTestingService/factor_analyzer).
 
 ## Steps of EFA
 
 In EFA, the objective is to find the optimal number of factors that effectively explain the relationships among a set of observed variables. The main steps involved in this process are:
 
-1. **Determine the number of factors:** This involves adding factors one at a time until the most appropriate solution is found. Essentially, you’re looking for the smallest number of factors that can still explain most of the variance in your data.
-2. **Interpret the initial factor loadings:** Once the initial factor solution has been obtained, the factor loadings are examined. At this stage, the factors are assumed to be uncorrelated and there are no restrictions on the loadings (we skip this part today).
-3. **Rotate factors for better interpretation:** The next step is to transform the initial loadings and factors by rotating them. This is done to obtain a solution that is easier to interpret. Rotations can be either orthogonal, where the factors remain uncorrelated, or oblique, where the factors are allowed to correlate.”
+1. Determining the number of factors
+2. Interpreting the initial factor loadings
+3. Rotating factors for better interpretation
 
 ## Terminology
 
-1. **Factor:** A factor is a latent variable describing the associations bewtween the observed variables. At maximum, a EFA model can have as much factors as oberved variables (however, this makes no sense as the goal is dimensionality *reduction*). Every factor explains a certain variance in observed variables (not the other way around!).
-2. **Factor Loading:** The factor loading is a matrix which shows the relationship of each variable to the underlying factor. In case of orthogonal factors, it shows depicts correlation between the observed variable and the factor. Larger factors loadings correspond to more explained variance.
+1. **Factor:** A factor is a latent variable describing the associations between the observed variables. At maximum, an EFA model can have as many factors as observed variables (however, this makes no sense as the goal is *dimensionality reduction*). Every factor explains a certain variance in observed variables.
+2. **Factor Loading:** The factor loading is a matrix which shows the relationship of each variable to the underlying factor. In case of orthogonal factors, it depicts the correlation between the observed variable and the factor. Larger factor loadings correspond to more explained variance.
 3. **Eigenvalues:** Each factor has an *Eigenvalue*. It describes how much variance one factor explains over *all observed variables*.
-4. **Communalities:** Each observed variable has a communality. Communalities range from 0 to 1 and describe how much variance of one oberserved variable is explained by *all factors combined*. For orthogonal factors, commonalities are the sum of the squared loadings for each variable. It represents the common variance.
+4. **Communalities:** Each observed variable has a communality. Communalities range from 0 to 1 and describe how much variance of one observed variable is explained by *all factors combined*. For orthogonal factors, communalities are the sum of the squared loadings for each variable. It represents the common variance.
 
-
-## Create the Data
-
-To demonstrate EFA, the following code chunk creates a simulated dataset. 9 variables (items) are created. The items are the following:
+To demonstrate EFA, we will create a simulated dataset containing 9 variables (items). Three items each cover one underlying factor, with the items being:
 
 - Q1: In the past two weeks, how often have you felt down, depressed, or hopeless?
 - Q2: How often have you lost interest or pleasure in activities you used to enjoy?
@@ -46,6 +43,9 @@ To demonstrate EFA, the following code chunk creates a simulated dataset. 9 vari
 - Q8: To what extent do you feel that your life is close to your ideal?
 - Q9: In general, how happy are you with your current situation in life?
 
+
+## Creating the Data
+
 ```{code-cell}
 import numpy as np
 import pandas as pd
@@ -56,7 +56,7 @@ import seaborn as sns
 np.random.seed(42) # Set seed for reproducable results
 n = 300 # Number of rows ("participants")
 
-# Create the items
+# Create the items (we assume three underlying factors with three items each)
 D = np.random.normal(5, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
 A = np.random.normal(4, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
 LS = np.random.normal(6, 1, n).reshape(n, 1) + np.random.normal(0, 0.5, (n, 3))
@@ -69,6 +69,7 @@ df = pd.DataFrame(data, columns=columns)
 df.head()
 ```
 
+
 ## Inspecting the Data
 
 Before conducting a factor analysis it is worthwhile to look at the correlation matrix of the data of interest.
@@ -79,6 +80,7 @@ ax.set_title("Correlation matrix");
 ```
 
 Here we can already see that the items 1-3, items 4-5 and items 6-9 correlate high with each other, respectively.
+
 
 ## Determining the Number of Factors
 
