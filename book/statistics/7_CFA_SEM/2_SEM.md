@@ -12,24 +12,20 @@ kernelspec:
   name: python3
 ---
 
-# 11.2 SEM in Python
+# 11.2 SEM
 
-To compute an SEM in Python we will use the `semopy` package again.
-
-## Example dataset
-
-Also similar to before, we will use the `HolzingerSwineford1939` dataset.
+As before, we will use the `HolzingerSwineford1939` dataset:
 
 ```{code-cell}
-# Load the package
 import semopy
-# Load and inspect the dataset
+
 data = semopy.examples.holzinger39.get_data()
+data
 ```
 
-## Specify and fit the model
+## Performing SEM
 
-As you know, CFA is a special case of SEM which is defined by not having unidirectional paths present at one level, i.e. no latent variable is used to predict another latent variable (only correlations, i.e. bidirectional paths are used). But what if we suspect that one latent factor is actually predicting another one. Such models would be considered SEM.
+As you know, CFA is a special case of SEM, which is defined by not having unidirectional paths present at one level, i.e. no latent variable is used to predict another latent variable (only correlations, i.e. bidirectional paths are used). But what if we suspect that one latent factor is actually predicting another one. Such models would be considered SEM.
 
 Note that SEM models contain a **measurement model** and a **structural model**. The **measurement model** describes relationships between measured variables and latent factors. The **structural model** describes relationships between latent variables.
 
@@ -37,34 +33,31 @@ Let's specify and fit a SEM model that predicts `speed ability` with `visual spe
 
 ```{code-cell}
 # Specify the model
-desc = '''
-# Measurement model
-visual =~ x1 + x2 + x3
-speed =~ x7 + x8 + x9
+desc = '''# Measurement model
+          visual =~ x1 + x2 + x3
+          speed =~ x7 + x8 + x9
 
-# Structural model
-speed ~ visual'''
+          # Structural model
+          speed ~ visual'''
 
 # Fit the model
-mod = semopy.Model(desc)
-res_opt = mod.fit(data)
-estimates = mod.inspect()
+model = semopy.Model(desc)
+results = model.fit(data)
 
-# Print model estimates
+# Print the estimates and fit measures
+estimates = model.inspect()
 print(estimates)
 
-# Show fit statistics
-stats = semopy.calc_stats(mod)
+stats = semopy.calc_stats(model)
 print(stats.T)
 ```
 
-The first output shows the model estimates, while the second one shows fit measures for the fitted model.
 
 ### Model estimates
 
 For a guide on how to interpret loadings, (co)variances and residuals, please refer to the previous chapter.
 
-Lets focus on the newly added regression (`speed ~ visual`). The `Estimate` column can be refered as the slope of the added regression, meaning that a one unit increase in `visual` comes **on average** with a 0.37 unit increase in `speed`. As indicated by the `p-value`, this coefficient is significantly different from zero. With that, we can infer that `visual` is significantly predicting `speed`.
+However, notice the the newly added regression: `speed ~ visual`. The `Estimate` column can be refered as the slope of the added regression, meaning that a one unit increase in `visual` comes **on average** with a 0.37 unit increase in `speed`. As indicated by the `p-value`, this coefficient is significantly different from zero. With that, we can infer that `visual` is significantly predicting `speed`.
 
 ### Fit measures
 

@@ -14,51 +14,52 @@ kernelspec:
 
 # 11.3 Summary
 
-## Specify a model
+## Specifying a Model
 
 ```{code-block}
-desc = '''
-# Measurement model
-latent_factor1 =~ x1 + x2 + x3
-latent_factor2 =~ x7 + x8 + x9
-latent_factor3 =~ x4 + x5 + x6
-# Add a higher order factor, i.e. latent factors loading onto a higher order latent factor
-latent_factor1 =~ latent_factor2
-latent_factor1 =~ latent_factor3
+desc = '''# Measurement model
+          latent_factor1 =~ x1 + x2 + x3
+          latent_factor2 =~ x7 + x8 + x9
+          latent_factor3 =~ x4 + x5 + x6
+          
+          # Addding higher order factors
+          latent_factor1 =~ latent_factor2
+          latent_factor1 =~ latent_factor3
 
-# Structural model
-latent_factor1 ~ latent_factor2
+          # Structural model
+          latent_factor1 ~ latent_factor2
 
-# Additional covariances
-# Adding a covariance between latent_factor2 and latent_factor3
-latent_factor2 ~~ latent_factor3
-# Setting the covariance from to latent factors to zero
-latent_factor1 ~~ 0*latent_factor3
+          # Adding a covariance
+          latent_factor2 ~~ latent_factor3
+          
+          # Setting a covariance to zero
+          latent_factor1 ~~ 0*latent_factor3
 
-# Setting a factor variance to 1
-latent_factor1 ~~ 1 * latent_factor1 # Also an option to identify factors
-'''
+          # Setting a factor variance to 1
+          latent_factor1 ~~ 1 * latent_factor1'''
 ```
 
-- Use the `=~` operator to associate measured variables with latent factors and associate latent factors with higher order latent factors.
-- Use the `~` operator to assign regression
-- Use the `~~` operator to assign covariances
+Summed up, you can use the following operators:
 
-## Fit a model
+- `=~` to associate measured variables with latent factors (or latent factors with higher order latent factors)
+- `~` for regressions
+- `~~` for variances and covariances
+
+## Fitting a Model
 
 ```{code-block}
 mod = semopy.Model(desc)
 res_opt = mod.fit(data)
 ```
 
-## Extract model estimates
+## Extracting Model Estimates
 
 ```{code-block}
 estimates = mod.inspect()
 print(estimates)
 ```
 
-## Extract model fit measures
+## Extracting Model Fit Measures
 
 ```{code-block}
 stats = semopy.calc_stats(mod)
