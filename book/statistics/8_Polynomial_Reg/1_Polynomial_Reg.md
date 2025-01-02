@@ -14,26 +14,27 @@ kernelspec:
 
 # 12.1 Polynomial Regression
 
-Let’s consider a hypothetical situation in which we want to predict an exam score (0–100%) from the number of hours studied per day. A purely linear model might miss an important “sweet spot,” since studying too many hours can lead to fatigue or burnout. By adding a quadratic term, we can model a peak in performance:
+Let’s consider a hypothetical situation in which we want to predict an exam score  (0–100%) from the number of hours studied per day. A purely linear model might miss an important “sweet spot,” since studying too many hours can lead to fatigue or burnout. By adding a quadratic term, we can model a peak in performance:
 
-- `learn` - Hours learned per day
-- `grade` - Exam grade (from -100 to 100)
+To demostrate this, lets simulate a dataset with two variables `study_time` and `grade`:
 
 ```{code-cell}
 import numpy as np
 import pandas as pd
 
-# Simulate the dataset
+# Simulate the data
+np.random.seed(69)
 study_time = np.linspace(0, 10, 500)
 h = 6
 k = 80
 grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
 
+# Create a DataFrame
 study_df = pd.DataFrame({'study_time': study_time, 'grade': grades})
 print(study_df.head())
 ```
 
-Lets plot the relationship between the variables:
+We can then plot the two variables to check if everything looks as expected:
 
 ```{code-cell}
 import seaborn as sns
@@ -46,15 +47,44 @@ ax.set(xlabel="Learn [h]",
        title="Scatter Plot: Study-time vs. Grade");
 ```
 
-It is visible that a non-linear component is present in our simulated data.
+That seems to work! We can clearly see the non-linear component is present in our data. We will now proceed to first fit a linear and then a polynomial model to this data. For this, we will use the `statsmodels` and `sklearn` packages.
 
-## Detecting curvilinear relations
 
-To perform polynomial regression, we will use the `statsmodels` and `sklearn` packages.
+## Fitting polynomial models
 
-### Fit a linear model
+To begin with, lets start with a first order polynomial model. You will then see how easy it is to extend this to as many orders as you like :)
 
-To begin with, lets fit a simple linear model. Note that we are already using the function which we will later use to fit higher-order polynomials. Here we set the order to 1. Note that a polynomial with the order 1 is actually a linear model.
+### First order polynomial model
+
+To creare a polynomial model, we first need to create polynomial fetures.
+
+**What are polynomial features?**  
+In a standard linear regression, our model has the form  
+
+$$y = \beta_0 + \beta_1 x $$
+ 
+However, this assumes a linear relationship between $x$ (e.g., study time) and $y$ (e.g., grades). If we suspect a non-linear relationship, we can augment our single feature $x$ with additional powers of $x$ (e.g., $x^2, x^3, \dots$). This creates a polynomial model, for instance:  
+ 
+$$y = \beta_0 + \beta_1 x + \beta_2 x^2 + \cdots + \beta_p x^p$$
+
+**Why do we need to transform $x$ into polynomial features?**  
+Ordinary Least Squares (OLS) regression, by itself, fits linear relationships between predictors and the outcome. To enable OLS to fit a polynomial curve, we transform each original predictor into several “polynomial features” (e.g., $x^1, x^2, x^3 \ldots$) and then feed these new features into the linear regression model. Under the hood, the regression is still linear in terms of these transformed features, but effectively it’s fitting a polynomial in terms of the original $x$.
+
+**Using `PolynomialFeatures(degree=1, include_bias=True)`**  
+`degree=1` means we want to create polynomial features up to (and including) the first power. `include_bias=True` means a column of all 1’s (the “bias term”) will be added automatically, corresponding to the intercept $\beta_0$.  
+
+For `degree=1`, the transformation looks like:  
+   
+$$x \quad \rightarrow \quad \begin{bmatrix} 1 \\ x \end{bmatrix}$$
+
+So you end up with two columns: one for the intercept (all 1’s) and one for the original $x$ values.
+
+**Fitting and transforming**  
+`fit_transform(study_time.reshape(-1, 1))` does two things:
+  
+1. It reshapes `study_time` from shape `(n,)` into a 2D array of shape `(n,1)` by using `.reshape(-1, 1)`. This is the expected input for the sklearn library.
+
+2. It applies the transformation to the original data, producing a 2D array of shape `n, 2` (for `degree=1`), where $n$ is the number of data points. The first column of `study_time_p1` is all 1’s (intercept), and the second column is the original study times because `degree=1` is *technically* the same as a standard linear regression. However, if you later decide to use higher degrees, you will get columns for $x^1,x^2, \dots x^n$. That’s when you can capture curved relationships in your model.
 
 ```{code-cell}
 import statsmodels.api as sm
@@ -62,13 +92,17 @@ from sklearn.preprocessing import PolynomialFeatures
 
 polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)
 study_time_p1 = polynomial_features_p1.fit_transform(study_time.reshape(-1, 1))
+```
 
+With the features created, we can then use the standard `OLS` approach to create and fit the model:
+
+```{code-cell}
 linear_model = sm.OLS(grades, study_time_p1).fit()
 linear_fit = linear_model.predict(study_time_p1)
 linear_residuals = linear_model.resid
 ```
 
-Next, lets plot the model and the model residuals:
+Now we can visualize the model and its residuals:
 
 ```{code-cell}
 fig, ax = plt.subplots(1, 2, figsize=(8,4))
@@ -84,24 +118,22 @@ ax[1].set_title('Residuals');
 
 From the upper plot one can already see that whilst there being a linear trend present in the data, the model underestimates the complexitiy of the relationship. Looking at the residuals, it becomes clear that once the strong positive linear trend in the data has been removed, the curvilinearity stands out! The residuals are systematically related to the value of X: below zero for low and high values of X, and above zero for moderate values of X. This is the graphical diagnosis for the existence of a non-linear relationship, higher than degree “1”.
 
-## Fit a polynomial regression
+### Second order polynomial model
 
-To improve model fit, lets inlcude higher order polynomials. To begin with, lets include a quadratic coefficient, making the polynomial a second order one. First, we use the `sklearn` package to generate the polynomial features.
+To improve model fit, lets inlcude a second order polynomials. The procedure is the same as before, except we now use `degree=2` in our `PolynomialFeatures` class:
 
 ```{code-cell}
+# Transform study_time
 polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
 study_time_p2 = polynomial_features_p2.fit_transform(study_time.reshape(-1, 1))
-```
 
-Next, fit the new model and extract its residuals.
-
-```{code-cell}
+# Fit the model
 quadratic_model = sm.OLS(grades, study_time_p2).fit()
 quadratic_fit = quadratic_model.predict(study_time_p2)
 quadratic_residuals = quadratic_model.resid
 ```
 
-Lets also plot our new model and its residuals.
+Lets also plot our new model and its residuals:
 
 ```{code-cell}
 fig, ax = plt.subplots(1, 2, figsize=(8,4))
@@ -116,23 +148,26 @@ ax[1].set_title('Residuals');
 ```
 We can already see that the model fits the data much better. Also, the residuals are equally distributed and not dependent on X.
 
+
 ## Interpretation
 
-To interpret the model coefficients, we first have to print them.
+Interpretation of the model outputs is similar to normal linear models, except we now not only have estimates for the linear and the quadratic term:
 
 ```{code-cell}
 print(quadratic_model.summary())
 ```
+
 ### Estimates
 
-We get three coefficients: The intercept, a linear and a quadratic coefficient. The linear regression coefficient ($\beta = 66.43$) is positive and significant. The quadratic regression coefficient is also significant but negative ($\beta = -5.17$). This means that the `Grade` (Y) first increases to a certain value of `Learn` (X) and then decreases.
+We get three coefficients: The intercept (`cost`), a linear (`x1`) and a quadratic (`x2`) coefficient. The linear regression coefficient ($x1 = 26.42$) is positive and significant. The quadratic regression coefficient is also significant but negative ($x2 = -2.20$).
+
 
 ### Model fit
 
-With the quadratic predictor added, the model can explain 97.1% of the variance in Interest. Suggesting really good fit. Note that the negative quadratic effect can be visualized by an inverted U-shaped curve. To further evaluate the model, lets also look at the model fit from the linear model.
+With the quadratic predictor added, the model can explain 86.1% of the variance in `grade`, which suggestsa pretty good fit. Note that the negative quadratic effect can be visualized by an inverted U-shaped curve. To further evaluate the model, lets also look at the model fit from the linear model:
 
 ```{code-cell}
 print(linear_model.summary())
 ```
 
-The quadratic model only explains 82.1% of the variance (see `R-squared`). Also the AIC and BIC are much higher, also suggesting worse fit (compared to the quadratic model).
+We can see that the linear model only explains 32% of the variance in `grade`. Further, the AIC and BIC are much higher, suggesting a worse fit.

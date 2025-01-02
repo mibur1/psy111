@@ -14,12 +14,16 @@ kernelspec:
 
 # 12.2 Centering Predictors
 
-## Polynomial Regression and Meaningful Zero
-1. Polynomial Regression: In polynomial regression, you’re not just fitting a linear term (like x) but also higher-order terms like $x^2, x^3$, etc.
-2. Meaningful Zero: A “meaningful zero” in a predictor variable means that the zero point of this variable has a substantive interpretation. For instance, in a study measuring the effect of temperature on an outcome, 0°C is a meaningful zero as it represents the freezing point of water. However, not all variables have such interpretable zero points.
+In polynomial regression, a meaningful zero is often useful.
+
+- You’re not just fitting a linear term (like x) but also higher-order terms like $x^2, x^3$, etc.
+- A “meaningful zero” in a predictor variable means that the zero point of this variable has a substantive interpretation, in contrast to e.g. an age of 0 if your sample only contains adults.
+
 ## Why Centering is Important
+
 1. Interpretation of Lower Order Coefficients: In a higher-order polynomial equation, the coefficients of lower-order terms (like the linear x term in a quadratic or cubic equation) can be influenced by the inclusion of higher-order terms. This makes it challenging to interpret these coefficients independently because they are dependent on the specific values of the predictor variable.
 2. Centering the Predictor: Centering involves subtracting the mean of the predictor variable from each data point. This shifts the data so that the mean becomes zero.
+
 ## Benefits of Centering
 1. Simplifies Interpretation: When you center the predictor, the interpretation of lower-order terms becomes simpler. For example, in a centered quadratic model, the linear coefficient now tells you the rate of change at the mean of the predictor, rather than at zero, which might not be a meaningful or sensible point.
 2. Reduces Multicollinearity: Centering can reduce multicollinearity between the predictor variables (e.g., x and x^2), making the model more stable and improving the accuracy of the estimated coefficients.
