@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# 12.2 Centered Predictors
+# 12.2 Centering Predictors
 
 ## Polynomial Regression and Meaningful Zero
 1. Polynomial Regression: In polynomial regression, you’re not just fitting a linear term (like x) but also higher-order terms like $x^2, x^3$, etc.

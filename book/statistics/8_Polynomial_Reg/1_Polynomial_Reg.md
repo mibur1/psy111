@@ -12,98 +12,74 @@ kernelspec:
   name: python3
 ---
 
-# 12.1 Polynomial Regression in Python
+# 12.1 Polynomial Regression
 
-To compute an Polynomial Regression in Python we will use the `statsmodels` package and the `sklearn` package.
-
-## Example dataset
-
-To demostrate polynomial regression, lets simulate a dataset that contain data from the introductory example. It contains two variables:
+Let’s consider a hypothetical situation in which we want to predict an exam score (0–100%) from the number of hours studied per day. A purely linear model might miss an important “sweet spot,” since studying too many hours can lead to fatigue or burnout. By adding a quadratic term, we can model a peak in performance:
 
 - `learn` - Hours learned per day
 - `grade` - Exam grade (from -100 to 100)
 
 ```{code-cell}
-# Load packages
 import numpy as np
 import pandas as pd
-import seaborn as sns
-import statsmodels.api as sm
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import PolynomialFeatures
 
-# Simulate dataset
-np.random.seed(69)  # For reproducibility
-learn = np.linspace(0, 13, 500)
-grade = -5 * (learn - 6.5)**2 + 100 + np.random.normal(0, 10, learn.shape)
-data = pd.DataFrame({'learn': learn, 'grade': grade})
-data = data[data['learn'] <= 8]
-learn = np.array(data['learn'])
-grade = np.array(data['grade'])
+# Simulate the dataset
+study_time = np.linspace(0, 10, 500)
+h = 6
+k = 80
+grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
 
-# Inspect dataset
-print(data)
+study_df = pd.DataFrame({'study_time': study_time, 'grade': grades})
+print(study_df.head())
 ```
 
-Lets plot the relationship between the variables.
+Lets plot the relationship between the variables:
 
 ```{code-cell}
-plt.figure(figsize=(14, 8))
-# Scatter plot of the original data
-plt.subplot(2, 1, 1)
-sns.scatterplot(data=data, x='learn', y='grade', alpha=0.6)
-plt.title('Scatter Plot: Learn vs. Grade')
-plt.xlabel('Learn [h]')
-plt.ylabel('Grade [%]')
-plt.ylim(0, 110)
-plt.xlim(0, 10)
-plt.grid(True)
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(figsize=(8,5))
+sns.scatterplot(data=study_df, x='study_time', y='grade', alpha=0.6, ax=ax)
+ax.set(xlabel="Learn [h]",
+       ylabel="Grade [%]",
+       title="Scatter Plot: Study-time vs. Grade");
 ```
-One can already see that there is a non-linear component present. Lets still fit a linear function and inspect the residuals.
+
+It is visible that a non-linear component is present in our simulated data.
 
 ## Detecting curvilinear relations
+
+To perform polynomial regression, we will use the `statsmodels` and `sklearn` packages.
 
 ### Fit a linear model
 
 To begin with, lets fit a simple linear model. Note that we are already using the function which we will later use to fit higher-order polynomials. Here we set the order to 1. Note that a polynomial with the order 1 is actually a linear model.
 
 ```{code-cell}
-polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)
-learn_p1 = polynomial_features_p1.fit_transform(learn.reshape(-1, 1))
+import statsmodels.api as sm
+from sklearn.preprocessing import PolynomialFeatures
 
-linear_model = sm.OLS(grade, learn_p1).fit()
-linear_fit = linear_model.predict(learn_p1)
+polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)
+study_time_p1 = polynomial_features_p1.fit_transform(study_time.reshape(-1, 1))
+
+linear_model = sm.OLS(grades, study_time_p1).fit()
+linear_fit = linear_model.predict(study_time_p1)
 linear_residuals = linear_model.resid
 ```
 
-Next, lets plot the model and the model residuals.
-
+Next, lets plot the model and the model residuals:
 
 ```{code-cell}
-plt.figure(figsize=(14, 6))
+fig, ax = plt.subplots(1, 2, figsize=(8,4))
 
-# Plot the model
-plt.subplot(1, 2, 1)
-sns.scatterplot(x=learn, y=grade, label='Actual Data', color='blue')
-plt.plot(learn, linear_fit, color='red', label='Fitted Line', linewidth=2)
-plt.title('Linear Regression: Learn vs. Grade')
-plt.xlabel('Learn')
-plt.ylabel('Grade')
-plt.legend()
-plt.grid(True)
+sns.scatterplot(x=study_time, y=grades, color='blue', alpha=0.5, ax=ax[0])
+ax[0].plot(study_time, linear_fit, color='red', linewidth=2)
+ax[0].set_title('Linear Regression')
 
-# Plot the residuals
-plt.subplot(1, 2, 2)
-sns.scatterplot(x=learn, y=linear_residuals, color='red', label='Residuals')
-plt.axhline(0, color='blue', linestyle='--', label='Zero Residual Line')
-plt.title('Linear Regression Residuals')
-plt.xlabel('Learn')
-plt.ylabel('Residuals')
-plt.grid(True)
-plt.legend()
-
-plt.tight_layout()
-plt.show()
+sns.scatterplot(x=study_time, y=linear_residuals, color='red', alpha=0.5, ax=ax[1])
+ax[1].axhline(0, linestyle='--')
+ax[1].set_title('Residuals');
 ```
 
 From the upper plot one can already see that whilst there being a linear trend present in the data, the model underestimates the complexitiy of the relationship. Looking at the residuals, it becomes clear that once the strong positive linear trend in the data has been removed, the curvilinearity stands out! The residuals are systematically related to the value of X: below zero for low and high values of X, and above zero for moderate values of X. This is the graphical diagnosis for the existence of a non-linear relationship, higher than degree “1”.
@@ -114,44 +90,29 @@ To improve model fit, lets inlcude higher order polynomials. To begin with, lets
 
 ```{code-cell}
 polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
-learn_p2 = polynomial_features_p2.fit_transform(learn.reshape(-1, 1))
+study_time_p2 = polynomial_features_p2.fit_transform(study_time.reshape(-1, 1))
 ```
 
 Next, fit the new model and extract its residuals.
 
 ```{code-cell}
-quadratic_model = sm.OLS(grade, learn_p2).fit()
-quadratic_fit = quadratic_model.predict(learn_p2)
+quadratic_model = sm.OLS(grades, study_time_p2).fit()
+quadratic_fit = quadratic_model.predict(study_time_p2)
 quadratic_residuals = quadratic_model.resid
 ```
 
 Lets also plot our new model and its residuals.
 
 ```{code-cell}
-plt.figure(figsize=(14, 6))
+fig, ax = plt.subplots(1, 2, figsize=(8,4))
 
-# Plot the model
-plt.subplot(1, 2, 1)
-sns.scatterplot(x=learn, y=grade, label='Actual Data', color='blue')
-plt.plot(learn, quadratic_fit, color='green', label='Quadratic Fit', linewidth=2)
-plt.title('Quadratic Regression: Learn vs. Grade')
-plt.xlabel('Learn')
-plt.ylabel('Grade')
-plt.legend()
-plt.grid(True)
+sns.scatterplot(x=study_time, y=grades, color='blue', alpha=0.5, ax=ax[0])
+ax[0].plot(study_time, quadratic_fit, color='red', linewidth=2)
+ax[0].set_title('Quadratic Regression')
 
-# Plot the residuals
-plt.subplot(1, 2, 2)
-sns.scatterplot(x=learn, y=quadratic_residuals, color='orange', label='Residuals')
-plt.axhline(0, color='green', linestyle='--', label='Zero Residual Line')
-plt.title('Quadratic Regression Residuals')
-plt.xlabel('Learn')
-plt.ylabel('Residuals')
-plt.legend()
-plt.grid(True)
-
-plt.tight_layout()
-plt.show()
+sns.scatterplot(x=study_time, y=quadratic_residuals, color='red', alpha=0.5, ax=ax[1])
+ax[1].axhline(0, linestyle='--')
+ax[1].set_title('Residuals');
 ```
 We can already see that the model fits the data much better. Also, the residuals are equally distributed and not dependent on X.
 
