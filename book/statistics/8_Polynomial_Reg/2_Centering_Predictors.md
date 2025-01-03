@@ -14,101 +14,69 @@ kernelspec:
 
 # 12.2 Centering Predictors
 
-In polynomial regression, a meaningful zero is often useful.
+A “meaningful zero” in a predictor variable means that the zero point of this variable has a substantive interpretation, in contrast to e.g. an age of 0 if your sample only contains adults. 
 
-- You’re not just fitting a linear term (like x) but also higher-order terms like $x^2, x^3$, etc.
-- A “meaningful zero” in a predictor variable means that the zero point of this variable has a substantive interpretation, in contrast to e.g. an age of 0 if your sample only contains adults.
+In polynomial regression, a meaningful zero is especially useful as it improves the interpretation of lower-order coefficients. In a higher-order polynomial equation, the coefficients of lower-order terms (like the linear $x$ term in a quadratic or cubic equation) can be influenced by the inclusion of higher-order terms. This makes it challenging to interpret these coefficients independently because they are dependent on the specific values of the predictor variables.
 
-## Why Centering is Important
+Centering thus:
 
-1. Interpretation of Lower Order Coefficients: In a higher-order polynomial equation, the coefficients of lower-order terms (like the linear x term in a quadratic or cubic equation) can be influenced by the inclusion of higher-order terms. This makes it challenging to interpret these coefficients independently because they are dependent on the specific values of the predictor variable.
-2. Centering the Predictor: Centering involves subtracting the mean of the predictor variable from each data point. This shifts the data so that the mean becomes zero.
-
-## Benefits of Centering
-1. Simplifies Interpretation: When you center the predictor, the interpretation of lower-order terms becomes simpler. For example, in a centered quadratic model, the linear coefficient now tells you the rate of change at the mean of the predictor, rather than at zero, which might not be a meaningful or sensible point.
-2. Reduces Multicollinearity: Centering can reduce multicollinearity between the predictor variables (e.g., x and x^2), making the model more stable and improving the accuracy of the estimated coefficients.
+- Simplifies the interpretation: When you center the predictor, the interpretation of lower-order terms becomes simpler. For example, in a centered quadratic model, the linear coefficient now tells you the rate of change at the mean of the predictor, rather than at zero, which might not be a meaningful or sensible point.
+- Reduces multicollinearity: Centering can reduce multicollinearity between the predictor variables (e.g., $x$ and $x^2$), making the model more stable and improving the accuracy of the estimated coefficients.
 
 ## Example
-Consider a quadratic model: $\hat{y} = \beta_0 + \beta_1 \cdot x + \beta_2 \cdot x^2$
 
-- Without centering, β1 (the coefficient of x) is interpreted as the rate of change of y with respect to x when x is zero. If zero is not meaningful (e.g., if x is years of experience), this interpretation doesn’t make much practical sense.
-- With centering (say x is now (x - mean(x))), β1 is interpreted as the rate of change of y with respect to x when x is at its mean. This often provides a more meaningful and interpretable coefficient.
+Consider a simple quadratic regression model: 
 
-In summary, centering predictors in polynomial regression helps make the coefficients of lower-order terms more interpretable by ensuring that they reflect changes around a meaningful point (typically the mean) rather than an arbitrary zero point.
+$$\hat{y} = \beta_0 + \beta_1 \cdot x + \beta_2 \cdot x^2$$
 
-Therefore, in the current example, we should center the predictor `learn` in order to achieve a meaningful interpretation of the regression coefficients.
+Without centering, $\beta_1$ is interpreted as the rate of change of $y$ with respect to $x$ when $x$ is zero. If zero is not meaningful (e.g., if $x$ is the age in a sample of only adults), this interpretation doesn’t make much practical sense. With centering, $\beta_1$ is interpreted as the rate of change of $y$ with respect to $x$ when $x$ is at its mean, which can be helpful.
 
-## Centering in Python
-
-To center our variables, we subtract the mean from our predictor.
+We can center `study_time` by simply substracting its mean:
 
 ```{code-cell}
-# Load packages
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
 import seaborn as sns
 import statsmodels.api as sm
+from matplotlib import pyplot as plt
 from sklearn.preprocessing import PolynomialFeatures
 
-# Simulate dataset (again)
-np.random.seed(69)  # For reproducibility
-learn = np.linspace(0, 13, 500)
-grade = -5 * (learn - 6.5)**2 + 100 + np.random.normal(0, 10, learn.shape)
-data = pd.DataFrame({'learn': learn, 'grade': grade})
-data = data[data['learn'] <= 8]
+# Simulate the data
+np.random.seed(69)
+study_time = np.linspace(0, 10, 500)
+h = 6
+k = 80
+grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
 
-# Center predictor
-data['learn_centered'] = data['learn'] - data['learn'].mean()
+# Center study_time
+study_time_centered = study_time - np.mean(study_time)
 
-# You can ignore this
-learn = np.array(data['learn_centered'])
-grade = np.array(data['grade'])
-```
+# Create polynomial features
+poly_features = PolynomialFeatures(degree=2, include_bias=True)
+study_time_centered_features = poly_features.fit_transform(study_time_centered.reshape(-1, 1))
 
-Lets refit and plot our quadratic model.
-
-```{code-cell}
-polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
-learn_p2 = polynomial_features_p2.fit_transform(learn.reshape(-1, 1))
-
-quadratic_model = sm.OLS(grade, learn_p2).fit()
-quadratic_fit = quadratic_model.predict(learn_p2)
-quadratic_residuals = quadratic_model.resid
-
-plt.figure(figsize=(14, 6))
-
-# Plot the model
-plt.subplot(1, 2, 1)
-sns.scatterplot(x=learn, y=grade, label='Actual Data', color='blue')
-plt.plot(learn, quadratic_fit, color='green', label='Quadratic Fit', linewidth=2)
-plt.title('Quadratic Regression: Learn vs. Grade')
-plt.xlabel('Learn')
-plt.ylabel('Grade')
-plt.legend()
-plt.grid(True)
+# Fit the model
+model_fit = sm.OLS(grades, study_time_centered_features).fit()
+predictions = model_fit.predict(study_time_centered_features)
+residuals = model_fit.resid
 
 # Plot the residuals
-plt.subplot(1, 2, 2)
-sns.scatterplot(x=learn, y=quadratic_residuals, color='orange', label='Residuals')
-plt.axhline(0, color='green', linestyle='--', label='Zero Residual Line')
-plt.title('Quadratic Regression Residuals')
-plt.xlabel('Learn')
-plt.ylabel('Residuals')
-plt.legend()
-plt.grid(True)
+fig, ax = plt.subplots(1, 2, figsize=(8,4))
 
-plt.tight_layout()
-plt.show()
+sns.scatterplot(x=study_time_centered, y=grades, color='blue', alpha=0.5, ax=ax[0])
+ax[0].plot(study_time_centered, predictions, color='red', linewidth=2)
+ax[0].set_title('Polynomial Regression')
 
-# Print Summary
-print(quadratic_model.summary())
+sns.scatterplot(x=study_time_centered, y=residuals, color='red', alpha=0.5, ax=ax[1])
+ax[1].axhline(0, linestyle='--')
+ax[1].set_title('Residuals');
+
+# Print summary
+print(model_fit.summary())
 ```
 
-### Interpretation
+## Interpretation
 
-1. The expected `grade` (Y) for average `learn` (X) equals 69.26.
-2. The linear regression of Y on X at the point x=0 (the mean of X) equals to 25.03. The positive coefficient tells us that at the mean of X, the criterion Y is still increasing. This value also indicates the average linear slope of the regression of Y on X in the quadratic equation.
-3. The negative quadratic coefficient tells us that the function is inverted U-shaped.
-
-Note that the total explained variance of Y by all the predictors does not change before and after centering.
+- The expected `grade` for an average `study_time` is 76.99.
+- The linear regression of Y on X at the the mean of X (which is now 0) is 4.4. The positive coefficient tells us that at the mean of `study_time`, `grade` is still increasing. This value also indicates the average linear slope of the regression of Y on X in the quadratic equation.
+- The negative quadratic coefficient tells us that the function has an inverted-U shape.
+- The variance explained by the model stays the same.

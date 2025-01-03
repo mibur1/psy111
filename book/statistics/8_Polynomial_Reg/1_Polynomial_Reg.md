@@ -28,10 +28,11 @@ study_time = np.linspace(0, 10, 500)
 h = 6
 k = 80
 grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
+grades = np.clip(grades, 0, 100) # ensure we only have grades between 0 and 100
 
 # Create a DataFrame
-study_df = pd.DataFrame({'study_time': study_time, 'grade': grades})
-print(study_df.head())
+df = pd.DataFrame({"study_time": study_time, "grades": grades})
+print(df.head())
 ```
 
 We can then plot the two variables to check if everything looks as expected:
@@ -41,7 +42,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(8,5))
-sns.scatterplot(data=study_df, x='study_time', y='grade', alpha=0.6, ax=ax)
+sns.scatterplot(data=df, x="study_time", y="grades", alpha=0.6, ax=ax)
 ax.set(xlabel="Learn [h]",
        ylabel="Grade [%]",
        title="Scatter Plot: Study-time vs. Grade");
@@ -56,7 +57,15 @@ To begin with, lets start with a first order polynomial model. You will then see
 
 ### First order polynomial model
 
-To creare a polynomial model, we first need to create polynomial fetures.
+To creare a polynomial model, we first need to create polynomial features:
+
+```{code-cell}
+import statsmodels.api as sm
+from sklearn.preprocessing import PolynomialFeatures
+
+polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)
+study_time_p1 = polynomial_features_p1.fit_transform(study_time.reshape(-1, 1))
+```
 
 **What are polynomial features?**  
 In a standard linear regression, our model has the form  
@@ -86,20 +95,12 @@ So you end up with two columns: one for the intercept (all 1’s) and one for th
 
 2. It applies the transformation to the original data, producing a 2D array of shape `n, 2` (for `degree=1`), where $n$ is the number of data points. The first column of `study_time_p1` is all 1’s (intercept), and the second column is the original study times because `degree=1` is *technically* the same as a standard linear regression. However, if you later decide to use higher degrees, you will get columns for $x^1,x^2, \dots x^n$. That’s when you can capture curved relationships in your model.
 
-```{code-cell}
-import statsmodels.api as sm
-from sklearn.preprocessing import PolynomialFeatures
-
-polynomial_features_p1 = PolynomialFeatures(degree=1, include_bias=True)
-study_time_p1 = polynomial_features_p1.fit_transform(study_time.reshape(-1, 1))
-```
-
-With the features created, we can then use the standard `OLS` approach to create and fit the model:
+With the features created, we can then use the standard `sm.OLS()` approach to create and fit the model:
 
 ```{code-cell}
-linear_model = sm.OLS(grades, study_time_p1).fit()
-linear_fit = linear_model.predict(study_time_p1)
-linear_residuals = linear_model.resid
+linear_fit = sm.OLS(grades, study_time_p1).fit()
+linear_predictions = linear_fit.predict(study_time_p1)
+linear_residuals = linear_fit.resid
 ```
 
 Now we can visualize the model and its residuals:
@@ -107,11 +108,11 @@ Now we can visualize the model and its residuals:
 ```{code-cell}
 fig, ax = plt.subplots(1, 2, figsize=(8,4))
 
-sns.scatterplot(x=study_time, y=grades, color='blue', alpha=0.5, ax=ax[0])
-ax[0].plot(study_time, linear_fit, color='red', linewidth=2)
+sns.scatterplot(data=df, x="study_time", y="grades", color='blue', alpha=0.5, ax=ax[0])
+ax[0].plot(study_time, linear_predictions, color='red', linewidth=2)
 ax[0].set_title('Linear Regression')
 
-sns.scatterplot(x=study_time, y=linear_residuals, color='red', alpha=0.5, ax=ax[1])
+sns.scatterplot(data=df, x="study_time", y=linear_residuals, color='red', alpha=0.5, ax=ax[1])
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
@@ -120,7 +121,7 @@ From the upper plot one can already see that whilst there being a linear trend p
 
 ### Second order polynomial model
 
-To improve model fit, lets inlcude a second order polynomials. The procedure is the same as before, except we now use `degree=2` in our `PolynomialFeatures` class:
+To improve model fit, lets inlcude a second order polynomials. The procedure is the same as before, except we now use `degree=2` for our features:
 
 ```{code-cell}
 # Transform study_time
@@ -128,9 +129,9 @@ polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
 study_time_p2 = polynomial_features_p2.fit_transform(study_time.reshape(-1, 1))
 
 # Fit the model
-quadratic_model = sm.OLS(grades, study_time_p2).fit()
-quadratic_fit = quadratic_model.predict(study_time_p2)
-quadratic_residuals = quadratic_model.resid
+quadratic_fit = sm.OLS(grades, study_time_p2).fit()
+quadratic_predictions = quadratic_fit.predict(study_time_p2)
+quadratic_residuals = quadratic_fit.resid
 ```
 
 Lets also plot our new model and its residuals:
@@ -138,15 +139,15 @@ Lets also plot our new model and its residuals:
 ```{code-cell}
 fig, ax = plt.subplots(1, 2, figsize=(8,4))
 
-sns.scatterplot(x=study_time, y=grades, color='blue', alpha=0.5, ax=ax[0])
-ax[0].plot(study_time, quadratic_fit, color='red', linewidth=2)
+sns.scatterplot(data=df, x="study_time", y="grades", color='blue', alpha=0.5, ax=ax[0])
+ax[0].plot(study_time, quadratic_predictions, color='red', linewidth=2)
 ax[0].set_title('Quadratic Regression')
 
-sns.scatterplot(x=study_time, y=quadratic_residuals, color='red', alpha=0.5, ax=ax[1])
+sns.scatterplot(data=df, x="study_time", y=quadratic_residuals, color='red', alpha=0.5, ax=ax[1])
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
-We can already see that the model fits the data much better. Also, the residuals are equally distributed and not dependent on X.
+We can already see that the model fits the data much better. Also, the residuals are smaller and not dependent on X.
 
 
 ## Interpretation
@@ -154,20 +155,27 @@ We can already see that the model fits the data much better. Also, the residuals
 Interpretation of the model outputs is similar to normal linear models, except we now not only have estimates for the linear and the quadratic term:
 
 ```{code-cell}
-print(quadratic_model.summary())
+print(quadratic_fit.summary())
 ```
 
-### Estimates
+**Coefficients**
+- **Intercept** (`const`): Close to zero (not significant).
+- **Linear term** (`x1`): Positive and highly significant.
+- **Quadratic term** (`x2`): Negative and highly significant, indicating an inverted U-shaped relationship.
 
-We get three coefficients: The intercept (`cost`), a linear (`x1`) and a quadratic (`x2`) coefficient. The linear regression coefficient ($x1 = 26.42$) is positive and significant. The quadratic regression coefficient is also significant but negative ($x2 = -2.20$).
+**Model Fit**
+- `R-squared = 0.861`: 86.1% of the variance in `grade` is explained.
+- A negative quadratic term means the model predicts an initial increase in grade as study time increases, followed by a decrease past a certain point.
 
-
-### Model fit
-
-With the quadratic predictor added, the model can explain 86.1% of the variance in `grade`, which suggestsa pretty good fit. Note that the negative quadratic effect can be visualized by an inverted U-shaped curve. To further evaluate the model, lets also look at the model fit from the linear model:
+To further evaluate the model, lets also look at the model fit from the linear model:
 
 ```{code-cell}
-print(linear_model.summary())
+print(linear_fit.summary())
 ```
 
-We can see that the linear model only explains 32% of the variance in `grade`. Further, the AIC and BIC are much higher, suggesting a worse fit.
+We can observe the following:
+
+- The quadratic model explains much more variance (86.1% vs. 32%) and provides a better fit according to AIC/BIC.
+- The negative quadratic term suggests that once study time goes beyond a certain point, additional hours may lead to diminishing or even negative returns on grades (the “inverted U” shape).
+
+Therefore, having a quadratic term improves the model substantially and gives us a more nuanced picture of how study time relates to grades.
