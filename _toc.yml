@@ -75,7 +75,7 @@ parts:
       sections:
         - file: book/statistics/7_CFA_SEM/1_CFA
         - file: book/statistics/7_CFA_SEM/2_SEM
-        - file: book/statistics/7_CFA_SEM/3_Semopy
+        - file: book/statistics/7_CFA_SEM/3_Summary
         - file: book/statistics/7_CFA_SEM/4_Exercises
     - file: book/statistics/8_Polynomial_Reg/0_Introduction
       sections:
@@ -90,8 +90,7 @@ parts:
     - file: book/statistics/10_Multilevel_Models/0_Introduction
       sections:
         - file: book/statistics/10_Multilevel_Models/1_Multilevel_Reg
-        - file: book/statistics/10_Multilevel_Models/2_Summary
-        - file: book/statistics/10_Multilevel_Models/3_Exercises
+        - file: book/statistics/10_Multilevel_Models/2_Exercises
 - caption: Multivariate Statistics Lecture
   chapters:
     - file: book/lecture/0_overview
