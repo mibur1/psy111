@@ -86,8 +86,7 @@ parts:
       sections:
         - file: book/statistics/9_Spline_Reg/1_Stepwise_Functions
         - file: book/statistics/9_Spline_Reg/2_Regression_Splines
-        - file: book/statistics/9_Spline_Reg/3_Summary
-        - file: book/statistics/9_Spline_Reg/4_Exercises
+        - file: book/statistics/9_Spline_Reg/3_Exercises
     - file: book/statistics/10_Multilevel_Models/0_Introduction
       sections:
         - file: book/statistics/10_Multilevel_Models/1_Multilevel_Reg

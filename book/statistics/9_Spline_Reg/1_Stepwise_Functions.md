@@ -14,105 +14,83 @@ kernelspec:
 
 # 13.1 Stepwise Functions
 
-To compute Stepwise Functions in Python we will use the `patsy` package and the `statsmodels` package. 
-
-## Example dataset
-
-We use the `Wage` dataset to showcase fitting stepwise functions. Our research goal is: Predict variation of `wage` (Y) in different `age` (X) ranges by taking the average wage within the given X bin as best estimate for prediction.
-
-The following code chunk load and plots our variables of interest.
+We will use the Mid-Atlantic Wage Dataset from the [ISLP library](https://islp.readthedocs.io/en/latest/) to showcase fitting stepwise functions. Our research goal is to predict `wage` for different `age` ranges by taking the average wage within each bin as our estimate for prediction.
 
 ```{code-cell}
-# Load packages and dataset
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from patsy import dmatrix
 import statsmodels.api as sm
+import patsy
 from ISLP import load_data
+
+# Load and plot the data
 df = load_data('Wage')
 
-# Plot the data
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.5, label='Data')
-plt.title("Wage by Age Scatterplot")
-plt.xlabel("Age")
-plt.ylabel("Wage")
-plt.legend().remove()
-plt.show()
+sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.4)
+plt.title("ISLP data");
 ```
 
-## Fit a stepwise function
+## Fitting a stepwise function
 
-To fit a stepwise funtion we first have to transform our variables.
-
-### Preparation
-
-To fit a stepwise function we first have to transform our predictor variable `age`.
+To fit a stepwise funtion, we first need to get cut points for our predictor variable `age`. For example, we can decide to split our data into 4 parts:
 
 ```{code-cell}
-# Get cut points
 bins = pd.cut(df['age'], 4)
 print(bins) 
 ```
 
-The output provides us with cut points for evenly sized bins of `age`. Lets use these cutpoint to transform our predictor variable to fit a stepwise function.
+The output provides us with intervals for evenly sized bins of `age`. We can use the upper value of each interval to get cut points for our stepwise function. We then use the `dmatrix` function to create a design matrix:
 
 ```{code-cell}
-# Transform predictor variable
-transformed_x = dmatrix("bs(age, knots=(33.5, 49, 64.5), degree=0, include_intercept=False)",
-                        {"age": df['age']}, return_type='dataframe')
+transformed_age = patsy.dmatrix("bs(age, knots=(33.5, 49, 64.5), degree=0)",
+                                data={"age": df['age']},
+                                return_type='dataframe')
 ```
 
-Note two things:
+When you specify `"bs(age, ...)"`, you tell `dmatrix` to transform age using B-spline basis functions. These basis functions segment the variable age into piecewise polynomials defined by the specified knots and degree. When you set degree zo zero, it creates piecewise constant functions, meaning the resulting function is a step function consisting of only horizontal segments.
 
-1. We want to fit stepwise functions, i.e. a constant for each bin. This is equal to fit a zero-degree polynomial (i.e. a function with an intercept an no further parameters).
-2. We used the cut points suggested by the `pd.cut()` output. For 4 bins with need to specifiy 4 cut points.
+### Fitting the model
 
-### Fit the model
-
-To fit the model we use the `statsmodels` function `GLM`. Let's call it `zero_deg_model` refering to zero-order polynomial.
+Once we have the age in our design matrix, we can fit the model like a normal categorical regression model:
 
 ```{code-cell}
-# Fit the model
-zero_deg_model = sm.GLM(df['wage'], transformed_x).fit()
+model = sm.OLS(df['wage'], transformed_age)
+model_fit = model.fit()
 
-# Print the model summary
-print(zero_deg_model.summary())
+print(model_fit.summary())
 ```
 
-This model is a categorical regression model, as we cut the age into four discrete category bins:
+The summary tells us:
 
 - The average wage in bin 1 within the age range from 17.9 to 33.5 years equals
-to 94.16 thousand dollars per year.
+to $94.16k per year.
 - The wage difference in bin 2 (i.e., between 33.5 and 49 years) as compared with
-bin 1 equals to 23.93 thousand dollars per year.
-- The wage difference in bin 3 (i.e., between 49 and 64.5 years) as compared with bin 1 equals to 23.89 thousand dollars per year.
-- The wage difference in bin 4 (i.e., between 64.5 and 80.1 years) as compared with bin 1 equals to 7.64 thousand dollars per year.
+bin 1 equals to $23.93k per year.
+- The wage difference in bin 3 (i.e., between 49 and 64.5 years) as compared with bin 1 equals to $23.89k per year.
+- The wage difference in bin 4 (i.e., between 64.5 and 80.1 years) as compared with bin 1 equals to $7.64k per year.
 
 The second and the third bin differ significantly from the first bin. The third bin does not differ significantly from the first one (p = .126)
 
 In summary, the model suggests that wages vary with age, but the relationship is not the same across all age groups. Wages appear to increase with age up to a point, but the increase is not statistically significant for the oldest age group in this sample. 
 
-### Plot the model
+### Plotting the model
+
+
+We can also plot the model. Note that bin 3 and 4 have very similar estimates which leads 
 
 ```{code-cell}
 # Plot the model
 plt.figure(figsize=(10, 6))
 xp = np.linspace(df['age'].min(), df['age'].max(), 100)
-transformed_xp = dmatrix("bs(xp, knots=(33.5, 49, 64.5), degree=0, include_intercept=False)",
-                         {"xp": xp}, return_type='dataframe')
+xp_trans = patsy.dmatrix("bs(xp, knots=(33.5, 49, 64.5), degree=0)",
+                         data={"xp": xp},
+                         return_type='dataframe')
 
-pred = zero_deg_model.predict(transformed_xp)
+predictions = model_fit.predict(xp_trans)
 
-sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.5, label='Data')
-plt.plot(xp, pred, label='stepwise fit', color='red')
-plt.title("Stepwise (zero-order) Fit")
-plt.xlabel("Age")
-plt.ylabel("Wage")
-plt.legend().remove()
-plt.show()
+sns.scatterplot(data=df, x="age", y="wage", alpha=0.4)
+plt.plot(xp, predictions, color='red')
+plt.title("ISLP data: stepwise fit (zero-order)");
 ```
-
-The plot shows the fitted regression line. Altough it seems like we only have 3 bins, we actually have 4. However, as the second and the third bin have a very similar estimate (23.99 vs. 23.88) it seems like there a only 3 bins.
