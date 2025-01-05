@@ -39,5 +39,5 @@ Regression equations can be specified similar to how you already learned in the 
 The `~~` syntax is used for both covariance between two variables and variance of a single variable:
 
 - For covariance, `x1 ~~ x2` indicates that $x_1$​ and $x_2$​ are allowed to covary.
-- For variance, `x1 ~~ x1` indicates the variance of `x_1`​.
+- For variance, `x1 ~~ x1` indicates the variance of `x1`​.
 

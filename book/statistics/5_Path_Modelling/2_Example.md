@@ -64,16 +64,18 @@ model = semopy.Model("""
                      FunctHealth ~ PhysicHealth
                      """)
 
+# Fit the model to our data and estimate parameters
 info = model.fit(df)
 print(info)
 ```
 
-We can then Inspect the results:
+We can then inspect the results:
 
 ```{code-cell}
 estimates = model.inspect(std_est= True)
 print(estimates)
 ```
+This output provides a detailed breakdown of the parameter estimates from the model.
 
 Or the fit statistics:
 
@@ -94,6 +96,8 @@ semopy.semplot(model, "figures/health.png")
 ## Model Output
 
 ### Objective and Optimization
+
+The first ouput we looked at after defining the model was `info`, which contains general information about the model fit: 
 
 - **Objective Function**: Maximum Likelihood with Weights (MLW).
 - **Optimization Algorithm**: Sequential Least Squares Quadratic Programming (SLSQP).
