@@ -14,57 +14,47 @@ kernelspec:
 
 # Multilevel Models
 
-Multilevel regression (also called linear mixed models (LMMs)) resemble an approach to simultaneously model predictors at different data levels. 
-For data with nested sources of variability (e.g., individuals in classes within schools), multilevel regression can be used to address 
-research questions related to each level of the data. 
-For example, within- and between-person relationships or between-person and between-schools associations can be studied simultaneously.
+Multilevel models, also called linear mixed models (LMMs), are a statistical approach to simultaneously model predictors at different levels of data. These models help account for variability within and between nested groups, such as individuals within clusters or organizations. Multilevel regression is particularly useful for analyzing nested sources of variability, allowing researchers to explore questions about relationships both within and between these levels.
 
-**Think of the following example.**
 
-Imagine we have data from patients from three different hospitals and
-we want to predict will to live (Y) with symptom severity (X).
-If we look at the data we might say that there is a positive relationship
-between will to live (Y) and symptom severity (X), meaning the
-more severe ones symptoms are the more someone ones to live (that sounds
-a bit suspicious, doesn’t it?).
+## A Practical Example
+
+Imagine we have data from patients in three different hospitals, and we aim to predict "will to live" (Y) based on "symptom severity" (X). At first glance, the data may suggest a positive relationship between "will to live" and "symptom severity": the more severe the symptoms, the higher the will to live. This finding might appear counterintuitive.
 
 ```{figure} figures/multilevel_reg1.jpg
 ---
-width: 60%
 name: multilevel_reg1
 ---
-Adapted from [Quant Psych (Youtube)](https://www.youtube.com/watch?v=5tOifM51ZOk)
+Screenshot taken from [Quant Psych (Youtube)](https://www.youtube.com/watch?v=5tOifM51ZOk)
 ```
 
-However, if we color-code the data points to see from which
-of the three hospitals we see that within each cluster the relationship
-is (as you might expect) negative, meaning with
-increasing symptom severity the will to live decreases.
+When we color-code the data points by hospital, however, a different pattern emerges. Within each hospital, the relationship between "will to live" and "symptom severity" is negative—  as symptom severity increases, the will to live decreases, which is a more intuitive result.
 
 ```{figure} figures/multilevel_reg2.jpg
 ---
-width: 60%
 name: multilevel_reg2
 ---
-Adapted from [Quant Psych (Youtube)](https://www.youtube.com/watch?v=5tOifM51ZOk)
+Screenshot taken from [Quant Psych (Youtube)](https://www.youtube.com/watch?v=5tOifM51ZOk)
 ```
 
-If we would not include the clustering variable ’hospital’ we’d be misled by
-the data because we didn’t account for the fact that the data points within
-one hospital influence each other. An explanation for this pattern might
-be that the blue hospital only receives patients with severe symptoms (all
-blue data points score high on the X variable) but also has top-notch psychologists
-that increase the patients will to live (high scores on Y variable).
-The red hospital on the other hand only receives mild case (low scores on
-X variable) but treats its patients badly which results in a general lower
-will to live (low scores on Y variable). This shows that ’staff quality’ might
-be an explanation for the difference in Y between the hospitals. In this example
-the hospital are the level-2 units and the patients level-1 units.
-The variable ’staff quality’ (maybe) explains the differences on Y between
-hospitals (level-2 units) and is therefore a level-2 variable. Also, we see that
-even within clusters there’s some variability: Some patients have less severe
-symptoms but a really low will to live, while others have worse symptoms
-but a relatively high will to live. This is variability on level-1 that might be
-explained by (for example) the ’resilience’ of the individual patients. Since
-patients are level-1 units, variables that explain differences between them
-(as for example varying ’resilience’) are called level-1 variables.
+If we ignore the clustering variable "hospital," we risk being misled by the data. This is because data points within a single hospital tend to influence one another. For example:
+
+- **Blue Hospital**: This hospital might exclusively treat severe cases (all blue data points score high on the X variable). However, it could have highly skilled psychologists who boost their patients' will to live (high scores on Y).
+- **Red Hospital**: This hospital might primarily admit mild cases (low scores on X) but provide poor-quality care, leading to generally low scores on Y.
+
+In this scenario, the variable "staff quality" could explain the differences in "will to live" (Y) between hospitals. Here, hospitals are level-2 units, and patients are level-1 units. Variables like "staff quality" that explain differences between level-2 units are called level-2 variables.
+
+Even within clusters, there is variability. For instance:
+
+- Some patients with less severe symptoms report a very low will to live.
+- Others with more severe symptoms report a relatively high will to live.
+
+This variability within hospitals is at level 1 and could be explained by factors like individual "resilience." Variables that explain differences between individuals (level-1 units) are referred to as level-1 variables.
+
+```{admonition} Summary
+:class: note
+
+- Multilevel models account for nested data structures, such as patients nested within hospitals.
+- Ignoring clustering variables can lead to misleading conclusions, as relationships may differ within and between clusters.
+- These models allow researchers to distinguish between level-1 (within-cluster) and level-2 (between-cluster) variability, providing deeper insights into the data.
+```

@@ -16,10 +16,7 @@ kernelspec:
 
 To demonstrate multilevel regression models, we use a the `sleepstudy` dataset from `statsmodels`.
 
-This is a well-known dataset in the field of mixed-effects modeling, 
-often used to illustrate the effects of sleep deprivation on cognitive performance. 
-It contains measurements from a study on reaction times of 18 participants 
-under sleep deprivation conditions over a period of 10 days. It contain the following variables:
+This is a well-known dataset in the field of mixed-effects modeling,  often used to illustrate the effects of sleep deprivation on cognitive performance.  It contains measurements from a study on reaction times of 18 participants  under sleep deprivation conditions over a period of 10 days. It contain the following variables:
 
 - `Reaction` - the reaction time in milliseconds, which serves as the outcome variable
 - `Days` - the number of days the participant has been sleep-deprived, ranging from 0 to 9
@@ -186,6 +183,4 @@ Think of the following cases:
 (1) A **negative** slope and positive correlation between slope and intercept = More positve intecept associated with more positive (i.e. **less** steep) slopes
 
 (2) A **positive** slope and positive correlation between slope and intercept = More positve intecept associated with more positive (i.e. **steeper**) slopes
-
 ```
-
