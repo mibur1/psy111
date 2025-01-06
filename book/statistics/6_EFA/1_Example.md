@@ -46,6 +46,7 @@ import matplotlib.pyplot as plt
 import sklearn
 import seaborn as sns
 
+# Simulate data
 np.random.seed(42) # Set seed for reproducable results
 n = 300 # Number of rows ("participants")
 
@@ -84,9 +85,9 @@ Here we can already see that the items 1-3, items 4-5 and items 6-9 correlate hi
 2. Given the visual inspection, how many factors do you think would make sense?
 ```
 
-Several approaches are possible to determine the number of factors. Here we apply the Kaiser criterion and select as many factors as there are factors with eigenvalues > 1. Therefore, we begin be fitting a solution with the number of factors being as high as possible.
+Several approaches are possible to determine the number of factors. Here we apply the Kaiser criterion and select as many factors as there are factors with eigenvalues > 1. Therefore, we begin by fitting a solution with the number of factors being as high as possible.
 
-For the model we first freate a `FactorAnalyzer` object and set the number of factors, the rotation, and the estimation method (in this case Maximum Likelihood):
+For the model we first create a `FactorAnalyzer` object and set the number of factors, the rotation, and the estimation method (in this case Maximum Likelihood):
 
 
 ```{code-cell}
@@ -96,7 +97,7 @@ fa = FactorAnalyzer(n_factors=9, rotation=None, method = 'ml')
 fa.fit(df);
 ```
 
-We then get and plot the Eigenvalues of all factors. For each factor (in an orthogonal solution), its eigenvalue is the sum of squared loadings across all variables, representing the total variance that factor explains:
+We then get and plot the Eigenvalues of all factors. For each factor (in an orthogonal solution), its Eigenvalue is the sum of squared loadings across all variables, representing the **total variance that factor** explains:
 
 ```{code-cell}
 ev, cfev = fa.get_eigenvalues()
@@ -113,7 +114,7 @@ We can see that three factors have Eigenvalues above 1 and we therefore choose a
 
 ## Fitting and Interpreting the Final Model
 
-Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In psychology, most often is has to be assumed that the constructs we measure are somewhat correlated and therefore an oblique rotation is often suitable. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin).
+Before fitting the final model, one has to choose whether to use independent (orthogonal rotation) or correlated (oblique rotation) factors. In psychology, most often is has to be assumed that the constructs we measure are somewhat correlated and therefore an **oblique rotation** is often suitable. The `factor_analyzer` package offers multiple oblique rotation methods (promax, oblimin and quartimin).
 
 ```{code-cell}
 fa2 = FactorAnalyzer(n_factors=3, rotation='promax', method='ml')
