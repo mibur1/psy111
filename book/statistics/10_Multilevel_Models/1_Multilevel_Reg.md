@@ -12,14 +12,11 @@ kernelspec:
   name: python3
 ---
 
-# 14.1 Multilevel Regression in Python
+# 14.1 Multilevel Models
 
-To compute an Polynomial Regression in Python we will use the `statsmodels` package again.
+To demonstrate multilevel regression models, we use a the `sleepstudy` dataset from `statsmodels`.
 
-## Example dataset
-
-To demonstrate multilevel regression we use a the `sleepstudy` dataset.
-The `sleepstudy` dataset is a well-known dataset in the field of mixed-effects modeling, 
+This is a well-known dataset in the field of mixed-effects modeling, 
 often used to illustrate the effects of sleep deprivation on cognitive performance. 
 It contains measurements from a study on reaction times of 18 participants 
 under sleep deprivation conditions over a period of 10 days. It contain the following variables:
