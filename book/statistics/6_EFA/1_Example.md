@@ -22,7 +22,7 @@ When performing EFA, our objective is to find the optimal number of factors that
 2. Interpreting the initial factor loadings
 3. Rotating factors for better interpretation
 
-A **factor** is a latent variable summarizing the shared variance among observed variables. EFA aims to reduce the dimensionality by retaining fewer factors than observed variables. **Factor loadings** are the relationship between each observed variable and the factor. For orthogonal factors, these loadings can be viewed as correlations. High loadings indicate strong associations.
+A **factor** is a latent variable summarizing the shared variance among observed variables. EFA aims to reduce the dimensionality by retaining fewer factors than observed variables. **Factor loadings** are the relationship between each observed variable and the factor. For orthogonal factors (when factors are not correlated), these loadings can be viewed as correlations. High loadings indicate strong associations.
 
 
 ## Creating the Data
@@ -100,7 +100,7 @@ fa.fit(df);
 We then get and plot the Eigenvalues of all factors. For each factor (in an orthogonal solution), its Eigenvalue is the sum of squared loadings across all variables, representing the **total variance that factor** explains:
 
 ```{code-cell}
-ev, cfev = fa.get_eigenvalues()
+ev, __ = fa.get_eigenvalues()
 
 ax = sns.lineplot(x=range(1, len(ev) + 1), y=ev)
 ax.set_xlabel("Factors")
@@ -127,15 +127,8 @@ To interpret the model the factors loadings can be printed. The resulting matrix
 fa2.loadings_
 ```
 
-We can see that items 1-3 load mostly onto factor 1, items 4-6 load mostly onto factor 2 and items 7-9 load mostly onto factor 3. For the intepretation one has to have domain knowledge and think of a construct which might be represented best by the respective items. 
-
-Given the items in our simulated data, factor 1 (items 1-3) might represet 'Depression' and factor 2 (items 4-6) might represent 'Anxiety'.
-
-```{admonition} Learning break
-:class: note
-
-Given our simulated data, what might factor 3 represent?
-```
+We can see that items 1-3 load mostly onto factor 1, items 4-6 load mostly onto factor 2 and items 7-9 load mostly onto factor 3. 
+**Note**: Factor loadings are similar to standardized regression coefficients, and variables with higher loadings on a particular factor can be interpreted as explaining a larger proportion of the variation in that factor.
 
 To evaluate how good the model is one might look at the communalities. Communalities range from 0 to 1 and tell you the variance of each observed variable accounted for by all extracted factors combined.
 
