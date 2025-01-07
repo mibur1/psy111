@@ -6,7 +6,7 @@ digraph G {
 	SubjHealth [label=SubjHealth]
 	FunctHealth [label=FunctHealth]
 	PhysicHealth [label=PhysicHealth]
-	PhysicHealth -> FunctHealth [label="-0.096\np-val: 0.00"]
-	PhysicHealth -> SubjHealth [label="-0.095\np-val: 0.00"]
-	FunctHealth -> SubjHealth [label="0.876\np-val: 0.00"]
+	PhysicHealth -> FunctHealth [label="-0.451\np-val: 0.00"]
+	PhysicHealth -> SubjHealth [label="-0.244\np-val: 0.00"]
+	FunctHealth -> SubjHealth [label="0.481\np-val: 0.00"]
 }

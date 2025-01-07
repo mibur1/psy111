@@ -87,7 +87,7 @@ print(stats)
 Finally, we can also visualise the model:
 
 ```{code-cell}
-semopy.semplot(model, "figures/health.png") 
+semopy.semplot(model, "figures/health.png", std_ests=True) # notice we are plotting the standardized estimates
 ```
 
 **Additional information:** If you want to visualise the model, you need to install Graphviz through pip (if you installed everything in the *requirements.txt* file you already have it). You then also need to install [Graphviz](https://graphviz.org/) as a normal program. On Windows, make sure to select the "Add Graphviz to PATH" option during the installation.
@@ -126,10 +126,14 @@ Standardized coefficients (`Est.Std`) allow us to compare the relative influence
 - **Physical Health → Subjective Health**: **-0.244** (moderate negative effect).  
 - **Functional Health → Subjective Health**: **0.481** (strong positive effect).
 
-### Variance Explained
+### Variances
 
-- **Functional Health**: Residual variance = **0.172** (p < 0.001). This represents the unexplained variance in functional health.  
-- **Subjective Health**: Residual variance = **0.432** (p < 0.001). This represents the unexplained variance in subjective health.
+1. `Functional Health ~~ Functional Health`: Residual variance = **0.172** (p < 0.001). This represents the unexplained variance in functional health.
+   - Coefficient: **0.172**, standardized coefficient: **0.796**  
+   - **Interpretation**: The standardized **Residual Variance** indicates that approximately **80%** of the individual variance in functional health remains unexplained by the model.
+2. `Subjective Health ~~ Subjective Health`: Residual variance = **0.432** (p < 0.001). This represents the unexplained variance in subjective health.
+   - Coefficient: **0.432**, standardized coefficient: **0.603**  
+   - **Interpretation**: In this case, the standardized **Residual Variance** indicates that approximately **60%** of the individual variance in subjective health remains unexplained by the model.
 
 
 ## Model Evaluation
@@ -151,20 +155,20 @@ Standardized coefficients (`Est.Std`) allow us to compare the relative influence
 
 ### Key Insights
 
-1. **Physical Health → Functional Health**: Negative relationship; more illnesses lead to reduced functional health.
-2. **Physical Health → Subjective Health**: Negative relationship; more illnesses lead to poorer subjective health.
-3. **Functional Health → Subjective Health**: Positive relationship; higher functional health improves subjective health.
+1. `Functional Health ~ Physical Health`: Negative relationship; more illnesses (measured as higher score in physical health) lead to reduced functional health.
+2. `Subjective Health ~ Physical Health`: Negative relationship; more illnesses lead to poorer subjective health.
+3. `Subjective Health ~ Functional Health`: Positive relationship; higher functional health improves subjective health.
 
 ### Implications
 
-- **Mediation**: Functional health mediates the effect of physical health on subjective health.
-- **Variance Explained**: Functional health (17.2%), subjective health (43.2%). Other factors likely influence outcomes.
+- **Mediation**: Functional health mediates the effect of physical health on subjective health. In other words, apart from directly influencing subjective health, physical health also influences subjective health by influencing functional health (indirect effect).
+- **Variance Explained**: Functional health (20.6%), subjective health (39.7%). Other factors likely influence outcomes.  These percentages represent **R-squared** values (explained variance) and are calculated as 1 minus the standardized residual variance.
 
 ### Limitations
 
 - **Overfitting**: Model fit metrics suggest overfitting risks.  
 - **Self-reported Measures**: Subjective health may suffer from biases (e.g., recall bias).  
-- **Unexplained Variance**: Additional predictors (e.g., social factors) could enhance the model.
+- **Large Unexplained Variance**: Additional predictors (e.g., social factors) could enhance the model.
 
 
 ```{admonition} Caution
