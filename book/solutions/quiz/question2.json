@@ -3,19 +3,19 @@
     "type": "multiple_choice",
     "answers": [
         {
-            "code": "anxiety and social_support at level 1",
+            "answer": "anxiety and social_support at level 1",
             "correct": false
         },
         {
-            "code": "anxiety and social_support at level 2",
+            "answer": "anxiety and social_support at level 2",
             "correct": false
         },
         {
-            "code": "anxiety and social_support at level 3",
+            "answer": "anxiety and social_support at level 3",
             "correct": true
         },
         {
-            "code": "No levels of social_support show a moderation effect with anxiety",
+            "answer": "No levels of social_support show a moderation effect with anxiety",
             "correct": false
         }
     ]

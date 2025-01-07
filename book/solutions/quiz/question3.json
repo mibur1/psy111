@@ -3,19 +3,19 @@
     "type": "multiple_choice",
     "answers": [
         {
-            "code": "thalach ~ age",
+            "answer": "thalach ~ age",
             "correct": true
         },
         {
-            "code": "thalach + chol",
+            "answer": "thalach + chol",
             "correct": false
         },
         {
-            "code": "target ~ trestbps",
+            "answer": "target ~ trestbps",
             "correct": true
         },
         {
-            "code": "target ~ exang",
+            "answer": "target ~ exang",
             "correct": true
         }
     ]

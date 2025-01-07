@@ -3,19 +3,19 @@
     "type": "multiple_choice",
     "answers": [
         {
-            "code": "C(social_support)[T.1]",
+            "answer": "C(social_support)[T.1]",
             "correct": false
         },
         {
-            "code": "anxiety_centered",
+            "answer": "anxiety_centered",
             "correct": true
         },
         {
-            "code": "C(social_support)[T.2]",
+            "answer": "C(social_support)[T.2]",
             "correct": false
         },
         {
-            "code": "anxiety_centered:C(social_support)[T.3]",
+            "answer": "anxiety_centered:C(social_support)[T.3]",
             "correct": false
         }
     ]

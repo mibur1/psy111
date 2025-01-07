@@ -3,19 +3,19 @@
     "type": "multiple_choice",
     "answers": [
         {
-            "code": "Increasing thalach decreases target by 0.016 units",
+            "answer": "Increasing thalach decreases target by 0.016 units",
             "correct": true
         },
         {
-            "code": "thalach has no effect on target",
+            "answer": "thalach has no effect on target",
             "correct": false
         },
         {
-            "code": "Decreasing thalach increases the unexplained variance in target",
+            "answer": "Decreasing thalach increases the unexplained variance in target",
             "correct": false
         },
         {
-            "code": "There is no statistical relationship between thalach and target",
+            "answer": "There is no statistical relationship between thalach and target",
             "correct": false
         }
     ]
