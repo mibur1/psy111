@@ -38,15 +38,15 @@ print(data.head())
 
 First, we plot a regression line through all data points, ignoring the individual subjects:
 ```{code-cell}
-sns.regplot(x='Days', y='Reaction', data=data)
-plt.title("Single regression");
+sns.lmplot(x='Days', y='Reaction', data=data)
+plt.title("Combined regression");
 ```
 
 Next, let's plot one for each subject:
 
 ```{code-cell}
 sns.lmplot(x='Days', y='Reaction', hue='Subject', data=data)
-plt.title("Separate regressions");
+plt.title("Subject-specific regressions");
 ```
 
 We can clearly see that the intercepts and slopes show significant variability. Some subjects have higher intercepts, some have lower ones. Some subjects show a strong relationship between `Days` and `Reaction` (steep slope), some show nearly no relationship. Therfore, ignoring the clustering variable `Subject` may lead to misinterpretations of the data.
@@ -71,9 +71,11 @@ Q1: How much variation in `Reaction` is between `Subject`?
 There is no predictor in the unconditional model. Here, we only estimate the intercept of `Reaction` and let it vary across the Level-2 units (`Subject`). The proportion of variance attributed to Level-1 units and Level-2 units can be estimated based on the estimated parameters in this model. In other words, this model can be used to compute the Intra-Class Correlation (ICC) coefficient, which indicates the similarity of observations clustered under the Level-2 units.
 
 ```{code-cell}
-model1 = smf.mixedlm("Reaction ~ 1", data=data, groups=data["Subject"])
-model1_fit = model1.fit(method="bfgs")
+model1 = smf.mixedlm("Reaction ~ 1",
+                     data=data,
+                     groups=data["Subject"])
 
+model1_fit = model1.fit(method="bfgs")
 print(model1_fit.summary())
 ```
 
@@ -101,9 +103,11 @@ Q2: What is the average relationship between `Days` and `Reaction`?
 We now add the variable `Days` as predictor for `Reaction`. By estimating the average (fixed) slope, this model will inform about the average relationship between `Days` and `Reaction`. In this model, there is a predictor `Days` at Level-1 (individual), random intercepts and constant slopes across Level-2 units (`Subject`).
 
 ```{code-cell}
-model2 = smf.mixedlm("Reaction ~ Days", data=data, groups=data["Subject"])
-model2_fit = model2.fit(method="bfgs")
+model2 = smf.mixedlm("Reaction ~ Days",
+                     data=data,
+                     groups=data["Subject"])
 
+model2_fit = model2.fit(method="bfgs")
 print(model2_fit.summary())
 ```
 
@@ -120,28 +124,19 @@ Q3: Does the relationship between `Days` and `Reaction` vary across `Subject`?
 
 Q4: Is there relationship between the `Reaction` at baseline and the relationship between `Days` and `Reaction` (i.e., is there a correlation between intercept and slope)?
 
-Model 3 includes the `Days` predictor (level 1), a random intercept, and a random slope. This model can be used to estimate the variance of the slope and answer the question whether the relationship between `Days` and `Reaction` varies across individuals (`Subject`). `re_formula` is a one-sided random effects formula defining the variance structure of the model, which specifies that random effects are modeled as a function of `Days` (each subject can have its own intercept and slope).
+Model 3 includes the `Days` predictor (level 1), a random intercept, and a random slope. This model can be used to estimate the variance of the slope and answer the question whether the relationship between `Days` and `Reaction` varies across individuals (`Subject`). We now additionally provide `re_formula` as a one-sided random effects formula defining the variance structure of the model. It specifies that random effects are modeled as a function of `Days` (each subject can have its own intercept and slope).
 
 ```{code-cell}
-model3 = smf.mixedlm("Reaction ~ Days", data=data, groups=data["Subject"], re_formula="~Days")
-model3_fit = model3.fit(method="bfgs")
+model3 = smf.mixedlm("Reaction ~ Days",
+                     data=data,
+                     groups=data["Subject"],
+                     re_formula="~Days")
 
+model3_fit = model3.fit(method="bfgs")
 print(model3_fit.summary())
 ```
 
 We now get additional coefficients (`Group x Days Cov` and `Days Var`):
 
-- `Days Var`: Represents the variance of the random slopes for the `Days` variable across `Subject`. This means that the effect of Days on Reaction (i.e., how much reaction time increases with each additional day) varies between individuals.  A higher variance indicates more variability among individuals in how their reaction times change over days. For example, some subjects may have a steeper increase in reaction time over days, while others may have a slower or negligible increase.  This variance tells us that the effect of Days is not uniform across all subjects.
-- `Group x Days Cov`: Describes the covariance between the random intercept and the random slope for `Days`. A positive covariance here indicates that subjects with higher baseline reaction times (intercepts) also tend to have larger increases in reaction time over days (steeper slopes). Conversely, if this value were negative, it would imply that subjects with higher baseline reaction times might have a smaller increase in reaction time over days. This covariance is an important part of modeling individual differences because it shows how the initial reaction time (intercept) relates to the rate of change (slope) for each subject.
-
-```{admonition} Intercept-Slope Correlations - Watch Out!
-:class: attention
-
-In our example we interpreted the correlation between intercept and slope with saying that individuals with larger intercepts also have steeper slopes.
-However, it would be more accurate to say that individuals with **more positive** intercepts have **more positive** slopes. 
-Think of the following cases:
-
-(1) A **negative** slope and positive correlation between slope and intercept = More positve intecept associated with more positive (i.e. **less** steep) slopes
-
-(2) A **positive** slope and positive correlation between slope and intercept = More positve intecept associated with more positive (i.e. **steeper**) slopes
-```
+- `Days Var`: Represents the variance of the random slopes for the `Days` variable across `Subject`. Some subjects have a steeper increase in reaction time over days, while others may have a slower or negligible increase. A high variance thus indicates more variability among individuals in how their reaction times change over days. 
+- `Group x Days Cov`: Describes the covariance between the random intercept and the random slope for `Days`. The positive covariance indicates that subjects with higher baseline reaction times (intercepts) also tend to have larger increases in reaction time over days (steeper slopes).
