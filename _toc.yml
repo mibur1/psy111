@@ -110,4 +110,6 @@ parts:
         - file: book/solutions/7_Categorical_reg
         - file: book/solutions/8_Logistic_reg
         - file: book/solutions/9_Moderated_reg
+        - file: book/solutions/10_Path_modelling
+        - file: book/solutions/11_EFA
     - file: book/misc/references

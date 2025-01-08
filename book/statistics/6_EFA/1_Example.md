@@ -39,7 +39,11 @@ To demonstrate EFA, we will create a simulated dataset containing 9 variables (i
 - Q8: To what extent do you feel that your life is close to your ideal?
 - Q9: In general, how happy are you with your current situation in life?
 
-```{code-cell}
+```{code-cell} ipython3
+---
+tags:
+  - "hide-input"
+---
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

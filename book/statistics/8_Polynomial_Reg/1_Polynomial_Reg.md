@@ -18,7 +18,11 @@ Let’s consider a hypothetical situation in which we want to predict an exam sc
 
 To demostrate this, lets simulate a dataset with two variables `study_time` and `grade`:
 
-```{code-cell}
+```{code-cell} ipython3
+---
+tags:
+  - "hide-input"
+---
 import numpy as np
 import pandas as pd
 

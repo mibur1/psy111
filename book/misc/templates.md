@@ -103,3 +103,19 @@ df = pd.DataFrame({"Sq. Ft.": x, "Price": y})
 
 _ = sns.jointplot(data = df, x = "Sq. Ft.", y = "Price", kind="kde")
 ```
+
+
+```{code-cell} ipython3
+:tags: [remove-input]
+```
+
+```{code-cell} ipython3
+---
+tags:
+  - "hide-input"
+mystnb:
+  image:
+    width: 100%
+    align: center
+---
+```

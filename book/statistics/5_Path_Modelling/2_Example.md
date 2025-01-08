@@ -87,7 +87,7 @@ print(stats)
 Finally, we can also visualise the model:
 
 ```{code-cell}
-semopy.semplot(model, "figures/health.png", std_ests=True) # notice we are plotting the standardized estimates
+semopy.semplot(model, "figures/health.png", std_ests=True) # plot standardized estimates
 ```
 
 **Additional information:** If you want to visualise the model, you need to install Graphviz through pip (if you installed everything in the *requirements.txt* file you already have it). You then also need to install [Graphviz](https://graphviz.org/) as a normal program. On Windows, make sure to select the "Add Graphviz to PATH" option during the installation.
