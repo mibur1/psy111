@@ -57,13 +57,13 @@ print(stats.T)
 
 ### Model estimates
 
-- **Loadings**: The `Estimate` collumn for the first 9 lines represents the loadings of the 9 measured variables on the 3 factors. You may notice that one loading per factor is set to 1. This is done to identify the factor (see lecture for details). The `Std. Err` collumn shows the uncertainty associated with the estimate. The `z-value` represents how many standard deviation the estimate is away from zero. The last column `p-value` contains the p-value (probability) for testing the null hypothesis that the parameter equals zero in the population.
+- **Loadings**: The `Estimate` column for the first 9 lines represents the loadings of the 9 measured variables on the 3 factors. You may notice that one loading per factor is set to 1. This is done to identify the factor (see lecture for details). The `Std. Err` column shows the uncertainty associated with the estimate. The `z-value` represents how many standard deviation the estimate is away from zero. The last column `p-value` contains the p-value (probability) for testing the null hypothesis that the parameter equals zero in the population.
 
 - **Variances**: Lines 9 (speed  ~~   speed), 12 and 13 show the variances of the respective latent factors.
 
 - **Covariances**: The lines 10 (speed  ~~    text), 11, 14 show the covariances, e.g. the associations between the latent variables. Since all estimates are positive and significantly different from zero (see `p-value`), we can infer that the latent factors are positively associated with each other.
 
-- **Residual Variances**: The last 9 lines show the residual variances of the measured variables. Remember, in CFA/SEM we aim at finding latent variables that explain variance in measured variables. However, most of the times, the latent variables can't account for 100% of the variance in a measured variable. In fact, as all residual variances are significantly different from zero (see `p-value`), we can infer that there's is still a significant amount of variance in each measured variable that is not explained by the respective latent factor.
+- **Residual Variances**: The last 9 lines show the residual variances of the measured variables. Remember, in CFA/SEM we aim at finding latent variables that explain variance in measured variables. However, most of the times, the latent variables can't account for 100% of the variance in a measured variable. In fact, as all residual variances are significantly different from zero (see `p-value`), we can infer that there is still a significant amount of variance in each measured variable that is not explained by the respective latent factor.
 
 ```{admonition} Learning break
 :class: note
@@ -97,6 +97,8 @@ For visualization, we can plot our model specified model using the following cod
 ```{code-cell}
 semopy.semplot(model, filename='data/cfa_plot.pdf')
 ```
+----> on this figure latent factors do not show any covariation (double headed arrow between the latent factors?), or?
+
 
 ## Fitting an Alternative Model
 
