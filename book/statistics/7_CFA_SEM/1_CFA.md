@@ -34,7 +34,8 @@ As for path modelling, we will use the `semopy` package for running our CFA. We 
 ```{code-cell}
 desc = '''visual =~ x1 + x2 + x3
           text =~ x4 + x5 + x6
-          speed =~ x7 + x8 + x9'''
+          speed =~ x7 + x8 + x9
+          '''
 
 model = semopy.Model(desc)
 results = model.fit(data)
@@ -75,7 +76,7 @@ How can you calculate the z-value yourself?
 
 To assess model fit, `semopy` provides us with a wide range of fit measures. Let's interpret the ones we know from the lecture.
 
-- `chi2` / `chi2 p-value`: The $\chi^2$-Test tests the null hypothesis that the model implied covariance matrix is equal to the empirical (actual) covariance matrix. Therefore, a **low** test statistic (and a non-significant p-value) indicate good fit. In this case, the p-value is <.05, meaning that the model’s predicted covariance matrix significantly differs from the observed covariance matrix, indicating that the model might not adequately capture the relationships in your data. However, the test statistic of the baseline model (assuming no relationships between the variables, i.e. the worst possible model) is much higher, indicating our model is better than the baseline model.
+- `chi2` / `chi2 p-value`: The $\chi^2$-Test tests the null hypothesis that the model implied covariance matrix is equal to the empirical (actual) covariance matrix. Therefore, a **low** test statistic (and a non-significant p-value) indicate good fit. In this case, the p-value is <.05, meaning that there is a **significant misfit**(the model’s predicted covariance matrix significantly differs from the observed covariance matrix, indicating that the model might not adequately capture the relationships in your data). However, the test statistic of the baseline model (assuming no relationships between the variables, i.e. the worst possible model) is much higher, indicating our model is better than the baseline model.
 
 - `CFI`: The CFI compares the fit of your user-specified model to the baseline model, with values closer to 1 indicating that the user model has a much better fit. A CFI of 0.931 suggests a good model fit.
 
@@ -95,10 +96,8 @@ To assess model fit, `semopy` provides us with a wide range of fit measures. Let
 For visualization, we can plot our model specified model using the following code.
 
 ```{code-cell}
-semopy.semplot(model, filename='data/cfa_plot.pdf')
+semopy.semplot(model, plot_covs = True, filename='data/cfa_plot.pdf')
 ```
-----> on this figure latent factors do not show any covariation (double headed arrow between the latent factors?), or?
-
 
 ## Fitting an Alternative Model
 
@@ -109,7 +108,7 @@ desc2 = '''visual =~ x1 + x2 + x3
            text =~ x4 + x5 + x6
            speed =~ x7 + x8 + x9
            
-           # Set correlations to zero
+           # Set covariance to zero
            speed ~~ 0 * visual
            speed ~~ 0 * text
            text ~~ 0 * visual'''
@@ -124,6 +123,9 @@ print(estimates2)
 
 stats2 = semopy.calc_stats(model2)
 print(stats2.T)
+
+# Visualise the model
+semopy.semplot(model2, filename='data/cfa_plot2.pdf')
 ```
 
 We can see that the covariances between the latent factors (e.g. speed  ~~  visual) are now forced to be zero.
