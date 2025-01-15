@@ -45,3 +45,6 @@ In this session, we will use the `HolzingerSwineford1939` dataset. The dataset c
 - x1, x2 and x3 are indicators for visual ability
 - x4, x5 and x6 are indicators for text processing related skills
 - x7, x8 and x9 are indicators for speed ability
+
+We will once more use the package `semopy`, introduced in the Path Modelling session.
+This time we will make use of the new *operator* `=~` which allows us to directly define a latent varible with its indicators.
