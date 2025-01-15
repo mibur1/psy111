@@ -112,4 +112,5 @@ parts:
         - file: book/solutions/9_Moderated_reg
         - file: book/solutions/10_Path_modelling
         - file: book/solutions/11_EFA
+        - file: book/solution/12_CFA_&_SEM
     - file: book/misc/references
