@@ -14,11 +14,7 @@ kernelspec:
 
 # 11.1 CFA
 
-We will use the `HolzingerSwineford1939` dataset for our CFA example. The dataset contains mental ability test scores of seventh and eighth grade children from two different schools. Apart from demographic information, nine of the original 26 tests are included in the data set.
-
-- x1, x2 and x3 are indicators for visual ability
-- x4, x5 and x6 are indicators for text processing related skills
-- x7, x8 and x9 are indicators for speed ability
+We start with importing the dataset:
 
 ```{code-cell}
 import semopy
@@ -69,7 +65,9 @@ print(stats.T)
 ```{admonition} Learning break
 :class: note
 
-How can you calculate the z-value yourself?
+1. How can you calculate the z-value yourself? 
+2. When should you read a `variable ~~ variable` output as variance? When instead as residual variance?
+
 ```
 
 ### Fit measures
