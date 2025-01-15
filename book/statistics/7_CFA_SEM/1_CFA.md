@@ -82,7 +82,7 @@ To assess model fit, `semopy` provides us with a wide range of fit measures. Let
 
 - `TLI`: Similar to CFI, TLI also compares your model to the baseline model, penalizing for model complexity. A value close to 1 indicates that your user model has a better fit than the baseline model. TLI of 0.896 is reasonably good, though slightly below the preferred threshold of 0.95.
 
-- `RMSEA`: The RMSEA can be seen as a rescalled version of the $\chi^2$-Test which is not dependent on sample size (as the $\chi^2$-Test is). RMSEA value of <0.08 indicate good fit. Here, RMSEA =  0.092 indicates a mediocre fit.
+- `RMSEA`: The RMSEA can be seen as a rescaled version of the $\chi^2$-Test which is not dependent on sample size (as the $\chi^2$-Test is). RMSEA value of <0.08 indicate good fit. Here, RMSEA =  0.092 indicates a mediocre fit.
 
 - `LogLik`: These are used to compute information criteria. They represent the likelihood of the model given the data.
 
