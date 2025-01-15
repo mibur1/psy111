@@ -65,3 +65,8 @@ print(estimates)
 stats = semopy.calc_stats(mod)
 print(stats.T)
 ```
+
+## Visualizing the Model
+```{code-block}
+semopy.semplot(mod, plot_covs = True, filename='data/cfa_plot.pdf')
+```
