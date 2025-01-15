@@ -14,11 +14,7 @@ kernelspec:
 
 # 11.1 CFA
 
-We will use the `HolzingerSwineford1939` dataset for our CFA example. The dataset contains mental ability test scores of seventh and eighth grade children from two different schools. Apart from demographic information, nine of the original 26 tests are included in the data set.
-
-- x1, x2 and x3 are indicators for visual ability
-- x4, x5 and x6 are indicators for text processing related skills
-- x7, x8 and x9 are indicators for speed ability
+We start with importing the dataset:
 
 ```{code-cell}
 import semopy
@@ -34,7 +30,8 @@ As for path modelling, we will use the `semopy` package for running our CFA. We 
 ```{code-cell}
 desc = '''visual =~ x1 + x2 + x3
           text =~ x4 + x5 + x6
-          speed =~ x7 + x8 + x9'''
+          speed =~ x7 + x8 + x9
+          '''
 
 model = semopy.Model(desc)
 results = model.fit(data)
@@ -59,35 +56,38 @@ print(stats.T)
 
 - **Loadings**: The `Estimate` column for the first 9 lines represents the loadings of the 9 measured variables on the 3 factors. You may notice that one loading per factor is set to 1. This is done to identify the factor (see lecture for details). The `Std. Err` column shows the uncertainty associated with the estimate. The `z-value` represents how many standard deviation the estimate is away from zero. The last column `p-value` contains the p-value (probability) for testing the null hypothesis that the parameter equals zero in the population.
 
-- **Variances**: Lines 9 (speed  ~~   speed), 12 and 13 show the variances of the respective latent factors.
+- **Variances**: Lines 9 (`speed  ~~  speed`), 12 and 13 show the variances of the respective latent factors.
 
-- **Covariances**: The lines 10 (speed  ~~    text), 11, 14 show the covariances, e.g. the associations between the latent variables. Since all estimates are positive and significantly different from zero (see `p-value`), we can infer that the latent factors are positively associated with each other.
+- **Covariances**: The lines 10 (`speed  ~~   text`), 11, 14 show the covariances, e.g. the associations between the latent variables. Since all estimates are positive and significantly different from zero (see `p-value`), we can infer that the latent factors are positively associated with each other.
 
 - **Residual Variances**: The last 9 lines show the residual variances of the measured variables. Remember, in CFA/SEM we aim at finding latent variables that explain variance in measured variables. However, most of the times, the latent variables can't account for 100% of the variance in a measured variable. In fact, as all residual variances are significantly different from zero (see `p-value`), we can infer that there is still a significant amount of variance in each measured variable that is not explained by the respective latent factor.
 
 ```{admonition} Learning break
 :class: note
 
-How can you calculate the z-value yourself?
+1. How can you calculate the z-value yourself? 
+2. When should you read a `variable ~~ variable` output as variance? When instead as residual variance?
+
 ```
 
 ### Fit measures
 
 To assess model fit, `semopy` provides us with a wide range of fit measures. Let's interpret the ones we know from the lecture.
 
-- `chi2` / `chi2 p-value`: The $\chi^2$-Test tests the null hypothesis that the model implied covariance matrix is equal to the empirical (actual) covariance matrix. Therefore, a **low** test statistic (and a non-significant p-value) indicate good fit. In this case, the p-value is <.05, meaning that the model’s predicted covariance matrix significantly differs from the observed covariance matrix, indicating that the model might not adequately capture the relationships in your data. However, the test statistic of the baseline model (assuming no relationships between the variables, i.e. the worst possible model) is much higher, indicating our model is better than the baseline model.
+- `chi2` / `chi2 p-value`: The $\chi^2$-Test tests the null hypothesis that the model implied covariance matrix is equal to the empirical (actual) covariance matrix. Therefore, a **low** test statistic (and a non-significant p-value) indicate good fit. In this case, the p-value is <.05, meaning that there is a **significant misfit** (the model’s predicted covariance matrix significantly differs from the observed covariance matrix, indicating that the model might not adequately capture the relationships in your data). 
+However, the test statistic of the baseline model (assuming no relationships between the variables, i.e. the worst possible model) is much higher, indicating our model is better than the baseline model - see CFI and TLI.
 
-- `CFI`: The CFI compares the fit of your user-specified model to the baseline model, with values closer to 1 indicating that the user model has a much better fit. A CFI of 0.931 suggests a good model fit.
+- `CFI`: The **CFI** compares the fit of your user-specified model to the baseline model, with values closer to 1 indicating that the user model has a much better fit. A CFI of 0.931 suggests a good model fit.
 
-- `TLI`: Similar to CFI, TLI also compares your model to the baseline model, penalizing for model complexity. A value close to 1 indicates that your user model has a better fit than the baseline model. TLI of 0.896 is reasonably good, though slightly below the preferred threshold of 0.95.
+- `TLI`: Similar to CFI, **TLI** also compares your model to the baseline model, penalizing for model complexity. A value close to 1 indicates that your user model has a better fit than the baseline model. TLI of 0.896 is reasonably good, though slightly below the preferred threshold of 0.95.
 
-- `RMSEA`: The RMSEA can be seen as a rescalled version of the $\chi^2$-Test which is not dependent on sample size (as the $\chi^2$-Test is). RMSEA value of <0.08 indicate good fit. Here, RMSEA =  0.092 indicates a mediocre fit.
+- `RMSEA`: The **RMSEA** can be seen as a statistic derived from the $\chi^2$ test, adjusted for model complexity and less influenced by sample size. An RMSEA value of <0.08 indicates an adequate fit. In this case, RMSEA = 0.092 suggests a mediocre fit, above the commonly accepted threshold for good fit.
 
-- `LogLik`: These are used to compute information criteria. They represent the likelihood of the model given the data.
+- `LogLik`: These are used to compute information criteria (AIC and BIC). They quantify the likelihood of observing the given the data under the specified model.
 
-- `AIC`: A measure of the relative quality of the statistical model for a given set of data. Lower AIC values indicate a better model. This statistic can be only used for comparison but not as an absolute criterion.
+- `AIC`: A measure of the relative quality of the statistical model for a given set of data. Lower **AIC** values indicate a better model. This statistic can be only used for comparison but not as an absolute criterion.
 
-- `BIC`:  Similar to AIC, but includes a penalty for the number of parameters in the model. Lower BIC values indicate a better model. The sample-size adjusted BIC is more appropriate for smaller sample sizes. Also similar to the AIC, the BIC is only used for model comparison.
+- `BIC`:  Similar to AIC, but includes a penalty for the number of parameters in the model. Lower **BIC** values indicate a better model. The sample-size adjusted BIC is more appropriate for smaller sample sizes. Also similar to the AIC, the BIC is only used for model comparison.
 
 
 ### Visualizing the Model
@@ -95,10 +95,8 @@ To assess model fit, `semopy` provides us with a wide range of fit measures. Let
 For visualization, we can plot our model specified model using the following code.
 
 ```{code-cell}
-semopy.semplot(model, filename='data/cfa_plot.pdf')
+semopy.semplot(model, plot_covs = True, filename='data/cfa_plot.pdf')
 ```
-----> on this figure latent factors do not show any covariation (double headed arrow between the latent factors?), or?
-
 
 ## Fitting an Alternative Model
 
@@ -109,7 +107,7 @@ desc2 = '''visual =~ x1 + x2 + x3
            text =~ x4 + x5 + x6
            speed =~ x7 + x8 + x9
            
-           # Set correlations to zero
+           # Set covariance to zero
            speed ~~ 0 * visual
            speed ~~ 0 * text
            text ~~ 0 * visual'''
@@ -124,6 +122,9 @@ print(estimates2)
 
 stats2 = semopy.calc_stats(model2)
 print(stats2.T)
+
+# Visualise the model
+semopy.semplot(model2, filename='data/cfa_plot2.pdf')
 ```
 
 We can see that the covariances between the latent factors (e.g. speed  ~~  visual) are now forced to be zero.

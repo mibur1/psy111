@@ -50,6 +50,9 @@ print(estimates)
 
 stats = semopy.calc_stats(model)
 print(stats.T)
+
+# Visualize the model
+semopy.semplot(model, plot_covs = True, filename='data/sem__plot.pdf')
 ```
 
 
