@@ -170,7 +170,7 @@ print(quadratic_fit.summary())
 - **Quadratic term** (`x2`): Negative and highly significant, indicating an inverted U-shaped relationship.
 
 **Model Fit**
-- `R-squared = 0.861`: 86.1% of the variance in `grade` is explained.
+- `R-squared = 0.750`: 75% of the variance in `grade` is explained.
 - A negative quadratic term means the model predicts an initial increase in grade as study time increases, followed by a decrease past a certain point.
 
 To further evaluate the model, lets also look at the model fit from the linear model:
@@ -181,7 +181,7 @@ print(linear_fit.summary())
 
 We can observe the following:
 
-- The quadratic model explains much more variance (86.1% vs. 32%) and provides a better fit according to AIC/BIC.
+- The quadratic model explains much more variance (75% vs. 11.4%) and provides a better fit according to AIC/BIC.
 - The negative quadratic term suggests that once study time goes beyond a certain point, additional hours may lead to diminishing or even negative returns on grades (the “inverted U” shape).
 
 Therefore, having a quadratic term improves the model substantially and gives us a more nuanced picture of how study time relates to grades.

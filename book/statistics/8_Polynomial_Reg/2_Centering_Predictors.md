@@ -81,7 +81,7 @@ print(model_fit.summary())
 
 ## Interpretation
 
-- The expected `grade` for an average `study_time` is 76.99.
-- The linear regression of Y on X at the the mean of X (which is now 0) is 4.4. The positive coefficient tells us that at the mean of `study_time`, `grade` is still increasing. This value also indicates the average linear slope of the regression of Y on X in the quadratic equation.
+- The expected `grade` for an average `study_time` is 78.65 (in a scale between 0 and 100).
+- The linear regression of Y on X at the mean of X (which is now 0) is 2.17. The positive coefficient tells us that at the mean of `study_time`, `grade` is still increasing. This value also indicates the average linear slope of the regression of Y on X in the quadratic equation.
 - The negative quadratic coefficient tells us that the function has an inverted-U shape.
 - The variance explained by the model stays the same.
