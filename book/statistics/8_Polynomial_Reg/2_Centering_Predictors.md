@@ -31,6 +31,13 @@ Without centering, $\beta_1$ is interpreted as the rate of change of $y$ with re
 
 We can center `study_time` by simply substracting its mean:
 
+```{admonition} Note:
+:class: note
+
+In our example we have a meaningfull 0 since 𝑥 = 0 represents 0 hours of study per day, so centering would not be strictly necessary. Yet, one could argue that we could improve on it because very few students study exactly 0 hours. After centering, the linear coefficient tells us the slope of exam performance at the **mean study time** 
+
+```
+
 ```{code-cell}
 import numpy as np
 import seaborn as sns
@@ -40,7 +47,7 @@ from sklearn.preprocessing import PolynomialFeatures
 
 # Simulate the data
 np.random.seed(69)
-study_time = np.linspace(0, 10, 500)
+study_time = np.linspace(1, 10, 500)
 h = 6
 k = 80
 grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)

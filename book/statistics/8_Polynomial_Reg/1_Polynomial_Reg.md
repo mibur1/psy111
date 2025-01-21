@@ -28,7 +28,7 @@ import pandas as pd
 
 # Simulate the data
 np.random.seed(69)
-study_time = np.linspace(0, 10, 500)
+study_time = np.linspace(1, 10, 500)
 h = 6
 k = 80
 grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
