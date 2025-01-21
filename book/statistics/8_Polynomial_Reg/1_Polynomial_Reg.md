@@ -117,6 +117,7 @@ ax[0].plot(study_time, linear_predictions, color='red', linewidth=2)
 ax[0].set_title('Linear Regression')
 
 sns.scatterplot(data=df, x="study_time", y=linear_residuals, color='red', alpha=0.5, ax=ax[1])
+bottom, top = ax[1].get_ylim()        # Get y-axis lower and upper limits
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
@@ -148,6 +149,7 @@ ax[0].plot(study_time, quadratic_predictions, color='red', linewidth=2)
 ax[0].set_title('Quadratic Regression')
 
 sns.scatterplot(data=df, x="study_time", y=quadratic_residuals, color='red', alpha=0.5, ax=ax[1])
+ax[1].set_ylim(bottom, top)         # Set y-axis lower and upper limits
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
