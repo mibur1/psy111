@@ -63,12 +63,17 @@ xp_trans = patsy.dmatrix("bs(xp, knots=(40,60), degree=1)",
                          data={"xp": xp},
                          return_type='dataframe')
 
+# Use model fitted before to predict wages for generated age values
 predictions = model_fit.predict(xp_trans)
 
-# Plot the model
-sns.scatterplot(data=df, x="age", y="wage", alpha=0.4)
-plt.plot(xp, predictions, color='red')
-plt.title("Linear (first-order) spline regression");
+# Plot the original data and the model fit
+fig, ax = plt.subplots(figsize=(8,5))                           # Create figure object
+
+sns.scatterplot(data=df, x="age", y="wage", alpha=0.4, ax=ax)   # Plot observations
+ax.axvline(40, linestyle='--', alpha=0.4, color="black")        # Cut point 1
+ax.axvline(60, linestyle='--', alpha=0.4, color="black")        # Cut point 2
+ax.plot(xp, predictions, color='red')                           # Draw prediction
+ax.set_title("Linear (first-order) spline regression");
 ```
 
 The model plot shows that we have gone from fitting an intercept (i.e., a horizontal line) in each bin to fitting a linear function in each bin.
