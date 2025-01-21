@@ -34,7 +34,7 @@ We can center `study_time` by simply substracting its mean:
 ```{admonition} Note:
 :class: note
 
-In our example we have a meaningfull 0 since 𝑥 = 0 represents 0 hours of study per day, so centering would not be strictly necessary. Yet, one could argue that we could improve on it because very few students study exactly 0 hours. After centering, the linear coefficient tells us the slope of exam performance at the **mean study time** 
+In our example, we have a meaningful 0, since 𝑥 = 0 represents 0 hours of study per day, so centering would not be strictly necessary. However, one could argue that we could improve on it, since very few students study exactly 0 hours. After centering, the linear coefficient tells us the slope of exam performance at **mean study time**. 
 
 ```
 
