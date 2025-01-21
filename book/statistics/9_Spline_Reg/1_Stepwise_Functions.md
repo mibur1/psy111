@@ -14,6 +14,8 @@ kernelspec:
 
 # 13.1 Stepwise Functions
 
+## The Dataset
+
 We will use the Mid-Atlantic Wage Dataset from the [ISLP library](https://islp.readthedocs.io/en/latest/) to showcase fitting stepwise functions. Our research goal is to predict `wage` for different `age` ranges by taking the average wage within each bin as our estimate for prediction.
 
 ```{code-cell}
@@ -29,16 +31,16 @@ from ISLP import load_data
 df = load_data('Wage')
 
 sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.4)
-plt.title("ISLP data");
+plt.title("ISLP data: Wage distribution across age");
 ```
 
 ## Fitting a stepwise function
 
-To fit a stepwise funtion, we first need to get cut points for our predictor variable `age`. For example, we can decide to split our data into 4 parts:
+To fit a stepwise funtion, we first need to get cut points for our predictor variable `age`. For example, we can decide to split our data into 4 equal parts:
 
 ```{code-cell}
 bins = pd.cut(df['age'], 4)
-print(bins) 
+bins
 ```
 
 The output provides us with intervals for evenly sized bins of `age`. We can use the upper value of each interval to get cut points for our stepwise function. We then use the `dmatrix` function to create a design matrix:

@@ -15,13 +15,11 @@ kernelspec:
 # 12.2 Centering Predictors
 
 A “meaningful zero” in a predictor variable means that the zero point of this variable has a substantive interpretation, in contrast to e.g. an age of 0 if your sample only contains adults. 
-
-In polynomial regression, a meaningful zero is especially useful as it improves the interpretation of lower-order coefficients. In a higher-order polynomial equation, the coefficients of lower-order terms (like the linear $x$ term in a quadratic or cubic equation) can be influenced by the inclusion of higher-order terms. This makes it challenging to interpret these coefficients independently because they are dependent on the specific values of the predictor variables.
+In polynomial regression, a meaningful zero is especially useful as it improves the interpretation of lower-order coefficients. 
 
 Centering thus:
 
 - Simplifies the interpretation: When you center the predictor, the interpretation of lower-order terms becomes simpler. For example, in a centered quadratic model, the linear coefficient now tells you the rate of change at the mean of the predictor, rather than at zero, which might not be a meaningful or sensible point.
-- Reduces multicollinearity: Centering can reduce multicollinearity between the predictor variables (e.g., $x$ and $x^2$), making the model more stable and improving the accuracy of the estimated coefficients.
 
 ## Example
 
@@ -33,6 +31,13 @@ Without centering, $\beta_1$ is interpreted as the rate of change of $y$ with re
 
 We can center `study_time` by simply substracting its mean:
 
+```{admonition} Note:
+:class: note
+
+In our example, we have a meaningful 0, since 𝑥 = 0 represents 0 hours of study per day, so centering would not be strictly necessary. However, one could argue that we could improve on it, since very few students study exactly 0 hours. After centering, the linear coefficient tells us the slope of exam performance at **mean study time**. 
+
+```
+
 ```{code-cell}
 import numpy as np
 import seaborn as sns
@@ -42,7 +47,7 @@ from sklearn.preprocessing import PolynomialFeatures
 
 # Simulate the data
 np.random.seed(69)
-study_time = np.linspace(0, 10, 500)
+study_time = np.linspace(1, 10, 500)
 h = 6
 k = 80
 grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
@@ -76,7 +81,7 @@ print(model_fit.summary())
 
 ## Interpretation
 
-- The expected `grade` for an average `study_time` is 76.99.
-- The linear regression of Y on X at the the mean of X (which is now 0) is 4.4. The positive coefficient tells us that at the mean of `study_time`, `grade` is still increasing. This value also indicates the average linear slope of the regression of Y on X in the quadratic equation.
+- The expected `grade` for an average `study_time` is 78.65 (in a scale between 0 and 100).
+- The linear regression of Y on X at the mean of X (which is now 0) is 2.17. The positive coefficient tells us that at the mean of `study_time`, `grade` is still increasing. This value also indicates the average linear slope of the regression of Y on X in the quadratic equation.
 - The negative quadratic coefficient tells us that the function has an inverted-U shape.
 - The variance explained by the model stays the same.

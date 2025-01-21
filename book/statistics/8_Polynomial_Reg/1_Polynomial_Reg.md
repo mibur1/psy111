@@ -28,7 +28,7 @@ import pandas as pd
 
 # Simulate the data
 np.random.seed(69)
-study_time = np.linspace(0, 10, 500)
+study_time = np.linspace(1, 10, 500)
 h = 6
 k = 80
 grades = -(k / (h**2)) * (study_time - h)**2 + k + np.random.normal(0, 8, study_time.shape)
@@ -117,6 +117,7 @@ ax[0].plot(study_time, linear_predictions, color='red', linewidth=2)
 ax[0].set_title('Linear Regression')
 
 sns.scatterplot(data=df, x="study_time", y=linear_residuals, color='red', alpha=0.5, ax=ax[1])
+bottom, top = ax[1].get_ylim()        # Get y-axis lower and upper limits
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
@@ -148,6 +149,7 @@ ax[0].plot(study_time, quadratic_predictions, color='red', linewidth=2)
 ax[0].set_title('Quadratic Regression')
 
 sns.scatterplot(data=df, x="study_time", y=quadratic_residuals, color='red', alpha=0.5, ax=ax[1])
+ax[1].set_ylim(bottom, top)         # Set y-axis lower and upper limits
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
@@ -156,7 +158,7 @@ We can already see that the model fits the data much better. Also, the residuals
 
 ## Interpretation
 
-Interpretation of the model outputs is similar to normal linear models, except we now not only have estimates for the linear and the quadratic term:
+The interpretation of the model results is similar to that for normal linear models, except that we now have estimates for the linear and quadratic terms:
 
 ```{code-cell}
 print(quadratic_fit.summary())
@@ -168,7 +170,7 @@ print(quadratic_fit.summary())
 - **Quadratic term** (`x2`): Negative and highly significant, indicating an inverted U-shaped relationship.
 
 **Model Fit**
-- `R-squared = 0.861`: 86.1% of the variance in `grade` is explained.
+- `R-squared = 0.750`: 75% of the variance in `grade` is explained.
 - A negative quadratic term means the model predicts an initial increase in grade as study time increases, followed by a decrease past a certain point.
 
 To further evaluate the model, lets also look at the model fit from the linear model:
@@ -179,7 +181,7 @@ print(linear_fit.summary())
 
 We can observe the following:
 
-- The quadratic model explains much more variance (86.1% vs. 32%) and provides a better fit according to AIC/BIC.
+- The quadratic model explains much more variance (75% vs. 11.4%) and provides a better fit according to AIC/BIC.
 - The negative quadratic term suggests that once study time goes beyond a certain point, additional hours may lead to diminishing or even negative returns on grades (the “inverted U” shape).
 
 Therefore, having a quadratic term improves the model substantially and gives us a more nuanced picture of how study time relates to grades.
