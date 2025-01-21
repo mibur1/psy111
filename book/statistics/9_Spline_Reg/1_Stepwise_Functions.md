@@ -80,7 +80,7 @@ In summary, the model suggests that wages vary with age, but the relationship is
 ### Plotting the model
 
 
-We can also plot the model. Note that bin 3 and 4 have very similar estimates which leads 
+We can also plot the model. Note that bins 2 and 3 have very similar estimates, which leads to minimal differentiation in wage trends between these groups. 
 
 ```{code-cell}
 # Plot the model
