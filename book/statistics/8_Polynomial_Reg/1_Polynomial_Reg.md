@@ -158,7 +158,7 @@ We can already see that the model fits the data much better. Also, the residuals
 
 ## Interpretation
 
-Interpretation of the model outputs is similar to normal linear models, except we now not only have estimates for the linear and the quadratic term:
+The interpretation of the model results is similar to that for normal linear models, except that we now have estimates for the linear and quadratic terms:
 
 ```{code-cell}
 print(quadratic_fit.summary())

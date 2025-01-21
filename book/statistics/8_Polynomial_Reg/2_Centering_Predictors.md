@@ -15,13 +15,11 @@ kernelspec:
 # 12.2 Centering Predictors
 
 A “meaningful zero” in a predictor variable means that the zero point of this variable has a substantive interpretation, in contrast to e.g. an age of 0 if your sample only contains adults. 
-
-In polynomial regression, a meaningful zero is especially useful as it improves the interpretation of lower-order coefficients. In a higher-order polynomial equation, the coefficients of lower-order terms (like the linear $x$ term in a quadratic or cubic equation) can be influenced by the inclusion of higher-order terms. This makes it challenging to interpret these coefficients independently because they are dependent on the specific values of the predictor variables.
+In polynomial regression, a meaningful zero is especially useful as it improves the interpretation of lower-order coefficients. 
 
 Centering thus:
 
 - Simplifies the interpretation: When you center the predictor, the interpretation of lower-order terms becomes simpler. For example, in a centered quadratic model, the linear coefficient now tells you the rate of change at the mean of the predictor, rather than at zero, which might not be a meaningful or sensible point.
-- Reduces multicollinearity: Centering can reduce multicollinearity between the predictor variables (e.g., $x$ and $x^2$), making the model more stable and improving the accuracy of the estimated coefficients.
 
 ## Example
 
