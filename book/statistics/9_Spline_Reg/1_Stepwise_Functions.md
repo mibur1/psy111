@@ -30,8 +30,9 @@ from ISLP import load_data
 # Load and plot the data
 df = load_data('Wage')
 
-sns.scatterplot(x=df['age'], y=df['wage'], alpha=0.4)
-plt.title("ISLP data: Wage distribution across age");
+fig, ax = plt.subplots(figsize=(8,5))
+sns.scatterplot(data=df, x='age', y='wage', alpha=0.4, ax=ax)       
+ax.set_title("ISLP data: Wage distribution across age");
 ```
 
 ## Fitting a stepwise function
@@ -40,7 +41,7 @@ To fit a stepwise funtion, we first need to get cut points for our predictor var
 
 ```{code-cell}
 bins = pd.cut(df['age'], 4)
-bins
+print(bins)
 ```
 
 The output provides us with intervals for evenly sized bins of `age`. We can use the upper value of each interval to get cut points for our stepwise function. We then use the `dmatrix` function to create a design matrix:
@@ -51,7 +52,7 @@ transformed_age = patsy.dmatrix("bs(age, knots=(33.5, 49, 64.5), degree=0)",
                                 return_type='dataframe')
 ```
 
-When you specify `"bs(age, ...)"`, you tell `dmatrix` to transform age using B-spline basis functions. These basis functions segment the variable age into piecewise polynomials defined by the specified knots and degree. When you set degree zo zero, it creates piecewise constant functions, meaning the resulting function is a step function consisting of only horizontal segments.
+When you specify `"bs(age, ...)"`, you tell `dmatrix` to transform age using B-spline basis functions. These basis functions segment the variable age into piecewise polynomials defined by the specified knots and degree. When you set degree to zero, it creates piecewise constant functions, meaning the resulting function is a step function consisting of only horizontal segments.
 
 ### Fitting the model
 
@@ -80,19 +81,26 @@ In summary, the model suggests that wages vary with age, but the relationship is
 ### Plotting the model
 
 
-We can also plot the model. Note that bin 3 and 4 have very similar estimates which leads 
+We can also plot the model. Note that bin 3 and 4 have very similar estimates which leads to an indistinguishable difference between $Y$ values in the second bin and $Y$ values in the third.
 
 ```{code-cell}
 # Plot the model
-plt.figure(figsize=(10, 6))
+fig, ax = plt.subplots(figsize=(8,5))
+
+# Generate age values for predictions and transform using the spline basis
 xp = np.linspace(df['age'].min(), df['age'].max(), 100)
 xp_trans = patsy.dmatrix("bs(xp, knots=(33.5, 49, 64.5), degree=0)",
                          data={"xp": xp},
                          return_type='dataframe')
 
+# Use model fitted before to predict wages for generated age values
 predictions = model_fit.predict(xp_trans)
 
-sns.scatterplot(data=df, x="age", y="wage", alpha=0.4)
-plt.plot(xp, predictions, color='red')
-plt.title("ISLP data: stepwise fit (zero-order)");
+# Plot the original data and the model fit
+sns.scatterplot(data=df, x="age", y="wage", alpha=0.4, ax=ax)
+ax.axvline(33.5, linestyle='--', alpha=0.4, color="black")      # Cut point 1
+ax.axvline(49, linestyle='--', alpha=0.4, color="black")        # Cut point 2
+ax.axvline(64.5, linestyle='--', alpha=0.4, color="black")      # Cut point 3
+ax.plot(xp, predictions, color='red')
+ax.set_title("ISLP data: stepwise fit (zero-order)");
 ```

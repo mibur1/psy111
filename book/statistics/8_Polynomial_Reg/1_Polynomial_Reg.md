@@ -102,9 +102,13 @@ So you end up with two columns: one for the intercept (all 1’s) and one for th
 With the features created, we can then use the standard `sm.OLS()` approach to create and fit the model:
 
 ```{code-cell}
-linear_fit = sm.OLS(grades, study_time_p1).fit()
-linear_predictions = linear_fit.predict(study_time_p1)
-linear_residuals = linear_fit.resid
+# Fit the model
+model_linear = sm.OLS(grades, study_time_p1) 
+model_linear_fit = model_linear.fit()
+
+# Get model predictions and residuals
+linear_predictions = model_linear_fit.predict(study_time_p1)
+linear_residuals = model_linear_fit.resid
 ```
 
 Now we can visualize the model and its residuals:
@@ -134,9 +138,12 @@ polynomial_features_p2 = PolynomialFeatures(degree=2, include_bias=True)
 study_time_p2 = polynomial_features_p2.fit_transform(study_time.reshape(-1, 1))
 
 # Fit the model
-quadratic_fit = sm.OLS(grades, study_time_p2).fit()
-quadratic_predictions = quadratic_fit.predict(study_time_p2)
-quadratic_residuals = quadratic_fit.resid
+model_quadratic = sm.OLS(grades, study_time_p2)
+model_quadratic_fit = model_quadratic.fit()
+
+# Get model predictions and residuals
+quadratic_predictions = model_quadratic_fit.predict(study_time_p2)
+quadratic_residuals = model_quadratic_fit.resid
 ```
 
 Lets also plot our new model and its residuals:
@@ -161,7 +168,7 @@ We can already see that the model fits the data much better. Also, the residuals
 The interpretation of the model results is similar to that for normal linear models, except that we now have estimates for the linear and quadratic terms:
 
 ```{code-cell}
-print(quadratic_fit.summary())
+print(model_quadratic_fit.summary())
 ```
 
 **Coefficients**
@@ -176,7 +183,7 @@ print(quadratic_fit.summary())
 To further evaluate the model, lets also look at the model fit from the linear model:
 
 ```{code-cell}
-print(linear_fit.summary())
+print(model_linear_fit.summary())
 ```
 
 We can observe the following:
