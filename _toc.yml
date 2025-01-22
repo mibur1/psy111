@@ -113,4 +113,6 @@ parts:
         - file: book/solutions/10_Path_modelling
         - file: book/solutions/11_EFA
         - file: book/solutions/12_CFA_SEM
+        - file: book/solutions/13_Polynomial_reg
+        - file: book/solutions/14_Splines
     - file: book/misc/references
