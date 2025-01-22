@@ -54,6 +54,7 @@ The `coeff` column indicates the coefficients of `wage` regressing on each basis
 However, spline regression coefficients are not analogous to slope coefficients in simple linear regression and they are not directly interpretable as increase or decrease on $Y$ given one-unit increase on $X$! Spline regression coefficients scale the computed basis functions for a given value of $X$ (see slides from the multivariate statistics lecture).
 
 We can nevertheless calculate the slopes of the fitted spline starting from our coefficients:
+
 $$
 \text{slope}_1 = \frac{\text{coef}[1]}{\text{knot}[0] - \text{knot.boundary.left}} = \frac{\text{49.81}}{\text{40 - 18}} = 2.26
 $$
