@@ -126,7 +126,7 @@ ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
 
-From the upper plot one can already see that whilst there being a linear trend present in the data, the model underestimates the complexitiy of the relationship. Looking at the residuals, it becomes clear that once the strong positive linear trend in the data has been removed, the curvilinearity stands out! The residuals are systematically related to the value of X: below zero for low and high values of X, and above zero for moderate values of X. This is the graphical diagnosis for the existence of a non-linear relationship, higher than degree “1”.
+From the upper plot one can already see that whilst there being a linear trend present in the data, the model underestimates the complexitiy of the relationship. Looking at the residuals, it becomes clear that once the strong positive linear trend in the data has been removed, the curvilinearity stands out! The residuals are systematically related to the value of $X$: below zero for low and high values of $X$, and above zero for moderate values of $X$. This is the graphical diagnosis for the existence of a non-linear relationship, higher than degree “1”.
 
 ### Second order polynomial model
 
@@ -160,7 +160,7 @@ ax[1].set_ylim(bottom, top)         # Set y-axis lower and upper limits
 ax[1].axhline(0, linestyle='--')
 ax[1].set_title('Residuals');
 ```
-We can already see that the model fits the data much better. Also, the residuals are smaller and not dependent on X.
+We can already see that the model fits the data much better. Also, the residuals are smaller and not dependent on $X$.
 
 
 ## Interpretation
