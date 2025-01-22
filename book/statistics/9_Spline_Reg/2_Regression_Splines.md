@@ -51,7 +51,20 @@ print(model_fit.summary())
 
 The `coeff` column indicates the coefficients of `wage` regressing on each basis function of `age`, i.e. $b_0, b_1, b_2, b_3$. 
 
-However, spline regression coefficients are not analogous to slope coefficients in simple linear regression and they are not directly interpretable as increase or decrease on Y given one-unit increase on X! Spline regression coefficients scale the computed basis functions for a given value of X (see slides from the multivariate statistics lecture).
+However, spline regression coefficients are not analogous to slope coefficients in simple linear regression and they are not directly interpretable as increase or decrease on $Y$ given one-unit increase on $X$! Spline regression coefficients scale the computed basis functions for a given value of $X$ (see slides from the multivariate statistics lecture).
+
+We can nevertheless calculate the slopes of the fitted spline starting from our coefficients:
+$$
+\text{slope}_1 = \frac{\text{coef}[1]}{\text{knot}[0] - \text{knot.boundary.left}} = \frac{\text{49.81}}{\text{40 - 18}} = 2.26
+$$
+
+$$
+\text{slope}_2 = \frac{\text{coef}[2] - \text{coef}[1]}{\text{knot}[1] - \text{knot}[0]} = \frac{\text{45.71 - 49.81}}{\text{60 - 40}} = -0.2
+$$
+
+$$
+\text{slope}_3 = \frac{\text{coef}[3] - \text{coef}[2]}{\text{knot.boundary.right} - \text{knot}[1]} = \frac{\text{17.21 - 45.71}}{\text{80 - 60}} = -1.42
+$$
 
 
 ## Plotting the model
