@@ -81,7 +81,7 @@ In summary, the model suggests that wages vary with age, but the relationship is
 ### Plotting the model
 
 
-We can also plot the model. Note that bin 3 and 4 have very similar estimates which leads to an indistinguishable difference between $Y$ values in the second bin and $Y$ values in the third.
+We can also plot the model. Note that bin 2 and 3 have very similar estimates which leads to an indistinguishable difference between $Y$ values in the second bin and $Y$ values in the third.
 
 ```{code-cell}
 # Plot the model
