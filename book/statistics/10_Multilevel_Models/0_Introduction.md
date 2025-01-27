@@ -44,7 +44,7 @@ If we ignore the clustering variable "hospital," we risk being misled by the dat
 
 In this scenario, the variable "staff quality" could explain the differences in "will to live" between hospitals. Here, hospitals are *level-2 units*, and patients are *level-1 units*. Variables like "staff quality" that explain differences between level-2 units are called *level-2 variables*.
 
-Even within clusters, there is variability. For instance:
+Even within clusters (hospitals), there is a person-to-person variability. For instance:
 
 - Some patients with less severe symptoms report a very low will to live.
 - Others with more severe symptoms report a relatively high will to live.
