@@ -99,10 +99,11 @@ There is no included function to get the ICC. However, we can quickly code it ou
 
 The ICC represents the proportion of the total variation in the outcome that can be explained by differences between groups, rather than differences within groups.
 
-**Formula:**
-$$
+**Formula:**  
+
+$$ 
 \text{ICC} = \frac{\sigma^2_{\text{between}}}{\sigma^2_{\text{between}} + \sigma^2_{\text{within}}}
-$$
+$$ 
 ```
 
 ```{code-cell}
