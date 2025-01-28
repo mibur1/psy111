@@ -38,14 +38,14 @@ print(data.head())
 
 First, we plot a regression line through all data points, ignoring the individual subjects:
 ```{code-cell}
-sns.lmplot(x='Days', y='Reaction time', data=data)
+sns.lmplot(x='Days', y='Reaction', data=data)
 plt.title("Combined regression");
 ```
 
 Next, let's plot one for each subject, using `Subject` as the hue:
 
 ```{code-cell}
-sns.lmplot(x='Days', y='Reaction time', hue='Subject', data=data)
+sns.lmplot(x='Days', y='Reaction', hue='Subject', data=data)
 plt.title("Subject-specific regressions");
 ```
 
