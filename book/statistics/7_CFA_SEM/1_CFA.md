@@ -69,6 +69,14 @@ print(stats.T)
 2. When should you read a `variable ~~ variable` output as variance? When instead as residual variance?
 
 ```
+```{admonition} Variance or Residual variance?
+:class: tip
+
+As a general rule, determining whether `variable ~~ variable` represents variance or residual variance depends on whether the variable is explained by the model. If a `variable` is **exogenous**, the estimate reflects its variance. If a variable is **endogenous**, the estimate represents its residual variance. Specifically:
+- `exogenous_variable ~~ exogenous_variable` → **Variance**
+- `endogenous_variable ~~ endogenous_variable` → **Residual Variance**
+
+```
 
 ### Fit measures
 
