@@ -42,7 +42,7 @@ $$\hat{Reaction Time}_i = \beta_0 + \beta_1 * Days of deprivation_i + \epsilon_i
 
 ```{code-cell}
 sns.lmplot(x='Days', y='Reaction', data=data)
-plt.title("Reaction Time per Subject with Overall Regression");
+plt.title("Combined regression");
 ```
 
 Next, let's plot one for each subject, using `Subject` as the hue:
@@ -115,8 +115,11 @@ There is no included function to get the ICC. However, we can quickly code it ou
 
 The ICC represents the proportion of the total variation in the outcome that can be explained by differences between groups, rather than differences within groups.
 
-**Formula:**
-$ \text{ICC} = \frac{\sigma^2_{\text{between}}}{\sigma^2_{\text{between}} + \sigma^2_{\text{within}}} $
+**Formula:**  
+
+$$ 
+\text{ICC} = \frac{\sigma^2_{\text{between}}}{\sigma^2_{\text{between}} + \sigma^2_{\text{within}}}
+$$ 
 ```
 
 ```{code-cell}
