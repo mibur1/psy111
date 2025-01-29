@@ -72,10 +72,9 @@ print(stats.T)
 ```{admonition} Variance or Residual variance?
 :class: tip
 
-As a general rule, to know if the estimate for `variable ~~ variable` stands for the variable variance or residual variance based on wheather or not the `variable` is explained by the model.
-When a variable is exogenous, is estimate has to be interpret as the variance of that variable; when instead a variable is endogenous, its residual variance will be estimated:
-`exogenous_variable ~~ exogenous_variable` → **Variance**
-`endogenous_variable ~~ endogenous_variable` → **Residual Variance**
+As a general rule, determining whether `variable ~~ variable` represents variance or residual variance depends on whether the variable is explained by the model. If a `variable` is **exogenous**, the estimate reflects its variance. If a variable is **endogenous**, the estimate represents its residual variance. Specifically:
+- `exogenous_variable ~~ exogenous_variable` → **Variance**
+- `endogenous_variable ~~ endogenous_variable` → **Residual Variance**
 
 ```
 
