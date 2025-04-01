@@ -7,7 +7,7 @@ logo: logo.png
 # Do not execute notebooks
 execute:
   execute_notebooks: "auto"
-  exclude_patterns: ["*.ipynb"]
+  exclude_patterns: ["*.ipynb", "example_script.py", "book/misc/templates.md"]
 
 # Define the name of the latex output file for PDF builds
 latex:

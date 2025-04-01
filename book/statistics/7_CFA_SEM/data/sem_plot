@@ -1,0 +1,21 @@
+digraph G {
+	overlap=scale splines=true
+	edge [fontsize=12]
+	node [fillcolor="#cae6df" shape=circle style=filled]
+	speed [label=speed]
+	visual [label=visual]
+	node [shape=box style=""]
+	x1 [label=x1]
+	x2 [label=x2]
+	x3 [label=x3]
+	x7 [label=x7]
+	x8 [label=x8]
+	x9 [label=x9]
+	visual -> speed [label="0.368\np-val: 0.00"]
+	visual -> x1 [label=1.000]
+	visual -> x2 [label="0.689\np-val: 0.00"]
+	visual -> x3 [label="0.985\np-val: 0.00"]
+	speed -> x7 [label=1.000]
+	speed -> x8 [label="1.204\np-val: 0.00"]
+	speed -> x9 [label="1.052\np-val: 0.00"]
+}
