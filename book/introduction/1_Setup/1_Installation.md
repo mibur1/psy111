@@ -14,27 +14,41 @@ kernelspec:
 
 # 1.1 Installation
 
-Python is a open source programming language that can be freely downloaded and installed from its official website. However, in this guide, we will use Python through a software package called **Conda**. Conda is a powerful package and environment management system that is widely used in the Python community and beyond.
+Python is an open-source programming language that can be freely downloaded and installed from its official website. In this guide, however, we will use Python through an environment manager called **Micromamba**. Micromamba allows you to install specific Python versions and manage project dependencies in isolated environments. You can think of these environments as self-contained “boxes” that include everything a project needs: a particular Python version and the required packages. This isolation ensures that updates or changes in one environment do not affect others, making it easy to manage and switch between projects with different requirements.
 
-The key advantage of using Conda is its ability to manage multiple versions of Python and various dependencies simultaneously. Conda allows you to create isolated environments, which you can think of as self-contained "boxes" that contain specific versions of Python and other packages required for different projects. This isolation ensures that changes or updates in one environment do not affect others, making it easier to manage and switch between projects with different requirements.
+Apart from Micromamba, there are other ways to create Python environments, such as Conda or Miniconda. The main difference is that Micromamba is faster, lighter, and not subject to the recent [licensing restrictions](https://www.fz-juelich.de/en/rse/the_latest/the-anaconda-is-squeezing-us), which is why we recommend it here.
 
-```{figure} ../../../_static/figures/conda.png
+
+```{figure} ../../../_static/figures/mamba.png
 ---
 width: 70%
-name: conda
+name: mamba
 ---
-Version management with Conda.
+Version management with Micromamba.
 ```
 
-We will use a minimal version of Conda called **Miniconda**. This is a lightweight version of Conda that, unlike its bigger sibling **Anaconda**, comes without e.g. a graphical user interface. You can download and install it from [here](https://docs.anaconda.com/miniconda/). Scroll down and select the suitable version for your operating system in the table. When installing Miniconda, please check the "Install for: All Users" checkbox to avoid potential issues with accessing Python packages.
+You can download and install Micromamba as described in the the [documentation](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html). The easiest way is by typing the following command in your terminal and confirming all prompty by typing `y` (yes) and `Enter`:
 
-In addition to Conda, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
+On Linux/MacOS:
+
+```
+"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
+```
+
+On Windows (PowerShell):
+
+```
+Invoke-Expression ((Invoke-WebRequest -Uri https://micro.mamba.pm/install.ps1 -UseBasicParsing).Content); 
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+```
+
+In addition to Micromamba, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
 
 
-```{admonition} Using Python through Conda
+```{admonition} Using Python through a Environment Manager
 :class: tip
 
-By using Conda you can:
+By using an environment manager such as Micromamba you can:
 
 - Install and switch between different versions of Python
 - Manage dependencies for different projects separately, avoiding conflicts

@@ -14,19 +14,49 @@ kernelspec:
 
 # 1.2 Usage
 
-At this point you should have previously installed Python (through miniconda) and Visual Studio Code.
+At this point you should have previously installed Micromamba and Visual Studio Code.
 
+
+## Python environments
+
+Remember that we use Micromamba to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a a new terminal/PowerShell window and type:
+
+```
+micromamba create -n psy111 python
+```
+
+and confirm the installation with `y` when prompted to do so. Afterwards, activate the environment by typing
+
+```
+micromamba activate psy111
+```
+
+You should now see a `(psy111)` in the terminal, indicating that you have succesfully activated the new environment.
+
+You can then type
+
+```
+pip list
+```
+
+to display a list of all installed Python packages. As our environment is still new, this list is still empty. However, we are now ready to install any kind of Python package. For example, we can install NumPy, a very important package for numerical calculations in Python by typing
+
+```
+pip install numpy
+```
+
+If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Micromamba, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information as the usage is identical (just make sure to use `micromamba` instead of `conda`).
+
+---
 
 ## The Python interpeter
 
-In your programs, search for the `Anaconda Powershell Prompt (miniconda3)` and open it. If you are on macOS or Linux, open the normal terminal. In all cases, you should see a `(base)` indicating that we have succesfully installed Miniconda and are in our base environment.
-
-First, we will open the Python interpreter of our current base environment by typing `python` and then presssing enter. The Python interpeter will start and show you the current Python version, for example:
+If the `psy111` environment is active, you can open the Python interpreter by typing `python` and then presssing enter. The Python interpeter will start and show you the current Python version, for example:
 
 ```
-Python 3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0] on win32
+Python 3.14.0 | packaged by conda-forge | (main, Oct  7 2025, 20:07:29) [GCC 14.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>>
+>>> 
 ```
 
 Simply put, the Python interpreter is the program that executes your Python code. It translates the written code into a form that the computer can understand and then runs it. Inside the interpreter we can write any kind of Python code, like printing a message:
@@ -38,41 +68,7 @@ Welcome to psy111!
 
 While this works for simple commands, it is not really useful for more complicated tasks. These would usually be implemented in self-contained Python scripts or Jupyter notebooks. For now, let us exit the Python interpreter by typing `quit()` and pressing enter.
 
-
-## Conda environments
-
-Remember that we use Conda to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Start by typing
-
-```
-conda create -n "psy111"
-```
-
-and confirm the installation with `y` when prompted to do so. Afterwards, activate the environment by typing
-
-```
-conda activate psy111
-```
-
-The `(base)`should now be changed to `(psy111)`, indicating that you have succesfully activated the new environment. In this environment we first install `pip`, which is the standard Python package manager:
-
-```
-conda install pip
-```
-
-You can then type
-
-```
-pip list
-```
-
-to display a list of all installed Python packages. As our environment is still new, this list is quite short. However, we are now ready to install any kind of Python package. For example, we can install NumPy, a very important package for numerical calculations in Python by typing
-
-```
-pip install numpy
-```
-
-If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Conda, and if needed, you can refer to the [cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information.
-
+---
 
 ## Python Scripts
 
@@ -138,7 +134,7 @@ It is strongly recommend that you create and maintain an organized folder struct
 
 Once you have saved and unpacked the psy111 folder, you can open it in VS Code. You can do so by right clicking in the folder and selecting "Open with Code" if you have previously checked the corresponding box in the installation process, or by clicking "File" -> "Open Folder" inside VS Code.
 
-In the file overview on the left you should see a `requirements.txt` file. If you open it, you can see the necessary Python libraries that are needed for the book. You can install them by either manually typing them into the **Miniconda Promt**, or by using the Promt to navigate in the folder of the book with the `cd` (change directory) command and then installing from the requirements file itself:
+In the file overview on the left you should see a `requirements.txt` file. If you open it, you can see the necessary Python libraries that are needed for the book. You can install them by either manually typing them into a terminal, or by navigating into the folder of the book with the `cd` (change directory) command and then installing from the requirements file itself:
 
 ```
 cd path/to/your/book
@@ -163,9 +159,9 @@ You can use Python in different ways:
 - Through standard Python scripts (`.py` files)
 - Through interactive Jupyter Notebooks (`.ipynb` files)
 
-You can use Conda to manage your Python environments. You can:
+You can use Micromamba to manage your Python environments. You can:
 
-- Create environments with `conda create -n <env_name>`
-- Switch environments with `conda activate <env_name>`
+- Create environments with `micromamba create -n <env_name> python`
+- Switch environments with `micromamba activate <env_name>`
 - Install packages using `pip install` inside the environment
 ```
