@@ -14,7 +14,7 @@ kernelspec:
 
 # 1.1 Installation
 
-Python is an open-source programming language that can be freely downloaded and installed from its official website. In this guide, however, we will use Python through an environment manager called **Miniforge**. Miniforge allows you to install specific Python versions and manage project dependencies in isolated environments. You can think of these environments as self-contained “boxes” that include everything a project needs: a particular Python version and the required packages. This isolation ensures that updates or changes in one environment do not affect others, making it easy to manage and switch between projects with different requirements.
+Python is an open-source programming language that can be freely downloaded and installed from its official website. In this guide, however, we will use Python through an environment manager called **Miniforge**. Miniforge contains `conda`, which allows you to install specific Python versions and manage project dependencies in isolated environments. You can think of these environments as self-contained “boxes” that include everything a project needs: a particular Python version and the required packages. This isolation ensures that updates or changes in one environment do not affect others, making it easy to manage and switch between projects with different requirements.
 
 
 ```{figure} ../../../_static/figures/miniforge.png
@@ -22,10 +22,10 @@ Python is an open-source programming language that can be freely downloaded and 
 width: 70%
 name: miniforge
 ---
-Version management with Miniforge.
+Version management with Miniforge/Conda.
 ```
 
-## Miniforge
+## Miniforge/Conda
 
 **Linux/MacOS**
 
@@ -50,7 +50,7 @@ In addition to Miniforge, we will also install and download a programming enviro
 ```{admonition} Using Python through a Environment Manager
 :class: tip
 
-By using an environment manager such as Miniforge you can:
+By using an environment manager such as Miniforge/Conda you can:
 
 - Install and switch between different versions of Python
 - Manage dependencies for different projects separately, avoiding conflicts
