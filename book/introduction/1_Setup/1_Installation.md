@@ -14,41 +14,43 @@ kernelspec:
 
 # 1.1 Installation
 
-Python is an open-source programming language that can be freely downloaded and installed from its official website. In this guide, however, we will use Python through an environment manager called **Micromamba**. Micromamba allows you to install specific Python versions and manage project dependencies in isolated environments. You can think of these environments as self-contained “boxes” that include everything a project needs: a particular Python version and the required packages. This isolation ensures that updates or changes in one environment do not affect others, making it easy to manage and switch between projects with different requirements.
-
-Apart from Micromamba, there are other ways to create Python environments, such as Conda or Miniconda. The main difference is that Micromamba is faster, lighter, and not subject to the recent [licensing restrictions](https://www.fz-juelich.de/en/rse/the_latest/the-anaconda-is-squeezing-us), which is why we recommend it here.
+Python is an open-source programming language that can be freely downloaded and installed from its official website. In this guide, however, we will use Python through an environment manager called **Miniforge**. Miniforge allows you to install specific Python versions and manage project dependencies in isolated environments. You can think of these environments as self-contained “boxes” that include everything a project needs: a particular Python version and the required packages. This isolation ensures that updates or changes in one environment do not affect others, making it easy to manage and switch between projects with different requirements.
 
 
-```{figure} ../../../_static/figures/mamba.png
+```{figure} ../../../_static/figures/miniforge.png
 ---
 width: 70%
-name: mamba
+name: miniforge
 ---
-Version management with Micromamba.
+Version management with Miniforge.
 ```
 
-You can download and install Micromamba as described in the the [documentation](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html). The easiest way is by typing the following command in your terminal and confirming all prompty by typing `y` (yes) and `Enter`:
+## Miniforge
 
-On Linux/MacOS:
+**Linux/MacOS**
 
-```
-"${SHELL}" <(curl -L micro.mamba.pm/install.sh)
-```
-
-On Windows (PowerShell):
+Open a terminal in the folder where your `.sh` script is located and run the script (*hint: after typing `bash Miniforge3` you should be able to hit `Tab` to autocomplete the command*):
 
 ```
-Invoke-Expression ((Invoke-WebRequest -Uri https://micro.mamba.pm/install.ps1 -UseBasicParsing).Content); 
-Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
-In addition to Micromamba, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
+After a succesful installation, simply open a new terminal. You should now see a `(base)` in the beginning of each line, which tells you that the installation was succesful.
+
+**Windows**
+
+On Windows, simply run the `.exe` file and install everything. After installation, simply open the `Miniforge Prompt` from the start menu.
+
+
+## Visual Studio Code
+
+In addition to Miniforge, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
 
 
 ```{admonition} Using Python through a Environment Manager
 :class: tip
 
-By using an environment manager such as Micromamba you can:
+By using an environment manager such as Miniforge you can:
 
 - Install and switch between different versions of Python
 - Manage dependencies for different projects separately, avoiding conflicts
