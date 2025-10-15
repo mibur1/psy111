@@ -39,10 +39,10 @@ You can then type
 pip list
 ```
 
-to display a list of all installed Python packages. As our environment is still new, this list is still empty. However, we are now ready to install any kind of Python package. For example, we can install NumPy, a very important package for numerical calculations in Python by typing
+to display a list of all installed Python packages. As our environment is still new, this list is still empty. However, we are now ready to install any kind of Python package. There are three packages which we will need soon (*numpy* for numerical computations, *matplotlib* for plotting, and *ipykernel* for interactive notebooks), so we can install them as follows:
 
 ```
-pip install numpy
+pip install numpy matplotlib ipykernel
 ```
 
 If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Miniforge, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information.
@@ -82,15 +82,23 @@ name: vscode
 Visual Studio Code.
 ```
 
-First, navigate to the "Extensions" button in the left column and install the **Python** extension. Then, in the top left click on "File" -> "New file..." and select "Python file". You will see that an empty file called "Untitled-1" was opened. We can save it by again clicking on "File" -> "Save", or by pressing Ctrl + S (or Command + S on Mac). If you previously selected "Python file", you can see that the `.py` file extension was automatically added to the file name (otherwise you can always do it manually).
+First, navigate to the Extensions button in the left column and install the **Python** extension.
 
-You are now ready to write your Python script. As in the previous example, you can write
+Next, in the top left click on **File → Open Folder…** and select (or create) a folder where you want to store your work. After the folder is open in VS Code, click on **File → New File…** and select **Python File**. You will see that a new file (for example, Untitled-1) appears inside your opened folder. Save it by clicking **File → Save** or pressing Ctrl + S (or Command + S on Mac). If you selected “Python File” earlier, the .py extension will be added automatically (you can also add it manually if needed).
+
+You are now ready to write content to your Python script inside this file:
 
 ```
 print("Welcome to psy111!")
 ```
 
-and then run the Python script by pressing the run button at the top right. If you do this for the first time, VS Code will most likely promt you to select your Python interpeter at the bottom right. Here, you should now be able to see and select the previously created `psy111` enviroment. If the terminal displays a yellow button even after loading the environment, hover your mouse over it and click "reload terminal".
+You can then run the Python script by pressing the run button at the top right. If you do this for the first time, VS Code will most likely promt you to select your Python interpeter at the bottom right. Here, you should now be able to see and select the previously created `psy111` enviroment.
+
+```{admonition} Important
+:class: caution
+
+When you open only a single Python file in VS Code (without opening a folder), you cannot change or save the Python interpreter in the bottom right corner. VS Code saves the selected interpreter per folder or workspace, not per file. To make the interpreter selection work and stay saved, always open your project folder first with “File → Open Folder…”.
+```
 
 
 ## Jupyter notebooks
