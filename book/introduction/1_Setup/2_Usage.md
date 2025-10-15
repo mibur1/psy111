@@ -46,6 +46,7 @@ pip install numpy
 ```
 
 If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Miniforge, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information.
+
 ---
 
 ## The Python interpeter
