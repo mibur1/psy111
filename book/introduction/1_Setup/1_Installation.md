@@ -27,6 +27,8 @@ Version management with Miniforge/Conda.
 
 ## Miniforge/Conda
 
+You can download and install Micromamba as described in the the [documentation](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html).
+
 **Linux/MacOS**
 
 Open a terminal in the folder where your `.sh` script is located and run the script (*hint: after typing `bash Miniforge3` you should be able to hit `Tab` to autocomplete the command*):
