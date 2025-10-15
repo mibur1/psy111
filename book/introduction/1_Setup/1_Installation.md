@@ -27,7 +27,7 @@ Version management with Miniforge/Conda.
 
 ## Miniforge/Conda
 
-You can download and install Micromamba as described in the the [documentation](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html).
+You can download and install Micromamba as described in the the [documentation](https://conda-forge.org/download/).
 
 **Linux/MacOS**
 
