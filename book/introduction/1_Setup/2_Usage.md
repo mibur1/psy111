@@ -14,21 +14,21 @@ kernelspec:
 
 # 1.2 Usage
 
-At this point you should have previously installed Micromamba and Visual Studio Code.
+At this point you should have previously installed Miniforge and Visual Studio Code.
 
 
 ## Python environments
 
-Remember that we use Micromamba to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a a new terminal/PowerShell window and type:
+Remember that we use Miniforge to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a a new terminal/PowerShell window and type:
 
 ```
-micromamba create -n psy111 python
+conda create -n psy111 python
 ```
 
 and confirm the installation with `y` when prompted to do so. Afterwards, activate the environment by typing
 
 ```
-micromamba activate psy111
+conda activate psy111
 ```
 
 You should now see a `(psy111)` in the terminal, indicating that you have succesfully activated the new environment.
@@ -45,8 +45,7 @@ to display a list of all installed Python packages. As our environment is still 
 pip install numpy
 ```
 
-If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Micromamba, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information as the usage is identical (just make sure to use `micromamba` instead of `conda`).
-
+If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Miniforge, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information.
 ---
 
 ## The Python interpeter
