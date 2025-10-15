@@ -159,9 +159,9 @@ You can use Python in different ways:
 - Through standard Python scripts (`.py` files)
 - Through interactive Jupyter Notebooks (`.ipynb` files)
 
-You can use Micromamba to manage your Python environments. You can:
+You can use Minforge/Conda to manage your Python environments. You can:
 
-- Create environments with `micromamba create -n <env_name> python`
-- Switch environments with `micromamba activate <env_name>`
+- Create environments with `conda create -n <env_name> python`
+- Switch environments with `conda activate <env_name>`
 - Install packages using `pip install` inside the environment
 ```
