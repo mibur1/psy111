@@ -25,9 +25,9 @@ name: miniforge
 Version management with Miniforge/Conda.
 ```
 
-## Miniforge/Conda
+## Conda
 
-You can download and install Micromamba as described in the the [documentation](https://conda-forge.org/download/).
+You can download and install Conda trough Miniforge as described in the the [documentation](https://conda-forge.org/download/).
 
 **Linux/MacOS**
 
