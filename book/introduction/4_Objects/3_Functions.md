@@ -69,13 +69,13 @@ def add_noise(x, mu=0, sd=1):
 
 *Note:* So far, you have mostly seen comments within the code using the `#` sign. Another way to provide comments is by using triple double quotes `"""comment"""`, as shown in the previous code snippet. This approach is useful for providing larger portions of text, such as when documenting your functions. In the `add_noise()` function, you can see an example where the input and output parameters are clearly described, making it easier to understand how to use the function. This is also the official way of documenting functions and classes in Python, so it is recommended to follow this convention.
 
-If we now call this function by just providing a value for `x`it will still work as expected by using a mean of 0 and a standard deviation of 1 to calculate and add the noise.
+If we now call this function by just providing a value for `x` it will still work as expected by using a mean of 0 and a standard deviation of 1 to calculate and add the noise.
 
 ```{code-cell}
 add_noise(5)
 ```
 
-If you decide you need different noise with a standard deviation of 5, you can simply add this new value. As positional arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
+If you decide you need different noise with a standard deviation of 5, you can simply add this new value. As keyword arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
 
 ```{code-cell}
 add_noise(5, sd=3)
