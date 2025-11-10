@@ -93,7 +93,7 @@ or not use any name at all
 add_noise(5, 3, 2)
 ```
 
-However, the last example is differnet compared to the the previous one! This is because if no keywords are provided, Python will only be able to rely on the default order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=2` and `sd=3` as defined in the function.
+However, the last example is differnet compared to the the previous one! This is because if no keywords are provided, Python will only be able to rely on the default order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=3` and `sd=2` as defined in the function.
 
 ### Argument unpacking
 
