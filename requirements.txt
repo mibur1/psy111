@@ -1,5 +1,5 @@
 # General dependencies
-jupyter-book
+jupyter-book==1.0.3
 numpy
 pandas
 matplotlib
