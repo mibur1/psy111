@@ -2,8 +2,8 @@ digraph G {
 	overlap=scale splines=true
 	edge [fontsize=12]
 	node [fillcolor="#cae6df" shape=circle style=filled]
-	speed [label=speed]
 	visual [label=visual]
+	speed [label=speed]
 	node [shape=box style=""]
 	x1 [label=x1]
 	x2 [label=x2]
