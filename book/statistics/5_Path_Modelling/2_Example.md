@@ -31,7 +31,7 @@ width: 80%
 
 ## Variables
 
-- Physical Health ($X$): The number of illnesses experienced in the last 12 months.
+- Physical Health ($X$): The number of illnesses experienced in the last 12 months (higher values indicate poorer physical health).
 - Functional Health ($Y_1$): The sum score of the SF-36 questionnaire, which measures functional health.
 - Subjective Health ($Y_2$): Self-reported subjective health, reflecting how individuals perceive their overall health.
 
@@ -102,7 +102,7 @@ The first ouput we looked at after defining the model was `info`, which contains
 - **Objective Function**: Maximum Likelihood with Weights (MLW).
 - **Optimization Algorithm**: Sequential Least Squares Quadratic Programming (SLSQP).
 - **Iterations**: The model converged after 14 iterations.
-- **Objective Value**: 0.000, indicating no detectable discrepancy between observed and predicted covariance matrices.
+- **Objective Value**: 0.000, indicating that the model-implied covariance matrix closely reproduces the observed covariance matrix under the chosen estimation method.
 
 ### Parameter Estimates
 
@@ -120,7 +120,7 @@ The first ouput we looked at after defining the model was `info`, which contains
 
 ### Standardized Coefficients
 
-Standardized coefficients (`Est.Std`) allow us to compare the relative influence of each predictor. They can be interpreted similarly to correlation coefficients, indicating the strength and direction of relationships on a standardized scale. However, unlike correlations, they reflect causal relationships within the model's structure and account for both direct and indirect effects.
+Standardized coefficients (`Est.Std`) allow us to compare the relative influence of each predictor on a common scale. They can be interpreted similarly to correlation coefficients in terms of strength and direction. However, unlike correlations, they represent *model-implied directional associations* that depend on the assumed causal structure of the model. By themselves, they do not establish causality, but quantify effects conditional on the specified paths.
 
 - **Physical Health → Functional Health**: **-0.451** (strong negative effect).  
 - **Physical Health → Subjective Health**: **-0.244** (moderate negative effect).  
@@ -140,15 +140,19 @@ Standardized coefficients (`Est.Std`) allow us to compare the relative influence
 
 ### Fit Metrics
 
-- **Chi-Square**: **0.0001** (p = **0.9915**), excellent fit.  
-- **CFI**: **1.0008**, **TLI**: **1.0033** (indicative of possible overfit).  
-- **RMSEA**: **0**, **GFI/AGFI**: **1.0**, perfect fit.  
+- **Chi-Square**: **0.0001** (p = **0.9915**).  
+- **CFI**: **1.0008**, **TLI**: **1.0033**.  
+- **RMSEA**: **0**, **GFI/AGFI**: **1.0**.  
 - **AIC**: **10**, useful for model comparison.
 
-### Overfitting Concerns
+### Interpretation of Model Fit
 
-- High fit indices and low Chi-Square suggest potential overfitting.  
-- **Recommendation**: Test on an independent dataset or simplify the model.
+The model shows near-perfect fit indices. However, this should be interpreted with caution. The model has very few degrees of freedom (DoF = 1), meaning that global fit indices are not very informative in this context. In small or nearly just-identified models, it is common to observe extremely high fit values, including CFI and TLI values above 1 and RMSEA values close to zero.
+
+Therefore, the excellent fit does not necessarily indicate overfitting, but rather reflects the simplicity and identification properties of the model.
+
+**Recommendation:**  
+Model evaluation should focus primarily on parameter estimates and theoretical plausibility. External validation using an independent dataset can still be useful to assess generalizability.
 
 
 ## Interpretation
@@ -161,20 +165,21 @@ Standardized coefficients (`Est.Std`) allow us to compare the relative influence
 
 ### Implications
 
-- **Mediation**: Functional health mediates the effect of physical health on subjective health. In other words, apart from directly influencing subjective health, physical health also influences subjective health by influencing functional health (indirect effect).
+- **Mediation**: The pattern of results is consistent with *partial mediation* by functional health. Physical health shows both a direct association with subjective health and an indirect association via functional health. A formal test of the indirect effect would be required to statistically confirm mediation.
 - **Variance Explained**: Functional health (20.6%), subjective health (39.7%). Other factors likely influence outcomes.  These percentages represent **R-squared** values (explained variance) and are calculated as 1 minus the standardized residual variance.
 
 ### Limitations
 
-- **Overfitting**: Model fit metrics suggest overfitting risks.  
+- **Limited Model Complexity**: Due to the small number of variables and low degrees of freedom, global fit indices are of limited diagnostic value.
 - **Self-reported Measures**: Subjective health may suffer from biases (e.g., recall bias).  
 - **Large Unexplained Variance**: Additional predictors (e.g., social factors) could enhance the model.
 
 
 ```{admonition} Caution
 :class: warning
-While the model demonstrates significant and meaningful relationships, the almost perfect fit (e.g., Chi-Square value close to zero, p-value very high, and objective value of 0.000) raises a valid question: **Is the model overfitting?**
+While the model demonstrates significant and meaningful relationships, the almost perfect fit (e.g., Chi-Square value close to zero and very high p-value) primarily reflects the simplicity and low degrees of freedom of the model rather than clear evidence of overfitting.
 
-- Overfitting could mean that the model may not generalize well to other datasets.
-- To address this, consider testing the model on a different dataset or simplifying it to ensure robustness.
+- In small or nearly just-identified models, global fit indices tend to be inflated and should not be overinterpreted.
+- Generalizability is better assessed through theoretical justification and, where possible, replication in an independent dataset.
+
 ```
