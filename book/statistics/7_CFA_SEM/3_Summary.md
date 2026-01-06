@@ -14,60 +14,109 @@ kernelspec:
 
 # 11.3 Summary
 
+This section summarises the key steps and syntax for specifying, fitting, inspecting, and visualising CFA and SEM models using `semopy`.
+
+---
+
 ## Specifying a Model
+
+In SEM, models are defined using a string-based syntax that separates the **measurement model** (relationships between observed and latent variables) from the **structural model** (relationships between latent variables).
 
 ```{code-block}
 desc = '''# Measurement model
           latent_factor1 =~ x1 + x2 + x3
-          latent_factor2 =~ x7 + x8 + x9
-          latent_factor3 =~ x4 + x5 + x6
-          
-          # Addding higher order factors
-          latent_factor1 =~ latent_factor2
-          latent_factor1 =~ latent_factor3
+          latent_factor2 =~ x4 + x5 + x6
 
           # Structural model
-          latent_factor1 ~ latent_factor2
-
-          # Adding a covariance
-          latent_factor2 ~~ latent_factor3
-          
-          # Setting a covariance to zero
-          latent_factor1 ~~ 0*latent_factor3
-
-          # Setting a factor variance to 1
-          latent_factor1 ~~ 1 * latent_factor1'''
+          latent_factor2 ~ latent_factor1'''
 ```
 
-Summed up, you can use the following operators:
+This example specifies two latent variables, each measured by three observed variables, and a structural regression in which `latent_factor1` predicts `latent_factor2`.
 
-- `=~` to associate measured variables with latent factors (or latent factors with higher order latent factors)
-- `~` for regressions
-- `~~` for variances and covariances
+---
+
+### Higher-order Factors
+
+Latent variables can themselves be indicators of a higher-order latent variable:
+
+```{code-block}
+desc = '''# First-order measurement model
+          latent_factor1 =~ x1 + x2 + x3
+          latent_factor2 =~ x4 + x5 + x6
+
+          # Higher-order factor
+          general_factor =~ latent_factor1 + latent_factor2'''
+```
+
+---
+
+### Variances and Covariances
+
+Variances and covariances are specified using the `~~` operator:
+
+```{code-block}
+desc = '''latent_factor1 =~ x1 + x2 + x3
+          latent_factor2 =~ x4 + x5 + x6
+
+          # Allow latent factors to covary
+          latent_factor1 ~~ latent_factor2
+          '''
+```
+
+Covariances can be fixed to zero to impose independence assumptions:
+```{code-block}
+latent_factor1 ~~ 0*latent_factor2
+```
+---
+
+### Overview of Operators
+
+* `=~` associates observed variables with latent factors (and latent factors with higher-order factors)
+* `~` specifies regression relationships
+* `~~` specifies variances and covariances
+
+---
 
 ## Fitting a Model
 
 ```{code-block}
-mod = semopy.Model(desc)
-res_opt = mod.fit(data)
+model = semopy.Model(desc)
+model_fit = model.fit(data)
 ```
+
+---
 
 ## Extracting Model Estimates
 
 ```{code-block}
-estimates = mod.inspect()
+estimates = model.inspect(std_est=True)
 print(estimates)
 ```
 
-## Extracting Model Fit Measures
+---
+
+## Extracting Fit Measures
 
 ```{code-block}
-stats = semopy.calc_stats(mod)
+stats = semopy.calc_stats(model)
 print(stats.T)
 ```
 
-## Visualizing the Model
+---
+
+## Visualising the Model
 
 ```{code-block}
-semopy.semplot(mod, plot_covs = True, filename='data/cfa_plot.pdf')
+semopy.semplot(model, plot_covs=True, std_ests=True, filename='data/plot.pdf')
+```
+
+---
+
+```{admonition} Key Takeaways
+:class: note
+
+- CFA focuses on the measurement model; SEM extends CFA by adding directional relationships between latent variables.
+- SEM models consist of a measurement model and a structural model.
+- Individual parameter estimates and overall model fit address different questions and must be interpreted jointly.
+- Standardised estimates aid interpretation, while unstandardised estimates are required for statistical inference.
 ```
