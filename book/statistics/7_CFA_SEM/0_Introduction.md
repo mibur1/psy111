@@ -14,37 +14,54 @@ kernelspec:
 
 # CFA & SEM
 
-In the previous session, we introduced Exploratory Factor Analysis (EFA) to extract underlying factors in observed variables. This session will focus on **Confirmatory Factor Analysis (CFA)** and **Structural Equation Modeling (SEM)**. 
+**Confirmatory Factor Analysis (CFA)** and **Structural Equation Modelling (SEM)** are used to test *theory-driven hypotheses* about latent variables and their relationships to observed data. In contrast to Exploratory Factor Analysis (EFA), where the factor structure is discovered from the data, CFA and SEM require the researcher to specify the model in advance:
 
-Both CFA and SEM are used to test hypotheses about the relationships between observed variables and a smaller number of underlying latent variables. Unlike EFA, which is used when there are no prior assumptions about the factor structure — meaning there is no predefined hypothesis about (1) the number of factors needed or (2) which variables load onto which factors — CFA and SEM require the researcher to specify both the number of factors and the relationships between observed variables and these factors. Additionally, CFA and SEM allow for modeling associations between the latent factors themselves, providing a more structured approach to testing theoretical models.
+* how many latent variables exist,
+* which observed variables measure them, and
+* how the latent variables are related.
 
+This makes CFA and SEM particularly well suited for testing psychological theories and measurement models.
 
-## Steps of CFA/SEM
+---
 
-1. **Decide on the number of factors:** This usually involves domain knowledge and/or a hypothesis about the constructs.
-2. **Set up the loading structure:** Decide which items load onto which factor(s). Again, a underlying hypothesis is required.
-3. **Identify the factors:** Since a latent variable is not directly measured, thereby lacking a scale unit, the decision about how to scale/identify latent variables is key in CFA and SEM. Usually, these decisions are not of statistical, but theoretical nature (see lecture for further details). Generally, there are two ways to scale latent variables, (1) fixed loadings and (2) standardized factors.
-4. **Evaluate and compare model fit:** To evaluate the specified model, one can interpret model fit measures and/or compare the model fit to the one of other models.
+## From CFA to SEM
 
+You can think of CFA as a special case of SEM.
 
-## Difference between CFA/SEM
+* In CFA, the focus lies on the *measurement model*: observed variables load on latent factors, and latent factors may correlate or form higher-order factors.
+* In SEM, the model is extended by adding *directional (regression) paths* between variables—typically between latent constructs.
 
-The difference between CFA and SEM might be confusing. One can say that CFA is a special case of SEM which is defined by not having unidirectional paths present at one level (see lecture and tutorial for further details). In other words, in CFA, there are no unidirectional connections between latent variables **on one level**. There can however be *higher order factors*, i.e. latent variables loading on higher order latent variables. 
+In short:
 
+> CFA tests how constructs are measured; SEM tests how constructs are related.
 
-## Example
+---
 
-Let's assume we measured *working memory (WM)* with 5 items and *general processing speed (GPS)* with 3 items. We propose that the 5 *WM* items load on a *WM* factor and the 3 *GPS* items load on a *GPS* factor. Thus, we end up with 2 latent variables. One might argue that these latent variables belong to a construct called *intelligence (I)*. Therefore, we let both latent factors load on a **higher order latent factor** which we call *I*. This would all still be consindered as **CFA**. 
-However, let's think of it in another way. It could also be that *WM* **predicts** *GPS*. If we specify the model in a way such that *WM* is used as a regressor for *GPS*, this would be considered as **SEM**.
+## Typical Steps in CFA/SEM
 
+1. **Specify the model**  
+   Based on theory, decide how many latent variables exist and which observed variables indicate each latent variable.
 
-## The Dataset
+2. **Identify (scale) latent variables**  
+   Because latent variables have no natural scale, they must be identified (e.g. by fixing one loading or fixing the latent variance).
 
-In this session, we will use the `HolzingerSwineford1939` dataset. The dataset contains mental ability test scores of seventh and eighth grade children from two different schools. Apart from demographic information, nine of the original 26 tests are included in the data set.
+3. **Estimate the model**  
+   Fit the specified model to the data using an SEM software package.
 
-- x1, x2 and x3 are indicators for visual ability
-- x4, x5 and x6 are indicators for text processing related skills
-- x7, x8 and x9 are indicators for speed ability
+4. **Evaluate model fit**  
+   Assess how well the model reproduces the observed data using fit indices and, if necessary, compare alternative models.
 
-We will once more use the package `semopy`, introduced in the Path Modelling session.
-This time we will make use of the new *operator* `=~` which allows us to directly define a latent varible with its indicators.
+---
+
+## Conceptual Example
+
+Assume we measure:
+
+* Working Memory (WM) using five items, and
+* General Processing Speed (GPS) using three items.
+
+If each set of items loads on its respective latent factor, and the two factors are allowed to correlate, this is a CFA.
+
+If we additionally assume that both *WM and GPS reflect a broader construct* such as Intelligence (I), we can model I as a higher-order factor, which is still CFA.
+
+However, if we instead hypothesise that *WM predicts GPS*, and specify a directional path from WM to GPS, the model becomes a SEM, because it includes structural (regression) relationships between latent variables.

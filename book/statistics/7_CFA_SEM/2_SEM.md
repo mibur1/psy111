@@ -14,24 +14,25 @@ kernelspec:
 
 # 11.2 SEM
 
-As before, we will use the `HolzingerSwineford1939` dataset:
+As in the CFA example, we again use the `HolzingerSwineford1939` dataset, which contains mental ability test scores from seventh- and eighth-grade pupils in two schools.
 
-```{code-cell}
+```{code-cell} ipython3
 import semopy
 
 data = semopy.examples.holzinger39.get_data()
 data
 ```
 
-## Performing SEM
+In Confirmatory Factor Analysis (CFA), we specify how observed variables measure latent constructs and allow latent variables to correlate. CFA focuses on the measurement model and does not include directional (regression) relationships between latent variables.
 
-As you know, CFA is a special case of SEM, which is defined by not having unidirectional paths present at one level, i.e. no latent variable is used to predict another latent variable (only correlations, i.e. bidirectional paths are used). But what if we suspect that one latent factor is actually predicting another one. Such models would be considered SEM.
+Structural Equation Modelling (SEM) extends CFA by allowing directional relationships among latent variables. An SEM therefore consists of two components:
 
-Note that SEM models contain a **measurement model** and a **structural model**. The **measurement model** describes relationships between measured variables and latent factors. The **structural model** describes relationships between latent variables.
+- a **measurement model**, which specifies how observed variables relate to latent variables, and
+- a **structural model**, which specifies regressions among latent variables.
 
-Let's specify and fit a SEM model that predicts `speed ability` with `visual speed` and ignores `text processing related abilities`.
+Whenever at least one latent variable is used to predict another latent variable, the model is considered an SEM. As an example, we now specify a model in which `visual ability` predicts `speed ability`. Text-related abilities are not included in this model.
 
-```{code-cell}
+```{code-cell} ipython3
 # Specify the model
 desc = '''# Measurement model
           visual =~ x1 + x2 + x3
@@ -44,25 +45,45 @@ desc = '''# Measurement model
 model = semopy.Model(desc)
 results = model.fit(data)
 
-# Print the estimates and fit measures
-estimates = model.inspect()
-print(estimates)
-
-stats = semopy.calc_stats(model)
-print(stats.T)
-
 # Visualize the model
-semopy.semplot(model, plot_covs = True, filename='data/sem_plot.pdf')
+semopy.semplot(model, plot_covs = True, std_ests=True, filename='data/sem_plot.pdf')
 ```
 
+## Model Estimates
 
-### Model estimates
+```{code-cell} ipython3
+estimates = model.inspect(std_est=True)
+print(estimates)
+```
 
-For a guide on how to interpret loadings, (co)variances and residuals, please refer to the previous chapter.
+For guidance on interpreting factor loadings, (co)variances, and residual variances, please refer to the previous chapter. Here, we focus on the newly introduced structural regression: `speed ~ visual`
 
-However, notice the the newly added regression: `speed ~ visual`. The `Estimate` column can be refered as the slope of the added regression, meaning that a one unit increase in `visual` comes **on average** with a 0.37 unit increase in `speed`. As indicated by the `p-value`, this coefficient is significantly different from zero. With that, we can infer that `visual` is significantly predicting `speed`.
+* The `Estimate` column contains the unstandardised regression coefficient, representing the expected change in *speed ability* for a one-unit increase in *visual ability* (on the latent scale).
+* The `Est. Std` column contains the standardised regression coefficient, representing the expected change (in standard deviations) in *speed ability* for a one-standard-deviation increase in *visual ability*.
 
-### Fit measures
+The regression coefficient is significantly different from zero (see `p-value`), indicating that visual ability significantly predicts speed ability within this model.
 
-To assess model fit, let's look at the fit measures (please refer to the previous chapter for details). The significant $\chi^2$-Test indicates that the model implied covariance matrix is significantly different from the empirical one. Furthermore, TLI (0.77), RMSEA (0.13) and CFI (0.88) are not in the desired windows, indicating bad fit.
+---
 
+## Model Fit
+
+```{code-cell} ipython3
+stats = semopy.calc_stats(model)
+print(stats.T)
+```
+
+To assess how well the model reproduces the observed data, we examine the model fit indices (see the previous chapter for details).
+
+* The **χ² test** is significant, indicating that the model-implied covariance matrix differs from the observed covariance matrix.
+* **CFI (≈ 0.88)** and **TLI (≈ 0.77)** fall below commonly used thresholds for acceptable fit.
+* **RMSEA (≈ 0.13)** exceeds typical cut-offs for adequate model fit.
+
+Taken together, these indices suggest that the model provides a poor overall fit to the data. Although the regression from visual ability to speed ability is statistically significant, the model does not adequately capture the covariance structure of the observed variables.
+
+---
+
+```{admonition} Summary
+:class: note
+
+Structural Equation Modelling allows us to test **directional hypotheses between latent variables**, but a statistically significant regression path does not guarantee good overall model fit. Both parameter estimates and global fit measures must be considered when evaluating an SEM.
+```
