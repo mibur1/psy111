@@ -4,6 +4,7 @@ numpy
 pandas
 matplotlib
 seaborn
+plotly
 nilearn
 
 # For the statistics sessions
@@ -15,3 +16,4 @@ ucimlrepo
 graphviz
 jupyterquiz
 ISLP
+scikit-learn==1.5

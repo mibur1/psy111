@@ -2,9 +2,9 @@ digraph G {
 	overlap=scale splines=true
 	edge [fontsize=12]
 	node [fillcolor="#cae6df" shape=circle style=filled]
+	text [label=text]
 	visual [label=visual]
 	speed [label=speed]
-	text [label=text]
 	node [shape=box style=""]
 	x1 [label=x1]
 	x2 [label=x2]
@@ -24,7 +24,7 @@ digraph G {
 	speed -> x7 [label=0.569]
 	speed -> x8 [label="0.723\np-val: 0.00"]
 	speed -> x9 [label="0.665\np-val: 0.00"]
-	text -> speed [label="0.283\np-val: 0.00" dir=both style=dashed]
+	speed -> text [label="0.283\np-val: 0.00" dir=both style=dashed]
 	speed -> visual [label="0.471\np-val: 0.00" dir=both style=dashed]
 	text -> visual [label="0.459\np-val: 0.00" dir=both style=dashed]
 }

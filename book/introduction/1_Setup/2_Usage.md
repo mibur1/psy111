@@ -22,7 +22,7 @@ At this point you should have previously installed Miniforge and Visual Studio C
 Remember that we use Miniforge to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a a new terminal/PowerShell window and type:
 
 ```
-conda create -n psy111 python
+conda create -n psy111 python==3.11
 ```
 
 and confirm the installation with `y` when prompted to do so. Afterwards, activate the environment by typing

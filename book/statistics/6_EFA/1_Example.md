@@ -93,7 +93,6 @@ Several approaches are possible to determine the number of factors. Here we appl
 
 For the model we first create a `FactorAnalyzer` object and set the number of factors, the rotation, and the estimation method (in this case Maximum Likelihood):
 
-
 ```{code-cell}
 from factor_analyzer import FactorAnalyzer
 

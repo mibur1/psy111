@@ -43,8 +43,7 @@ results = model.fit(data)
 print(results)
 ```
 
-### Model estimates
-
+## Model estimates
 
 We can inspect the estimated model parameters using:
 
@@ -53,7 +52,7 @@ estimates = model.inspect(std_est=True)
 print(estimates)
 ```
 
-#### Loadings
+### Loadings
 
 The first nine rows correspond to the factor loadings, indicating how strongly each observed variable relates to its latent factor.
 
@@ -67,7 +66,7 @@ The first nine rows correspond to the factor loadings, indicating how strongly e
 
 Standardised loadings (`Est. Std`) can be interpreted similarly to regression coefficients or correlations. For example, a standardised loading of 0.77 indicates that an increase of one standard deviation in the latent factor is associated with an increase of 0.77 standard deviations in the observed variable. Standardised loadings thus are particularly useful for comparing the relative strength of indicators within and across factors.
 
-#### Variances and Covariances of Latent Variables
+### Variances and Covariances of Latent Variables
 
 Rows such as `visual ~~ visual`, `text ~~ text`, and `speed ~~ speed` represent the variances of the latent variables.
 Because all latent variables in this CFA model are exogenous (they are not predicted by other variables), these parameters are interpreted as variances.
@@ -80,7 +79,7 @@ Rows such as `visual ~~ text`, `visual ~~ speed`, and `text ~~ speed` represent 
 - In the unstandardised solution, these are raw covariances.
 - In the standardised solution, these values correspond to latent correlations.
 
-#### Residual Variances of Observed Variables
+### Residual Variances of Observed Variables
 
 The final nine rows correspond to the residual variances of the observed variables. The standardised column shows the standardised residual variance, that is, the proportion of variance in the observed variable that is not explained by the latent factor.
 
@@ -105,7 +104,7 @@ In practice, residual variances are almost always greater than zero, because lat
     - If the variable is endogenous (it has predictors), it is the residual variance
 
 
-### Fit measures
+## Fit measures
 
 To assess model fit, `semopy` provides us with a wide range of fit measures:
 
@@ -139,7 +138,7 @@ print(stats.T)
   Lower values indicate a better trade-off between goodness of fit and parsimony. These measures are useful only for comparing models, not as absolute indicators of fit.
 
 
-### Visualizing the Model
+## Visualizing the Model
 
 For visualization, we can plot our model specified model using the following code.
 
