@@ -27,73 +27,105 @@ import plotly.io as pio
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import numpy as np
-import pandas as pd
 import warnings
+
 warnings.filterwarnings("ignore", message=".*Polyfit may be poorly conditioned.*")
 
 # Helper function to return a Plotly figure as self-contained HTML.
 def show_plotly(fig, include_js='cdn'):
     return HTML(pio.to_html(fig, full_html=False, include_plotlyjs=include_js))
 
+# --- Data ---
 x = np.linspace(-5, 5, 30)
 y = (x**3 + np.random.normal(0, 15, size=x.shape)) / 50
-
 df = pd.DataFrame({'x': x, 'y': y})
 
-# Scatter trace for the raw data with updated marker properties
-scatter = go.Scatter(x=df['x'], y=df['y'], mode='markers',
-                     marker=dict(size=10, color='lightgrey', line=dict(color='gray', width=2)), name='Data') 
+# Scatter trace
+scatter = go.Scatter(
+    x=df['x'], y=df['y'],
+    mode='markers',
+    marker=dict(size=10, color='lightgrey', line=dict(color='gray', width=2)),
+    name='Data'
+)
 
-# Generate regression curves for polynomial orders 1 through 30 with updated line properties
+# --- Regression curves for polynomial orders 0 through 30 ---
 regression_traces = []
 r2_list = []
 x_fit = np.linspace(-5, 5, 400)
-for order in range(1, 31):
+
+for order in range(0, 31):
     coeffs = np.polyfit(df['x'], df['y'], order)
     y_fit = np.polyval(coeffs, x_fit)
-    trace = go.Scatter(x=x_fit, y=y_fit, mode='lines', name='Model', visible=False,
-                       line=dict(width=3, color='#4c72b0'))
+
+    trace = go.Scatter(
+        x=x_fit, y=y_fit,
+        mode='lines',
+        name='Model',
+        visible=False,
+        line=dict(width=3, color='#4c72b0')
+    )
     regression_traces.append(trace)
 
     y_pred = np.polyval(coeffs, df['x'])
     r2 = 1 - np.sum((df['y'] - y_pred) ** 2) / np.sum((df['y'] - df['y'].mean()) ** 2)
     r2_list.append(r2)
 
-# Combine data: always show the scatter trace, and one regression trace at a time (set first one visible)
+# Combine data: show scatter and 0th-order model initially
 data = [scatter] + regression_traces
-data[1]['visible'] = True
+data[1]['visible'] = True  # order 0
 
-# Create slider steps
+# --- Slider steps ---
 steps = []
-for i in range(30):
-    vis = [True] + [False] * 30
+for i in range(31):
+    vis = [True] + [False] * 31
     vis[i + 1] = True
+
     step = dict(
         method="update",
-        args=[{"visible": vis},
-              {"annotations": [dict(x=0.5, y=0.98, xref="paper", yref="paper", text=f"R² = {r2_list[i]:.3f}", 
-                                    showarrow=False, font=dict(size=18, color="gray"), xanchor="center", yanchor="top")]}],
-        label=str(i + 1)
+        args=[
+            {"visible": vis},
+            {"annotations": [dict(
+                x=0.5, y=0.98,
+                xref="paper", yref="paper",
+                text=f"R² = {r2_list[i]:.3f}",
+                showarrow=False,
+                font=dict(size=18, color="gray"),
+                xanchor="center", yanchor="top"
+            )]}
+        ],
+        label=str(i)
     )
     steps.append(step)
 
-# Define the slider
-sliders = [dict(active=0, currentvalue={"prefix": "Order of the polynomial model: "}, pad={"t": 50}, steps=steps)]
+# Slider
+sliders = [dict(
+    active=0,
+    currentvalue={"prefix": "Order of the polynomial model: "},
+    pad={"t": 50},
+    steps=steps
+)]
 
-# Define the layout with
+# --- Layout ---
 layout = go.Layout(
-    annotations=[dict(x=0.5, y=0.98, xref="paper", yref="paper", text=f"R² = {r2_list[0]:.3f}",
-                      showarrow=False, font=dict(size=18, color="gray"), xanchor="center", yanchor="top")],
+    annotations=[dict(
+        x=0.5, y=0.98,
+        xref="paper", yref="paper",
+        text=f"R² = {r2_list[0]:.3f}",
+        showarrow=False,
+        font=dict(size=18, color="gray"),
+        xanchor="center", yanchor="top"
+    )],
     sliders=sliders,
-    xaxis=dict(title="x", range=[-5.5, 5.5], tickfont=dict(size=14), fixedrange=True, gridwidth=1, zerolinewidth=1),
-    yaxis=dict(title="y", range=[-3, 3], tickfont=dict(size=14), fixedrange=True, gridwidth=1, zerolinewidth=1),
+    xaxis=dict(title="x", range=[-5.5, 5.5], tickfont=dict(size=14),
+               fixedrange=True, gridwidth=1, zerolinewidth=1),
+    yaxis=dict(title="y", range=[-3, 3], tickfont=dict(size=14),
+               fixedrange=True, gridwidth=1, zerolinewidth=1),
     legend=dict(font=dict(size=14)),
     margin=dict(l=10, r=10, t=20, b=20),
 )
 
-# Create the figure
-fig = go.Figure(data=[scatter] + regression_traces, layout=layout)
+# Figure
+fig = go.Figure(data=data, layout=layout)
 show_plotly(fig, include_js='cdn')
 ```
 
