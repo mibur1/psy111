@@ -104,7 +104,7 @@ print(model1_fit.summary())
 
 The summary provides two coefficients:
 
-- `Intercept`: The intercept (298.508) represents the estimated average reaction time at Day 0 (baseline level of `Reaction`) across all subjects. As indicated by the p-value, the intercept is significantly different from zero (p = 0.000). This is the *fixed effect*.
+- `Intercept`: The intercept (298.508) represents the estimated average reaction time in the dataset across all subjects, across all days (the unconditional model includes no predictors such as "days"). As indicated by the p-value, the intercept is significantly different from zero (p = 0.000). This is the *fixed effect*.
 - `Group Var`: The variance of the random intercept is 1278.324. This value indicates how much individual subjects vary in their average reaction times at baseline. This is the *random effect*.
 
 #### Intraclass Correlation Coefficient (ICC)
