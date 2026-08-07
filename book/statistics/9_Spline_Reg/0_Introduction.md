@@ -58,6 +58,6 @@ If $x \leq c$, the upper polynomial is fitted, otherwise the lower one is fitted
 
 ```{note} Learning break
 
-Stepwise regression can be refered to as regression splines (piecewise polynoimals) of the degree...?
+Stepwise regression can be referred to as regression splines (piecewise polynoimals) of the degree...?
 ```
 

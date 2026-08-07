@@ -120,9 +120,9 @@ print(my_array[2:4])
 print(my_array[:3])
 ```
 
-We can see that all the indexing operations we pereviously learned about are still valid. `my_array[0]` gives us the value from the zeroth position, `my_array[2]` from the second position, and `my_array[-1]` from the last position. We can also apply slicing operations, whith `my_array[2:4]` giving us the second and the third position (remember that when slicing, the start is included, but the end is excluded), and `my_array[:3]` giving us all elements up to the second position.
+We can see that all the indexing operations we pereviously learned about are still valid. `my_array[0]` gives us the value from the zeroth position, `my_array[2]` from the second position, and `my_array[-1]` from the last position. We can also apply slicing operations, with `my_array[2:4]` giving us the second and the third position (remember that when slicing, the start is included, but the end is excluded), and `my_array[:3]` giving us all elements up to the second position.
 
-Similarly, we can also index over two-dimensional arrays by separating the indices whithin the square brackets with commas:
+Similarly, we can also index over two-dimensional arrays by separating the indices within the square brackets with commas:
 
 
 ```{code-cell} ipython3
@@ -150,7 +150,7 @@ So e.g. `my_array[1,2]` would give you the item in row 1, column 2. As a visuali
 | **Row 1**  | my_array[1,0] | my_array[1,1] | my_array[1,2] |
 ```
 
-### Indexing whith conditionals
+### Indexing with conditionals
 
 An alternative way of indexing is to use *logical oparations*. This allows us to chose values from an array, only if they fulfil specific kind of conditions. For example, if we want to get all numbers in an array which are larger than 0, we can use the following expressions:
 

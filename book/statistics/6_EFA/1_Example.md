@@ -39,7 +39,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Simulate data
-np.random.seed(42) # Set seed for reproducable results
+np.random.seed(42) # Set seed for reproducible results
 n = 300 # Number of rows ("participants")
 
 # Create the items (we assume three underlying factors with three items each)

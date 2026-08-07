@@ -33,9 +33,9 @@ results = model.fit()
 print(results.summary())
 ```
 
-You can see, that the result are fairly similar to dummy coding, as the grand mean is close to the `e4/e4` mean.
+You can see that the results are fairly similar to dummy coding, as the grand mean is close to the `e4/e4` mean.
 
-When it comes to the contrast matrix, it looks pretty similar, with the only distinction being last row coded as **-1**. In effect coding, there is is no explicit reference group as seen in dummy coding - the grand mean serves as the reference. The group coded with -1 is central to this coding scheme but doesn't act as a conventional reference category for comparisons.
+When it comes to the contrast matrix, it looks pretty similar, with the only distinction being last row coded as **-1**. In effect coding, there is no explicit reference group as seen in dummy coding - the grand mean serves as the reference. The group coded with -1 is central to this coding scheme but doesn't act as a conventional reference category for comparisons.
 
 ```{code-cell} ipython3
 # Get all genotype levels and save them as a list
@@ -153,7 +153,7 @@ print(results.summary())
 
 | Coding          | Code RC                |  Intercept $b_0$                         |  Slope $b_j$      | Use if        |
 |-----------------|------------------------|------------------------------------------|-------------------|---------------|
-|Dummy    	      | 0                      | mean of refernce category(RC)            | difference between the mean of RC and the other categories                       | When one category should be compared to all others.
-|Unweighted Effect| -1                     | unweighted mean across all categegories  | difference between the unweighted mean and the effect for each category ($b_j$)  | When interested in comparing categories assuming equal group sizes.
+|Dummy    	      | 0                      | mean of reference category (RC)            | difference between the mean of RC and the other categories                       | When one category should be compared to all others.
+|Unweighted Effect| -1                     | unweighted mean across all categories  | difference between the unweighted mean and the effect for each category ($b_j$)  | When interested in comparing categories assuming equal group sizes.
 |Weighted Effect  | $\frac{n_j}{n_{RC}}$   | weighted mean across all categories      | difference between the weighted mean and the effect for each category($b_j$)     | When interested in comparing categories with unequal group sizes, accounting for the group sizes.
 ```

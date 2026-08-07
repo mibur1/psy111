@@ -23,7 +23,7 @@ and confirm the installation with `y` when prompted to do so. Afterwards, activa
 conda activate psy111
 ```
 
-You should now see a `(psy111)` in the terminal, indicating that you have succesfully activated the new environment.
+You should now see a `(psy111)` in the terminal, indicating that you have successfully activated the new environment.
 
 You can then type
 

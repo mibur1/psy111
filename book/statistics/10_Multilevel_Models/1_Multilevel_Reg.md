@@ -6,7 +6,7 @@ kernelspec:
 
 # 14.1 Multilevel Regression
 
-To demonstrate multilevel regression models, we use a the `sleepstudy` dataset from `statsmodels`. This is a well-known dataset in the field of mixed-effects modeling often used to illustrate the effects of sleep deprivation on cognitive performance. It contains measurements from a study on reaction times of 18 participants under sleep deprivation conditions over a period of 10 days and contains the following variables:
+To demonstrate multilevel regression models, we use the `sleepstudy` dataset from `statsmodels`. This is a well-known dataset in the field of mixed-effects modeling often used to illustrate the effects of sleep deprivation on cognitive performance. It contains measurements from a study on reaction times of 18 participants under sleep deprivation conditions over a period of 10 days and contains the following variables:
 
 - `Reaction` - the reaction time in milliseconds, which serves as the outcome variable
 - `Days` - the number of days the participant has been sleep-deprived, ranging from 0 to 9
@@ -45,7 +45,7 @@ plt.title("Subject-specific regressions");
 ```
 
 ## Reading the plot
-By **nesting** participants observations, and plotting a regression line for each participant we recover **patterns of variability** that would have otherwise been be lost (or averaged out). Instead of treating each data point as independend observation, we coorectly **group the dependent observations**(nesting) with one an other, grouping by subject, and look at the variation across participants. 
+By **nesting** participants observations, and plotting a regression line for each participant we recover **patterns of variability** that would have otherwise been be lost (or averaged out). Instead of treating each data point as an independent observation, we correctly **group the dependent observations** (nesting) with one an other, grouping by subject, and look at the variation across participants. 
   
 **Intercept Variability**:
   The intercept represents the baseline `Reaction` time for each subject when `Days` = 0.
@@ -148,7 +148,7 @@ The summary provides three coefficients:
 - `Intercept`: The intercept (251.405) represents the estimated average reaction time at baseline (days = 0), across all subjects. This is significantly different from zero (p = 0.000).
 - `Days`: The average relationship (slope) between `Days` and `Reaction`. This indicates that, on average, for each additional day, 
 the reaction time increases by approximately 10.47 ms. This is significantly different from zero (p = 0.000).
-- `Group Var`: The variance of the random intercept is 1378.232. This value indicates how much individual subjects vary in their average reaction times at baseline. A higher variance suggests greater variability among subjects’ intercepts, meaning individual differences play a significant role in determining baseline reaction times.
+- `Group Var`: The variance of the random intercept is about 1378. This value indicates how much individual subjects vary in their average reaction times at baseline. A higher variance suggests greater variability among subjects’ intercepts, meaning individual differences play a significant role in determining baseline reaction times.
 
 ### Model 3 - The random intercept and random slope model
 

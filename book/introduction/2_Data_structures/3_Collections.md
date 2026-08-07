@@ -45,7 +45,7 @@ What if you want to retrieve more than a single element from a list? For this we
 random_stuff[1:3]
 ```
 
-The colon is used to seperate a starting and a stopping index. Intuitively you can read this notation as "from random_stuff get items 1 to 3". Note that the starting position is *inclusive* (meaning it includes the item at position 1, which in this case is *3.14*) while the stopping index is *exclusive* (meaning that the item at posititon 3, which here would be *4*, is not included). If you are interested in some arguments for that logic, you can [refer to this 1982 "article" from Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD831.PDF).
+The colon is used to separate a starting and a stopping index. Intuitively you can read this notation as "from random_stuff get items 1 to 3". Note that the starting position is *inclusive* (meaning it includes the item at position 1, which in this case is *3.14*) while the stopping index is *exclusive* (meaning that the item at posititon 3, which here would be *4*, is not included). If you are interested in some arguments for that logic, you can [refer to this 1982 "article" from Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD831.PDF).
 
 ### Modifying lists
 

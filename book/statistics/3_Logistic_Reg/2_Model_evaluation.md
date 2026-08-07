@@ -29,7 +29,7 @@ print("Model predictions:", predictions)
 print("\nAccuracy:", accuracy) 
 ```
 
-An accuracy of 77% indicates the that the model correctly predicts the outcome for about 77% of the children in our data. This suggests that the model peforms reasonably well, altough it still misclassifies some cases. For a more detailed investigation, a confusion matrix is a useful way to visualize the prediction accuracy:
+An accuracy of 77% indicates that the model correctly predicts the outcome for about 77% of the children in our data. This suggests that the model performs reasonably well, although it still misclassifies some cases. For a more detailed investigation, a confusion matrix is a useful way to visualize the prediction accuracy:
 
 ```{code-cell} ipython3
 from sklearn.metrics import confusion_matrix, classification_report
@@ -52,12 +52,12 @@ print(report)
 ```
 The output can be interpreted as follows:
 
-**Precision**: Propportion of true positive predictions among all positive predictions made by the model.
+**Precision**: Proportion of true positive predictions among all positive predictions made by the model.
 
 $$\text{Precision} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} + \text{False Positives (FP)}}$$
 
 - *Class 0: When the model predicts that a sample does not understand the display rules (Class 0), 73% of the time it is correct.*
-- *Class 1: When the model predicts that a sample does understand the display rules (Class 1), 81% of the time it is correct. * 
+- *Class 1: when the model predicts that a sample does understand the display rules (Class 1), 81% of the time it is correct.*
 
 
 **Recall**: The proportion of true positives that are correctly identified by the model.
@@ -72,14 +72,14 @@ $$\text{Recall} = \frac{\text{True Positives (TP)}}{\text{True Positives (TP)} +
 
 $$F_1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
 
-- *For class 0, it is 0.75 and for class 1, it is 0.79. This suggests the model is sligthly more effective at correctly predicting class 1.*
+- *For class 0 it is 0.75, and for class 1 it is 0.79. This suggests the model is slightly more effective at correctly predicting class 1.*
 
-**Support**: actual occurence of each class in the dataset
+**Support**: the actual number of observations of each class in the dataset
 
 **Accuracy**: The overall proportion of correctly predicted observations.
 
 $$\text{Accuracy} = \frac{TP + TN}{\text{Total number of observations}}$$
-- *model correctly predicts the outcome 77% of the time, which is fairly good*
+- *The model correctly predicts the outcome 77% of the time, which is fairly good.*
 
 
 ## Multiple Logistic Regression

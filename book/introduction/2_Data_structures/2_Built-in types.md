@@ -113,7 +113,7 @@ But what if the question you are trying to ask is not so simple? Python lets you
 ("burg" in "oldenburg") and (5 > 3) and (4 * 2 == 8)
 ```
 
-In logical operations, *and* requires ALL statements to be true, wich is the case here. Alternatively, *or* requires only one of the statements to be true:
+In logical operations, *and* requires ALL statements to be true, which is the case here. Alternatively, *or* requires only one of the statements to be true:
 
 ```{code-cell} ipython3
 ("burg" in "oldenburg") and (5 > 3) or (4 * 2 == 10)

@@ -24,11 +24,11 @@ Open a terminal in the folder where your `.sh` script is located and run the scr
 bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
-After a succesful installation, simply open a new terminal. You should now see a `(base)` in the beginning of each line, which tells you that the installation was succesful.
+After a successful installation, simply open a new terminal. You should now see a `(base)` in the beginning of each line, which tells you that the installation was successful.
 
 **Windows**
 
-On Windows, simply run the `.exe` file and install everything. We also recommend you to check the **"Add Miniforge3 to my PATH environment variable"** checkbox during installation. This will enable you to use `conda` from any terminal, and not just `Miniforge Prompt`, which will be installed in any case. Once the installation is finished, depending on your choice during the installation, you can either open your standard terminal or the `Miniforge Prompt`. In any case, you should then be greeted with a `(base)` in the beginning of the line, which means the installation was succesful and you are now in the base environment.
+On Windows, simply run the `.exe` file and install everything. We also recommend you to check the **"Add Miniforge3 to my PATH environment variable"** checkbox during installation. This will enable you to use `conda` from any terminal, and not just `Miniforge Prompt`, which will be installed in any case. Once the installation is finished, depending on your choice during the installation, you can either open your standard terminal or the `Miniforge Prompt`. In any case, you should then be greeted with a `(base)` in the beginning of the line, which means the installation was successful and you are now in the base environment.
 
 
 ## Visual Studio Code

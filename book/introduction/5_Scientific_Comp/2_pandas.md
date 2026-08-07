@@ -149,7 +149,7 @@ yeatman_data["Age_below_18"] = yeatman_data["Age"] < 18
 print(yeatman_data.head())
 ```
 
-As you can see, we have now extended our original DataFrame by another column which tells us if the correspoding subjects are younger than 18.
+As you can see, we have now extended our original DataFrame by another column which tells us if the corresponding subjects are younger than 18.
 
 ### MultiIndex
 
@@ -233,7 +233,7 @@ combined_df = pd.concat([df1, df2, df3])
 print(combined_df)
 ```
 
-In this case, we see that the concatenation is quite straightforward and succesful. But what about if the DataFrames are not of identical structure? Let's assume we have `df4` which has index values $2$ and $3$ as well as columns `B`and `D`in common with `df1`, but it also has the additional indices $6$ and $7$ ad well as a new column `F`:
+In this case, we see that the concatenation is quite straightforward and successful. But what about if the DataFrames are not of identical structure? Let's assume we have `df4` which has index values $2$ and $3$ as well as columns `B`and `D`in common with `df1`, but it also has the additional indices $6$ and $7$ ad well as a new column `F`:
 
 ```{code-cell} ipython3
 df4 = pd.DataFrame({'B': ['B2', 'B3', 'B6', 'B7'],
