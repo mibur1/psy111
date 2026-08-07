@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # Multilevel Models
 
@@ -51,8 +38,7 @@ Even within clusters (hospitals), there is a person-to-person variability. For i
 
 This variability within hospitals is at level 1 and could be explained by factors like individual "resilience." Variables that explain differences between individuals (level-1 units) are referred to as *level-1 variables*.
 
-```{admonition} Summary
-:class: note
+```{note} Summary
 
 - Multilevel models account for nested data structures, such as patients nested within hospitals
 - Ignoring clustering variables can lead to misleading conclusions, as relationships may differ within and between clusters

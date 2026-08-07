@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 7.1 Logistic Regression
@@ -18,7 +10,7 @@ Before using logistic regression to model our data, we will attempt to do so thr
 
 ## Why Not Linear Regression?
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -39,7 +31,7 @@ As you can see, linear regression struggles with binary outcomes, as evidenced b
 
 Logistic regression naturally ensures that predicted probabilities stay between 0 and 1. In this tutorial, we will use the `LogisticRegression()` class from `scikit-learn` for modeling.
 
-```{code-cell}
+```{code-cell} ipython3
 import numpy as np
 from sklearn.linear_model import LogisticRegression
 
@@ -78,7 +70,7 @@ $$\text{Logit}(P) = \ln\left(\frac{P}{1-P}\right) = \beta_0 + \beta_1X_1 + \beta
 
 If we plot the equation, we can see how the regression line looks like:
 
-```{code-cell}
+```{code-cell} ipython3
 df['logit'] = results.intercept_ + results.coef_[0] * df['age']
 
 fig, ax = plt.subplots()
@@ -98,7 +90,7 @@ $$P(Y=1 \mid X) = \frac{1}{1 + e^{-(b_0 + b_1 X)}}$$
 
 To better understand the model's behavior, let’s plot its outputs. A simple way to do this is by ceating an evenly spaced array of values for our range, and then use `model.predict()` to predict the outcome for each value. This will generate the regression line:
 
-```{code-cell}
+```{code-cell} ipython3
 # Create an evenly spaced array of values for the range 
 x_range = np.linspace(1, 100, 100).reshape(-1, 1) 
 

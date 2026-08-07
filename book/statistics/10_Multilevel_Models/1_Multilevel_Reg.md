@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 14.1 Multilevel Regression
@@ -20,7 +12,7 @@ To demonstrate multilevel regression models, we use a the `sleepstudy` dataset f
 - `Days` - the number of days the participant has been sleep-deprived, ranging from 0 to 9
 - `Subject` - A unique identifier for each participant, allowing for random effects in the model
 
-```{code-cell}
+```{code-cell} ipython3
 # Load packages
 import numpy as np
 import pandas as pd
@@ -40,14 +32,14 @@ First, we plot a regression line through all data points, ignoring the nesting o
 
 $$\hat{Reaction Time}_i = \beta_0 + \beta_1 * Days of deprivation_i + \epsilon_i$$
 
-```{code-cell}
+```{code-cell} ipython3
 sns.lmplot(x='Days', y='Reaction', data=data)
 plt.title("Combined regression");
 ```
 
 Next, let's plot one for each subject, using `Subject` as the hue:
 
-```{code-cell}
+```{code-cell} ipython3
 sns.lmplot(x='Days', y='Reaction', hue='Subject', data=data)
 plt.title("Subject-specific regressions");
 ```
@@ -89,7 +81,7 @@ In the following, we will create three multilevel regression models to provide a
 
 There is no predictor in the unconditional model. Here, we only estimate the intercept of `Reaction` and let it vary across the Level-2 units (`Subject`). The proportion of variance attributed to Level-1 units and Level-2 units can be estimated based on the estimated parameters in this model. In other words, this model can be used to compute the **Intra-Class Correlation (ICC)** coefficient, which indicates the strength of the effect of `Subject` (Level-2) on `Reaction`. More on **ICC** in the next sections.
 
-```{code-cell}
+```{code-cell} ipython3
 # define and fit the unconditional model
 model1 = smf.mixedlm("Reaction ~ 1",
                      data=data,
@@ -110,8 +102,7 @@ The summary provides two coefficients:
 #### Intraclass Correlation Coefficient (ICC)
 There is no included function to get the ICC. However, we can quickly code it ourselves:
 
-```{admonition} Intraclass Correlation Coefficient (ICC)
-:class: tip 
+```{tip} Intraclass Correlation Coefficient (ICC)
 
 The ICC represents the proportion of the total variation in the outcome that can be explained by differences between groups, rather than differences within groups:
 
@@ -120,7 +111,7 @@ $$
 $$ 
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 # create function to calculate ICC
 def calculate_icc(results):
     icc = results.cov_re / (results.cov_re + results.scale)
@@ -138,7 +129,7 @@ An ICC of 0.39 indicates that 39% of the variance in `Reaction` is due to inter-
 
 We now add the variable `Days` as predictor for `Reaction`. By estimating the average (fixed) slope, this model will inform about the average relationship between `Days` and `Reaction`. In this model, there is a predictor `Days` at Level-1 (individual), random intercepts and constant slopes across Level-2 units (`Subject`).
 
-```{code-cell}
+```{code-cell} ipython3
 # define and fit the random intercept model
 # this model includes "days" as a predictor at level 1
 model2 = smf.mixedlm("Reaction ~ Days",
@@ -167,7 +158,7 @@ the reaction time increases by approximately 10.47 ms. This is significantly dif
 
 Model 3 includes the `Days` predictor (level 1), a random intercept, and a random slope. This model estimates the variance of the slope and determines whether the relationship between `Days` and `Reaction` varies across individuals (`Subject`). We now additionally provide `re_formula` as a one-sided random effects formula defining the variance structure of the model. This specifies that random effects are modeled as a function of `Days`, allowing each subject to have its own intercept and slope.
 
-```{code-cell}
+```{code-cell} ipython3
 # define the random intercept and random slope model
 # model includes "days" as a predictor at level 1 
 model3 = smf.mixedlm("Reaction ~ Days",    

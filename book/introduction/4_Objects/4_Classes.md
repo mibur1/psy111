@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 4.4 Classes
@@ -20,7 +12,7 @@ As previously mentioned, [everything in Python is an object](1_Everything_is_an_
 
 A class is, in a sense, a kind of template for an object. You can think of it as a set of rules and instructions what an object of a given kind can do. Let us start with the simplest example of a class and built on top of that.
 
-```{code-cell}
+```{code-cell} ipython3
 class Circle:
   pass
 ```
@@ -33,7 +25,7 @@ So what can we do with the Circle class? It doesn't particularly look useful, do
 
 The syntax for creating an instance in Python is simple:
 
-```{code-cell}
+```{code-cell} ipython3
 my_circle = Circle()
 ```
 
@@ -43,7 +35,7 @@ The `my_circle` variable contains an object, which is a specific instance of the
 
 Let's start by providing some features to the `Circle` class:
 
-```{code-cell}
+```{code-cell} ipython3
 from math import pi
 
 class Circle:
@@ -60,14 +52,14 @@ The `area()` method simply defines a way of calculating the area of the circle. 
 
 We can then use this newly updated Circle class as follows:
 
-```{code-cell}
+```{code-cell} ipython3
 my_circle = Circle(4)
 my_circle.area()
 ```
 
 The first line creates an object of the Circle class with radius 4. We can then use the `.area()` method of that object to calculate its area. Pretty cool, huh? If we change the radius of the given circle, then the area will change as well:
 
-```{code-cell}
+```{code-cell} ipython3
 my_circle.radius = 9
 my_circle.area()
 ```
@@ -78,22 +70,22 @@ We came across the concept of magic methods like the `__init()__` method that ru
 
 You are probably already tired of me saying "everything in Python is an object". However, you will now see one of the deeper implications this has. *All operators in Python are just cleverly disguised method calls*. That means even if we write something seemingly basic like `4 * 3`, Python will implicitly call a magic method on the first operant (the number 4 as an object of the integer class), with the second operand being passed as an argument. This might sound a bit confusing, but
 
-```{code-cell}
+```{code-cell} ipython3
 4 * 3
 ```
 
 under the hood is essentially just
 
-```{code-cell}
+```{code-cell} ipython3
 (4).__mul__(3)
 ```
 
 with the parentheses being necessary so the `.` is not confused to be a decimal point. This also works for strings:
 
-```{code-cell}
+```{code-cell} ipython3
 "hello" + " world"
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 "hello".__add__(" world")
 ```

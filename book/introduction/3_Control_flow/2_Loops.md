@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 3.2 Loops
@@ -20,7 +12,7 @@ Now, we will have a look at how we cann use looping operations to simplify repet
 
 We can loop (or *iterate*) over elements in a collection. You can think about loops as a way of acting on each item one by one. In a `for` loop, we can read it as "for each item in a group". For example, if we want to read each page in a book, the following `for` loop acts means "for each page in the book, read it.":
 
-```{code-cell}
+```{code-cell} ipython3
 pages = [1, 2, 3, 4, 5]
 
 for page in pages:
@@ -31,7 +23,7 @@ Here, we loop over each item/element of the list starting from the first. In eac
 
 As a more practical application, imagine you’re in a classroom and need to hand out worksheets to each student. You wouldn’t want to say, "Hand this to the first student, then hand it to the second student, then hand it to the third student...":
 
-```{code-cell}
+```{code-cell} ipython3
 students = ["Alice", "Bob", "Charlie", "Daisy"]
 
 print(f"Handing worksheet to {students[0]}")
@@ -42,7 +34,7 @@ print(f"Handing worksheet to {students[3]}")
 
 Instead, you’d say, “Hand this to every student one after the other.” This is the core of a loop: it lets you avoid doing the same task individually and instead repeats it for each item in a group.
 
-```{code-cell}
+```{code-cell} ipython3
 students = ["Alice", "Bob", "Charlie", "Daisy"]
 
 for student in students:
@@ -56,21 +48,21 @@ Now think about having 30 students, or even 100. Without a loop, you would then 
 
 One very common use case of loops is to perform a specific action a set number of times. In Python, we can use the built-in `range()` function to count for us, so we don’t have to write each number ourselves. It’s like setting a timer for an exercise, where you know you’ll do an activity for 10 seconds or repeat it 5 times.
 
-```{code-cell}
+```{code-cell} ipython3
 for i in range(5):
     print(f"Jumping jack #{i}")
 ```
 
 Here, `range(5)` tells the loop to repeat 5 times. The variable `i` is called an index variable. Remember, `range()` starts at the first number and stops just before the last number, making the final value exclusive:
 
-```{code-cell}
+```{code-cell} ipython3
 for i in range(5,10):
     print(f"Jumping jack #{i}")
 ```
 
 Note that, as with the `len()` function, the end point of the `range()` function is exclusive, meaning it will create a sequence of numbers from 0 to 3. You can further also provide only a single number (like the length of a list) and use the numbers created by range as *indices* to index another variable:
 
-```{code-cell}
+```{code-cell} ipython3
 my_list = ["apple", "banana", 3, 4]
 list_length = len(my_list)
 
@@ -78,8 +70,7 @@ for i in range(list_length):
   print(my_list[i])
 ```
 
-```{admonition} Question
-:class: hint
+```{hint} Question
 
 Do you remember the differences between a tuple and a list? Why do you think does the `range()` function return a tuple instead of a list?
 ```
@@ -88,7 +79,7 @@ Do you remember the differences between a tuple and a list? Why do you think doe
 
 You have previously seen two ways of looping over a list. Either by indexing the items directly, or through indexing by usinge the `range(len())` expression. Python also provides a nice way of combining these two through the `enumerate()` function:
 
-```{code-cell}
+```{code-cell} ipython3
 for index, value in enumerate(my_list):
     print(f"Index {index} contains: {value}")
 ```
@@ -100,7 +91,7 @@ In cases where you need to keep track of the index, this approach is often prefe
 `While` loops are like a task that repeats until a certain condition is met. For example, think of heating water in a kettle. You’ll keep heating the water until it reaches boiling point. In code, this looks like a `while` loop, which keeps running until a specified condition is no longer true.
 
 
-```{code-cell}
+```{code-cell} ipython3
 temperature = 20  # starting temperature
 while temperature < 100:
     print(f"Heating... temperature is {temperature}°C")
@@ -117,7 +108,7 @@ Be careful with `while` loops because if the condition never becomes `False`, th
 
 Sometimes it can be useful to keep track to things happening in a loop. A concept you will see often is the use of counters:
 
-```{code-cell}
+```{code-cell} ipython3
 counter = 0
 while counter < 5:
     print(f"Counter is {counter}")
@@ -130,7 +121,7 @@ Here, `counter` is a counting variable which is initialized and set to `0` befor
 
 In more complex analyses, you often need to nest multiple statements inside one another. If you for example want to iterate over an entire list and perform an action only for specific items of the list you could to this as follows:
 
-```{code-cell}
+```{code-cell} ipython3
 my_list = ["apple", "banana", 3, 4]
 
 for item in my_list:
@@ -146,7 +137,7 @@ One important thing which we have not yet covered explicitly is how the code whi
 
 Simply put, whenever you use a *compound statement* (which includes for-loops, conditionals, and also classes and functions which we will cover later), you need to increase the indentation of your code. Once you exit the compound statement, you decrease the indentation level by the same amount. The amound of this indentation is technically up to you, however the Python style guide recommends you to use four spaces. As an example, if we want to continue with the script after the for-loop, we would reset the indentation to the same level as the first for:
 
-```{code-cell}
+```{code-cell} ipython3
 for item in my_list:
   if item == "banana":
     print("Banana!")
@@ -154,8 +145,7 @@ for item in my_list:
 print("Continue after the for-loop...")
 ```
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 - For Loops: "For each" item in a group, do something.
 - Range Loops: "Do this action X times" by counting up to a certain number.

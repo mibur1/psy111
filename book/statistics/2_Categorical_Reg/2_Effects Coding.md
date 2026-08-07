@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 6.2 Effects Coding
@@ -22,7 +14,7 @@ The difference in unweighted effects coding now is that the reference is the ove
 
 We can implement unweighted effects coding similarly to dummy coding but we will use `Sum` instead of `Treatment` for the contrast.
 
-```{code-cell}
+```{code-cell} ipython3
 import numpy as np
 import pandas as pd
 from patsy.contrasts import Sum
@@ -45,7 +37,7 @@ You can see, that the result are fairly similar to dummy coding, as the grand me
 
 When it comes to the contrast matrix, it looks pretty similar, with the only distinction being last row coded as **-1**. In effect coding, there is is no explicit reference group as seen in dummy coding - the grand mean serves as the reference. The group coded with -1 is central to this coding scheme but doesn't act as a conventional reference category for comparisons.
 
-```{code-cell}
+```{code-cell} ipython3
 # Get all genotype levels and save them as a list
 levels = df['genotype'].cat.categories.tolist()
 
@@ -67,7 +59,7 @@ This approach is particularly useful when group sizes differ significantly, as i
 
 1.  Computing the sample proportions for each category in the categorical variable
 
-```{code-cell}
+```{code-cell} ipython3
 # calculating the counts of unique genotype levels in the column 'genotype'
 genotype_counts = df['genotype'].value_counts(sort=False)
 
@@ -81,7 +73,7 @@ print("Counts:", counts)
 
 2.  Use these counts to create custom weights for the reference category
 
-```{code-cell}
+```{code-cell} ipython3
 contrast_matrix = {
     "e2/e2": np.array([1, 0, 0, 0, 0]),
     "e2/e3": np.array([0, 1, 0, 0, 0]),
@@ -98,7 +90,7 @@ for key, value in contrast_matrix.items():
 
 3.  Create the weighted effects coding design matrix and outcome vector
 
-```{code-cell}
+```{code-cell} ipython3
 import statsmodels.api as sm
 
 # Build the design matrix (X)
@@ -133,7 +125,7 @@ We added some print statements to see what is going on inside the design matrix,
 
 4. Create and fit the model. Note that we now use `OLS()` from `statsmodels.api` instead of `ols()` from `statsmodels.formula.api`, as we do not provide a formula but define the regression model in a mathematical way through the design matrix:
 
-```{code-cell}
+```{code-cell} ipython3
 model = sm.OLS(y, X)
 results = model.fit()
 print(results.summary())
@@ -152,14 +144,12 @@ print(results.summary())
     - Larger groups have more influence on the weighted mean, so coefficients for smaller groups may differ more significantly compared to unweighted effects coding.
 
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 - Unweighted effects coding compares all groups to the grand mean, which is the unweighted average of the dependent variable. The intercept represents the grand mean, serving as the baseline for interpretation.
 - Weighted effects coding compares all groups to the weighted mean, which accounts for group sizes. The negative values in the design matrix reflect proportional adjustments needed to satisfy the sum-to-zero constraint.
 ```
 
-```{admonition} Categorical Regression - Method Summary
-:class: important
+```{important} Categorical Regression - Method Summary
 
 | Coding          | Code RC                |  Intercept $b_0$                         |  Slope $b_j$      | Use if        |
 |-----------------|------------------------|------------------------------------------|-------------------|---------------|

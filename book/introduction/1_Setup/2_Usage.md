@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 1.2 Usage
@@ -21,13 +13,13 @@ At this point you should have previously installed Miniforge and Visual Studio C
 
 Remember that we use Miniforge to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a a new terminal/PowerShell window and type:
 
-```
+```bash
 conda create -n psy111 python==3.11
 ```
 
 and confirm the installation with `y` when prompted to do so. Afterwards, activate the environment by typing
 
-```
+```bash
 conda activate psy111
 ```
 
@@ -35,13 +27,13 @@ You should now see a `(psy111)` in the terminal, indicating that you have succes
 
 You can then type
 
-```
+```bash
 pip list
 ```
 
 to display a list of all installed Python packages. As our environment is still new, this list is still empty. However, we are now ready to install any kind of Python package. There are three packages which we will need soon (*numpy* for numerical computations, *matplotlib* for plotting, and *ipykernel* for interactive notebooks), so we can install them as follows:
 
-```
+```bash
 pip install numpy matplotlib ipykernel
 ```
 
@@ -53,7 +45,7 @@ If you then again type `pip list`, you will see that the list of installed packa
 
 If the `psy111` environment is active, you can open the Python interpreter by typing `python` and then presssing enter. The Python interpeter will start and show you the current Python version, for example:
 
-```
+```bash
 Python 3.14.0 | packaged by conda-forge | (main, Oct  7 2025, 20:07:29) [GCC 14.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
@@ -61,7 +53,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 Simply put, the Python interpreter is the program that executes your Python code. It translates the written code into a form that the computer can understand and then runs it. Inside the interpreter we can write any kind of Python code, like printing a message:
 
-```
+```bash
 >>> print("Welcome to psy111!")
 Welcome to psy111!
 ```
@@ -88,14 +80,13 @@ Next, in the top left click on **File → Open Folder…** and select (or create
 
 You are now ready to write content to your Python script inside this file:
 
-```
+```bash
 print("Welcome to psy111!")
 ```
 
 You can then run the Python script by pressing the run button at the top right. If you do this for the first time, VS Code will most likely promt you to select your Python interpeter at the bottom right. Here, you should now be able to see and select the previously created `psy111` enviroment.
 
-```{admonition} Important
-:class: caution
+```{caution} Important
 
 When you open only a single Python file in VS Code (without opening a folder), you cannot change or save the Python interpreter in the bottom right corner. VS Code saves the selected interpreter per folder or workspace, not per file. To make the interpreter selection work and stay saved, always open your project folder first with “File → Open Folder…”.
 ```
@@ -119,7 +110,7 @@ To be able to use Jupyter notebooks, you need to install the **Juypter** extensi
 
 Code cells can have any kind of Python code as an input. They will further also automatically print the last line:
 
-```{code-cell}
+```{code-cell} ipython3
 a = 1
 b = 2
 a + b
@@ -134,8 +125,7 @@ Markdown is a way of writing and formatting text. In fact, all the text in this 
 
 To be able to use the book on your local computer, you first need to download its source code from [GitHub](https://github.com/mibur1/psy111) by clicking on the green button and selecting "Download ZIP" (f you are familiar with Git, you can also clone the repository for easier updating in the future). Then, navigate to your Downloads, extract the psy111 folder.
 
-```{admonition} File management
-:class: caution
+```{caution} File management
 
 It is strongly recommend that you create and maintain an organized folder structure for your Master's course, and not keep everything unorganized in your Downloads folder!
 ```
@@ -144,14 +134,14 @@ Once you have saved and unpacked the psy111 folder, you can open it in VS Code. 
 
 In the file overview on the left you should see a `requirements.txt` file. If you open it, you can see the necessary Python libraries that are needed for the book. You can install them by either manually typing them into a terminal, or by navigating into the folder of the book with the `cd` (change directory) command and then installing from the requirements file itself:
 
-```
+```bash
 cd path/to/your/book
 pip install -r requirements.txt
 ```
 
 You can then simply type
 
-```
+```bash
 jb build .
 ```
 
@@ -159,8 +149,7 @@ to build the entire book on your computer. Once the build is finished, a link wi
 
 You can also use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder in VS Code. However, you can can also open them in Google Colab by opening them from whithin the book and clicking on the rocket symbol.
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 You can use Python in different ways:
 

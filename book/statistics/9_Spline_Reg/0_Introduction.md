@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # Spline Regression
 
@@ -31,8 +18,7 @@ Here, $I()$ is an *indicator function* that returns a **1** if the condition is 
 The following table provides an example of how each input value of $X$, is transformed into $C(X)$:
 
 
-```{admonition} For $c_1 = 5$ and $c_2 = 10$
-:class: note
+```{note} For $c_1 = 5$ and $c_2 = 10$
 
 | X                               | 1.3  | 3.3  | 6.3  | 9.9  | 10.2 | 999  |
 |---------------------------------|------|------|------|------|------|------|
@@ -70,8 +56,7 @@ $$
 
 If $x \leq c$, the upper polynomial is fitted, otherwise the lower one is fitted. Note the some parameters of the second polynomial ($b_{02}, b_{12}, b_{22}$) have to be constrained to make the function continous and smooth. Please refer to [Lecture 11 of Multivariate statistics](https://elearning.uni-oldenburg.de/dispatch.php/course/files?cid=599dfa3ebd05f39b26131c22db39832d) for details.
 
-```{admonition} Learning break
-:class: note
+```{note} Learning break
 
 Stepwise regression can be refered to as regression splines (piecewise polynoimals) of the degree...?
 ```

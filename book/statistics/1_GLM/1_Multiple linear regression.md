@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 6.1 Multiple Linear Regression
@@ -26,8 +18,7 @@ In this equation:
 - $\epsilon_i$ represents the residual variance that is not explained by the model.
 
 
-```{admonition} Independent and dependent variables
-:class: note
+```{note} Independent and dependent variables
 - **Dependent variable**: The variable we are trying to explain with our model (outcome)
 - **Independent variables**: The variable we use to explain the dependent variable (predictors)
 ```
@@ -38,7 +29,7 @@ As an example, let us consider the `trees` data set from the `datasets` package,
 
 ## Step 1: Importing the Libraries
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd                   # Pandas to handle the data
 from statsmodels.api import datasets  # Module for the data set
 import statsmodels.formula.api as smf # Module for the regression
@@ -51,7 +42,7 @@ import matplotlib.pyplot as plt       # Matplotlib to show the figure
 
 We will now import the "trees" dataset and convert the measurements from inches, feet, and cubic feet to meters and cubic meters (because no one likes imperial units). After that, we’ll view the first few rows of the dataset using the `head()` method.
 
-```{code-cell}
+```{code-cell} ipython3
 # Load the "trees" dataset from R datasets
 trees_data = datasets.get_rdataset('trees').data
 
@@ -73,7 +64,7 @@ Before we proceed with modeling, **it is strongly recommended to visualize the d
 
 *Additional information: In a Jupyter Notebook, we do not need the explicit `plt.show()`. However, it would always be needed in a normal Python script, so I put it here to avoid any potential confusion.*
 
-```{code-cell}
+```{code-cell} ipython3
 sns.pairplot(trees_data);
 plt.show()
 ```
@@ -87,12 +78,11 @@ Next, we will create a multiple linear regression model with `Volume` as the dep
 For this, we will use the `ols()` class from the `statsmodels.formula.api` module to build the model. The regression equation is specified in *formula notation*: `response ~ predictor(s)`. In case of multiple predictors, they are separated by a `+` sign. Once a model is specified correctly, the `fit()` method can be used to fit the model, and the `summary()` method will then provide a detailed overview of the model results.
 
 
-```{admonition} Ordinary least squares (OLS) regression
-:class: note
+```{note} Ordinary least squares (OLS) regression
 OLS is a method used to minimize the sum of squared differences between the observed values of the dependent variable and the predicted values from the model.
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 model = smf.ols(formula='Volume ~ Girth + Height', data=trees_data)
 results = model.fit()
 print(results.summary())
@@ -100,7 +90,7 @@ print(results.summary())
 
 Specifying a model with formula notation is useful, as it is identical to the syntax of the R programming language. If you are comfortable with either one, you can quickly switch between both programming languages.
 
-```{code-block}
+```python
 # R code
 model <- lm(Volume ~ Girth + Height, data = trees_data)
 summary(model)
@@ -108,7 +98,7 @@ summary(model)
 
 An alternative (and slightly more flexible) way of creating a regression model using `statsmodels` is to use the standard `OLS` class:
 
-```{code-block}
+```python
 import statsmodels.api as sm
 
 # Define dependent (y) and independent (X) variables
@@ -150,7 +140,7 @@ F-statistic
 
 Now that we have a fitted model, we can predict a volume given some (unseen) girth and height. To do this, we use the `predict()` method:
 
-```{code-cell}
+```{code-cell} ipython3
 X_predict = pd.DataFrame({'Girth': [0.3, 0.4, 0.5],
                    'Height': [20, 21, 22]})
 prediction = results.get_prediction(X_predict)
@@ -159,8 +149,7 @@ for i in range(len(X_predict)):
     print(f"Predicted volume for a girth of {X_predict['Girth'].iloc[i]} and a height of {X_predict['Height'].iloc[i]} is: {prediction.predicted_mean[i]} m³")
 ```
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 - `sns.pairplot()` from `seaborn` is useful for scatterplot matrices.
 - The `ols()` method from `statsmodels` can be used to fit multiple linear regression models.
 ```

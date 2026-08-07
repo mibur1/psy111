@@ -1,22 +1,14 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 7.2 Model Evaluation
 
 To evaluate our model, we can examine how many values of $y$ (understanding display rules) were predicted correctly by the model:
 
-```{code-cell}
+```{code-cell} ipython3
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -39,7 +31,7 @@ print("\nAccuracy:", accuracy)
 
 An accuracy of 77% indicates the that the model correctly predicts the outcome for about 77% of the children in our data. This suggests that the model peforms reasonably well, altough it still misclassifies some cases. For a more detailed investigation, a confusion matrix is a useful way to visualize the prediction accuracy:
 
-```{code-cell}
+```{code-cell} ipython3
 from sklearn.metrics import confusion_matrix, classification_report
 print(f"Confusion matrix:\n {confusion_matrix(y, model.predict(X))}")
 ```
@@ -53,7 +45,7 @@ The output of the confusion matrix provides the following values:
 
 For an even deeper inspection of the model's accuracy, we can print the classification report:
 
-```{code-cell}
+```{code-cell} ipython3
 report = classification_report(y, model.predict(X))
 print(report)
 
@@ -93,7 +85,7 @@ $$\text{Accuracy} = \frac{TP + TN}{\text{Total number of observations}}$$
 ## Multiple Logistic Regression
 You may want to use two or more variables as inputs for the regression. In our example, we will use `age` and `TOM` as predictors for `display` by simply adding them to $X$.
 
-```{code-cell}
+```{code-cell} ipython3
 X = df[['age', 'TOM']]
 y = df['display']
 

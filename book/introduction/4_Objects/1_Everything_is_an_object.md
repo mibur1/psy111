@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 4.1 Everything is an Object
@@ -24,13 +16,13 @@ In Python this is a bit different and there aren't *really* any primitive datata
 
 Let's start with the dot (.) notation. As you probably already noticed, we previously worked with our variables in two different ways. First, there is a functional syntax, where we pass an object (e.g. a list) as an argument to a function:
 
-```{code-cell}
+```{code-cell} ipython3
 len([4,3,2,1])
 ```
 
 A function is a specific, reusable piece of code, that performs a specific action. In this case, the `len()` function calculates the length of the list given to it as an argument. It then returns some kind of result, which we can print or save as a new variable. Second, there is the object-oriented syntax which you previously saw when working with strings:
 
-```{code-cell}
+```{code-cell} ipython3
 text = "Hello World"
 text.lower()
 ```
@@ -44,30 +36,29 @@ One implication of everything being an object in Python is that we might need to
 
 First, you can always see the type of an object by using the built-in `type()` function:
 
-```{code-cell}
+```{code-cell} ipython3
 my_list = [1, 2, 3]
 type(my_list)
 ```
 
 Second, the `dir()` function will show you all methods implemented by an object as well as their *static attributes*, which are variables stored whithin the object (they often start and end with two underscores).
 
-```{code-cell}
+```{code-cell} ipython3
 dir(my_list)
 ```
 
 Here you can see, that the list object implements 11 different methods starting with `append`. All of these attributes and methods are available to you to access through the dot notation (e.g. `my_list.__class__` or `my_list.append()`).
 
-```{code-cell}
+```{code-cell} ipython3
 my_list.__class__
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 my_list.append(4)
 my_list
 ```
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 Everything in Python is an object!
 

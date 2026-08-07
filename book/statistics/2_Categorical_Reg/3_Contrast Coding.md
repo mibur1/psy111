@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 6.3 Contrast Coding
@@ -23,7 +15,7 @@ We will explore contrast coding by defining five distinct contrasts and applying
 
 1. Load and prepare the data
 
-```{code-cell}
+```{code-cell} ipython3
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
@@ -37,7 +29,7 @@ print(levels)
 
 2. Defining contrasts of interests and create the matrix
 
-```{code-cell}
+```{code-cell} ipython3
 # levels:            'e2/e2', 'e2/e3', 'e2/e4', 'e3/e3', 'e3/e4', 'e4/e4'
 contrast1 = np.array([-0.5,-0.5,0,0,0.5,0.5])
 contrast2 = np.array([0,0,-0.5,-0.5,0.5,0.5])
@@ -57,7 +49,7 @@ contrast_matrix = np.column_stack([contrast1, contrast2, contrast3, contrast4, c
 
 ## Creating the Regression Model
 
-```{code-cell}
+```{code-cell} ipython3
 # Create mapping for the contrast matrix
 genotype_mapping = {"e2/e2": 0, "e2/e3": 1, "e2/e4": 2, "e3/e3": 3, "e3/e4": 4, "e4/e4": 5}
 
@@ -98,7 +90,6 @@ print(results.summary())
   - Non-significant results for the contrasts imply that the hypothesized contrasts do not strongly impact `WMf`.
 
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 Contrast coding is a flexible tool for testing targeted hypotheses.
 ```

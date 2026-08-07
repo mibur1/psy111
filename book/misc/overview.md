@@ -1,66 +1,39 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
+short_title: Welcome
 ---
 
-# Welcome to psy111!
+# 👋 Welcome to psy111!
 
-This book contains the course content for the Multivariate Statistics (psy111) lecture and seminar. For the lecture, you will find supplementary information to complement the lecture slides. For the seminar, the first half of the semester will introduce Python and its associated tools, while the second half will focus on the practical application of statistical concepts discussed in the lecture.
+This book contains the course content for the Multivariate Statistics (psy111) seminar. The first half of the semester will introduce Python and its associated tools, while the second half will focus on the practical application of statistical concepts discussed in the lecture.
 
+::::{grid} 1 1 3 3
 
-::::{grid} 1 1 2 3
-:class-container: text-center
-:gutter: 3
+:::{card} 🚀 Setting things up
+:link: ../introduction/1_Setup/0_Introduction.md
 
-:::{grid-item-card}
-:class-body: text-center
-:class-header: bg-light text-center
-:link: ../introduction/1_Setup/0_Introduction
-:link-type: doc
-Setting things up 🚀
-^^^
-```{image} https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9E5HZlsBUfIyQdZy53DBNd5c9aIxECWdFww&s
-:height: 100
-```
-+++
-Explore the chapter {fas}`arrow-right`
+Install Python, Conda and VS Code, or skip straight to Google Colab.
 :::
 
-:::{grid-item-card}
-:class-body: text-center
-:class-header: bg-light text-center
-:link: ../introduction/2_Data_structures/0_Introduction
-:link-type: doc
-Introduction to Python 🐍
-^^^
-```{image} https://i.pinimg.com/originals/82/a2/18/82a2188c985ce75402ae44fc43fe7e5e.png
-:height: 100
-```
-+++
-Explore the chapter {fas}`arrow-right`
+:::{card} 🐍 Introduction to Python
+:link: ../introduction/2_Data_structures/0_Introduction.md
+
+A comprehensive introduction to the Python programming language.
 :::
 
-:::{grid-item-card}
-:class-body: text-center
-:class-header: bg-light text-center
-:link: ../statistics/introduction
-:link-type: doc
-Multivariate Statistics 📊
-^^^
-```{image} https://thumbs.dreamstime.com/b/statistics-linear-icon-modern-outline-logo-concept-o-white-background-business-analytics-collection-suitable-use-133515482.jpg
-:height: 100
-```
-+++
-Explore the chapter {fas}`arrow-right`
+:::{card} 📊 Multivariate Statistics
+:link: ../statistics/introduction.md
+
+The statistical models covered in the lecture.
 :::
 
 ::::
+
+```{tip}
+Code cells can be copied with the button in their top-right corner, and notebook pages can be downloaded or opened in Colab via the icons at the top of the page.
+```
+
+## Table of contents
+
+```{tableofcontents}
+:class: toc-hide-self
+```

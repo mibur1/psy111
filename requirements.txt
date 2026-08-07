@@ -1,19 +1,27 @@
-# General dependencies
-jupyter-book==1.0.3
+# Build toolchain (Jupyter Book 2 is powered by mystmd)
+jupyter-book>=2.1.6
+jupyter-server          # needed by `jupyter book build --execute`
+ipykernel
+
+# Scientific stack used by the chapters
 numpy
 pandas
+scipy
 matplotlib
 seaborn
 plotly
-nilearn
-
-# For the statistics sessions
+scikit-learn
 statsmodels
 pingouin
-factor_analyzer
-semopy
-ucimlrepo
-graphviz
-jupyterquiz
+
+# Statistics sessions
+semopy                  # path models, CFA, SEM
+graphviz                # renders the semopy path diagrams
+
+# Datasets used in the chapters and the exercises
 ISLP
-scikit-learn==1.5
+ucimlrepo
+nilearn
+
+# Interactive teaching widgets
+jupyterquiz

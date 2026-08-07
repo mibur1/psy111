@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 2.3 Collections
@@ -20,7 +12,7 @@ Variables containing single values like an integer or a string will only get you
 
 Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also contain multiple types if this is required. Lists are initalized with square brackets `[]` and their elements are separated through commas:
 
-```{code-cell}
+```{code-cell} ipython3
 empty_list = []
 random_stuff = ["apple", 3.14, True, 4]
 ```
@@ -32,17 +24,16 @@ Lists are ordered collections, which means that the order of items is important 
 To access the *i*th element in a list, we enclose the desired index *i* in square brackets. Note that Python, unlike for example MATLAB, uses zero-based indexing. This means the first element of a collection is at index 0, while index 1 returns the second element (and so forth).
 
 
-```{admonition} Zero-based indexing
-:class: attention
+```{attention} Zero-based indexing
 
 Python uses zero-based indexing. You can intuitively understand this as index 0 being the start of a collection, and other positions being offsets from that start.
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 random_stuff[0]
 ```
 
-```{code-cell}
+```{code-cell} ipython3
 random_stuff[1]
 ```
 
@@ -50,7 +41,7 @@ random_stuff[1]
 
 What if you want to retrieve more than a single element from a list? For this we can use *slicing* operations, which use the colon (:) operator:
 
-```{code-cell}
+```{code-cell} ipython3
 random_stuff[1:3]
 ```
 
@@ -60,7 +51,7 @@ The colon is used to seperate a starting and a stopping index. Intuitively you c
 
 Lists are *mutable* objects, which means they can be modified after they have been created. For example, we can replace a specific element with another element:
 
-```{code-cell}
+```{code-cell} ipython3
 print("Before re-assignment:", random_stuff)
 random_stuff[0] = "banana"
 print("After re-assignment:", random_stuff)
@@ -68,7 +59,7 @@ print("After re-assignment:", random_stuff)
 
 Another common use case is to add new values to a list (for example once new results have been calculated). This can be done by using the `.append()` function on the list:
 
-```{code-cell}
+```{code-cell} ipython3
 random_stuff.append("goodbye")
 random_stuff
 ```
@@ -79,13 +70,13 @@ There are many more things you can do to lists, like removing items or sorting t
 
 Tuples are similar to lists in that they are an ordered colletion of elements. However, they are *immutable* in nature, meaning you can not change their content after creating them. For creating tuples, you simply use the round brackets instead of the square ones:
 
-```{code-cell}
+```{code-cell} ipython3
 my_tuple = ("Hello", 1, 2, 3, 4, 2, "Goodbye")
 ```
 
 Tuples only have two built-in methods which are `.count()` and `.index()`:
 
-```{code-cell}
+```{code-cell} ipython3
 first_occurrence = my_tuple.index(2)
 print(f"The first occurrence of 2 is at index: {first_occurrence}.")
 
@@ -95,7 +86,7 @@ print(f"The number 2 appears {count_of_twos} times in the tuple.")
 
 In case you still need a mutable version of the tuple, you can convert any tuple to a list by using the `list()` function:
 
-```{code-cell}
+```{code-cell} ipython3
 my_list = list(my_tuple)
 ```
 
@@ -105,7 +96,7 @@ Dictionaries (*dicts*) are another popular data structure in Python. In short, d
 
 Dictionaries are created by using curly brackets, and can either be initialized as empty or with key-value pairs separated by commas:
 
-```{code-cell}
+```{code-cell} ipython3
 empty_dict = {}
 
 example_dict = {
@@ -121,19 +112,18 @@ As you can see, dicts are quite versatile. Keys are required to be *immutable* l
 
 Accessing values stored in a dictionary is slightly different. While you previously accessed items in lists by their index, values in a dictionary are not ordered and have to be accessed by their key. The syntax is identical to that used for list indexing, we specify the key as a string between square brackets:
 
-```{code-cell}
+```{code-cell} ipython3
 example_dict["name"]
 ```
 
 Dictionaries can be updated or, if the key does not exist yet, extended through the same []-based syntax, except you now have to make an assignement using the (=) operator:
 
-```{code-cell}
+```{code-cell} ipython3
 example_dict["age"] = 27
 example_dict
 ```
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 The three main collection types in Python are:
 

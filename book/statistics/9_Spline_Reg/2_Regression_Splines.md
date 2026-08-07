@@ -1,22 +1,14 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 13.2 Regression Splines
 
 To fit regression splines, we continue with the same data as in the previous section. Again, we want to predict `wage` from `age` in the Mid-Atlantic Wage Dataset.
 
-```{code-cell}
+```{code-cell} ipython3
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -32,8 +24,7 @@ df = load_data('Wage')
 
 Similar to fitting a stepwise function, we first need to create the design matrix for our transformed predictor `age`. This time we specify two knots (at age 40 and 60), and first-order polynomial:
 
-```{code-cell}
-
+```{code-cell} ipython3
 transformed_age = patsy.dmatrix("bs(age, knots=(40,60), degree=1)",
                                 data={"age": df['age']},
                                 return_type='dataframe')
@@ -41,7 +32,7 @@ transformed_age = patsy.dmatrix("bs(age, knots=(40,60), degree=1)",
 
 We then create and fit the model:
 
-```{code-cell}
+```{code-cell} ipython3
 # Fit the model
 model = sm.OLS(df['wage'], transformed_age)
 model_fit = model.fit()
@@ -70,7 +61,7 @@ $$
 
 ## Plotting the model
 
-```{code-cell}
+```{code-cell} ipython3
 # Create evenly spaced values to plot the model predictions
 xp = np.linspace(df['age'].min(), df['age'].max(), 100)
 xp_trans = patsy.dmatrix("bs(xp, knots=(40,60), degree=1)",

@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # 1.1 Installation
 
@@ -33,7 +20,7 @@ You can download and install Conda trough Miniforge as described in the the [doc
 
 Open a terminal in the folder where your `.sh` script is located and run the script (*hint: after typing `bash Miniforge3` you should be able to hit `Tab` to autocomplete the command*):
 
-```
+```bash
 bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
@@ -49,8 +36,7 @@ On Windows, simply run the `.exe` file and install everything. We also recommend
 In addition to Miniforge, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
 
 
-```{admonition} Using Python through a Environment Manager
-:class: tip
+```{tip} Using Python through a Environment Manager
 
 By using an environment manager such as Miniforge/Conda you can:
 

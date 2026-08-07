@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 5.2 Pandas
@@ -18,7 +10,7 @@ Many kinds of real-world data are stored in a tabular format. This means two-dim
 
 The Pandas library is a popular Python library for dealing with tabular data. In comparison to numpy, pandas specifically limits us to two-dimensional tables, but we gain the flexibility of e.g. having variables of different types.
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 ```
 
@@ -26,7 +18,7 @@ import pandas as pd
 
 A `DataFrame` is the core data structure in the Pandas library. It is ideal for working with tabular data, making it easy to manipulate, filter, and analyse data sets. We can create and print a simple example as follows:
 
-```{code-cell}
+```{code-cell} ipython3
 my_df = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],
                       'B': ['B0', 'B1', 'B2', 'B3'],
                       'C': ['C0', 'C1', 'C2', 'C3']})
@@ -37,7 +29,7 @@ We can also read data from other sources such as Excel or CSV (comma-separated v
 
 As an example, let us load some data that was collected as part of a study of life span changes in brain tissue properties {cite}`Yeatman2014`. We can simply load this file from the internet by using the `pd.read_csv()` function. The only argument required for this is the data we want to load. In this case, we provide an URL as the data is stored on the internet, however, you would usually provide a path pointing to a file on your computer. All other arguments are optional, but they can be useful in providing additional instructions for what to do with the data. Here, we use `usecols=[1,2,3,4,5,6,7]` to specify only some specific columns, `na_values="NaN"` to specify that missing values should be entered as NaN ("not a number"), and `index_col=0` to use the first column as an our index:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_data = pd.read_csv("https://yeatmanlab.github.io/AFQBrowser-demo/data/subjects.csv",
                       usecols=[1,2,3,4,5,6,7],
                       na_values="NaN",
@@ -51,7 +43,7 @@ The variable `yeatman_data` now is a Pandas DataFrame which contains our data an
 
 Pandas further contains useful methods to e.g. summarize the data. We can use `.info()` to get a closer look into our data:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.info())
 ```
 
@@ -60,7 +52,7 @@ Most of this information should already make sense. An observation that can be m
 
 We can also get a first statistical summary for the numerical columns by using the `.describe()` method. NaN values are ignored for these calculations, but the `count` column will tell you how many values were used for the calculations in each column.
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.describe())
 ```
 
@@ -68,43 +60,43 @@ print(yeatman_data.describe())
 
 In previous sessions we already leearned about indexing and slicing as a way of accessing individual elements of e.g. lists. Pandas DataFrames also support a variety of different indexing and slicing operations. For example, we can use label-based indexing to select rows through the `.loc` attribute and by indexing in square brackets:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.loc["subject_000"])
 ```
 
 In the case that we do not know the exact label of the subject but just its index (e.g. we want to access the first subject), we can use the `iloc` attribute for that purpose:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.iloc[0])
 ```
 
 This returns the same information, as instead of looking for `subject_000` we are asking for the first row at position 0. You now might ask yourself how we can index a two-dimensional table with just one index. The answer is that it is just a shorthand form of the full expression:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.iloc[0, :])
 ```
 
 Remember from previous sections that `:` stands for "all values". This means we can also apply slicing to extract a subset of columns:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.iloc[0, 2:5])
 ```
 
 Similarly, we can also access a single column:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data.iloc[:, 0])
 ```
 
 However, while `.loc` and `.iloc` are powerful attibutes, we can also simply address columns directly by their name:
 
-```{code-cell}
+```{code-cell} ipython3
 print(yeatman_data["Age"])
 ```
 
 If we assign this column to a new variable, it will result in a Pandas `Series`, which is a one dimensional series of values. Series are pretty similar to DataFrames (essentially DataFrames are just a collection of Series):
 
-```{code-cell}
+```{code-cell} ipython3
 age = yeatman_data["Age"]
 print(age['subject_072'])
 print(age.iloc[72])
@@ -112,7 +104,7 @@ print(age.iloc[72])
 
 Series are useful as we can, for example, create a new *subset* of a DataFrame containing only the variables `Age` and `IQ`. This can be done by indexing with a list of columns and assigning the resulting subset to a new variable:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_subset = yeatman_data[["Age", "IQ"]]
 print(yeatman_subset.head())
 ```
@@ -121,7 +113,7 @@ print(yeatman_subset.head())
 
 Like NumPy arrays, Pandas DataFrames also have many methods that allow for computations. However, as we only deal with tabular data, the dimensions are always the same, with the columns being the variables and the rows being the observations. One can simply calculate the means of all the variables in the DataFrame:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_means = yeatman_data.mean(numeric_only=True)
 print(yeatman_means)
 print(yeatman_means["Age"])
@@ -129,13 +121,13 @@ print(yeatman_means["Age"])
 
 Since not all variables are numeric, we include a `numeric_only=True)` as an argument of the mean function. We can also directly calculate the mean for individual series:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_data["IQ"].mean()
 ```
 
 We can further perform arithmetics on DataFrames. For example, we could calculate a standardized z-score for the age of each subject.
 
-```{code-cell}
+```{code-cell} ipython3
 age_mean = yeatman_data["Age"].mean()
 age_std = yeatman_data["Age"].std()
 print((yeatman_data["Age"] - age_mean ) / age_std)
@@ -143,7 +135,7 @@ print((yeatman_data["Age"] - age_mean ) / age_std)
 
 A useful thing is to then save the result as a new variable in our DataFrame. For example, we can create a new column called `Age_zscore` and assign our results to it:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_data["Age_zscore"] = (yeatman_data["Age"] - age_mean ) / age_std
 print(yeatman_data.head())
 ```
@@ -152,7 +144,7 @@ print(yeatman_data.head())
 
 Similar to logical indexing in NumPy, we can also filter our data set based on some properties. For example, let's assume we only want be able to filter subjects below the age of 18 in our analysis. We can then simply create a new boolean variable in the DataFrame which codes for this condition:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_data["Age_below_18"] = yeatman_data["Age"] < 18
 print(yeatman_data.head())
 ```
@@ -163,14 +155,18 @@ As you can see, we have now extended our original DataFrame by another column wh
 
 Sometimes we want to select groups made up of combinations of variables. For example, we might want to analyze the data based on both gender and age. One way of doing this is to change the index of the DataFrame to be made up of more than one column. This is called a *MultiIndex DataFrame*. We can do so by applying the `set_index()` method of a DataFrame to create a new kind of index:
 
-```{code-cell}
-multi_index = yeatman_data.set_index(["Gender", "Age_below_18"])
+```{code-cell} ipython3
+multi_index = yeatman_data.set_index(["Gender", "Age_below_18"]).sort_index()
 print(multi_index.head())
+```
+
+```{note} Why `.sort_index()`?
+Pandas looks values up in a MultiIndex much faster when the index is sorted. If you leave it unsorted, selecting on it still works but pandas emits a `PerformanceWarning`. Sorting once directly after `set_index()` avoids that.
 ```
 
 You can now see that we have two indices. This means we can apply the `.loc` method to select rows based on both indices:
 
-```{code-cell}
+```{code-cell} ipython3
 male_below_18 = multi_index.loc["Male", True]
 print(male_below_18.describe())
 ```
@@ -183,7 +179,7 @@ A usual problem we are faced with in data analysis is the following: We (1) want
 
 For example, let's start with splitting the data by the `Gender` column:
 
-```{code-cell}
+```{code-cell} ipython3
 gender_groups = yeatman_data.groupby("Gender")
 ```
 
@@ -191,19 +187,19 @@ The newly `gender_grous` variable is a `DataFrameGroupBy` object, which is prett
 
 For example, we can calculate the mean for each group:
 
-```{code-cell}
+```{code-cell} ipython3
 print(gender_groups.mean(numeric_only=True))
 ```
 
 The output of this operation is a DataFrame that contains the summary with th original DataFrame's `Gender` variable as the index. This means we can apply standard indexing operations on it as well to get e.g. the mean age of female subjects:
 
-```{code-cell}
+```{code-cell} ipython3
 print(gender_groups.mean(numeric_only=True).loc["Female", "Age"])
 ```
 
 We can further group by multiple indices:
 
-```{code-cell}
+```{code-cell} ipython3
 gender_age_groups = yeatman_data.groupby(["Gender", "Age_below_18"])
 print(gender_age_groups.mean(numeric_only=True))
 ```
@@ -212,7 +208,7 @@ print(gender_age_groups.mean(numeric_only=True))
 
 Another useful feature of Pandas is its ability to join data. For example, lets assume we have three DataFrames with the same columns but different indices. This could for example happen if you would measure the same variables for multiple subjects over three different measurement days. So the index would be the individual subject, and the three DataFrames would be the data you aquired on e.g. Monday, Tuesday, and Wednesday:
 
-```{code-cell}
+```{code-cell} ipython3
 df1 = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],
                     'B': ['B0', 'B1', 'B2', 'B3'],
                     'C': ['C0', 'C1', 'C2', 'C3'],
@@ -232,14 +228,14 @@ df3 = pd.DataFrame({'A': ['A8', 'A9', 'A10', 'A11'],
 
 Here it might be intuitive to just concatenate them into one big DataFrame:
 
-```{code-cell}
+```{code-cell} ipython3
 combined_df = pd.concat([df1, df2, df3])
 print(combined_df)
 ```
 
 In this case, we see that the concatenation is quite straightforward and succesful. But what about if the DataFrames are not of identical structure? Let's assume we have `df4` which has index values $2$ and $3$ as well as columns `B`and `D`in common with `df1`, but it also has the additional indices $6$ and $7$ ad well as a new column `F`:
 
-```{code-cell}
+```{code-cell} ipython3
 df4 = pd.DataFrame({'B': ['B2', 'B3', 'B6', 'B7'],
                     'D': ['D2', 'D4', 'D6', 'D7'],
                     'F': ['F2', 'F3', 'F6', 'F7']},
@@ -261,21 +257,21 @@ One common pattern of errors comes from a confusion between Series and DataFame 
 
 Another common error comes from the fact that many operations create a new DataFrame as an output insted of changing the current one in place. For example you might expect that:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_data.dropna()
 print(yeatman_data.head())
 ```
 
 will remove the `NaN` values from the DataFrame. However, it will not do so on the `yeatman_data` DataFrame itself but you need to assign it to a new variable if you want to keep this result:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_without_nan = yeatman_data.dropna()
 print(yeatman_without_nan.head())
 ```
 
 or alternatively, **explicitly** specify that the existing `yeatman` DataFrame should be modified:
 
-```{code-cell}
+```{code-cell} ipython3
 yeatman_data.dropna(inplace=True)
 ```
 
