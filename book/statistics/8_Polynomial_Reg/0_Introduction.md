@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # Polynomial Regression
@@ -22,18 +14,29 @@ The following plot shows some example data and allows you to fit polynomial mode
 
 ```{code-cell} ipython3
 :tags: [remove-input]
-from IPython.display import HTML
-import plotly.io as pio
+import warnings
 import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
-import warnings
+import plotly.io as pio
 
-warnings.filterwarnings("ignore", message=".*Polyfit may be poorly conditioned.*")
+# Fitting polynomials of up to degree 30 to 30 points is deliberately
+# ill-conditioned - that is the point of the demo - so numpy's RankWarning is
+# expected. Note it must be filtered by *category*; `message=` does not work.
+try:
+    RankWarning = np.exceptions.RankWarning   # numpy >= 1.25
+except AttributeError:
+    RankWarning = np.RankWarning              # numpy < 1.25
+warnings.filterwarnings("ignore", category=RankWarning)
 
-# Helper function to return a Plotly figure as self-contained HTML.
-def show_plotly(fig, include_js='cdn'):
-    return HTML(pio.to_html(fig, full_html=False, include_plotlyjs=include_js))
+# A neutral Plotly look that stays legible in both the light and the dark
+# version of the site: transparent paper, faint plot background, grey text.
+psy111 = pio.templates["plotly_white"]
+psy111.layout.paper_bgcolor = "rgba(0,0,0,0)"
+psy111.layout.plot_bgcolor = "rgba(128,128,128,0.08)"
+psy111.layout.font.color = "#888888"
+pio.templates["psy111"] = psy111
+pio.templates.default = "psy111"
 
 # --- Data ---
 x = np.linspace(-5, 5, 30)
@@ -126,20 +129,18 @@ layout = go.Layout(
 
 # Figure
 fig = go.Figure(data=data, layout=layout)
-show_plotly(fig, include_js='cdn')
+fig
 ```
 
-```{admonition} Learning break
-:class: note
+```{note} Learning break
 
 What happens if you increase the order of the polynomial? Can you observe an interesting behavior?
 
 *Hint: The data consists of 30 observations.*
 ```
 
-<details>
-<summary><strong>Click to show solution</strong></summary>
-
+:::{dropdown} Click to show solution
 As you probably expected, the explained variance ($R^2$) increases as the order of the polynomial increases, eventually reaching 1 for a model of degree 29. At this point, the model passes exactly through every single data point.
 
 This does not happen by chance. Any dataset with $n$ observations can be perfectly interpolated by a polynomial of degree  $n−1$. However, such a high-order model is usually not a good choice in practice, as it was *overfit* to the data and will generalise poorly to new observations. Although this will be more thoroughly discussed in the [psy112 module](https://mibur1.github.io/psy112) next semester, we will already cover it a bit in today's session.
+:::

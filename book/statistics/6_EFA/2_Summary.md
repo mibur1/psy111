@@ -1,52 +1,39 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # 10.2 Summary
 
-Summed up, the usage of the `factor_analyzer` package is similar to previously introduced workflows for statistical modeling. Please read through the [documentation](https://factor-analyzer.readthedocs.io/en/latest/index.html) for a detailed overview.
+Summed up, running an EFA with `statsmodels` follows the same fit-then-inspect workflow as the other models in this book. Please read through the [documentation](https://www.statsmodels.org/stable/generated/statsmodels.multivariate.factor.Factor.html) for a detailed overview.
 
+```python
+from statsmodels.multivariate.factor import Factor
 
+fa = Factor(endog=data,      # a DataFrame of observed variables
+            n_factor=3,      # the number of factors to extract
+            method="ml",     # "ml" (maximum likelihood) or "pa" (principal axis)
+            corr=None,       # pass a correlation matrix here instead of raw data
+            smc=True).fit()  # squared multiple correlations as initial communalities
 
-
-https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html
-
-
-```{code-block}
-fa_object = FactorAnalyzer(n_factors=3,
-                           rotation='promax',
-                           method='minres',
-                           use_smc=True,
-                           is_corr_matrix=False,
-                           bounds=(0.005, 1),
-                           impute='median',
-                           svd_method='randomized',
-                           rotation_kwargs=None)
+fa.rotate("oblimin")         # rotate in place
 ```
 
-For the `FactorAnalyzer` object, we have several options as described in the [documentation](https://factor-analyzer.readthedocs.io/en/latest/factor_analyzer.html). The most important ones are:
+The most important options are:
 
-- `n_factors`: The number of factors
-- `rotation`: The type of rotation to perform after fitting the factor analysis model
-- `method`: The fitting method to use
-- `is_corr_matrix` can be set to `Tue` if the data is already a correlation matrix
+- `n_factor`: the number of factors
+- `method`: the fitting method, `"ml"` for maximum likelihood or `"pa"` for principal axis
+- `corr`: set this if you already have a correlation matrix rather than raw data
+- `rotate(method)`: the rotation applied after fitting. Orthogonal options include `varimax` and `quartimax`; oblique options include `oblimin`, `quartimin` and `promax`
 
-We can then fit the model and extract its estimates such as eigenvalues, loadings, and communalities:
+We can then extract the estimates such as eigenvalues, loadings, and communalities:
 
-```{code-block}
-fa_object.fit(data)
+```python
+import numpy as np
 
-ev, cfev = fa.get_eigenvalues()
-l = fa2.loadings_
-c = fa2.get_communalities()
+eigenvalues   = np.sort(np.linalg.eigvalsh(data.corr()))[::-1]  # for the Kaiser criterion
+loadings      = np.real_if_close(fa.loadings)                   # item x factor matrix
+communalities = 1 - fa.uniqueness                               # variance explained per item
+
+print(fa.summary())   # a formatted overview of loadings and uniquenesses
+```
+
+```{note} Rotation caveat
+The `statsmodels` documentation notes that `varimax`, `quartimax` and `oblimin` are verified against R and Stata, while some other methods (including `promax`) may not reproduce the defaults of those packages exactly. If you need to match a published R result, check which rotation and which normalisation it used.
 ```

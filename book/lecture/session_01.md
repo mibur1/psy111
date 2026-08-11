@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # Introduction
 
@@ -44,8 +31,7 @@ An analogy might help: In the physical world, we use models to represent complex
 
 We aim to find the model that most efficiently and accurately summarizes the way in which the data were generated.
 
-```{admonition} The basic structure of a statistical model
-:class: note
+```{note} The basic structure of a statistical model
 
 $data = model + error$
 ```
@@ -54,8 +40,7 @@ Importantly, when we build statistical models, we essentially divide (we say "de
 
 Note that we can use the model to predict the value of the data:
 
-```{admonition} Prediction
-:class: note
+```{note} Prediction
 
 $\widehat{data}_{i} = model_{i}$
 
@@ -64,8 +49,7 @@ where $i$ indicates the observations.
 
 And once we have the prediction, we can compute the error for each observation:
 
-```{admonition} Compute the error
-:class: note
+```{note} Compute the error
 
 $error_{i} = data_{i} - \widehat{data}_{i}$
 ```
@@ -84,14 +68,12 @@ Importantly: While these two approaches have traditionally been distinct, the bo
 
 Remember two key terms!
 
-```{admonition} Dependent variable
-:class: tip
+```{tip} Dependent variable
 
 This is the outcome variable that our model aims to explain (usually referred to as $Y$, previously referred to as data).
 ```
 
-```{admonition} Independent variable
-:class: tip
+```{tip} Independent variable
 
 This is a variable that we wish to use in order to explain the dependent variable (usually referred to as $X$, the predictor or predictors). Note that in multivariate models, there are multiple independent variables ($X_1, X_2, ..., X_j$).
 ```
@@ -114,14 +96,12 @@ When we work with a statistical model - for example, using a linear function as 
 
 **Make predictions about data cases**: Perhaps the most important use of a statistical model to solve real life problems is to make predictions. If we know a certain value of $x$ , our model can help us predict what the corresponding value of $y$ is likely to be. This has applications in everything from predicting company sales to predicting patient outcomes.
 
-```{admonition} A linear function is written as
-:class: note
+```{note} A linear function is written as
 
 $y = a + b \cdot x $
 ```
 
-```{admonition} Independent variable
-:class: tip
+```{tip} Independent variable
 
 Note that the value of **$b$** indicates the **slope** of the straight line and **$a$ **(**intercept**) indicates the value of $y$ for $x = 0$.
 ```
@@ -134,14 +114,12 @@ name: linear_function
 The linear function
 ```
 
-```{admonition} Interpretation of the **intercept**
-:class: tip
+```{tip} Interpretation of the **intercept**
 
 The intercept indicates the expected value of $y$ given $x$ is zero.
 ```
 
-```{admonition} Interpretation of the **slope**
-:class: tip
+```{tip} Interpretation of the **slope**
 
 The slope indicates the expected change of $y$ given $x$ changed in one unit.
 ```

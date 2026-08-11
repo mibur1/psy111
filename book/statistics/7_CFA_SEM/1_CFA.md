@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 11.1 CFA
@@ -88,21 +80,18 @@ For example, a standardised residual variance of 0.40 means that 40% of the vari
 In practice, residual variances are almost always greater than zero, because latent variables rarely account for all variability in observed measures. Their presence reflects measurement error and construct-irrelevant variance.
 
 
-```{admonition} Learning break
-:class: note
+```{note} Learning break
 
 1. How can you calculate the z-value yourself? 
 2. When should you read a `variable ~~ variable` output as variance? When instead as residual variance?
 ```
 
-<details>
-<summary><strong>Click to show solution</strong></summary>
-
+:::{dropdown} Click to show solution
 1. The z-value is computed as the Estimate divided by the SE.
 2. Whether `variable ~~ variable` is interpreted as variance or residual variance depends on whether the variable is predicted in the model:
     - If the variable is exogenous (no incoming regression paths) it is the variance
     - If the variable is endogenous (it has predictors), it is the residual variance
-
+:::
 
 ## Fit measures
 

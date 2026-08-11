@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 8.2 Moderated Regression
@@ -34,7 +26,7 @@ A moderator variable is a type of independent variable that influences the stren
 
 As previously, we can use statsmodels to do so. The regression formula for moderated regression can be specified as `y ~ A * B` or as `y ~ A + B + A:B`. `A` and `B` are the main effects, `A:B` is the interaction effect. The first formula is internally automatically expanded to the second one (so if you just want to model the second interaction term you can simply use `A:B` in a standalone fashion). We will further utilize our centered dataset to obtain a meaningful intercept $b_0$.
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 import statsmodels.formula.api as smf
 import matplotlib.pyplot as plt
@@ -99,11 +91,11 @@ print(results.summary())
 
 The regression equation can be written as:
 
-$$\text{gff}=0.44+0.75*\text{WMf_c}-0.0055*\text{age_c}+0.018*\text{WMf_c}*\text{age_c}$$
+$$\text{gff}=0.44+0.75 \cdot \text{WMf\_c}-0.0055 \cdot \text{age\_c}+0.018 \cdot \text{WMf\_c} \cdot \text{age\_c}$$
 
 The following plot illustrates the relationship between `WMf`, `gff` and `age` as their moderator (please note that the regression line is only a simple linear regression!).
 
-```{code-cell}
+```{code-cell} ipython3
 import matplotlib as mpl
 
 fig, ax = plt.subplots()

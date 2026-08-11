@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 11.2 SEM
@@ -82,8 +74,7 @@ Taken together, these indices suggest that the model provides a poor overall fit
 
 ---
 
-```{admonition} Summary
-:class: note
+```{note} Summary
 
 Structural Equation Modelling allows us to test **directional hypotheses between latent variables**, but a statistically significant regression path does not guarantee good overall model fit. Both parameter estimates and global fit measures must be considered when evaluating an SEM.
 ```

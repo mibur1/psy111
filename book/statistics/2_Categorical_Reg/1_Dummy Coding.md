@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 6.1 Dummy Coding
@@ -20,7 +12,7 @@ To implement dummy coding, we will use a combination of the `patsy` and `statsmo
 
 First, we will import the essential libraries needed to visualize the data.
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -29,14 +21,14 @@ import statsmodels.formula.api as smf
 
 Then we load the data (in this case from a local file) and have a look at it:
 
-```{code-cell}
+```{code-cell} ipython3
 df = pd.read_csv("data/alzheimers_data.txt", delimiter='\t').dropna()
 print(df.head())
 ```
 
 We then make sure that the `genotype` is treated as a categorical variable. For this, we first check its type:
 
-```{code-cell}
+```{code-cell} ipython3
 # Since we are working with a pandas dataframe, we can use the 
 # method ".dtypes" to extract the data type of each column.
 
@@ -46,14 +38,14 @@ print(data_types)
 
 We see that it is of type `object`, which is typical for strings. However, for categorical regression, we need to change it to type `category` using `.astype('category')`:
 
-```{code-cell}
+```{code-cell} ipython3
 df['genotype'] = df['genotype'].astype('category')
 print(df["genotype"].dtypes)
 ```
 
 Great, that worked well. We can now proceed to plot the genotypes as individual boxplots against figural working memory ability:`WMf`. For this we will use `seaborn` boxplots, as they are easy to use with data frames:
 
-```{code-cell}
+```{code-cell} ipython3
 sns.boxplot(x='genotype', y='WMf', data=df)
 plt.title("WMf for different genotypes")
 plt.show()
@@ -61,7 +53,7 @@ plt.show()
 
 We can then perform categorical regression with dummy coding. For this, we use `statsmodels` combined with the `Treatment` function from the `patsy` package:
 
-```{code-cell}
+```{code-cell} ipython3
 from patsy.contrasts import Treatment
 
 model = smf.ols('WMf ~ C(genotype, Treatment(reference="e4/e4"))', data=df)
@@ -99,7 +91,7 @@ $$\hat{Y} = 0.82 - 0.03 * e2/e2 - 0.02 * e2/e3 + 0.06 * e2/e4 + 0.02 * e3/e3 - 0
 
 For dummy coding, there is usually no need to manually create dummy variables or to create a contrast matrix, as `statsmodels` handles this automatically. However, to ensure that we did everything correctly, we can manually create the contrast matrix and have a look at it:
 
-```{code-cell}
+```{code-cell} ipython3
 # Get all genotype levels and save them as a list
 levels = df['genotype'].cat.categories.tolist()
 
@@ -110,8 +102,7 @@ print("Levels:", levels)
 print("Contrast Matrix:\n", contrast.matrix)
 ```
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 - In dummy coding, the reference category is assigned a value of 0
 - You can use `model = smf.ols('WMf ~ C(outcome, Treatment(reference="your reference"))', data=my_data)` for dummy coding
 ```

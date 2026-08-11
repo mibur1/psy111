@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 12.1 Polynomial Regression
@@ -25,10 +17,7 @@ To demonstrate this idea, we will simulate a dataset with two variables:
 
 
 ```{code-cell} ipython3
----
-tags:
-  - "hide-input"
----
+:tags: [hide-input]
 import numpy as np
 import pandas as pd
 
@@ -108,7 +97,7 @@ $$
 
 In scikit-learn, this transformation can be performed with `.fit_transform(study_time.reshape(-1, 1))` which does two things:
   
-1. It reshapes `study_time` from shape `(n,)` into a 2D array of shape `(n,1)` by using `.reshape(-1, 1)`. This is the expected input for the sklearn library, as it would add columns along the scond dimension for higher orders.
+1. It reshapes `study_time` from shape `(n,)` into a 2D array of shape `(n,1)` by using `.reshape(-1, 1)`. This is the expected input for the sklearn library, as it would add columns along the second dimension for higher orders.
 
 2. It applies the transformation to the original data, producing a 2D array of shape `n, 2` (for `degree=1`), where $n$ is the number of data points. The first column of `study_time_p1` is all 1’s (intercept), and the second column is the original study times because `degree=1` is the same as a standard linear regression. However, if you later decide to use higher degrees, you will get columns for $x^1,x^2, \dots x^n$. That’s when you can capture curved relationships in your model.
 
@@ -190,7 +179,7 @@ ax[1].axhline(0, linestyle='--')
 ax[1].set(title="Residuals", ylim=(-55, 55));
 ```
 
-You can see that the model fits the data much better. Also, the residuals are now much smaller and do not show any systematic pattern (only the noise remains), which means we were succesful in capturing the non-linear relationship in the data.
+You can see that the model fits the data much better. Also, the residuals are now much smaller and do not show any systematic pattern (only the noise remains), which means we were successful in capturing the non-linear relationship in the data.
 
 
 ## Interpretation

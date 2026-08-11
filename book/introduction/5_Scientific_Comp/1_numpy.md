@@ -1,23 +1,14 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 5.1 Numpy
 
 Before we begin, let's pause for a second and try to think about which kind of data types and data structures structures we have learned about so far. Which ones can you remember? Do you think this is already enough for any kind of task you might want to achieve?
 
-```{admonition} Solution
-:class: dropdown
+```{dropdown} Solution
 
 Python includes well known data types such as:
 - Integer numbers: 1,2,3, ...
@@ -39,21 +30,21 @@ In fields like neuroscience, datasets can be large and often have more than two 
 ```{figure} ../../../_static/figures/cubes.png
 ---
 width: 100%
-name: arrays
+name: fig-arrays
 ---
 N-dimensional arrays
 ```
 
 To work with arrays, we will use the [NumPy](https://numpy.org/) library, which is the most important library for numerical and scientific computing in Python. Recall that by default, the Python namespace only includes a small number of built-in functions. So if we want to use functions that belong to numpy, we need to import it at the top of the script. In principle, you can chose any abbreviation you want (or none at all). However, it usually makes sense to stick to the conventions and import numpy as `np`.
 
-```{code-cell}
+```{code-cell} ipython3
 import numpy as np
 ```
 
 The core data structure of numpy are n-dimensional arrays called `ndarray`. We can create such an array from an existing list as follows:
 
 
-```{code-cell}
+```{code-cell} ipython3
 my_list = [1,2,3,4]
 my_array = np.array(my_list)
 
@@ -62,7 +53,7 @@ print(my_array)
 
 While this might still look like a normal list on the surface, we can look at some additional attributes to see that it is, in fact, a numpy array:
 
-```{code-cell}
+```{code-cell} ipython3
 print(f"Variable type: {type(my_array)}")
 print(f"Data type:     {my_array.dtype}")
 print(f"Data shape:    {my_array.shape}")
@@ -72,7 +63,7 @@ print(f"Data shape:    {my_array.shape}")
 You can see that the variable is now a `<class 'numpy.ndarray'>`. Type `int64` means that the data stored in it are 64-bit integers and shape `(4,)` means that it is a one-dimensional array with 4 items. Similarly, we can create two-dimensional arrays from a list of lists:
 
 
-```{code-cell}
+```{code-cell} ipython3
 list_of_lists = [[1,2,3], [7,8,9]]
 my_array = np.array(list_of_lists)
 print(my_array)
@@ -83,7 +74,7 @@ You can see that we created a two-dimensional array (you could also call it a ma
 
 We can also create a new array from scratch and fill it with a specific value. Often, this is done by initializing an "empty" array containing only zeros:
 
-```{code-cell}
+```{code-cell} ipython3
 my_array = np.zeros((4,5))
 print(my_array)
 print(f"Shape: {my_array.shape}")
@@ -91,7 +82,7 @@ print(f"Shape: {my_array.shape}")
 
 However, in cases where 0 is a potential valid input, this can lead to hard to find errors. So an alternative would be to initialize an array filled with `np.nan` ("not a number") values. Because if you then add e.g., a single value to it, it is more obvious that the other values are still missing:
 
-```{code-cell}
+```{code-cell} ipython3
 my_array = np.full((4,5), np.nan)
 my_array[1,2] = 1.0
 print(my_array)
@@ -102,7 +93,7 @@ print(f"Shape: {my_array.shape}")
 
 Let's look at some real data to get a better sense of why arrays are a useful thing to use. We use the `nilearn` package to load fMRI data of a single subject from the ADHD dataset and then convert the data into a numpy array with the `nibabel` package:
 
-```{code-cell}
+```{code-cell} ipython3
 from nilearn import datasets
 import nibabel as nib
 
@@ -119,7 +110,7 @@ You can see that the data has shape `(61, 73, 61, 176)`, meaning that it has fou
 We now know how to create arrays. But how can we can data in and out of them? Remember how we previously learned about indexing with lists. Indexing for arrays is fairly similar to this, however we have more flexibility in doing so. Let us first consider a one-dimensional array:
 
 
-```{code-cell}
+```{code-cell} ipython3
 my_array = np.array([1,2,3,4,5])
 print(my_array)
 print(my_array[0])
@@ -129,12 +120,12 @@ print(my_array[2:4])
 print(my_array[:3])
 ```
 
-We can see that all the indexing operations we pereviously learned about are still valid. `my_array[0]` gives us the value from the zeroth position, `my_array[2]` from the second position, and `my_array[-1]` from the last position. We can also apply slicing operations, whith `my_array[2:4]` giving us the second and the third position (remember that when slicing, the start is included, but the end is excluded), and `my_array[:3]` giving us all elements up to the second position.
+We can see that all the indexing operations we pereviously learned about are still valid. `my_array[0]` gives us the value from the zeroth position, `my_array[2]` from the second position, and `my_array[-1]` from the last position. We can also apply slicing operations, with `my_array[2:4]` giving us the second and the third position (remember that when slicing, the start is included, but the end is excluded), and `my_array[:3]` giving us all elements up to the second position.
 
-Similarly, we can also index over two-dimensional arrays by separating the indices whithin the square brackets with commas:
+Similarly, we can also index over two-dimensional arrays by separating the indices within the square brackets with commas:
 
 
-```{code-cell}
+```{code-cell} ipython3
 my_array = np.array([[1,2,3],
                     [7,8,9]])
 print(my_array)
@@ -147,8 +138,7 @@ print(my_array[1,1:])
 Here, `my_array[0,0]` gives us the first item in the array, `my_array[1,2]` gives us the item at position two in the first row, `my_array[:,0]` gives us the entire first column and `my_array[1,1:]` gives us all items from the first row starting with the value at index 1.
 
 
-```{admonition} Important
-:class: important
+```{important} Important
 
 When indexing two-dimensional arrays, the first dimension always corresponds to the rows, and the second dimension corresponds to the columns!
 
@@ -160,11 +150,11 @@ So e.g. `my_array[1,2]` would give you the item in row 1, column 2. As a visuali
 | **Row 1**  | my_array[1,0] | my_array[1,1] | my_array[1,2] |
 ```
 
-### Indexing whith conditionals
+### Indexing with conditionals
 
 An alternative way of indexing is to use *logical oparations*. This allows us to chose values from an array, only if they fulfil specific kind of conditions. For example, if we want to get all numbers in an array which are larger than 0, we can use the following expressions:
 
-```{code-cell}
+```{code-cell} ipython3
 my_array = np.array([[0,2,0],
                     [0,8,9]])
 larger_than_zero = my_array > 0
@@ -173,7 +163,7 @@ print(larger_than_zero)
 
 You can see that the result are not yet the values which are larger than zero themselves, but a *boolean* array which tells us a which positions in the array our condition is `True`or `False`. We can then use this boolean array for indexing to extract the specific values from the array:
 
-```{code-cell}
+```{code-cell} ipython3
 print(my_array[larger_than_zero])
 ```
 
@@ -184,15 +174,14 @@ This can be useful if you for example want to calculate some statistics over an 
 Another useful feature of arrays is that you can apply a variety of mathematical operations on them. For example, you can add and substract numbers from all elements in the array, or multiply/divide all elements in the array:
 
 
-```{code-cell}
+```{code-cell} ipython3
 my_array = np.array([[1,2,3],
                      [4,5,6]])
 print(my_array + 3)
 print(my_array * 2)
 ```
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 The numpy library is the tool of choice when dealing with n-dimensional arrays in Python.
 ```

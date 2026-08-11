@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 13.1 Stepwise Functions
@@ -18,7 +10,7 @@ kernelspec:
 
 We will use the Mid-Atlantic Wage Dataset from the [ISLP library](https://islp.readthedocs.io/en/latest/) to showcase fitting stepwise functions. Our research goal is to predict `wage` for different `age` ranges by taking the average wage within each bin as our estimate for prediction.
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -37,16 +29,16 @@ ax.set_title("ISLP data: Wage distribution across age");
 
 ## Fitting a stepwise function
 
-To fit a stepwise funtion, we first need to get cut points for our predictor variable `age`. For example, we can decide to split our data into 4 equal parts:
+To fit a stepwise function, we first need to get cut points for our predictor variable `age`. For example, we can decide to split our data into 4 equal parts:
 
-```{code-cell}
+```{code-cell} ipython3
 bins = pd.cut(df['age'], 4)
 print(bins)
 ```
 
 The output provides us with intervals for evenly sized bins of `age`. We can use the upper value of each interval to get cut points for our stepwise function. We then use the `dmatrix` function to create a design matrix:
 
-```{code-cell}
+```{code-cell} ipython3
 transformed_age = patsy.dmatrix("bs(age, knots=(33.5, 49, 64.5), degree=0)",
                                 data={"age": df['age']},
                                 return_type='dataframe')
@@ -58,7 +50,7 @@ When you specify `"bs(age, ...)"`, you tell `dmatrix` to transform age using B-s
 
 Once we have the age in our design matrix, we can fit the model like a normal categorical regression model:
 
-```{code-cell}
+```{code-cell} ipython3
 model = sm.OLS(df['wage'], transformed_age)
 model_fit = model.fit()
 
@@ -74,7 +66,7 @@ bin 1 equals to $23.93k per year.
 - The wage difference in bin 3 (i.e., between 49 and 64.5 years) as compared with bin 1 equals to $23.89k per year.
 - The wage difference in bin 4 (i.e., between 64.5 and 80.1 years) as compared with bin 1 equals to $7.64k per year.
 
-The second and the third bin differ significantly from the first bin. The third bin does not differ significantly from the first one (p = .126)
+The second and the third bin differ significantly from the first bin. The **fourth** bin does not differ significantly from the first one (p = .126)
 
 In summary, the model suggests that wages vary with age, but the relationship is not the same across all age groups. Wages appear to increase with age up to a point, but the increase is not statistically significant for the oldest age group in this sample. 
 
@@ -82,7 +74,7 @@ In summary, the model suggests that wages vary with age, but the relationship is
 
 We can also plot the model. Note that bin 2 and 3 have very similar estimates which leads to an indistinguishable difference between $Y$ values in the second bin and $Y$ values in the third.
 
-```{code-cell}
+```{code-cell} ipython3
 # Plot the model
 fig, ax = plt.subplots(figsize=(8,5))
 

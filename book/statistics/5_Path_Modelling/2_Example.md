@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 9.2 Application
@@ -39,7 +31,7 @@ width: 80%
 
 The data is provided in the book. As in the previous session, we can either load it from the local files (if you downloaded the entire book), or from the GitHub link. We will again use the second version as this would also work in Google Colab:
 
-```{code-cell}
+```{code-cell} ipython3
 import pandas as pd
 import semopy
 import matplotlib.pyplot as plt
@@ -50,14 +42,14 @@ print(df.head())
 
 We can see that the columns to not have names, so we assign them based on knowledge we have about the data:
 
-```{code-cell}
+```{code-cell} ipython3
 df.columns = ["SubjHealth","SubjHealthChange", "PhysicHealth", "NrDoctorApp", "FunctHealth", "FunctHealth1", "FunctHealth2"]
 print(df.head())
 ```
 
 Great, the DataFrame now looks like it is ready for use! We can continue with defining and fitting the model:
 
-```{code-cell}
+```{code-cell} ipython3
 # Define the model
 model = semopy.Model("""
                      SubjHealth ~ PhysicHealth + FunctHealth
@@ -71,7 +63,7 @@ print(info)
 
 We can then inspect the results:
 
-```{code-cell}
+```{code-cell} ipython3
 estimates = model.inspect(std_est= True)
 print(estimates)
 ```
@@ -79,14 +71,14 @@ This output provides a detailed breakdown of the parameter estimates from the mo
 
 Or the fit statistics:
 
-```{code-cell}
+```{code-cell} ipython3
 stats = semopy.calc_stats(model)
 print(stats)
 ```
 
 Finally, we can also visualise the model:
 
-```{code-cell}
+```{code-cell} ipython3
 semopy.semplot(model, "figures/health.png", std_ests=True) # plot standardized estimates
 ```
 
@@ -175,8 +167,7 @@ Model evaluation should focus primarily on parameter estimates and theoretical p
 - **Large Unexplained Variance**: Additional predictors (e.g., social factors) could enhance the model.
 
 
-```{admonition} Caution
-:class: warning
+```{warning} Caution
 While the model demonstrates significant and meaningful relationships, the almost perfect fit (e.g., Chi-Square value close to zero and very high p-value) primarily reflects the simplicity and low degrees of freedom of the model rather than clear evidence of overfitting.
 
 - In small or nearly just-identified models, global fit indices tend to be inflated and should not be overinterpreted.

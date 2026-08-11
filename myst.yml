@@ -1,0 +1,178 @@
+# Jupyter Book 2 configuration
+# Reference: https://mystmd.org/guide/frontmatter
+version: 1
+
+project:
+  id: psy111-multivariate-statistics
+  description: >-
+    Course materials for the psy111 seminar of the Neurocognitive Psychology
+    Master's programme at Carl von Ossietzky Universität Oldenburg.
+  copyright: "2025"
+  authors:
+    - name: Micha Burkhardt
+      affiliation: Carl von Ossietzky Universität Oldenburg
+  github: https://github.com/mibur1/psy111
+
+  # Enables the "launch in Jupyter" menu on notebook pages
+  jupyter: true
+
+  bibliography:
+    - book/misc/references.bib
+
+  # Files that are not part of the book
+  exclude:
+    - example_script.py
+    - book/misc/templates.md
+    - README.md
+    - CHANGELOG.md
+
+  # Hover definitions for recurring acronyms
+  abbreviations:
+    GLM: General Linear Model
+    OLS: Ordinary Least Squares
+    EFA: Exploratory Factor Analysis
+    CFA: Confirmatory Factor Analysis
+    SEM: Structural Equation Modelling
+    ML: Maximum Likelihood
+    ICC: Intraclass Correlation Coefficient
+    AIC: Akaike Information Criterion
+    BIC: Bayesian Information Criterion
+    RMSEA: Root Mean Square Error of Approximation
+    CFI: Comparative Fit Index
+    TLI: Tucker-Lewis Index
+    SRMR: Standardised Root Mean Square Residual
+    VIF: Variance Inflation Factor
+    IDE: Integrated Development Environment
+
+  toc:
+    - file: book/misc/overview.md
+
+    - title: Introduction to Python
+      children:
+        - file: book/introduction/1_Setup/0_Introduction.md
+          children:
+            - file: book/introduction/1_Setup/1_Installation.md
+            - file: book/introduction/1_Setup/2_Usage.md
+            - file: book/introduction/1_Setup/3_Exercises.ipynb
+        - file: book/introduction/2_Data_structures/0_Introduction.md
+          children:
+            - file: book/introduction/2_Data_structures/1_Variables and data types.md
+            - file: book/introduction/2_Data_structures/2_Built-in types.md
+            - file: book/introduction/2_Data_structures/3_Collections.md
+            - file: book/introduction/2_Data_structures/4_Exercises.ipynb
+        - file: book/introduction/3_Control_flow/0_Introduction.md
+          children:
+            - file: book/introduction/3_Control_flow/1_Conditionals.md
+            - file: book/introduction/3_Control_flow/2_Loops.md
+            - file: book/introduction/3_Control_flow/3_Exercises.ipynb
+        - file: book/introduction/4_Objects/0_Introduction.md
+          children:
+            - file: book/introduction/4_Objects/1_Everything_is_an_object.md
+            - file: book/introduction/4_Objects/2_Namespaces and imports.md
+            - file: book/introduction/4_Objects/3_Functions.md
+            - file: book/introduction/4_Objects/4_Classes.md
+            - file: book/introduction/4_Objects/5_Exercises.ipynb
+        - file: book/introduction/5_Scientific_Comp/0_Introduction.md
+          children:
+            - file: book/introduction/5_Scientific_Comp/1_numpy.md
+            - file: book/introduction/5_Scientific_Comp/2_pandas.md
+            - file: book/introduction/5_Scientific_Comp/3_matplotlib.md
+            - file: book/introduction/5_Scientific_Comp/4_Exercises.ipynb
+
+    - title: Multivariate Statistics
+      children:
+        - file: book/statistics/introduction.md
+        - file: book/statistics/1_GLM/0_Introduction.md
+          children:
+            - file: book/statistics/1_GLM/1_Multiple linear regression.md
+            - file: book/statistics/1_GLM/2_Correlations.md
+            - file: book/statistics/1_GLM/3_Partial Correlation.md
+            - file: book/statistics/1_GLM/4_Exercises.ipynb
+        - file: book/statistics/2_Categorical_Reg/0_Introduction.md
+          children:
+            - file: book/statistics/2_Categorical_Reg/1_Dummy Coding.md
+            - file: book/statistics/2_Categorical_Reg/2_Effects Coding.md
+            - file: book/statistics/2_Categorical_Reg/3_Contrast Coding.md
+            - file: book/statistics/2_Categorical_Reg/4_Exercises.ipynb
+        - file: book/statistics/3_Logistic_Reg/0_Introduction.md
+          children:
+            - file: book/statistics/3_Logistic_Reg/1_Logistic_regression.md
+            - file: book/statistics/3_Logistic_Reg/2_Model_evaluation.md
+            - file: book/statistics/3_Logistic_Reg/3_Exercises.ipynb
+        - file: book/statistics/4_Moderated_Reg/0_Introduction.md
+          children:
+            - file: book/statistics/4_Moderated_Reg/1_Centering.md
+            - file: book/statistics/4_Moderated_Reg/2_Moderated_regression.md
+            - file: book/statistics/4_Moderated_Reg/3_Exercises.ipynb
+        - file: book/statistics/5_Path_Modelling/0_Introduction.md
+          children:
+            - file: book/statistics/5_Path_Modelling/1_Semopy.md
+            - file: book/statistics/5_Path_Modelling/2_Example.md
+            - file: book/statistics/5_Path_Modelling/3_Exercises.ipynb
+        - file: book/statistics/6_EFA/0_Introduction.md
+          children:
+            - file: book/statistics/6_EFA/1_Example.md
+            - file: book/statistics/6_EFA/2_Summary.md
+            - file: book/statistics/6_EFA/3_Exercises.ipynb
+        - file: book/statistics/7_CFA_SEM/0_Introduction.md
+          children:
+            - file: book/statistics/7_CFA_SEM/1_CFA.md
+            - file: book/statistics/7_CFA_SEM/2_SEM.md
+            - file: book/statistics/7_CFA_SEM/3_Summary.md
+            - file: book/statistics/7_CFA_SEM/4_Exercises.ipynb
+        - file: book/statistics/8_Polynomial_Reg/0_Introduction.md
+          children:
+            - file: book/statistics/8_Polynomial_Reg/1_Polynomial_Reg.md
+            - file: book/statistics/8_Polynomial_Reg/2_Centering_Predictors.md
+            - file: book/statistics/8_Polynomial_Reg/3_Exercises.ipynb
+        - file: book/statistics/9_Spline_Reg/0_Introduction.md
+          children:
+            - file: book/statistics/9_Spline_Reg/1_Stepwise_Functions.md
+            - file: book/statistics/9_Spline_Reg/2_Regression_Splines.md
+            - file: book/statistics/9_Spline_Reg/3_Exercises.ipynb
+        - file: book/statistics/10_Multilevel_Models/0_Introduction.md
+          children:
+            - file: book/statistics/10_Multilevel_Models/1_Multilevel_Reg.md
+            - file: book/statistics/10_Multilevel_Models/2_Exercises.ipynb
+
+    #- title: Lecture Materials
+    #  children:
+    #    - file: book/lecture/0_overview.md
+    #    - file: book/lecture/session_01.md
+    #    - file: book/lecture/session_02.md
+    #    - file: book/lecture/session_03.md
+
+    - title: Additional Materials
+      children:
+        - file: book/misc/reading.md
+        - file: book/solutions/solutions.md
+          children:
+            - file: book/solutions/2_Data.ipynb
+            - file: book/solutions/3_Control_flow.ipynb
+            - file: book/solutions/4_Objects.ipynb
+            - file: book/solutions/5_Scientific_comp.ipynb
+            - file: book/solutions/6_GLM.ipynb
+            - file: book/solutions/7_Categorical_reg.ipynb
+            - file: book/solutions/8_Logistic_reg.ipynb
+            - file: book/solutions/9_Moderated_reg.ipynb
+            - file: book/solutions/10_Path_modelling.ipynb
+            - file: book/solutions/11_EFA.ipynb
+            - file: book/solutions/12_CFA_SEM.ipynb
+            - file: book/solutions/13_Polynomial_reg.ipynb
+            - file: book/solutions/14_Splines.ipynb
+            - file: book/solutions/15_Multilevel_models.ipynb
+        - file: book/misc/references.md
+
+site:
+  template: book-theme
+  title: Multivariate Statistics with Python
+  options:
+    logo: logo.png
+    logo_dark: logo.png
+    favicon: logo.png
+    style: _static/custom.css
+    # Keep the folder structure in the URLs. Required here because many
+    # chapters share filenames such as "0_Introduction" and "3_Exercises".
+    folders: true
+    outline_maxdepth: 3
+    hide_authors: true

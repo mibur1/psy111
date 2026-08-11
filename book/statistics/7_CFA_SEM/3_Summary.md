@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # 11.3 Summary
 
@@ -22,7 +9,7 @@ This section summarises the key steps and syntax for specifying, fitting, inspec
 
 In SEM, models are defined using a string-based syntax that separates the **measurement model** (relationships between observed and latent variables) from the **structural model** (relationships between latent variables).
 
-```{code-block}
+```python
 desc = '''# Measurement model
           latent_factor1 =~ x1 + x2 + x3
           latent_factor2 =~ x4 + x5 + x6
@@ -39,7 +26,7 @@ This example specifies two latent variables, each measured by three observed var
 
 Latent variables can themselves be indicators of a higher-order latent variable:
 
-```{code-block}
+```python
 desc = '''# First-order measurement model
           latent_factor1 =~ x1 + x2 + x3
           latent_factor2 =~ x4 + x5 + x6
@@ -54,7 +41,7 @@ desc = '''# First-order measurement model
 
 Variances and covariances are specified using the `~~` operator:
 
-```{code-block}
+```python
 desc = '''latent_factor1 =~ x1 + x2 + x3
           latent_factor2 =~ x4 + x5 + x6
 
@@ -64,7 +51,7 @@ desc = '''latent_factor1 =~ x1 + x2 + x3
 ```
 
 Covariances can be fixed to zero to impose independence assumptions:
-```{code-block}
+```python
 latent_factor1 ~~ 0*latent_factor2
 ```
 ---
@@ -79,7 +66,7 @@ latent_factor1 ~~ 0*latent_factor2
 
 ## Fitting a Model
 
-```{code-block}
+```python
 model = semopy.Model(desc)
 model_fit = model.fit(data)
 ```
@@ -88,7 +75,7 @@ model_fit = model.fit(data)
 
 ## Extracting Model Estimates
 
-```{code-block}
+```python
 estimates = model.inspect(std_est=True)
 print(estimates)
 ```
@@ -97,7 +84,7 @@ print(estimates)
 
 ## Extracting Fit Measures
 
-```{code-block}
+```python
 stats = semopy.calc_stats(model)
 print(stats.T)
 ```
@@ -106,14 +93,13 @@ print(stats.T)
 
 ## Visualising the Model
 
-```{code-block}
+```python
 semopy.semplot(model, plot_covs=True, std_ests=True, filename='data/plot.pdf')
 ```
 
 ---
 
-```{admonition} Key Takeaways
-:class: note
+```{note} Key Takeaways
 
 - CFA focuses on the measurement model; SEM extends CFA by adding directional relationships between latent variables.
 - SEM models consist of a measurement model and a structural model.

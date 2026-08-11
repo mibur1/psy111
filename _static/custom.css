@@ -1,11 +1,57 @@
-/* Custom CSS */
-:root {
-    --header-font-color: #ffffff;
-    --header-bg-color: #3b3b3b;
+/* ------------------------------------------------------------------
+   psy111 - custom styling on top of the MyST book theme
+   ------------------------------------------------------------------ */
+
+/* --- Table of contents on the landing page -------------------------
+   The {tableofcontents} directive always emits the project root as its
+   first entry, which on the landing page links to the page you are
+   already on. Matching on position rather than on href keeps this
+   working under BASE_URL (GitHub Pages serves from /psy111).          */
+.toc-hide-self > ul > li:first-child {
+  display: none;
 }
 
-.text-center.bg-light,
-.text-center.bg-dark {
-    color: var(--header-font-color) !important;
-    background-color: var(--header-bg-color) !important;
+/* --- jupyterquiz ---------------------------------------------------
+   The library ships light-mode colours only; make it legible in dark. */
+html.dark .Answer,
+html.dark .MultipleAnswer {
+  background-color: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #475569 !important;
+}
+
+html.dark .Answer:hover,
+html.dark .MultipleAnswer:hover {
+  background-color: #334155 !important;
+}
+
+html.dark .Feedback {
+  color: #cbd5e1 !important;
+}
+
+.Quiz {
+  margin: 1.25rem 0;
+}
+
+/* --- Plotly figures ------------------------------------------------ */
+.js-plotly-plot {
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* Hide the toolbar Plotly fades in on hover (zoom, pan, autoscale,
+   logo). Nothing is lost: drag still zooms, double-click still resets,
+   3D plots still rotate. Delete this rule to bring the toolbar back.   */
+.js-plotly-plot .modebar-container {
+  display: none !important;
+}
+
+/* --- Tables --------------------------------------------------------
+   Several chapters use wide comparison tables. Let them scroll rather
+   than forcing the whole page to scroll horizontally.                 */
+.myst-table,
+table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
 }

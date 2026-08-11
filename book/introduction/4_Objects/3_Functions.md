@@ -1,22 +1,14 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 4.3 Functions
 
 Functions are essential in programming as they allow you to encapsulate and reuse code efficiently. By breaking down complex problems into smaller, manageable parts, functions enhance code organization and readability. As we already saw you can use built-in functions or import them from specialized modules. Quite often it is also useful for you to *define* your own functions. In Python, this can be done by using the `def` keyword followed by a function name:
 
-```{code-cell}
+```{code-cell} ipython3
 def my_function():
   print("I'm a custom function!")
 
@@ -27,7 +19,7 @@ my_function() # use the function
 
 Functions can accept *arguments* (or parameters) that provide inputs or modify their behaviour. For example, if we want to add two numbers, we can pass both of them as arguments and further *return* the result to the user:
 
-```{code-cell}
+```{code-cell} ipython3
 def add(a, b):
   return a + b
 
@@ -41,7 +33,7 @@ Python functions can have two different kinds of arguments: *positional* argumen
 
 As an example, let's create a function that adds random gaussian noise to a given input `x`:
 
-```{code-cell}
+```{code-cell} ipython3
 import random
 
 def add_noise(x, mu=0, sd=1):
@@ -71,25 +63,25 @@ def add_noise(x, mu=0, sd=1):
 
 If we now call this function by just providing a value for `x` it will still work as expected by using a mean of 0 and a standard deviation of 1 to calculate and add the noise.
 
-```{code-cell}
+```{code-cell} ipython3
 add_noise(5)
 ```
 
 If you decide you need different noise with a standard deviation of 5, you can simply add this new value. As keyword arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
 
-```{code-cell}
+```{code-cell} ipython3
 add_noise(5, sd=3)
 ```
 
 You can also specify all arguments (including the positional one) by name (in this case the order of `sd` and `mu` doesnt matter)
 
-```{code-cell}
+```{code-cell} ipython3
 add_noise(x=5, sd=3, mu=2)
 ```
 
 or not use any name at all
 
-```{code-cell}
+```{code-cell} ipython3
 add_noise(5, 3, 2)
 ```
 

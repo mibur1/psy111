@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 6.3  Partial Correlation
@@ -20,7 +12,7 @@ Partial correlation is a statistical measure used to determine the relationship 
 
 We will use the `pingouin` package for our partial correlation analysis and apply it to the famous *Iris* dataset, which provides data on the physical characteristics of the iris flower. Our goal is to investigate the relationship between petal length and petal width, while controlling for sepal length
 
-```{code-cell}
+```{code-cell} ipython3
 # Import the necessary libraries
 import seaborn as sns
 import pingouin as pg
@@ -47,8 +39,7 @@ The output includes several important metrics.
 
 In conclusion, the partial correlation analysis confirms a strong positive linear relationship between petal length and petal width, independent of the effect of sepal length.
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 - Partial correlation measures the relationship between two variables while controlling for the effect of a third variable.
 - The `pingouin` package offers a nice and easy way for calculating partial correlations.
 ```

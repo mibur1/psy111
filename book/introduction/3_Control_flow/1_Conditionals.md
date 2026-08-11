@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 3.1 Conditionals
@@ -20,7 +12,7 @@ Conditional statements (if-else statements) are essential for writing programs t
 
 Conditionals work like everyday decisions. Imagine you’re deciding what to wear based on the weather. You check if it’s raining, and if it is, you wear a raincoat. This is the essence of an `if` statement: it allows a program to choose an action based on whether a condition is true or false:
 
-```{code-cell}
+```{code-cell} ipython3
 weather = "rainy"
 
 if weather == "rainy":
@@ -31,7 +23,7 @@ Here, we’re saying: *“If the weather is rainy, then take an umbrella.”* If
 
 However, conditionals often need a backup plan if the initial condition isn’t met. Continuing the weather example, what if it’s not raining? You might want to say, *“If it’s not raining, wear sunglasses.”* This is where `else` comes in:
 
-```{code-cell}
+```{code-cell} ipython3
 weather = "sunny"
 
 if weather == "rainy":
@@ -44,7 +36,7 @@ else:
 
 Real decisions often involve more than two choices. Let’s say you want to decide what to wear based on three types of weather: rain, snow, or sun. You could use an `if` for the first option, `elif` (short for “else if”) for the second, and an `else` for anything else (so this is always your *fallback*, covering anything not included in your other statements):
 
-```{code-cell}
+```{code-cell} ipython3
 weather = "snowy"
 
 if weather == "rainy":
@@ -59,7 +51,7 @@ else:
 
 Sometimes, a decision depends on multiple factors. For example, if you’re deciding to go for a run, you might only go if the weather is sunny and you have enough time. This uses both conditions combined with `and`:
 
-```{code-cell}
+```{code-cell} ipython3
 weather = "sunny"
 time = "enough"
 
@@ -73,7 +65,7 @@ Now, both `weather == "sunny"` and `time == "enough"` must be true to go for a r
 
 There are times when you want to act if either of two conditions is true. For instance, if you’ll go out if it’s either sunny or warm, you can use `or` in the conditional:
 
-```{code-cell}
+```{code-cell} ipython3
 weather = "cloudy"
 temperature = "warm"
 
@@ -85,8 +77,7 @@ else:
 
 Now, as long as it’s sunny or warm, you’ll go outside. If neither condition is true, you’ll stay inside.
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 - `if`: "If this condition is true, do something."
 - `else`: "Otherwise, do something else."

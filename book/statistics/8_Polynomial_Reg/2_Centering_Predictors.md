@@ -1,15 +1,7 @@
 ---
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
 kernelspec:
-  display_name: Python 3
-  language: python
   name: python3
+  display_name: Python 3
 ---
 
 # 12.2 Centering Predictors
@@ -42,8 +34,7 @@ Without centering, the linear coefficient $\beta_1$ represents the rate of chang
 
 By centering the predictor, we redefine the zero point of the scale such that $x = 0$ corresponds to the *mean* of the predictor. As a result, $\beta_1$ is interpreted as the rate of change of the outcome at the average value of the predictor.
 
-```{admonition} Note
-:class: note
+```{note} Note
 
 In our example, a study time of zero hours per day is theoretically possible. However, the observed data starts at two hours, making an interpretation at zero hours questionable.
 ```
@@ -122,8 +113,7 @@ print(model_fit.summary())
   Centering the predictor does not change the explained variance, fitted values, or residuals of the model. It only alters the numerical values and interpretation of the regression coefficients.
 
 
-```{admonition} Summary
-:class: tip
+```{tip} Summary
 
 Centering predictors is a simple but powerful technique that improves the interpretability of regression coefficients in polynomial models. By redefining the zero point of the predictor scale, coefficient interpretations become directly tied to meaningful and observed values of the data, without changing the quality of the model fit.
 ```

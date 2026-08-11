@@ -1,16 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.11.5
-kernelspec:
-  display_name: Python 3
-  language: python
-  name: python3
----
 
 # 1.1 Installation
 
@@ -33,15 +20,15 @@ You can download and install Conda trough Miniforge as described in the the [doc
 
 Open a terminal in the folder where your `.sh` script is located and run the script (*hint: after typing `bash Miniforge3` you should be able to hit `Tab` to autocomplete the command*):
 
-```
+```bash
 bash Miniforge3-$(uname)-$(uname -m).sh
 ```
 
-After a succesful installation, simply open a new terminal. You should now see a `(base)` in the beginning of each line, which tells you that the installation was succesful.
+After a successful installation, simply open a new terminal. You should now see a `(base)` in the beginning of each line, which tells you that the installation was successful.
 
 **Windows**
 
-On Windows, simply run the `.exe` file and install everything. We also recommend you to check the **"Add Miniforge3 to my PATH environment variable"** checkbox during installation. This will enable you to use `conda` from any terminal, and not just `Miniforge Prompt`, which will be installed in any case. Once the installation is finished, depending on your choice during the installation, you can either open your standard terminal or the `Miniforge Prompt`. In any case, you should then be greeted with a `(base)` in the beginning of the line, which means the installation was succesful and you are now in the base environment.
+On Windows, simply run the `.exe` file and install everything. We also recommend you to check the **"Add Miniforge3 to my PATH environment variable"** checkbox during installation. This will enable you to use `conda` from any terminal, and not just `Miniforge Prompt`, which will be installed in any case. Once the installation is finished, depending on your choice during the installation, you can either open your standard terminal or the `Miniforge Prompt`. In any case, you should then be greeted with a `(base)` in the beginning of the line, which means the installation was successful and you are now in the base environment.
 
 
 ## Visual Studio Code
@@ -49,8 +36,7 @@ On Windows, simply run the `.exe` file and install everything. We also recommend
 In addition to Miniforge, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
 
 
-```{admonition} Using Python through a Environment Manager
-:class: tip
+```{tip} Using Python through a Environment Manager
 
 By using an environment manager such as Miniforge/Conda you can:
 
