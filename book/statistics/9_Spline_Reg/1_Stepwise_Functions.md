@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 13.1 Stepwise Functions
+# 14.1 Stepwise Functions
 
 ## The Dataset
 

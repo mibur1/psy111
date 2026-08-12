@@ -1,5 +1,5 @@
 
-# Scientific Computing
+# 🔬 Scientific Computing
 
 In the past weeks, we covered essential Python concepts like control flow, functions, and classes. Now, we’ll dive into practical applications, focusing on key libraries for scientific computing, which are crucial for working with data in fields like EEG, fMRI, behavioral analysis, and questionnaires.
 

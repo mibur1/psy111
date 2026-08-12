@@ -1,5 +1,5 @@
 
-# 9.1 The semopy package
+# 10.1 The semopy package
 
 The `semopy` (**S**tructural **E**quation **M**odels **O**ptimization in **Py**thon) package is an excellent tool for Structural Equation Modeling (SEM) and offers a wide range of intuitive modeling options. With Semopy, you can easily define and estimate complex relationships between observed and latent variables, making it ideal for SEM tasks.
 

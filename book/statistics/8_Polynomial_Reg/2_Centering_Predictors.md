@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 12.2 Centering Predictors
+# 13.2 Centering Predictors
 
 In regression modelling, a *meaningful zero* in a predictor variable is one for which the value zero has a sensible substantive interpretation. For example, a value of zero hours studied per day is, in principle, meaningful, whereas a value of zero years of age is not meaningful in a sample consisting only of adults.
 

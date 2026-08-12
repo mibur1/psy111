@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 6.1 Dummy Coding
+# 7.1 Dummy Coding
 
 Dummy coding enables the comparison of each category of a categorical variable to a reference category, which serves as the baseline for measuring the effects of the other categories. In this coding scheme, the reference category is assigned a value of 0 (corresponding to the intercept), while the dummy variables for the remaining categories are assigned values of either 1 or 0. 
 

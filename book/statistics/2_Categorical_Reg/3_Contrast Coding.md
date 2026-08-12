@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 6.3 Contrast Coding
+# 7.3 Contrast Coding
 
 Contrast coding allows us to define and test custom comparisons, making it more flexible than methods like dummy or effects coding. By specifying contrasts, we can address specific research questions, such as comparing specific groups. This approach is particularly useful when we want to investigate targeted hypotheses that are not straightforwardly addressed by other coding schemes.
 

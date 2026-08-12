@@ -1,5 +1,5 @@
 
-# General Linear Model
+# 📈 General Linear Model
 
 In the first statistics lecture, you were introduced to the General Linear Model (GLM), a powerful framework for understanding relationships between variables. Unlike traditional hypothesis testing, where the goal is simply to reject or accept a null hypothesis, GLMs offer a more flexible and nuanced approach. For example, how can we assess the impact of physical activity on diabetes risk while accounting for confounding factors like age or genetics? GLMs help us answer such complex questions.
 

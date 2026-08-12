@@ -1,5 +1,5 @@
 
-# Categorical Regression
+# 🏷️ Categorical Regression
 
 In our previous seminar, we covered Generalized Linear Models (GLMs), partial correlation, and their implementation in Python. Today, we will incorporate categorical variables, such as male/female or patients/controls. As discussed in the lecture, selecting an appropriate coding scheme is essential for addressing these research questions. We will focus on the following four coding schemes from the lecture:
 

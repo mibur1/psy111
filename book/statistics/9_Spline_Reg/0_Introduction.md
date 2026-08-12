@@ -1,5 +1,5 @@
 
-# Spline Regression
+# 📐 Spline Regression
 
 In the case of highly non-linear associations one might use local (non-parametric) regression models. These include stepwise functions, regression splines, and local regression models. The general idea of these non-linear models is to break the observed range of $X$ into a series of shorter bins and fit different equations across these spans/bins. 
 

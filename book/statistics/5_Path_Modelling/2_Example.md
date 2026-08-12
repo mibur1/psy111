@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 9.2 Application
+# 10.2 Application
 
 Now, let’s apply path modeling to the real-world example. As explained in the introduction, we will investigate the relationships between physical health, functional health, and subjective health, as proposed by Whitelaw and Liang (1991).
 

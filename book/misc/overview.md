@@ -21,7 +21,7 @@ A comprehensive introduction to the Python programming language.
 :::
 
 :::{card} 📊 Multivariate Statistics
-:link: ../statistics/introduction.md
+:link: ../statistics/1_GLM/0_Introduction.md
 
 The statistical models covered in the lecture.
 :::
@@ -29,11 +29,5 @@ The statistical models covered in the lecture.
 ::::
 
 ```{tip}
-Code cells can be copied with the button in their top-right corner, and notebook pages can be downloaded or opened in Colab via the icons at the top of the page.
-```
-
-## Table of contents
-
-```{tableofcontents}
-:class: toc-hide-self
+Code cells can be copied with the button in their top-right corner, and notebook pages can be downloaded or opened in Colab via the download icon at the top of the page.
 ```

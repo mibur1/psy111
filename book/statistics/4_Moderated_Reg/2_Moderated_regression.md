@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 8.2 Moderated Regression
+# 9.2 Moderated Regression
 
 Moderated regression models are used to understand whether and how the relationship between two variables (a predictor $X_1$ and an outcome $Y$) changes at different levels of a third variable (the moderator $X_2$). This is accomplished by including an interaction term $(X_1*X_2)$ in the regression model:
 

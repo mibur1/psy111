@@ -4,9 +4,9 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 10.1. Application
+# 11.1 Application
 
-To apply EFA we will use the `statsmodels` package {cite}`seabold2010statsmodels`, which you already know from the previous sessions. Its factor analysis tools live in `statsmodels.multivariate.factor`, and you can read through the [official documentation](https://www.statsmodels.org/stable/generated/statsmodels.multivariate.factor.Factor.html) for further details.
+To apply EFA we will use the `statsmodels` package, which you already know from the previous sessions. Its factor analysis tools live in `statsmodels.multivariate.factor`, and you can read through the [official documentation](https://www.statsmodels.org/stable/generated/statsmodels.multivariate.factor.Factor.html) for further details.
 
 When performing EFA, our objective is to find the optimal number of factors that effectively explain the relationships among a set of observed variables. The main steps involved in this process are:
 

@@ -1,5 +1,5 @@
 
-# Logistic Regression
+# ⚖️ Logistic Regression
 
 In this session, we will focus on **logistic regression**, a method specifically designed to predict binary categorical outcomes (e.g., *symptom present/absent* or *task correct/incorrect*) based on quantitative independent variables. As discussed in previous lectures, linear regression is unsuitable for such tasks because it assumes a continuous dependent variable. Logistic regression addresses this limitation effectively.
 

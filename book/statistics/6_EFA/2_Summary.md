@@ -1,5 +1,5 @@
 
-# 10.2 Summary
+# 11.2 Summary
 
 Summed up, running an EFA with `statsmodels` follows the same fit-then-inspect workflow as the other models in this book. Please read through the [documentation](https://www.statsmodels.org/stable/generated/statsmodels.multivariate.factor.Factor.html) for a detailed overview.
 

@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 13.2 Regression Splines
+# 14.2 Regression Splines
 
 To fit regression splines, we continue with the same data as in the previous section. Again, we want to predict `wage` from `age` in the Mid-Atlantic Wage Dataset.
 

@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 8.1 Centering Predictors
+# 9.1 Centering Predictors
 
 As we mentioned many times before, it is important to always look at your data! So before we begin with the analysis, lets get a better understanding of the data. For convenience, we create a smaller subset of the main DataFrame:
 

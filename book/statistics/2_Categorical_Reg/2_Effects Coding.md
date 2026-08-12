@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 6.2 Effects Coding
+# 7.2 Effects Coding
 
 ## Unweighted Effects Coding
 

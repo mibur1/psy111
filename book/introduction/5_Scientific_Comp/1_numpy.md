@@ -17,7 +17,7 @@ Python includes well known data types such as:
 - Boolean values: True/False
 - *Empty* value: None
 
-The most important built-in data strucutures are:
+The most important built-in data structures are:
 - Lists: [item1, item2, ...]
 - Tuples: (item1, item2, ...)
 - Dictionaries: {"key": value(s)}

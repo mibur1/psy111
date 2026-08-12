@@ -7,14 +7,11 @@ project:
   description: >-
     Course materials for the psy111 seminar of the Neurocognitive Psychology
     Master's programme at Carl von Ossietzky Universität Oldenburg.
-  copyright: "2025"
+  copyright: "2026"
   authors:
     - name: Micha Burkhardt
       affiliation: Carl von Ossietzky Universität Oldenburg
   github: https://github.com/mibur1/psy111
-
-  # Enables the "launch in Jupyter" menu on notebook pages
-  jupyter: true
 
   bibliography:
     - book/misc/references.bib
@@ -46,7 +43,6 @@ project:
 
   toc:
     - file: book/misc/overview.md
-
     - title: Introduction to Python
       children:
         - file: book/introduction/1_Setup/0_Introduction.md
@@ -81,7 +77,6 @@ project:
 
     - title: Multivariate Statistics
       children:
-        - file: book/statistics/introduction.md
         - file: book/statistics/1_GLM/0_Introduction.md
           children:
             - file: book/statistics/1_GLM/1_Multiple linear regression.md
@@ -148,20 +143,33 @@ project:
         - file: book/solutions/solutions.md
           children:
             - file: book/solutions/2_Data.ipynb
+              hidden: true
             - file: book/solutions/3_Control_flow.ipynb
+              hidden: true
             - file: book/solutions/4_Objects.ipynb
+              hidden: true
             - file: book/solutions/5_Scientific_comp.ipynb
+              hidden: true
             - file: book/solutions/6_GLM.ipynb
+              hidden: true
             - file: book/solutions/7_Categorical_reg.ipynb
+              hidden: true
             - file: book/solutions/8_Logistic_reg.ipynb
+              hidden: true
             - file: book/solutions/9_Moderated_reg.ipynb
+              hidden: true
             - file: book/solutions/10_Path_modelling.ipynb
+              hidden: true
             - file: book/solutions/11_EFA.ipynb
+              hidden: true
             - file: book/solutions/12_CFA_SEM.ipynb
+              hidden: true
             - file: book/solutions/13_Polynomial_reg.ipynb
+              hidden: true
             - file: book/solutions/14_Splines.ipynb
+              hidden: true
             - file: book/solutions/15_Multilevel_models.ipynb
-        - file: book/misc/references.md
+              hidden: true
 
 site:
   template: book-theme

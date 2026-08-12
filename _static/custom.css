@@ -39,11 +39,25 @@ html.dark .Feedback {
   overflow: hidden;
 }
 
-/* Hide the toolbar Plotly fades in on hover (zoom, pan, autoscale,
-   logo). Nothing is lost: drag still zooms, double-click still resets,
-   3D plots still rotate. Delete this rule to bring the toolbar back.   */
+/* Hide the toolbar Plotly fades in on hover (zoom, pan, autoscale, logo).   */
 .js-plotly-plot .modebar-container {
   display: none !important;
+}
+
+/* --- Figures in dark mode ------------------------------------------
+   Put back the light canvas for .png images with transparent background. */
+html.dark article img {
+  background-color: #ffffff;
+  padding: 0.3rem;
+  border-radius: 4px;
+}
+
+/* --- References page -----------------------------------------------
+   book/misc/references.md cites every bib key so that MyST's automatic
+   reference list has something to render. Hide the citation group
+   itself and keep only the generated list.                            */
+.cite-collector {
+  display: none;
 }
 
 /* --- Tables --------------------------------------------------------

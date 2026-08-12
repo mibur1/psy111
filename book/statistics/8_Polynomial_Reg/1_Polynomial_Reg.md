@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 12.1 Polynomial Regression
+# 13.1 Polynomial Regression
 
 In many real-world situations, the relationship between a predictor and an outcome is not strictly linear. As a motivating example, consider predicting an exam grade (0–100%) from the number of hours a student studied. While studying more may initially improve performance, studying long hours can lead to fatigue or burnout, ultimately reducing performance. A pattern, which a simple linear regression would fail to find.
 

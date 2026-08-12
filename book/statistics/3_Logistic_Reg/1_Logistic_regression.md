@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 7.1 Logistic Regression
+# 8.1 Logistic Regression
 
 Before using logistic regression to model our data, we will attempt to do so through simple linear regression. While linear regression is not suitable for dichotomous outcomes, visualizing it can help illustrate why logistic regression is a better fit for our research question.
 

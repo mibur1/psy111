@@ -1,5 +1,5 @@
 
-# CFA & SEM
+# 🏗️ CFA & SEM
 
 **Confirmatory Factor Analysis (CFA)** and **Structural Equation Modelling (SEM)** are used to test *theory-driven hypotheses* about latent variables and their relationships to observed data. In contrast to Exploratory Factor Analysis (EFA), where the factor structure is discovered from the data, CFA and SEM require the researcher to specify the model in advance:
 

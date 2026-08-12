@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# Polynomial Regression
+# 〰️ Polynomial Regression
 
 Polynomial regression extends the linear regression model by including higher-degree terms of a predictor variable. This allows the model to capture curved relationships between a predictor and an outcome, while retaining the core idea of estimating coefficients within a regression framework. The general form of a polynomial regression model of $n$-th degree is:
 

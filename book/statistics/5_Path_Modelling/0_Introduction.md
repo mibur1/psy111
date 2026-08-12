@@ -1,5 +1,5 @@
 
-# Path Modelling
+# 🕸️ Path Modelling
 
 Today, we will implement path modeling in Python using the `semopy` package. We will start by formulating hypotheses about causal relationships between variables. These hypotheses will help us estimate a system of directed effects, based on an observed correlation matrix of multiple variables.
 

@@ -1,5 +1,5 @@
 
-# Data Types and Strucutures
+# 🧱 Data Types and Structures
 
 The Python programming language is a *general purpose* language, which means it is widely used in many fields, including statistics and neuroimaging. Python is a *high-level, interpreted* language, which means it offers a high level of abstraction and you do not need to worry about *low-level* things like memory management.
 
@@ -8,5 +8,5 @@ While the main content of this seminar revolves around multivariate statistics, 
 
 ```{note} Disclaimer
 
-Some of the contents covered in the *Introduction to Python* part of the seminar were inspired by the the book *"Data Science for Neuroimaging: An Introduction"* by Ariel Rokem and Tal Yarkoni {cite}`Rokem2023`, which is [freely available online](https://neuroimaging-data-science.org). Further, you will also find a plethora of tutorials, questions, and answers related to Python on the internet. Some suggestions are listed in the [additional reading](../misc/reading) section.
+Some of the contents covered in the *Introduction to Python* part of the seminar were inspired by the the book *"Data Science for Neuroimaging: An Introduction"* by Ariel Rokem and Tal Yarkoni {cite}`Rokem2023`, which is [freely available online](https://neuroimaging-data-science.org). Further, you will also find a plethora of tutorials, questions, and answers related to Python on the internet. Some suggestions are listed in the [additional reading](/book/misc/reading) section.
 ```

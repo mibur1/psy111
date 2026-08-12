@@ -1,5 +1,5 @@
 
-# Additional reading
+# Further reading
 
 Good starting points for further reading are for example:
 

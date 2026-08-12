@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 11.1 CFA
+# 12.1 CFA
 
 Today, we will work with the `HolzingerSwineford1939` dataset, which contains mental ability test scores from seventh- and eighth-grade pupils in two schools. We focus on nine observed variables:
 

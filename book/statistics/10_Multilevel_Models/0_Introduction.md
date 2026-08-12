@@ -1,5 +1,5 @@
 
-# Multilevel Models
+# 🪜 Multilevel Models
 
 Multilevel models, also called linear mixed models (LMMs), are a statistical approach to simultaneously model predictors at different levels of data. These models help account for variability within and between nested groups, such as individuals within clusters or organizations. Multilevel regression is particularly useful for analyzing nested sources of variability, allowing researchers to explore questions about relationships both within and between these levels.
 

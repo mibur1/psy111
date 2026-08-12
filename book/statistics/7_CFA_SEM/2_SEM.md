@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 11.2 SEM
+# 12.2 SEM
 
 As in the CFA example, we again use the `HolzingerSwineford1939` dataset, which contains mental ability test scores from seventh- and eighth-grade pupils in two schools.
 

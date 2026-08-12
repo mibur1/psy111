@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 14.1 Multilevel Regression
+# 15.1 Multilevel Regression
 
 To demonstrate multilevel regression models, we use the `sleepstudy` dataset from `statsmodels`. This is a well-known dataset in the field of mixed-effects modeling often used to illustrate the effects of sleep deprivation on cognitive performance. It contains measurements from a study on reaction times of 18 participants under sleep deprivation conditions over a period of 10 days and contains the following variables:
 

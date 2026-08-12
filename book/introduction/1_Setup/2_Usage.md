@@ -139,15 +139,8 @@ cd path/to/your/book
 pip install -r requirements.txt
 ```
 
-You can then simply type
+You can then use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder and selecting the correct kernel.
 
-```bash
-jb build .
-```
-
-to build the entire book on your computer. Once the build is finished, a link will show up in the terminal, which you paste into your browser to open the book (or you can just open the `_build/html/index.html` file manually). You can then modify the book in any way you like and rebuild it to show the changes.
-
-You can also use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder in VS Code. However, you can can also open them in Google Colab by opening them from whithin the book and clicking on the rocket symbol.
 
 ```{tip} Summary
 
@@ -155,6 +148,7 @@ You can use Python in different ways:
 
 - Through standard Python scripts (`.py` files)
 - Through interactive Jupyter Notebooks (`.ipynb` files)
+- Through online platforms such as [Google Colab](https://colab.research.google.com/)
 
 You can use Minforge/Conda to manage your Python environments. You can:
 

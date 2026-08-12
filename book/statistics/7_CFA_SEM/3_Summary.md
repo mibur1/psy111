@@ -1,5 +1,5 @@
 
-# 11.3 Summary
+# 12.3 Summary
 
 This section summarises the key steps and syntax for specifying, fitting, inspecting, and visualising CFA and SEM models using `semopy`.
 

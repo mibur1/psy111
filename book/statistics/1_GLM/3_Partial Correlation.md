@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 6.3  Partial Correlation
+# 6.3 Partial Correlation
 
 Partial correlation is a statistical measure used to determine the relationship between two variables while controlling for the influence of one or more additional variables. Unlike a simple correlation, which assesses the direct association between two variables, partial correlation isolates the effect of confounding variables to better understand the true relationship.
 

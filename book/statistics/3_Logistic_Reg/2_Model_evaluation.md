@@ -4,7 +4,7 @@ kernelspec:
   display_name: Python 3
 ---
 
-# 7.2 Model Evaluation
+# 8.2 Model Evaluation
 
 To evaluate our model, we can examine how many values of $y$ (understanding display rules) were predicted correctly by the model:
 
