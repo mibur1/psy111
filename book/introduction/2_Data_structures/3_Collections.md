@@ -10,7 +10,7 @@ Variables containing single values like an integer or a string will only get you
 
 ## Lists
 
-Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also contain multiple types if this is required. Lists are initalized with square brackets `[]` and their elements are separated through commas:
+Lists are the most common collection in Python. They are a *heterogeneous* collection of objects, which means they are not limited to elements of a single type but can also contain multiple types if this is required. Lists are initialized with square brackets `[]` and their elements are separated through commas:
 
 ```{code-cell} ipython3
 empty_list = []
@@ -19,7 +19,7 @@ random_stuff = ["apple", 3.14, True, 4]
 
 ### Indexing
 
-Lists are ordered collections, which means that the order of items is important and will not change (unless we specifically change it). This allows us to access individual elements of the list by specifying their position, which is also called an *index*. The process of acessing individual or multiple values from a data structure is analogously called *indexing*.
+Lists are ordered collections, which means that the order of items is important and will not change (unless we specifically change it). This allows us to access individual elements of the list by specifying their position, which is also called an *index*. The process of accessing individual or multiple values from a data structure is analogously called *indexing*.
 
 To access the *i*th element in a list, we enclose the desired index *i* in square brackets. Note that Python, unlike for example MATLAB, uses zero-based indexing. This means the first element of a collection is at index 0, while index 1 returns the second element (and so forth).
 
@@ -45,7 +45,7 @@ What if you want to retrieve more than a single element from a list? For this we
 random_stuff[1:3]
 ```
 
-The colon is used to separate a starting and a stopping index. Intuitively you can read this notation as "from random_stuff get items 1 to 3". Note that the starting position is *inclusive* (meaning it includes the item at position 1, which in this case is *3.14*) while the stopping index is *exclusive* (meaning that the item at posititon 3, which here would be *4*, is not included). If you are interested in some arguments for that logic, you can [refer to this 1982 "article" from Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD831.PDF).
+The colon is used to separate a starting and a stopping index. Intuitively you can read this notation as "from random_stuff get items 1 to 3". Note that the starting position is *inclusive* (meaning it includes the item at position 1, which in this case is *3.14*) while the stopping index is *exclusive* (meaning that the item at position 3, which here would be *4*, is not included). If you are interested in some arguments for that logic, you can [refer to this 1982 "article" from Edsger Dijkstra](https://www.cs.utexas.edu/~EWD/ewd08xx/EWD831.PDF).
 
 ### Modifying lists
 
@@ -68,7 +68,7 @@ There are many more things you can do to lists, like removing items or sorting t
 
 ## Tuples
 
-Tuples are similar to lists in that they are an ordered colletion of elements. However, they are *immutable* in nature, meaning you can not change their content after creating them. For creating tuples, you simply use the round brackets instead of the square ones:
+Tuples are similar to lists in that they are an ordered collection of elements. However, they are *immutable* in nature, meaning you can not change their content after creating them. For creating tuples, you simply use the round brackets instead of the square ones:
 
 ```{code-cell} ipython3
 my_tuple = ("Hello", 1, 2, 3, 4, 2, "Goodbye")
@@ -100,23 +100,23 @@ Dictionaries are created by using curly brackets, and can either be initialized 
 empty_dict = {}
 
 example_dict = {
-  "name": "Alice",
-  "age": 26,
-  1: "integer_key",
-  (1, 2): "tuple_key",
-  "list_value:": [0.5, 0.3]
+    "name": "Alice",
+    "age": 26,
+    1: "integer_key",
+    (1, 2): "tuple_key",
+    "list_value": [0.5, 0.3]
 }
 ```
 
 As you can see, dicts are quite versatile. Keys are required to be *immutable* like a string, number, or tuple (this is so they do not unexpectedly change during your program and make things really messy). The values, however, can be of any type you want!
 
-Accessing values stored in a dictionary is slightly different. While you previously accessed items in lists by their index, values in a dictionary are not ordered and have to be accessed by their key. The syntax is identical to that used for list indexing, we specify the key as a string between square brackets:
+Accessing values stored in a dictionary is slightly different. While you previously accessed items in lists by their position, values in a dictionary are accessed by their key (dictionaries do remember the order in which items were inserted, but you cannot use positions to index them). The syntax is identical to that used for list indexing, we simply specify the key between square brackets:
 
 ```{code-cell} ipython3
 example_dict["name"]
 ```
 
-Dictionaries can be updated or, if the key does not exist yet, extended through the same []-based syntax, except you now have to make an assignement using the (=) operator:
+Dictionaries can be updated or, if the key does not exist yet, extended through the same []-based syntax, except you now have to make an assignment using the (=) operator:
 
 ```{code-cell} ipython3
 example_dict["age"] = 27

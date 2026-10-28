@@ -6,11 +6,11 @@ kernelspec:
 
 # 3.2 Loops
 
-Now, we will have a look at how we cann use looping operations to simplify repetition, allowing us to perform tasks across items or count through fixed numbers efficiently.
+Now, we will have a look at how we can use looping operations to simplify repetition, allowing us to perform tasks across items or count through fixed numbers efficiently.
 
 ## Loops are repetition instructions
 
-We can loop (or *iterate*) over elements in a collection. You can think about loops as a way of acting on each item one by one. In a `for` loop, we can read it as "for each item in a group". For example, if we want to read each page in a book, the following `for` loop acts means "for each page in the book, read it.":
+We can loop (or *iterate*) over elements in a collection. You can think about loops as a way of acting on each item one by one. In a `for` loop, we can read it as "for each item in a group". For example, if we want to read each page in a book, the following `for` loop means "for each page in the book, read it.":
 
 ```{code-cell} ipython3
 pages = [1, 2, 3, 4, 5]
@@ -19,7 +19,7 @@ for page in pages:
     print(f"Reading page {page}")
 ```
 
-Here, we loop over each item/element of the list starting from the first. In each iteration of the loop, we assign the value to a variable called `page` which is then printed. `page` is a temporary variable, which means it will only exist whithin the scope of the loop and not anymore after.
+Here, we loop over each item/element of the list starting from the first. In each iteration of the loop, we assign the value to a variable called `page` which is then printed. Note that, unlike in some other programming languages, `page` still exists after the loop has finished and contains the last value it was assigned (here `5`).
 
 As a more practical application, imagine you’re in a classroom and need to hand out worksheets to each student. You wouldn’t want to say, "Hand this to the first student, then hand it to the second student, then hand it to the third student...":
 
@@ -53,31 +53,31 @@ for i in range(5):
     print(f"Jumping jack #{i}")
 ```
 
-Here, `range(5)` tells the loop to repeat 5 times. The variable `i` is called an index variable. Remember, `range()` starts at the first number and stops just before the last number, making the final value exclusive:
+Here, `range(5)` tells the loop to repeat 5 times, counting from 0 to 4. The variable `i` is called an index variable. You can also give `range()` both a start and an end value:
 
 ```{code-cell} ipython3
 for i in range(5,10):
     print(f"Jumping jack #{i}")
 ```
 
-Note that, as with the `len()` function, the end point of the `range()` function is exclusive, meaning it will create a sequence of numbers from 0 to 3. You can further also provide only a single number (like the length of a list) and use the numbers created by range as *indices* to index another variable:
+Note that, just like with slicing, the end point of the `range()` function is exclusive, meaning `range(5,10)` creates a sequence of numbers from 5 to 9. As in the first example, you can also provide only a single number (like the length of a list) and use the numbers created by range as *indices* to index another variable:
 
 ```{code-cell} ipython3
 my_list = ["apple", "banana", 3, 4]
 list_length = len(my_list)
 
 for i in range(list_length):
-  print(my_list[i])
+    print(my_list[i])
 ```
 
 ```{hint} Question
 
-Do you remember the differences between a tuple and a list? Why do you think does the `range()` function return a tuple instead of a list?
+The `range()` function does not return a list, but a special `range` object which, just like a tuple, is immutable. Can you think of a reason why this might be preferable to creating a full list of all numbers (e.g. for `range(1000000)`)?
 ```
 
 ### Using enumerate()
 
-You have previously seen two ways of looping over a list. Either by indexing the items directly, or through indexing by usinge the `range(len())` expression. Python also provides a nice way of combining these two through the `enumerate()` function:
+You have previously seen two ways of looping over a list. Either by indexing the items directly, or through indexing by using the `range(len())` expression. Python also provides a nice way of combining these two through the `enumerate()` function:
 
 ```{code-cell} ipython3
 for index, value in enumerate(my_list):
@@ -106,7 +106,7 @@ Be careful with `while` loops because if the condition never becomes `False`, th
 
 ## Using counters
 
-Sometimes it can be useful to keep track to things happening in a loop. A concept you will see often is the use of counters:
+Sometimes it can be useful to keep track of things happening in a loop. A concept you will see often is the use of counters:
 
 ```{code-cell} ipython3
 counter = 0
@@ -115,32 +115,32 @@ while counter < 5:
     counter += 1
 ```
 
-Here, `counter` is a counting variable which is initialized and set to `0` before the loop. It then keep strack of something within a loop (in this case it makes sure the) and, importantly, lets you access this result later on in your script.
+Here, `counter` is a counting variable which is initialized and set to `0` before the loop. It then keeps track of something within a loop and, importantly, lets you access this result later on in your script.
 
 ## Nested statements
 
-In more complex analyses, you often need to nest multiple statements inside one another. If you for example want to iterate over an entire list and perform an action only for specific items of the list you could to this as follows:
+In more complex analyses, you often need to nest multiple statements inside one another. If you for example want to iterate over an entire list and perform an action only for specific items of the list you could do this as follows:
 
 ```{code-cell} ipython3
 my_list = ["apple", "banana", 3, 4]
 
 for item in my_list:
-  if item == "banana":
-    print("Banana!")
-  else:
-    print("Not a banana.")
+    if item == "banana":
+        print("Banana!")
+    else:
+        print("Not a banana.")
 ```
 
 ## Whitespace is syntactically required
 
-One important thing which we have not yet covered explicitly is how the code whithin if-statements or for-loops is indented (shifted to the right). You might think this is just a way of making the code easier to read, and that would be true for almost all other programming languages. However, Python is a bit different in that regard by **requiring** you to use whitespace with certain rules.
+One important thing which we have not yet covered explicitly is how the code within if-statements or for-loops is indented (shifted to the right). You might think this is just a way of making the code easier to read, and that would be true for almost all other programming languages. However, Python is a bit different in that regard by **requiring** you to use whitespace with certain rules.
 
-Simply put, whenever you use a *compound statement* (which includes for-loops, conditionals, and also classes and functions which we will cover later), you need to increase the indentation of your code. Once you exit the compound statement, you decrease the indentation level by the same amount. The amound of this indentation is technically up to you, however the Python style guide recommends you to use four spaces. As an example, if we want to continue with the script after the for-loop, we would reset the indentation to the same level as the first for:
+Simply put, whenever you use a *compound statement* (which includes for-loops, conditionals, and also classes and functions which we will cover later), you need to increase the indentation of your code. Once you exit the compound statement, you decrease the indentation level by the same amount. The amount of this indentation is technically up to you, however the Python style guide recommends you to use four spaces. As an example, if we want to continue with the script after the for-loop, we would reset the indentation to the same level as the first for:
 
 ```{code-cell} ipython3
 for item in my_list:
-  if item == "banana":
-    print("Banana!")
+    if item == "banana":
+        print("Banana!")
 
 print("Continue after the for-loop...")
 ```

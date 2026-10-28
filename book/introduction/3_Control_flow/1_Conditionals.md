@@ -32,7 +32,7 @@ else:
     print("Wear sunglasses!")
 ```
 
- The `else` statement is what we call a *fallback* option, which means it will run only if none of the previous conditions are met. Both *elif* (which is short for *else if*) and *else* statements are optional; you could simply use *if* statements to handle every possible scenario. However, this can lead to worse code readability, especially if many decisions are possible. Now, regardless of the weather, you’re covered with either an umbrella or sunglasses.
+The `else` statement is what we call a *fallback* option, which means it will run only if none of the previous conditions are met. Now, regardless of the weather, you’re covered with either an umbrella or sunglasses.
 
 Real decisions often involve more than two choices. Let’s say you want to decide what to wear based on three types of weather: rain, snow, or sun. You could use an `if` for the first option, `elif` (short for “else if”) for the second, and an `else` for anything else (so this is always your *fallback*, covering anything not included in your other statements):
 
@@ -46,6 +46,8 @@ elif weather == "snowy":
 else:
     print("Wear sunglasses!")
 ```
+
+Both `elif` and `else` statements are optional; you could simply use `if` statements to handle every possible scenario. However, this can lead to worse code readability, especially if many decisions are possible.
 
 ## Decisions with multiple conditions
 
@@ -63,7 +65,7 @@ else:
 
 Now, both `weather == "sunny"` and `time == "enough"` must be true to go for a run. If either one is false, the code will suggest staying home.
 
-There are times when you want to act if either of two conditions is true. For instance, if you’ll go out if it’s either sunny or warm, you can use `or` in the conditional:
+There are times when you want to act if either of two conditions is true. For instance, if you want to go outside whenever it’s either sunny or warm, you can use `or` in the conditional:
 
 ```{code-cell} ipython3
 weather = "cloudy"

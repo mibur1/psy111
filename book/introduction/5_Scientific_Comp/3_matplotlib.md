@@ -10,13 +10,13 @@ A picture is worth a thousand words, and this holds especially true when working
 
 There are a few different Python software packages that help you with visualizing data, for example [matplotlib](https://matplotlib.org/), [seaborn](https://seaborn.pydata.org/), or [plotly](https://plotly.com/python/). Please feel free to explore the examples on the websites to see what is possible with these libraries.
 
-For now, we will start with matplotlib, as it is probably the most widely used package out there (and also builds the foundation for e.g. seaborn). Matplotlib was first developed nearly 20 years ago by John Hunter, a postdoctoral researcher in neuroscience at the University of Chicago. Frustrated by proprietary tools for visualizing brain data, he created an open-source alternative. What started as a solo project has since grown into a widely used library across many fields, from visualizing NASA’s Mars landings to Nobel Prize-winning gravitational wave research, and of course, neuroscience data. One of Matplotlib’s strengths is its fine-grained control over the appearance of visualizations. Let’s start with the basics before diving into these details and install matplotlib through the Conda terminal (if you have previously installed the requirements of the Jupyter book it will tell you that it is already installed):
+For now, we will start with matplotlib, as it is probably the most widely used package out there (and also builds the foundation for e.g. seaborn). Matplotlib was first developed more than 20 years ago by John Hunter, a postdoctoral researcher in neuroscience at the University of Chicago. Frustrated by proprietary tools for visualizing brain data, he created an open-source alternative. What started as a solo project has since grown into a widely used library across many fields, from visualizing NASA’s Mars landings to Nobel Prize-winning gravitational wave research, and of course, neuroscience data. One of Matplotlib’s strengths is its fine-grained control over the appearance of visualizations. Let’s start with the basics before diving into these details and install matplotlib through the Conda terminal (if you have previously installed the requirements of the Jupyter book it will tell you that it is already installed):
 
 ```bash
 pip install matplotlib
 ```
 
-Matplotlib is a very powerful library with several different interfaces. The one you should almost always use is the `pyplot` module, which you can import with any of the two following two lines of code:
+Matplotlib is a very powerful library with several different interfaces. The one you should almost always use is the `pyplot` module, which you can import with either of the following two lines of code:
 
 ```{code-cell} ipython3
 from matplotlib import pyplot as plt
@@ -65,7 +65,7 @@ ax.plot(trial, last_block)
 plt.show()
 ```
 
-With multiple lines, it quickyl becomes hard do distinguish them. We can improve this by simply adding a legend, labels, and a title:
+With multiple lines, it quickly becomes hard to distinguish them. We can improve this by simply adding a legend, labels, and a title:
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
@@ -96,7 +96,7 @@ ax.set(xlabel='Trials', ylabel='Percent correct', title='Harlow learning experim
 plt.show()
 ```
 
-So what if you want so show more than one plot? Even though the previous plot is not too complicated, for the sake of simplicity let us assume that we want to split each set of trials into a different subplot. We can do so by simply specifying the number of plots arguments to the `plt.subplots` function and then indexing the `ax` object:
+So what if you want to show more than one plot? Even though the previous plot is not too complicated, for the sake of simplicity let us assume that we want to split each set of trials into a different subplot. We can do so by simply passing the number of rows and columns of subplots to the `plt.subplots` function and then indexing the `ax` object:
 
 
 ```{code-cell} ipython3
@@ -114,11 +114,11 @@ plt.tight_layout()
 plt.show()
 ```
 
-*Hint: `plt.tight_layout` tries to automatically adjusts subplot parameters to minimize overlap and ensure that all elements, like labels and titles, fit within the figure boundaries.*
+*Hint: `plt.tight_layout` tries to automatically adjust subplot parameters to minimize overlap and ensure that all elements, like labels and titles, fit within the figure boundaries.*
 
 ## Scatter plots
 
-A scatter plot displays data points where each marker's position on the x-axis represents a value from one variable, and its position on the y-axis represents a value from another variable. This type of plot allows us to directly compare these two variables and observe overall patterns or trends. For example
+A scatter plot displays data points where each marker's position on the x-axis represents a value from one variable, and its position on the y-axis represents a value from another variable. This type of plot allows us to directly compare these two variables and observe overall patterns or trends. For example:
 
 ```{code-cell} ipython3
 import numpy as np
@@ -134,7 +134,7 @@ plt.show()
 
 ## Bar plots
 
-A scatter plot displays data points where each marker's position on the x-axis represents a value from one variable, and its position on the y-axis represents a value from another variable. This type of plot allows us to directly compare these two variables and observe overall patterns or trends. For example
+A bar plot displays categorical data with rectangular bars, where the height of each bar represents the value of the corresponding category. This makes it easy to compare values across different groups. For example:
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
@@ -151,7 +151,7 @@ ax.set(ylabel='fruit supply', title='Fruit supply by kind and color')
 plt.show()
 ```
 
-## Additional information:
+## Additional information
 
 If you look for plots on the internet, you will sometimes also see figures created with `plt.figure()`:
 
@@ -208,7 +208,7 @@ plt.show()
 
 Choosing the right visualization depends on the data. For instance, a swarmplot clearly shows the difference in sample sizes, with more data points for right-handed individuals compared to left-handed ones. However, if the dataset is large, a swarmplot may become overcrowded and hard to interpret, making a violin plot a better choice as it provides a smoother summary of the data distribution. Personal preference also plays a role in selecting visualizations.
 
-Another common option is the boxplot. It displays the median as a vertical line, the quartiles (25th and 75th percentiles) as the bottom and top of a box, and the range as whiskers extending from the box. Outliers—data points far from the quartiles—are shown beyond the whiskers. For example, in the IQ data, a right-handed subject is flagged as an outlier because their score differs from the 25th percentile by more than 1.5 times the interquartile range:
+Another common option is the boxplot. It displays the median as a horizontal line inside a box, the quartiles (25th and 75th percentiles) as the bottom and top of the box, and whiskers that extend from the box to the most extreme data points within 1.5 times the interquartile range. Outliers—data points beyond the whiskers—are shown as individual points. For example, in the IQ data, a right-handed subject is flagged as an outlier because their score differs from the 25th percentile by more than 1.5 times the interquartile range:
 
 ```{code-cell} ipython3
 sns.boxplot(data=yeatman_data, x="Handedness", y="IQ")

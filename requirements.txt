@@ -12,6 +12,7 @@ seaborn
 plotly
 scikit-learn
 statsmodels
+patsy                   # imported directly by the spline and coding chapters
 pingouin
 
 # Statistics sessions
@@ -22,6 +23,7 @@ graphviz                # renders the semopy path diagrams
 ISLP
 ucimlrepo
 nilearn
+nibabel                 # imported directly by the numpy chapter
 
 # Interactive teaching widgets
 jupyterquiz

@@ -27,7 +27,7 @@ print(my_df)
 
 We can also read data from other sources such as Excel or CSV (comma-separated values) files. CSV files are a good way of storing tabular data as they are plain text, meaning you can open and read them with any kind of text editor or programming language. Usually, CSV files have a header row containing the labels (column names).
 
-As an example, let us load some data that was collected as part of a study of life span changes in brain tissue properties {cite}`Yeatman2014`. We can simply load this file from the internet by using the `pd.read_csv()` function. The only argument required for this is the data we want to load. In this case, we provide an URL as the data is stored on the internet, however, you would usually provide a path pointing to a file on your computer. All other arguments are optional, but they can be useful in providing additional instructions for what to do with the data. Here, we use `usecols=[1,2,3,4,5,6,7]` to specify only some specific columns, `na_values="NaN"` to specify that missing values should be entered as NaN ("not a number"), and `index_col=0` to use the first column as an our index:
+As an example, let us load some data that was collected as part of a study of life span changes in brain tissue properties {cite}`Yeatman2014`. We can simply load this file from the internet by using the `pd.read_csv()` function. The only argument required for this is the data we want to load. In this case, we provide a URL as the data is stored on the internet, however, you would usually provide a path pointing to a file on your computer. All other arguments are optional, but they can be useful in providing additional instructions for what to do with the data. Here, we use `usecols=[1,2,3,4,5,6,7]` to specify only some specific columns, `na_values="NaN"` to specify that missing values should be entered as NaN ("not a number"), and `index_col=0` to use the first column as our index:
 
 ```{code-cell} ipython3
 yeatman_data = pd.read_csv("https://yeatmanlab.github.io/AFQBrowser-demo/data/subjects.csv",
@@ -37,7 +37,7 @@ yeatman_data = pd.read_csv("https://yeatmanlab.github.io/AFQBrowser-demo/data/su
 print(yeatman_data.head())
 ```
 
-The variable `yeatman_data` now is a Pandas DataFrame which contains our data and we can use the `.head()` method to look at the first few rows of the data. The leftmost column `subjectID` is the index column, while the other columns contain the data for different variables such as age, gender, or IQ. You can also see that the DataFrame is, in contrary to the previously introduced numpy arrays, *heterogeneously typed*. This means it can contain variables of different types (e.g. strings or floats). You can also already see some missing values. For example, `subject003` and `subject_004` are missing values for IQ related columns.
+The variable `yeatman_data` now is a Pandas DataFrame which contains our data and we can use the `.head()` method to look at the first few rows of the data. The leftmost column `subjectID` is the index column, while the other columns contain the data for different variables such as age, gender, or IQ. You can also see that the DataFrame is, in contrast to the previously introduced numpy arrays, *heterogeneously typed*. This means it can contain variables of different types (e.g. strings or floats). You can also already see some missing values. For example, `subject_003` and `subject_004` are missing values for IQ related columns.
 
 ### Summarizing
 
@@ -47,10 +47,10 @@ Pandas further contains useful methods to e.g. summarize the data. We can use `.
 print(yeatman_data.info())
 ```
 
-Most of this information should already make sense. An observation that can be made is that Gender and Handedness are stored as objects. This is because they are a mixture of not only strings but also NaNs, which are considered numerical values.
+Most of this information should already make sense. An observation that can be made is that Gender and Handedness have a different data type than the other columns. This is because they contain text (strings) rather than numbers.
 
 
-We can also get a first statistical summary for the numerical columns by using the `.describe()` method. NaN values are ignored for these calculations, but the `count` column will tell you how many values were used for the calculations in each column.
+We can also get a first statistical summary for the numerical columns by using the `.describe()` method. NaN values are ignored for these calculations, but the `count` row will tell you how many values were used for the calculations in each column.
 
 ```{code-cell} ipython3
 print(yeatman_data.describe())
@@ -58,7 +58,7 @@ print(yeatman_data.describe())
 
 ### Indexing
 
-In previous sessions we already leearned about indexing and slicing as a way of accessing individual elements of e.g. lists. Pandas DataFrames also support a variety of different indexing and slicing operations. For example, we can use label-based indexing to select rows through the `.loc` attribute and by indexing in square brackets:
+In previous sessions we already learned about indexing and slicing as a way of accessing individual elements of e.g. lists. Pandas DataFrames also support a variety of different indexing and slicing operations. For example, we can use label-based indexing to select rows through the `.loc` attribute and by indexing in square brackets:
 
 ```{code-cell} ipython3
 print(yeatman_data.loc["subject_000"])
@@ -88,7 +88,7 @@ Similarly, we can also access a single column:
 print(yeatman_data.iloc[:, 0])
 ```
 
-However, while `.loc` and `.iloc` are powerful attibutes, we can also simply address columns directly by their name:
+However, while `.loc` and `.iloc` are powerful attributes, we can also simply address columns directly by their name:
 
 ```{code-cell} ipython3
 print(yeatman_data["Age"])
@@ -119,13 +119,13 @@ print(yeatman_means)
 print(yeatman_means["Age"])
 ```
 
-Since not all variables are numeric, we include a `numeric_only=True)` as an argument of the mean function. We can also directly calculate the mean for individual series:
+Since not all variables are numeric, we include a `numeric_only=True` as an argument of the mean function. We can also directly calculate the mean for individual series:
 
 ```{code-cell} ipython3
 yeatman_data["IQ"].mean()
 ```
 
-We can further perform arithmetics on DataFrames. For example, we could calculate a standardized z-score for the age of each subject.
+We can further perform arithmetic on DataFrames. For example, we could calculate a standardized z-score for the age of each subject.
 
 ```{code-cell} ipython3
 age_mean = yeatman_data["Age"].mean()
@@ -142,7 +142,7 @@ print(yeatman_data.head())
 
 ### Filtering
 
-Similar to logical indexing in NumPy, we can also filter our data set based on some properties. For example, let's assume we only want be able to filter subjects below the age of 18 in our analysis. We can then simply create a new boolean variable in the DataFrame which codes for this condition:
+Similar to logical indexing in NumPy, we can also filter our data set based on some properties. For example, let's assume we want to be able to filter for subjects below the age of 18 in our analysis. We can then simply create a new boolean variable in the DataFrame which codes for this condition:
 
 ```{code-cell} ipython3
 yeatman_data["Age_below_18"] = yeatman_data["Age"] < 18
@@ -171,11 +171,11 @@ male_below_18 = multi_index.loc["Male", True]
 print(male_below_18.describe())
 ```
 
-This might already seem useful, but it can become quite cumbersome if you want to repeat this for many kind of combinations. And because grouping data into different subgroups is such a common pattern in data analysis, Pandas offers a built-in way of doing so, which we will explore in the following subsection.
+This might already seem useful, but it can become quite cumbersome if you want to repeat this for many kinds of combinations. And because grouping data into different subgroups is such a common pattern in data analysis, Pandas offers a built-in way of doing so, which we will explore in the following subsection.
 
 ### Split-Apply-Combine
 
-A usual problem we are faced with in data analysis is the following: We (1) want to take a data set and split it into subsets, (2) we then independently apply some operation to each subset and (3) combine the results of all independent operations into a new data set. This pattern ins called *split-apply-combine*.
+A usual problem we are faced with in data analysis is the following: We (1) want to take a data set and split it into subsets, (2) we then independently apply some operation to each subset and (3) combine the results of all independent operations into a new data set. This pattern is called *split-apply-combine*.
 
 For example, let's start with splitting the data by the `Gender` column:
 
@@ -183,7 +183,7 @@ For example, let's start with splitting the data by the `Gender` column:
 gender_groups = yeatman_data.groupby("Gender")
 ```
 
-The newly `gender_grous` variable is a `DataFrameGroupBy` object, which is pretty similar to a normal DataFrame, with the additional feature of having distinct groups whithin. This means we can perform many operations just as if we would be working with a normal DataFrame, with the only difference being the operation being applied independently to each subset.
+The newly created `gender_groups` variable is a `DataFrameGroupBy` object, which is pretty similar to a normal DataFrame, with the additional feature of having distinct groups within. This means we can perform many operations just as if we would be working with a normal DataFrame, with the only difference being the operation being applied independently to each subset.
 
 For example, we can calculate the mean for each group:
 
@@ -191,7 +191,7 @@ For example, we can calculate the mean for each group:
 print(gender_groups.mean(numeric_only=True))
 ```
 
-The output of this operation is a DataFrame that contains the summary with th original DataFrame's `Gender` variable as the index. This means we can apply standard indexing operations on it as well to get e.g. the mean age of female subjects:
+The output of this operation is a DataFrame that contains the summary with the original DataFrame's `Gender` variable as the index. This means we can apply standard indexing operations on it as well to get e.g. the mean age of female subjects:
 
 ```{code-cell} ipython3
 print(gender_groups.mean(numeric_only=True).loc["Female", "Age"])
@@ -206,7 +206,7 @@ print(gender_age_groups.mean(numeric_only=True))
 
 ### Joining Tables
 
-Another useful feature of Pandas is its ability to join data. For example, lets assume we have three DataFrames with the same columns but different indices. This could for example happen if you would measure the same variables for multiple subjects over three different measurement days. So the index would be the individual subject, and the three DataFrames would be the data you aquired on e.g. Monday, Tuesday, and Wednesday:
+Another useful feature of Pandas is its ability to join data. For example, let's assume we have three DataFrames with the same columns but different indices. This could for example happen if you would measure the same variables for multiple subjects over three different measurement days. So the index would be the individual subject, and the three DataFrames would be the data you acquired on e.g. Monday, Tuesday, and Wednesday:
 
 ```{code-cell} ipython3
 df1 = pd.DataFrame({'A': ['A0', 'A1', 'A2', 'A3'],
@@ -233,11 +233,11 @@ combined_df = pd.concat([df1, df2, df3])
 print(combined_df)
 ```
 
-In this case, we see that the concatenation is quite straightforward and successful. But what about if the DataFrames are not of identical structure? Let's assume we have `df4` which has index values $2$ and $3$ as well as columns `B`and `D`in common with `df1`, but it also has the additional indices $6$ and $7$ ad well as a new column `F`:
+In this case, we see that the concatenation is quite straightforward and successful. But what about if the DataFrames are not of identical structure? Let's assume we have `df4` which has index values $2$ and $3$ as well as columns `B` and `D` in common with `df1`, but it also has the additional indices $6$ and $7$ as well as a new column `F`:
 
 ```{code-cell} ipython3
 df4 = pd.DataFrame({'B': ['B2', 'B3', 'B6', 'B7'],
-                    'D': ['D2', 'D4', 'D6', 'D7'],
+                    'D': ['D2', 'D3', 'D6', 'D7'],
                     'F': ['F2', 'F3', 'F6', 'F7']},
                     index=[2, 3, 6, 7])
 
@@ -245,17 +245,17 @@ combined_df = pd.concat([df1, df4])
 print(combined_df)
 ```
 
-The results look a bit more interesting. Here, Pandas tried to preserve as much information as possible, meaning the new DataFrame contains all columns/variables present in the two original DataFrames. Wherever possible, Pandas will merge the columns into one. This is true for column `D`, as it exists in both original DataFrames. For all other columns, Pandas preserves the input values and adds `NaN`s for the missing values.
+The results look a bit more interesting. Here, Pandas tried to preserve as much information as possible, meaning the new DataFrame contains all columns/variables present in the two original DataFrames. Wherever possible, Pandas will merge the columns into one. This is true for columns `B` and `D`, as they exist in both original DataFrames. For all other columns, Pandas preserves the input values and adds `NaN`s for the missing values.
 
 There are also other, more complicated, scenarios which we will not talk about here. For example, you might want to concatenate along the second axis instead of the first one. Don't be afraid of trying things out if you are ever in need of something more detailed. Getting used to working with data sets takes time, but no matter your specific goal, it will more likely than not be possible with just a few lines of code.
 
 ## Errors
 
-Before closing this section, I would like to emphazize on a few patterns of errors that are unique to Pandas and which you most likely will encounter at some point in your own projects.
+Before closing this section, I would like to emphasize a few patterns of errors that are unique to Pandas and which you most likely will encounter at some point in your own projects.
 
-One common pattern of errors comes from a confusion between Series and DataFame objects. And while we previously learned that they are indeed pretty similar, they still have some differences. For example, Series objects have a useful `.value_counts()` method that creates a table with the number of observations in the Series for every unique value. DataFrames however do not implement this method and will cause a Python `AttributeError`instead.
+One common pattern of errors comes from a confusion between Series and DataFrame objects. And while we previously learned that they are indeed pretty similar, they still have some differences. For example, Series objects have a useful `.unique()` method that returns all unique values in the Series. DataFrames however do not implement this method and will cause a Python `AttributeError` instead.
 
-Another common error comes from the fact that many operations create a new DataFrame as an output insted of changing the current one in place. For example you might expect that:
+Another common error comes from the fact that many operations create a new DataFrame as an output instead of changing the current one in place. For example you might expect that:
 
 ```{code-cell} ipython3
 yeatman_data.dropna()
@@ -269,12 +269,12 @@ yeatman_without_nan = yeatman_data.dropna()
 print(yeatman_without_nan.head())
 ```
 
-or alternatively, **explicitly** specify that the existing `yeatman` DataFrame should be modified:
+or alternatively, **explicitly** specify that the existing `yeatman_data` DataFrame should be modified:
 
 ```{code-cell} ipython3
 yeatman_data.dropna(inplace=True)
 ```
 
-These kind of errors are especially dangerous, as you could unknowingly continue working with an unchanged DataFrame, leading to erroneous results later on in your script. It therefore makes sense to at least periodically check the intermediate results in your calculations to spot errors early.
+These kinds of errors are especially dangerous, as you could unknowingly continue working with an unchanged DataFrame, leading to erroneous results later on in your script. It therefore makes sense to at least periodically check the intermediate results in your calculations to spot errors early.
 
 Finally, indexing errors are also common. Don't be discouraged by such errors, as indexing can indeed be confusing in the beginning, especially with different ways of doing so such as indexing in NumPy, indexing by rows and columns, and indexing with `.loc` or `.iloc`.

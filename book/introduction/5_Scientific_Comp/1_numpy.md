@@ -6,7 +6,7 @@ kernelspec:
 
 # 5.1 Numpy
 
-Before we begin, let's pause for a second and try to think about which kind of data types and data structures structures we have learned about so far. Which ones can you remember? Do you think this is already enough for any kind of task you might want to achieve?
+Before we begin, let's pause for a second and try to think about which kind of data types and data structures we have learned about so far. Which ones can you remember? Do you think this is already enough for any kind of task you might want to achieve?
 
 ```{dropdown} Solution
 
@@ -25,7 +25,7 @@ The most important built-in data structures are:
 
 ## Arrays
 
-In fields like neuroscience, datasets can be large and often have more than two dimensions. For example, think of an fMRI scan composed of individual voxels (cubes) in three-dimensional space. And naturally, if you obtained more than one fMRI scan over time, you might have this as a fourth dimension. In such cases, **n-dimensional arrays** are a good way of storing and handling your data, as they do so as a single object. In any case, arrays are *contiguious*, meaning they have no "holes", and they are *homogenous*, meaning they only consist of a single data type.
+In fields like neuroscience, datasets can be large and often have more than two dimensions. For example, think of an fMRI scan composed of individual voxels (cubes) in three-dimensional space. And naturally, if you obtained more than one fMRI scan over time, you might have this as a fourth dimension. In such cases, **n-dimensional arrays** are a good way of storing and handling your data, as they do so as a single object. In any case, arrays are *contiguous*, meaning they have no "holes", and they are *homogenous*, meaning they only consist of a single data type.
 
 ```{figure} ../../../_static/figures/cubes.png
 ---
@@ -35,7 +35,7 @@ name: fig-arrays
 N-dimensional arrays
 ```
 
-To work with arrays, we will use the [NumPy](https://numpy.org/) library, which is the most important library for numerical and scientific computing in Python. Recall that by default, the Python namespace only includes a small number of built-in functions. So if we want to use functions that belong to numpy, we need to import it at the top of the script. In principle, you can chose any abbreviation you want (or none at all). However, it usually makes sense to stick to the conventions and import numpy as `np`.
+To work with arrays, we will use the [NumPy](https://numpy.org/) library, which is the most important library for numerical and scientific computing in Python. Recall that by default, the Python namespace only includes a small number of built-in functions. So if we want to use functions that belong to numpy, we need to import it at the top of the script. In principle, you can choose any abbreviation you want (or none at all). However, it usually makes sense to stick to the conventions and import numpy as `np`.
 
 ```{code-cell} ipython3
 import numpy as np
@@ -97,17 +97,17 @@ Let's look at some real data to get a better sense of why arrays are a useful th
 from nilearn import datasets
 import nibabel as nib
 
-haxby_dataset = datasets.fetch_adhd(n_subjects=1); # Download the Haxby dataset
-fmri_img = nib.load(haxby_dataset.func[0]) # Load the fMRI data using nibabel
+adhd_dataset = datasets.fetch_adhd(n_subjects=1) # Download the ADHD dataset
+fmri_img = nib.load(adhd_dataset.func[0]) # Load the fMRI data using nibabel
 fmri_data = fmri_img.get_fdata() # Convert to a 4D numpy array
 print(f"Shape of the fMRI data: {fmri_data.shape}")
 ```
 
-You can see that the data has shape `(61, 73, 61, 176)`, meaning that it has four dimensions. fMRI data is similar to a picture which is composed of individual pixels, with the addition that the brain is a three-dimensional object and is thus separated in little cubes called *voxels*. As such three-dimensional scans are aquired in slices, the first two dimensions are the in-plane dimensions of the scan ($61 * 73$ voxels), the third dimension are the $61$ slices, and the third dimension is the time, telling us that $176$ scans of the brain were obtained over time.
+You can see that the data has shape `(61, 73, 61, 176)`, meaning that it has four dimensions. fMRI data is similar to a picture which is composed of individual pixels, with the addition that the brain is a three-dimensional object and is thus separated in little cubes called *voxels*. As such three-dimensional scans are acquired in slices, the first two dimensions are the in-plane dimensions of the scan ($61 * 73$ voxels), the third dimension are the $61$ slices, and the fourth dimension is the time, telling us that $176$ scans of the brain were obtained over time.
 
 ### Indexing arrays
 
-We now know how to create arrays. But how can we can data in and out of them? Remember how we previously learned about indexing with lists. Indexing for arrays is fairly similar to this, however we have more flexibility in doing so. Let us first consider a one-dimensional array:
+We now know how to create arrays. But how can we get data in and out of them? Remember how we previously learned about indexing with lists. Indexing for arrays is fairly similar to this, however we have more flexibility in doing so. Let us first consider a one-dimensional array:
 
 
 ```{code-cell} ipython3
@@ -120,7 +120,7 @@ print(my_array[2:4])
 print(my_array[:3])
 ```
 
-We can see that all the indexing operations we pereviously learned about are still valid. `my_array[0]` gives us the value from the zeroth position, `my_array[2]` from the second position, and `my_array[-1]` from the last position. We can also apply slicing operations, with `my_array[2:4]` giving us the second and the third position (remember that when slicing, the start is included, but the end is excluded), and `my_array[:3]` giving us all elements up to the second position.
+We can see that all the indexing operations we previously learned about are still valid. `my_array[0]` gives us the value from the zeroth position, `my_array[3]` from the third position, and `my_array[-1]` from the last position. We can also apply slicing operations, with `my_array[2:4]` giving us the second and the third position (remember that when slicing, the start is included, but the end is excluded), and `my_array[:3]` giving us all elements up to the second position.
 
 Similarly, we can also index over two-dimensional arrays by separating the indices within the square brackets with commas:
 
@@ -135,14 +135,14 @@ print(my_array[:,0])
 print(my_array[1,1:])
 ```
 
-Here, `my_array[0,0]` gives us the first item in the array, `my_array[1,2]` gives us the item at position two in the first row, `my_array[:,0]` gives us the entire first column and `my_array[1,1:]` gives us all items from the first row starting with the value at index 1.
+Here, `my_array[0,0]` gives us the item in row 0 and column 0 (the very first item), `my_array[1,2]` gives us the item in row 1 and column 2, `my_array[:,0]` gives us the entire column 0, and `my_array[1,1:]` gives us all items from row 1 starting with the value in column 1.
 
 
 ```{important} Important
 
 When indexing two-dimensional arrays, the first dimension always corresponds to the rows, and the second dimension corresponds to the columns!
 
-So e.g. `my_array[1,2]` would give you the item in row 1, column 2. As a visualization, here are the individual indices for a a 2x3 array:
+So e.g. `my_array[1,2]` would give you the item in row 1, column 2. As a visualization, here are the individual indices for a 2x3 array:
 
 | my_array   | Column 0      | Column 1      | Column 2      |
 |------------|---------------|---------------|---------------|
@@ -152,7 +152,7 @@ So e.g. `my_array[1,2]` would give you the item in row 1, column 2. As a visuali
 
 ### Indexing with conditionals
 
-An alternative way of indexing is to use *logical oparations*. This allows us to chose values from an array, only if they fulfil specific kind of conditions. For example, if we want to get all numbers in an array which are larger than 0, we can use the following expressions:
+An alternative way of indexing is to use *logical operations*. This allows us to choose values from an array, only if they fulfil specific kind of conditions. For example, if we want to get all numbers in an array which are larger than 0, we can use the following expressions:
 
 ```{code-cell} ipython3
 my_array = np.array([[0,2,0],
@@ -161,7 +161,7 @@ larger_than_zero = my_array > 0
 print(larger_than_zero)
 ```
 
-You can see that the result are not yet the values which are larger than zero themselves, but a *boolean* array which tells us a which positions in the array our condition is `True`or `False`. We can then use this boolean array for indexing to extract the specific values from the array:
+You can see that the result are not yet the values which are larger than zero themselves, but a *boolean* array which tells us at which positions in the array our condition is `True` or `False`. We can then use this boolean array for indexing to extract the specific values from the array:
 
 ```{code-cell} ipython3
 print(my_array[larger_than_zero])
@@ -171,7 +171,7 @@ This can be useful if you for example want to calculate some statistics over an 
 
 ### Arithmetic with arrays
 
-Another useful feature of arrays is that you can apply a variety of mathematical operations on them. For example, you can add and substract numbers from all elements in the array, or multiply/divide all elements in the array:
+Another useful feature of arrays is that you can apply a variety of mathematical operations on them. For example, you can add and subtract numbers from all elements in the array, or multiply/divide all elements in the array:
 
 
 ```{code-cell} ipython3

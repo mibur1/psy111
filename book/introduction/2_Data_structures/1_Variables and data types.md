@@ -24,7 +24,7 @@ Notice that when we initialize a variable, we do not need to specify its *type* 
 my_variable = "Hello World"
 ```
 
-If you want to know what 's currently stored in your variable, you can use the `print()` function:
+If you want to know what's currently stored in your variable, you can use the `print()` function:
 
 ```{code-cell} ipython3
 print(my_variable)

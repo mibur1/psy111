@@ -6,10 +6,9 @@ kernelspec:
 
 # 4.1 Everything is an Object
 
-So far, and analogous to many other programming languages, you might think of data types like strings or integers as *primitive* data types, which means that they are built into the core of the language to behave in special ways and to not be changed or modified in any way. And this is true in many
-other programming languages like C++. where you will have to explicitly tell the program what type of variable you want to create.
+So far, and analogous to many other programming languages, you might think of data types like strings or integers as *primitive* data types, which means that they are built into the core of the language to behave in special ways and to not be changed or modified in any way. And this is true in many other programming languages like C++, where you will have to explicitly tell the program what type of variable you want to create.
 
-In Python this is a bit different and there aren't *really* any primitive datata types, as it is a deeply *object-oriented* programming language. In Python, *everything is an object*. Strings are objects, integers are objects, lists are objects, dictionairies are objects, and so fourth. We will come back to that concept in detail later today, but for now let us just focus on some practical implications this will bring.
+In Python this is a bit different and there aren't *really* any primitive data types, as it is a deeply *object-oriented* programming language. In Python, *everything is an object*. Strings are objects, integers are objects, lists are objects, dictionaries are objects, and so forth. We will come back to that concept in detail later in this chapter, but for now let us just focus on some practical implications this will bring.
 
 
 ## The dot notation
@@ -20,14 +19,14 @@ Let's start with the dot (.) notation. As you probably already noticed, we previ
 len([4,3,2,1])
 ```
 
-A function is a specific, reusable piece of code, that performs a specific action. In this case, the `len()` function calculates the length of the list given to it as an argument. It then returns some kind of result, which we can print or save as a new variable. Second, there is the object-oriented syntax which you previously saw when working with strings:
+A function is a specific, reusable piece of code that performs a specific action. In this case, the `len()` function calculates the length of the list given to it as an argument. It then returns some kind of result, which we can print or save as a new variable. Second, there is the object-oriented syntax which you previously saw when working with strings:
 
 ```{code-cell} ipython3
 text = "Hello World"
 text.lower()
 ```
 
-If you have previously only worked with data-centric languages like MATLAB you might find this a bit confusing. But don't worry, it essentially means that we simply call a function attached to the object (in this case the string). Such object specfic functions are called *methods*, so if you use `text.lower()` it will simply call the `.lower()` method of the string object. The dot operator expresses a relationship of belonging, so you can intuitively read `text.lower()` as "on the text variable, use the .lower() method which belongs to it".
+If you have previously only worked with data-centric languages like MATLAB you might find this a bit confusing. But don't worry, it essentially means that we simply call a function attached to the object (in this case the string). Such object specific functions are called *methods*, so if you use `text.lower()` it will simply call the `.lower()` method of the string object. The dot operator expresses a relationship of belonging, so you can intuitively read `text.lower()` as "on the text variable, use the .lower() method which belongs to it".
 
 
 ### Inspecting objects
@@ -41,13 +40,13 @@ my_list = [1, 2, 3]
 type(my_list)
 ```
 
-Second, the `dir()` function will show you all methods implemented by an object as well as their *static attributes*, which are variables stored whithin the object (they often start and end with two underscores).
+Second, the `dir()` function will show you all attributes and methods of an object. Many of them start and end with two underscores; these are so-called *special* (or *dunder*) methods and attributes which Python mostly uses internally. The regular methods you will typically use are listed at the end.
 
 ```{code-cell} ipython3
 dir(my_list)
 ```
 
-Here you can see, that the list object implements 11 different methods starting with `append`. All of these attributes and methods are available to you to access through the dot notation (e.g. `my_list.__class__` or `my_list.append()`).
+Here you can see that the list object implements 11 different methods starting with `append`. All of these attributes and methods are available to you to access through the dot notation (e.g. `my_list.__class__` or `my_list.append()`).
 
 ```{code-cell} ipython3
 my_list.__class__

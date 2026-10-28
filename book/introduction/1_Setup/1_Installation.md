@@ -14,7 +14,7 @@ Version management with Miniforge/Conda.
 
 ## Conda
 
-You can download and install Conda trough Miniforge as described in the the [documentation](https://conda-forge.org/download/).
+You can download and install Conda through Miniforge as described in the [documentation](https://conda-forge.org/download/).
 
 **Linux/MacOS**
 
@@ -33,10 +33,10 @@ On Windows, simply run the `.exe` file and install everything. We also recommend
 
 ## Visual Studio Code
 
-In addition to Miniforge, we will also install and download a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
+In addition to Miniforge, we will also download and install a programming environment. For this, we use **Visual Studio Code**, which you can download from [here](https://code.visualstudio.com/). In addition to the default installation settings, we recommend you to check the "Open with code" checkboxes for easier usability later on.
 
 
-```{tip} Using Python through a Environment Manager
+```{tip} Using Python through an Environment Manager
 
 By using an environment manager such as Miniforge/Conda you can:
 

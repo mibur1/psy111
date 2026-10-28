@@ -6,15 +6,15 @@ kernelspec:
 
 # 4.4 Classes
 
-As previously mentioned, [everything in Python is an object](1_Everything_is_an_object). The key cocept behind this is the object-oriented programming (OOP) paradigm central to many programming languages. You will get a brief introduction into these concepts in this chapter, however, do not worry if you feel like these concepts do not immediately make sense to you. Learning a programming language is like learning a real language and takes time. I am however convinced that once the semester goes on many of these newly introduced concepts will already start to click as you work your way through the exercises.
+As previously mentioned, [everything in Python is an object](1_Everything_is_an_object). The key concept behind this is the object-oriented programming (OOP) paradigm central to many programming languages. You will get a brief introduction into these concepts in this chapter, however, do not worry if you feel like these concepts do not immediately make sense to you. Learning a programming language is like learning a real language and takes time. I am however convinced that once the semester goes on many of these newly introduced concepts will already start to click as you work your way through the exercises.
 
 ## So what is a class?
 
-A class is, in a sense, a kind of template for an object. You can think of it as a set of rules and instructions what an object of a given kind can do. Let us start with the simplest example of a class and built on top of that.
+A class is, in a sense, a kind of template for an object. You can think of it as a set of rules and instructions what an object of a given kind can do. Let us start with the simplest example of a class and build on top of that.
 
 ```{code-cell} ipython3
 class Circle:
-  pass
+    pass
 ```
 
 These two lines of code already define a perfectly valid class called `Circle` (note that it starts with a capital C, which is a naming convention for classes). The `pass` statement is used as a placeholder to tell the Python interpreter that it should not expect any more code to follow for the class.
@@ -39,14 +39,14 @@ Let's start by providing some features to the `Circle` class:
 from math import pi
 
 class Circle:
-  def __init__(self, radius):
-    self.radius = radius
+    def __init__(self, radius):
+        self.radius = radius
 
-  def area(self):
-    return pi * self.radius**2
+    def area(self):
+        return pi * self.radius**2
 ```
 
-We now defined two *methods* (functions whithin a class). First, there is the `__init()__` method, which might look fairly strange to you. This is a so called *magic method*, which is the basic initialization that is used every time we create an instance of our class. The `__init()__` method has two arguments. The first parameter is called `self`. It is a mandatory argument for any method whithin a class to take a reference to the current instance (*itself* so to say). The second argument `radius` then the first actual argument which has to be provided if a circle object is created. Whithin the `__init()__` method, this argument is assigned to a variable called `self.radius` which makes it an *attribute* of the class instance.
+We now defined two *methods* (functions within a class). First, there is the `__init__()` method, which might look fairly strange to you. This is a so called *magic method*, which is the basic initialization that is used every time we create an instance of our class. The `__init__()` method has two arguments. The first parameter is called `self`. It is a mandatory argument for any method within a class to take a reference to the current instance (*itself* so to say). The second argument `radius` is then the first actual argument which has to be provided if a circle object is created. Whithin the `__init__()` method, this argument is assigned to a variable called `self.radius` which makes it an *attribute* of the class instance.
 
 The `area()` method simply defines a way of calculating the area of the circle. As a method of the class it has access to all class attributes (variables starting with `self.`) and thus does not need any additional parameters other than the mandatory `self`.
 
@@ -66,9 +66,9 @@ my_circle.area()
 
 ## Magic methods
 
-We came across the concept of magic methods like the `__init()__` method that runs every time we create an instance of an object. There are many other methods like this, and the key concept already is that they are usually called implicitly when a certain operation is applied to an object, even though it does not look like the operation and the magic method have anything to do with each other. That's what makes them magic! 🪄
+We came across the concept of magic methods like the `__init__()` method that runs every time we create an instance of an object. There are many other methods like this, and the key concept already is that they are usually called implicitly when a certain operation is applied to an object, even though it does not look like the operation and the magic method have anything to do with each other. That's what makes them magic! 🪄
 
-You are probably already tired of me saying "everything in Python is an object". However, you will now see one of the deeper implications this has. *All operators in Python are just cleverly disguised method calls*. That means even if we write something seemingly basic like `4 * 3`, Python will implicitly call a magic method on the first operant (the number 4 as an object of the integer class), with the second operand being passed as an argument. This might sound a bit confusing, but
+You are probably already tired of me saying "everything in Python is an object". However, you will now see one of the deeper implications this has. *All operators in Python are just cleverly disguised method calls*. That means even if we write something seemingly basic like `4 * 3`, Python will implicitly call a magic method on the first operand (the number 4 as an object of the integer class), with the second operand being passed as an argument. This might sound a bit confusing, but
 
 ```{code-cell} ipython3
 4 * 3

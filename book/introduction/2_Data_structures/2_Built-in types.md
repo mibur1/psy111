@@ -45,7 +45,7 @@ roughly_pi = 3.14
 radius = 2
 circumference = 2 * roughly_pi * radius
 
-print("The circumference of the cicle is", circumference)
+print("The circumference of the circle is", circumference)
 ```
 
 ## Strings
@@ -57,7 +57,7 @@ module = "psy111"
 university = 'Oldenburg'
 ```
 
-There are many inbuilt functions you can use on strings, like figuring out their length:
+There are many built-in functions you can use on strings, like figuring out their length:
 
 ```{code-cell} ipython3
 len(module)
@@ -75,9 +75,9 @@ We can even replace a substring with another substring:
 university.replace("burg", "castle")
 ```
 
-One thing you might have noticed is that these examples seem to use two different syntaxes. In the first example, `len()` seems to be a function which takes a string as its parameter (or *argument*), while in the other examples the function comes after the string with a *dot* notation `.upper()`. If this is a bit confusing do not worry, we will talk about this difference a bit later.
+One thing you might have noticed is that these examples seem to use two different syntaxes. In the first example, `len()` seems to be a function which takes a string as its parameter (or *argument*), while in the other examples the function comes after the string with a *dot* notation `.lower()`. If this is a bit confusing do not worry, we will talk about this difference a bit later.
 
-Another useful thing about string is that you can use *formatted* strings (f-strings) to nicely format strings when printing results. For this you can just add an *f* before the opening quotation marks of the string and you can then print the value of any variable by enclosing it with curly brackets `{}` in the middle of your string:
+Another useful thing about strings is that you can use *formatted* strings (f-strings) to nicely format strings when printing results. For this you can just add an *f* before the opening quotation marks of the string and you can then print the value of any variable by enclosing it with curly brackets `{}` in the middle of your string:
 
 ```{code-cell} ipython3
 num_neurons = 86
@@ -88,7 +88,7 @@ You can also do many more things like formatting the number of decimal points sh
 
 ## Booleans
 
-Handling Boolean values in Python is pretty much the same as in other programming languages. Boolean values can only take the value `True` (corresponding to 1) or `False` (corresonding to 0) and not other versions like `true` or `"False"`:
+Handling Boolean values in Python is pretty much the same as in other programming languages. Boolean values can only take the value `True` (corresponding to 1) or `False` (corresponding to 0) and not other versions like `true` or `"False"`:
 
 ```{code-cell} ipython3
 i_like_psy111 = True
@@ -107,7 +107,7 @@ Similarly, if we want to compare two numbers, this is also a logical operation t
 5 == 3
 ```
 
-But what if the question you are trying to ask is not so simple? Python lets you built *conjunctions* of several subexpressions:
+But what if the question you are trying to ask is not so simple? Python lets you build *conjunctions* of several subexpressions:
 
 ```{code-cell} ipython3
 ("burg" in "oldenburg") and (5 > 3) and (4 * 2 == 8)
@@ -118,13 +118,13 @@ In logical operations, *and* requires ALL statements to be true, which is the ca
 ```{code-cell} ipython3
 ("burg" in "oldenburg") and (5 > 3) or (4 * 2 == 10)
 ```
-This expression still returns `True` even though the last comparison is false due to it being joined with the previous expression through *or*. This brief example hopefully illustrate nicely how the Python syntax is more readable than most other programming languages.
+This expression still returns `True` even though the last comparison is false due to it being joined with the previous expression through *or*. This brief example hopefully illustrates nicely how the Python syntax is more readable than most other programming languages.
 
 *Note: The round brackets are not strictly necessary here, as Python will evaluate this expression left to right, following the logical and comparison operator precedence rules. It is simply a design choice that subjectively enhances readability.*
 
 ## None
 
-So what if you want to create a variable but not assign a specific value to it? This is where `None` comes in handy. *None* works similar as for example the *NaN* (not a number) value from MATLAB. However, please note that *None* and *False* are not the same thing!
+So what if you want to create a variable but not assign a specific value to it? This is where `None` comes in handy. *None* represents the absence of a value. Please note that it is not the same as *NaN* (not a number), which is a special floating point value used for missing numerical data (you will encounter it later in NumPy and Pandas). Similarly, *None* and *False* are not the same thing!
 
 ```{code-cell} ipython3
 None == False
@@ -136,7 +136,7 @@ The Python standard library includes the following data types:
 
 - Integer values (1, 2, 3)
 - Floating point values (1.0, 2.2)
-- Charater strings ("Hello", "World")
+- Character strings ("Hello", "World")
 - Boolean values (True, False)
 - No value (None)
 ```

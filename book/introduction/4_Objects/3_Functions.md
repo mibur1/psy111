@@ -10,7 +10,7 @@ Functions are essential in programming as they allow you to encapsulate and reus
 
 ```{code-cell} ipython3
 def my_function():
-  print("I'm a custom function!")
+    print("I'm a custom function!")
 
 my_function() # use the function
 ```
@@ -21,7 +21,7 @@ Functions can accept *arguments* (or parameters) that provide inputs or modify t
 
 ```{code-cell} ipython3
 def add(a, b):
-  return a + b
+    return a + b
 
 result = add(1, 2)
 print(result)
@@ -29,34 +29,34 @@ print(result)
 
 ### Arguments
 
-Python functions can have two different kinds of arguments: *positional* arguments, and *keyword* arguments. Positional arguments on the one hand are defined by their position whithin the round brackets and *must* be provided for the function to run without giving an error. In the previous example, both `a` and `b` are positional arguments and the function would not know what to do if any of them would be missing. Keyword arguments on the other hand are assigned a *default* value. This means that the function knows what to do even if the user does not explicitly provide a value for that argument. 
+Python functions can have two different kinds of arguments: *positional* arguments, and *keyword* arguments. Positional arguments on the one hand are defined by their position within the round brackets and *must* be provided for the function to run without giving an error. In the previous example, both `a` and `b` are positional arguments and the function would not know what to do if any of them would be missing. Keyword arguments on the other hand are assigned a *default* value. This means that the function knows what to do even if the user does not explicitly provide a value for that argument. 
 
-As an example, let's create a function that adds random gaussian noise to a given input `x`:
+As an example, let's create a function that adds random Gaussian noise to a given input `x`:
 
 ```{code-cell} ipython3
 import random
 
 def add_noise(x, mu=0, sd=1):
-  """Adds gaussian noise to the input.
+    """Adds Gaussian noise to the input.
 
-  Parameters
-  ----------
-  x : number
-    The number to add noise to.
-  mu : float, optional
-    The mean of the gaussian noise distribution.
-    Default: 0
-  sd : float, optional
-    The standard deviation of the noise distribution.
-    Default: 1
+    Parameters
+    ----------
+    x : number
+        The number to add noise to.
+    mu : float, optional
+        The mean of the Gaussian noise distribution.
+        Default: 0
+    sd : float, optional
+        The standard deviation of the noise distribution.
+        Default: 1
 
-  Returns
-  -------
-  float
-  """
+    Returns
+    -------
+    float
+    """
 
-  noise = random.normalvariate(mu, sd)
-  return x + noise
+    noise = random.normalvariate(mu, sd)
+    return x + noise
 ```
 
 *Note:* So far, you have mostly seen comments within the code using the `#` sign. Another way to provide comments is by using triple double quotes `"""comment"""`, as shown in the previous code snippet. This approach is useful for providing larger portions of text, such as when documenting your functions. In the `add_noise()` function, you can see an example where the input and output parameters are clearly described, making it easier to understand how to use the function. This is also the official way of documenting functions and classes in Python, so it is recommended to follow this convention.
@@ -67,13 +67,13 @@ If we now call this function by just providing a value for `x` it will still wor
 add_noise(5)
 ```
 
-If you decide you need different noise with a standard deviation of 5, you can simply add this new value. As keyword arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
+If you decide you need different noise with a standard deviation of 3, you can simply add this new value. As keyword arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
 
 ```{code-cell} ipython3
 add_noise(5, sd=3)
 ```
 
-You can also specify all arguments (including the positional one) by name (in this case the order of `sd` and `mu` doesnt matter)
+You can also specify all arguments (including the positional one) by name (in this case the order of `sd` and `mu` doesn't matter)
 
 ```{code-cell} ipython3
 add_noise(x=5, sd=3, mu=2)
@@ -85,7 +85,7 @@ or not use any name at all
 add_noise(5, 3, 2)
 ```
 
-However, the last example is differnet compared to the the previous one! This is because if no keywords are provided, Python will only be able to rely on the default order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=3` and `sd=2` as defined in the function.
+However, the last example is different compared to the previous one! This is because if no keywords are provided, Python will only be able to rely on the default order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=3` and `sd=2` as defined in the function.
 
 ### Argument unpacking
 

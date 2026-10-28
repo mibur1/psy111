@@ -41,14 +41,36 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y graphviz
 
+      # ISLP hard-depends on torch, and the default wheel drags in ~4.6 GB of
+      # CUDA packages that this book never uses. Installing the CPU-only build
+      # first (~190 MB, no nvidia/triton deps) satisfies that requirement, so the
+      # resolver below leaves torch alone.
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
           pip install -r requirements.txt
+
+      # MyST caches executed cell outputs in _build/execute, keyed by a hash of
+      # each page's content. Restoring it means only the pages you actually
+      # changed get re-executed; everything else is reused. Locally this takes a
+      # full build of psy300 from ~1 min down to ~3 s.
+      - name: Restore notebook execution cache
+        uses: actions/cache@v4
+        with:
+          path: _build/execute
+          key: myst-execute-${{ runner.os }}-${{ hashFiles('book/**/*.md', 'book/**/*.ipynb', 'requirements.txt') }}
+          restore-keys: |
+            myst-execute-${{ runner.os }}-
 
       - name: Build the book
         run: |
           jupyter book build --html --execute
+
+      # GitHub Pages hides every path beginning with an underscore unless this
+      # file is present.
+      - name: Disable Jekyll processing
+        run: touch _build/html/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

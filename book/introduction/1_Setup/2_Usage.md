@@ -11,10 +11,10 @@ At this point you should have previously installed Miniforge and Visual Studio C
 
 ## Python environments
 
-Remember that we use Miniforge to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a a new terminal/PowerShell window and type:
+Remember that we use Miniforge to have isolated Python environments for our projects. So let's start by creating a **psy111** environment that is able to run all upcoming exercises (as well as create this entire book). Open a new terminal/PowerShell window and type:
 
 ```bash
-conda create -n psy111 python==3.11
+conda create -n psy111 python=3.11
 ```
 
 and confirm the installation with `y` when prompted to do so. Afterwards, activate the environment by typing
@@ -31,22 +31,22 @@ You can then type
 pip list
 ```
 
-to display a list of all installed Python packages. As our environment is still new, this list is still empty. However, we are now ready to install any kind of Python package. There are three packages which we will need soon (*numpy* for numerical computations, *matplotlib* for plotting, and *ipykernel* for interactive notebooks), so we can install them as follows:
+to display a list of all installed Python packages. As our environment is still new, this list only contains a few basic packages such as `pip`. However, we are now ready to install any kind of Python package. There are three packages which we will need soon (*numpy* for numerical computations, *matplotlib* for plotting, and *ipykernel* for interactive notebooks), so we can install them as follows:
 
 ```bash
 pip install numpy matplotlib ipykernel
 ```
 
-If you then again type `pip list`, you will see that the list of installed packages now includes the NumPy. There are more things you can do with Miniforge, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information.
+If you then again type `pip list`, you will see that the list of installed packages now includes NumPy. There are more things you can do with Miniforge, and if needed, you can refer to the [conda cheatsheet](https://docs.conda.io/projects/conda/en/4.6.0/_downloads/52a95608c49671267e40c689e0bc00ca/conda-cheatsheet.pdf) for more information.
 
 ---
 
-## The Python interpeter
+## The Python interpreter
 
-If the `psy111` environment is active, you can open the Python interpreter by typing `python` and then presssing enter. The Python interpeter will start and show you the current Python version, for example:
+If the `psy111` environment is active, you can open the Python interpreter by typing `python` and then pressing enter. The Python interpreter will start and show you the current Python version, for example:
 
 ```bash
-Python 3.14.0 | packaged by conda-forge | (main, Oct  7 2025, 20:07:29) [GCC 14.3.0] on linux
+Python 3.11.14 | packaged by conda-forge | (main, Oct  7 2025, 20:07:29) [GCC 14.3.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>> 
 ```
@@ -64,7 +64,7 @@ While this works for simple commands, it is not really useful for more complicat
 
 ## Python Scripts
 
-We have previously used the Python interpreter to run simple Python code. However, you will ususally require a more organized way of running your code. For this, let's open Visual Studio Code.
+We have previously used the Python interpreter to run simple Python code. However, you will usually require a more organized way of running your code. For this, let's open Visual Studio Code.
 
 ```{figure} ../../../_static/figures/vscode.png
 ---
@@ -80,11 +80,11 @@ Next, in the top left click on **File → Open Folder…** and select (or create
 
 You are now ready to write content to your Python script inside this file:
 
-```bash
+```python
 print("Welcome to psy111!")
 ```
 
-You can then run the Python script by pressing the run button at the top right. If you do this for the first time, VS Code will most likely promt you to select your Python interpeter at the bottom right. Here, you should now be able to see and select the previously created `psy111` enviroment.
+You can then run the Python script by pressing the run button at the top right. If you do this for the first time, VS Code will most likely prompt you to select your Python interpreter at the bottom right. Here, you should now be able to see and select the previously created `psy111` environment.
 
 ```{caution} Important
 
@@ -94,7 +94,7 @@ When you open only a single Python file in VS Code (without opening a folder), y
 
 ## Jupyter notebooks
 
-Python scripts (like the one you created in the previous section) are single files that run from top to bottom. Sometimes, for example if you have small projects that you would like to share with other, you might want to only have smaller blocks of code with text or images between them. In such cases, you can use Jupyter notebooks. These files contain cells for Python code as well as for text, so you can neatly format and share your code with others. We will also use these noteboks for the exercises in this seminar.
+Python scripts (like the one you created in the previous section) are single files that run from top to bottom. Sometimes, for example if you have small projects that you would like to share with others, you might want to only have smaller blocks of code with text or images between them. In such cases, you can use Jupyter notebooks. These files contain cells for Python code as well as for text, so you can neatly format and share your code with others. We will also use these notebooks for the exercises in this seminar.
 
 ```{figure} ../../../_static/figures/notebooks.png
 ---
@@ -104,7 +104,7 @@ name: notebooks
 Jupyter Notebooks.
 ```
 
-To be able to use Jupyter notebooks, you need to install the **Juypter** extension (just like the previously installed Python extension). You can then create and use `.ipynb` files, which is short for "interactive python notebook". Once you created such a notebook, you can add code cells with the `+ Code` and text cells with the `+ Markdown` buttons. The Python interpreter can again be selected from the `psy111` environment by pressing the "Select Kernel" button at the top right of the script.
+To be able to use Jupyter notebooks, you need to install the **Jupyter** extension (just like the previously installed Python extension). You can then create and use `.ipynb` files, which is short for "interactive python notebook". Once you created such a notebook, you can add code cells with the `+ Code` and text cells with the `+ Markdown` buttons. The Python interpreter can again be selected from the `psy111` environment by pressing the "Select Kernel" button at the top right of the script.
 
 ### Code cells
 
@@ -123,11 +123,11 @@ Markdown is a way of writing and formatting text. In fact, all the text in this 
 
 ## The psy111 book
 
-To be able to use the book on your local computer, you first need to download its source code from [GitHub](https://github.com/mibur1/psy111) by clicking on the green button and selecting "Download ZIP" (f you are familiar with Git, you can also clone the repository for easier updating in the future). Then, navigate to your Downloads, extract the psy111 folder.
+To be able to use the book on your local computer, you first need to download its source code from [GitHub](https://github.com/mibur1/psy111) by clicking on the green button and selecting "Download ZIP" (if you are familiar with Git, you can also clone the repository for easier updating in the future). Then, navigate to your Downloads and extract the psy111 folder.
 
 ```{caution} File management
 
-It is strongly recommend that you create and maintain an organized folder structure for your Master's course, and not keep everything unorganized in your Downloads folder!
+It is strongly recommended that you create and maintain an organized folder structure for your Master's course, and not keep everything unorganized in your Downloads folder!
 ```
 
 Once you have saved and unpacked the psy111 folder, you can open it in VS Code. You can do so by right clicking in the folder and selecting "Open with Code" if you have previously checked the corresponding box in the installation process, or by clicking "File" -> "Open Folder" inside VS Code.
@@ -139,7 +139,7 @@ cd path/to/your/book
 pip install -r requirements.txt
 ```
 
-You can then use the exercises locally by simply opening the `.ipynb` files from the relevant folders whithin the `book/` folder and selecting the correct kernel.
+You can then use the exercises locally by simply opening the `.ipynb` files from the relevant folders within the `book/` folder and selecting the correct kernel.
 
 
 ```{tip} Summary
@@ -150,7 +150,7 @@ You can use Python in different ways:
 - Through interactive Jupyter Notebooks (`.ipynb` files)
 - Through online platforms such as [Google Colab](https://colab.research.google.com/)
 
-You can use Minforge/Conda to manage your Python environments. You can:
+You can use Miniforge/Conda to manage your Python environments. You can:
 
 - Create environments with `conda create -n <env_name> python`
 - Switch environments with `conda activate <env_name>`
