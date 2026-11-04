@@ -17,7 +17,7 @@ my_function() # use the function
 
 ## Function arguments and returns
 
-Functions can accept *arguments* (or parameters) that provide inputs or modify their behaviour. For example, if we want to add two numbers, we can pass both of them as arguments and further *return* the result to the user:
+Functions can accept inputs that modify their behaviour. Strictly speaking, the names listed in the function definition are called *parameters*, while the actual values you pass when calling the function are called *arguments* (in practice, the two terms are often used interchangeably). For example, if we want to add two numbers, we can pass both of them as arguments and *return* the result to the caller:
 
 ```{code-cell} ipython3
 def add(a, b):
@@ -27,9 +27,9 @@ result = add(1, 2)
 print(result)
 ```
 
-### Arguments
+### Required and optional parameters
 
-Python functions can have two different kinds of arguments: *positional* arguments, and *keyword* arguments. Positional arguments on the one hand are defined by their position within the round brackets and *must* be provided for the function to run without giving an error. In the previous example, both `a` and `b` are positional arguments and the function would not know what to do if any of them would be missing. Keyword arguments on the other hand are assigned a *default* value. This means that the function knows what to do even if the user does not explicitly provide a value for that argument. 
+Function parameters can either be *required* or *optional*. Required parameters do not have a default value and *must* be provided, otherwise the function will throw an error. In the previous example, both `a` and `b` are required parameters, and the function would not know what to do if any of them were missing. Optional parameters on the other hand are assigned a *default* value in the function definition. This means that the function knows what to do even if the user does not explicitly provide a value for that parameter.
 
 As an example, let's create a function that adds random Gaussian noise to a given input `x`:
 
@@ -59,7 +59,14 @@ def add_noise(x, mu=0, sd=1):
     return x + noise
 ```
 
-*Note:* So far, you have mostly seen comments within the code using the `#` sign. Another way to provide comments is by using triple double quotes `"""comment"""`, as shown in the previous code snippet. This approach is useful for providing larger portions of text, such as when documenting your functions. In the `add_noise()` function, you can see an example where the input and output parameters are clearly described, making it easier to understand how to use the function. This is also the official way of documenting functions and classes in Python, so it is recommended to follow this convention.
+```{note} Docstrings
+
+So far, you have mostly seen comments within the code using the `#` sign. The text enclosed in triple double quotes `"""..."""` at the beginning of the `add_noise()` function is a so-called *docstring*. Unlike comments, docstrings are stored together with the function, so you (or anyone else using your code) can later look them up with the `help()` function. In the `add_noise()` function, the input and output parameters are clearly described, making it easier to understand how to use the function. Writing docstrings is the official way of documenting functions and classes in Python, and the format used here (the [NumPy style](https://numpydoc.readthedocs.io/en/latest/format.html)) is one of the most common conventions.
+```
+
+```{code-cell} ipython3
+help(add_noise)
+```
 
 If we now call this function by just providing a value for `x` it will still work as expected by using a mean of 0 and a standard deviation of 1 to calculate and add the noise.
 
@@ -67,26 +74,36 @@ If we now call this function by just providing a value for `x` it will still wor
 add_noise(5)
 ```
 
-If you decide you need different noise with a standard deviation of 3, you can simply add this new value. As keyword arguments are optional, their order does not matter. You can provide any keyword argument in any order you like, as long as you provide its name and all positional arguments have been correctly provided before.
+### Positional and keyword arguments
+
+When calling a function, there are two ways of passing arguments. *Positional* arguments are matched to the parameters by their position, while *keyword* arguments are matched by their name (e.g. `sd=3`). If you decide you need different noise with a standard deviation of 3, you can simply pass this new value as a keyword argument. As keyword arguments are identified by their name, you can provide them in any order you like, as long as all positional arguments come before them.
 
 ```{code-cell} ipython3
 add_noise(5, sd=3)
 ```
 
-You can also specify all arguments (including the positional one) by name (in this case the order of `sd` and `mu` doesn't matter)
+You can also pass all arguments (including `x`) by name, in which case their order does not matter at all
 
 ```{code-cell} ipython3
 add_noise(x=5, sd=3, mu=2)
 ```
 
-or not use any name at all
+or pass all of them by position:
 
 ```{code-cell} ipython3
 add_noise(5, 3, 2)
 ```
 
-However, the last example is different compared to the previous one! This is because if no keywords are provided, Python will only be able to rely on the default order of arguments, which would result in the arguments being interpreted as `x=5`, `mu=3` and `sd=2` as defined in the function.
+However, the last example is different compared to the previous one! As no names are provided, Python matches the arguments to the parameters in the order in which they are defined in the function, so they are interpreted as `x=5`, `mu=3` and `sd=2`.
 
-### Argument unpacking
+### Variable numbers of arguments
 
-Another feature of Python is the ability to provide a function with an unspecified number of arguments by using `*args` and `**kwargs`. While we will not cover this topic here, I want to mention it for completeness. If you are interested or encounter it in practice, feel free to explore this topic on your own (e.g., [here](https://book.pythontips.com/en/latest/args_and_kwargs.html)).
+Another feature of Python is the ability to write functions that accept an arbitrary number of arguments by using `*args` and `**kwargs`. While we will not cover this topic here, I want to mention it for completeness. If you are interested or encounter it in practice, feel free to explore this topic on your own (e.g., [here](https://book.pythontips.com/en/latest/args_and_kwargs.html)).
+
+```{tip} Summary
+
+- Functions are defined with the `def` keyword and can `return` a result.
+- Parameters without a default value are required, parameters with a default value are optional.
+- Arguments can be passed by position (`add_noise(5, 0, 3)`) or by name (`add_noise(5, sd=3)`).
+- Docstrings (`"""..."""`) document what a function does and can be displayed with `help()`.
+```

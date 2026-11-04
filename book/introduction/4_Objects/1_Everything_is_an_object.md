@@ -6,7 +6,7 @@ kernelspec:
 
 # 4.1 Everything is an Object
 
-So far, and analogous to many other programming languages, you might think of data types like strings or integers as *primitive* data types, which means that they are built into the core of the language to behave in special ways and to not be changed or modified in any way. And this is true in many other programming languages like C++, where you will have to explicitly tell the program what type of variable you want to create.
+So far, and analogous to many other programming languages, you might think of data types like strings or integers as *primitive* data types, which means that they are built into the core of the language as plain values that behave in special ways and cannot be extended or modified. And this is true in many other programming languages like C++, where an integer is just a raw number stored in memory and not an object.
 
 In Python this is a bit different and there aren't *really* any primitive data types, as it is a deeply *object-oriented* programming language. In Python, *everything is an object*. Strings are objects, integers are objects, lists are objects, dictionaries are objects, and so forth. We will come back to that concept in detail later in this chapter, but for now let us just focus on some practical implications this will bring.
 
@@ -63,5 +63,5 @@ Everything in Python is an object!
 
 - Functions like `len()` are standalone blocks of code that can be called independently of objects.
 - Methods like `.lower()` are functions that belong to objects.
-- You can inspect the type and content of objects with the `type()` and `dir()` functions.
+- You can inspect the type of an object with the `type()` function and list its attributes and methods with the `dir()` function.
 ```

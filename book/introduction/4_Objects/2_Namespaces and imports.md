@@ -6,7 +6,7 @@ kernelspec:
 
 # 4.2 Namespaces and imports
 
-Python is a high-level, dynamic programming language often associated with flexibility (for example, you do not need to explicitly declare the type of your variables), but there are other cases in which Python is very strict (for example when it comes to the whitespace). Another strict thing about Python is that it takes *namespaces* very seriously.
+Python is a high-level, dynamic programming language often associated with flexibility (for example, you do not need to explicitly declare the type of your variables), but there are other cases in which Python is very strict (for example when it comes to the whitespace). Another strict thing about Python is that it takes *namespaces* very seriously. A namespace is simply the collection of names (such as variables, functions, and modules) that are currently available to you in your code.
 
 If you are used to other programming languages like MATLAB or R, you might expect to have hundreds of functions available to call as soon as you start your script. By contrast, Python only offers a very small built-in namespace, which means the number of functions you can use is very small. This is done on purpose, you are expected to carefully manage the namespace and functions you use.
 
@@ -26,7 +26,7 @@ from math import sqrt
 print(sqrt(9))
 ```
 
-or you can rename them:
+or you can import a module under a different (usually shorter) name:
 
 ```{code-cell} ipython3
 import numpy as np
@@ -49,7 +49,15 @@ from numpy.random import randint
 random_integer = randint(1,10)
 ```
 
-```{caution} Note
+```{note} The dot notation
 
 While the dot notation is primarily used to access methods (functions belonging to an object), it is also used when working with modules and submodules to indicate relationships. When you import a module like `math` or `numpy`, the dot notation allows you to access the functions or submodules within it (e.g., `np.random.randint`). This consistent use of the dot notation across Python helps denote a hierarchy or belonging—whether for object methods or module functions/submodules.
+```
+
+```{tip} Summary
+
+- Python only offers a small set of built-in functions, everything else needs to be imported.
+- `import math` imports an entire module, whose functions you access with the dot notation (`math.sqrt()`).
+- `from math import sqrt` imports a single function, which can then be used directly (`sqrt()`).
+- `import numpy as np` imports a module under a shorter name (`np.sqrt()`).
 ```
