@@ -42,7 +42,7 @@ middle_block = [50, 78.8, 83, 84.2, 90.1, 92.7]
 last_block = [50, 96.9, 97.8, 98.1, 98.8, 98.7]
 ```
 
-As shown in the numbers, performance on the first trial of each block averaged 50%, since the animals had no prior knowledge of which option would be rewarded. After the initial trial, learning began, and their performance gradually improved. In the first block, improvement was slow and challenging, while in the final block, the animals showed rapid improvement. The middle blocks showed moderate progress, neither as slow as the first block nor as fast as the last. Harlow suggested this reflected the animals' ability to "learn to learn" by understanding the task's context—introducing the concept of a learning set. While this description provides some insight, a visual representation is far more revealing. Let’s recreate the graph from Harlow’s classic paper using the `ax.plot` method:
+As shown in the numbers, performance on the first trial of each block averaged 50%, since the animals had no prior knowledge of which option would be rewarded. After the initial trial, learning began, and their performance gradually improved. In the first block, improvement was slow and challenging, while in the final block, the animals showed rapid improvement. The middle blocks showed moderate progress, neither as slow as the first block nor as fast as the last. Harlow suggested this reflected the animals' ability to "learn to learn" by understanding the task's context, which introduced the concept of a learning set. While this description provides some insight, a visual representation is far more revealing. Let’s recreate the graph from Harlow’s classic paper using the `ax.plot` method:
 
 ```{code-cell} ipython3
 fig, ax = plt.subplots()
@@ -193,7 +193,7 @@ plt.show()
 
 That’s it! Just one line of code. Seaborn automatically uses the Pandas DataFrame to determine how to split the data, label the axes, and create the legend. It also adds error bars to represent the 95% confidence interval using a method called bootstrapping, which resamples the data to estimate variability. In this case, there are no left-handed males, so their bar is absent.
 
-While bar charts are useful—especially when error bars are included to show data variability—they can be misleading if not used carefully. For instance, Anscombe’s quartet demonstrates that different datasets with identical means and variances can produce identical bar charts, even though the underlying data tell very different stories.
+While bar charts are useful (especially when error bars are included to show data variability), they can be misleading if not used carefully. For instance, Anscombe’s quartet demonstrates that different datasets with identical means and variances can produce identical bar charts, even though the underlying data tell very different stories.
 
 Seaborn offers more informative alternatives. For example, you can display each observation within a group using a swarmplot, or visualize the full distribution with a violin plot, which smooths the data into a silhouette shape. These alternatives provide a clearer picture of the data’s underlying patterns:
 
@@ -208,7 +208,7 @@ plt.show()
 
 Choosing the right visualization depends on the data. For instance, a swarmplot clearly shows the difference in sample sizes, with more data points for right-handed individuals compared to left-handed ones. However, if the dataset is large, a swarmplot may become overcrowded and hard to interpret, making a violin plot a better choice as it provides a smoother summary of the data distribution. Personal preference also plays a role in selecting visualizations.
 
-Another common option is the boxplot. It displays the median as a horizontal line inside a box, the quartiles (25th and 75th percentiles) as the bottom and top of the box, and whiskers that extend from the box to the most extreme data points within 1.5 times the interquartile range. Outliers—data points beyond the whiskers—are shown as individual points. For example, in the IQ data, a right-handed subject is flagged as an outlier because their score differs from the 25th percentile by more than 1.5 times the interquartile range:
+Another common option is the boxplot. It displays the median as a horizontal line inside a box, the quartiles (25th and 75th percentiles) as the bottom and top of the box, and whiskers that extend from the box to the most extreme data points within 1.5 times the interquartile range. Outliers (data points beyond the whiskers) are shown as individual points. For example, in the IQ data, a right-handed subject is flagged as an outlier because their score differs from the 25th percentile by more than 1.5 times the interquartile range:
 
 ```{code-cell} ipython3
 sns.boxplot(data=yeatman_data, x="Handedness", y="IQ")

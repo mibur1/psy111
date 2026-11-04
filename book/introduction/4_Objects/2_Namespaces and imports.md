@@ -51,7 +51,7 @@ random_integer = randint(1,10)
 
 ```{note} The dot notation
 
-While the dot notation is primarily used to access methods (functions belonging to an object), it is also used when working with modules and submodules to indicate relationships. When you import a module like `math` or `numpy`, the dot notation allows you to access the functions or submodules within it (e.g., `np.random.randint`). This consistent use of the dot notation across Python helps denote a hierarchy or belonging—whether for object methods or module functions/submodules.
+While the dot notation is primarily used to access methods (functions belonging to an object), it is also used when working with modules and submodules to indicate relationships. When you import a module like `math` or `numpy`, the dot notation allows you to access the functions or submodules within it (e.g., `np.random.randint`). This consistent use of the dot notation across Python helps denote a hierarchy or belonging, whether for object methods or module functions/submodules.
 ```
 
 ```{tip} Summary

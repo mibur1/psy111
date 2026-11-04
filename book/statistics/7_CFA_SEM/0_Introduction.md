@@ -16,7 +16,7 @@ This makes CFA and SEM particularly well suited for testing psychological theori
 You can think of CFA as a special case of SEM.
 
 * In CFA, the focus lies on the *measurement model*: observed variables load on latent factors, and latent factors may correlate or form higher-order factors.
-* In SEM, the model is extended by adding *directional (regression) paths* between variables—typically between latent constructs.
+* In SEM, the model is extended by adding *directional (regression) paths* between variables, typically between latent constructs.
 
 In short:
 
