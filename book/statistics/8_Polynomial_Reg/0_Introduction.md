@@ -142,5 +142,5 @@ What happens if you increase the order of the polynomial? Can you observe an int
 :::{dropdown} Click to show solution
 As you probably expected, the explained variance ($R^2$) increases as the order of the polynomial increases, eventually reaching 1 for a model of degree 29. At this point, the model passes exactly through every single data point.
 
-This does not happen by chance. Any dataset with $n$ observations can be perfectly interpolated by a polynomial of degree  $n−1$. However, such a high-order model is usually not a good choice in practice, as it was *overfit* to the data and will generalise poorly to new observations. Although this will be more thoroughly discussed in the [psy112 module](https://mibur1.github.io/psy112) next semester, we will already cover it a bit in today's session.
+This does not happen by chance. Any dataset with $n$ observations can be perfectly interpolated by a polynomial of degree  $n−1$. However, such a high-order model is usually not a good choice in practice, as it was *overfit* to the data and will generalise poorly to new observations. Although this will be more thoroughly discussed in the [psy112 module](https://michaburkhardt.de/psy112) next semester, we will already cover it a bit in today's session.
 :::

@@ -72,6 +72,15 @@ jobs:
       - name: Disable Jekyll processing
         run: touch _build/html/.nojekyll
 
+      # MyST writes robots.txt and sitemap.xml while crawling its temporary local
+      # server, so both list http://localhost:3000. Point them at the public
+      # address, using the trailing-slash URLs that GitHub Pages serves.
+      - name: Fix sitemap URLs
+        run: |
+          PUBLIC_URL="https://michaburkhardt.de${BASE_URL}"
+          sed -i -E "s#<loc>http://localhost:3000(/[^<]*)?</loc>#<loc>${PUBLIC_URL}\1/</loc>#" _build/html/sitemap.xml
+          sed -i "s#http://localhost:3000#${PUBLIC_URL}#g" _build/html/sitemap.xml _build/html/robots.txt
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
